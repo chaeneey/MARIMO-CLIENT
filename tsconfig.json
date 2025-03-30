@@ -19,6 +19,13 @@
       }
     ],
     "paths": {
+      "@apis": ["./src/apis"],
+      "@svg": ["./src/assets/svg"],
+      "@image": ["./public/image"],
+      "@components": ["./src/components"],
+      "@hooks": ["./src/hooks"],
+      "@types": ["./src/types"],
+      "@utils": ["./src/utils"],
       "@/*": ["./src/*"]
     }
   },
