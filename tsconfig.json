@@ -21,6 +21,7 @@
     "paths": {
       "@apis": ["./src/apis"],
       "@svg": ["./src/assets/svg"],
+      "@styles/*": ["./src/styles/*"],
       "@image": ["./public/image"],
       "@components": ["./src/components"],
       "@hooks": ["./src/hooks"],
