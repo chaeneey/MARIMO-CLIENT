@@ -9,7 +9,6 @@ globalStyle(":root", {
     [base]: {
       vars: {
         "--min-width": "375px",
-        "--max-width": "700px",
       },
     },
   },
@@ -79,11 +78,9 @@ globalStyle("#root", {
     [base]: {
       width: "100%",
       minWidth: "var(--min-width)",
-      maxWidth: "var(--max-width)",
       minHeight: "100dvh",
       backgroundColor: "#fff",
       margin: "0 auto",
-      boxShadow: "0 0 2px rgba(0, 0, 0, 0.4)",
     },
   },
 });
