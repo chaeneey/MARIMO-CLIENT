@@ -1,4 +1,5 @@
-import { ButtonHTMLAttributes, MouseEventHandler } from "react";
+import { MouseEventHandler } from "react";
+
 import { buttonStyle } from "./IUButton.css";
 
 export interface IUButtonProps {

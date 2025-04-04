@@ -1,6 +1,7 @@
+import { style } from "@vanilla-extract/css";
+
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
-import { style } from "@vanilla-extract/css";
 
 export const buttonStyle = style([
   vars.fonts.body07_20_m_36,
