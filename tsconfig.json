@@ -23,7 +23,7 @@
       "@svg": ["./src/assets/svg"],
       "@styles/*": ["./src/styles/*"],
       "@image": ["./public/image"],
-      "@components": ["./src/components"],
+      "@components": ["./components"],
       "@hooks": ["./src/hooks"],
       "@types": ["./src/types"],
       "@utils": ["./src/utils"],
