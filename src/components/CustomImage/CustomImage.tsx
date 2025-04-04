@@ -1,5 +1,6 @@
-import React from "react";
 import Image from "next/image";
+import React from "react";
+
 import { imageStyle, imageWrapperStyle } from "./CustomImage.css";
 
 export interface ImageProps {
