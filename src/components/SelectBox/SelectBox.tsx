@@ -1,6 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
+
+import { IcArrowUnderGray05 } from "@/assets/svgs";
+import { ValueType } from "@types";
+
 import {
   arrowIconStyle,
   dividerStyle,
@@ -12,8 +16,6 @@ import {
   selectBoxStyle,
   ulStyle,
 } from "./SelectBox.css";
-import { IcArrowUnderGray05 } from "@/assets/svgs";
-import { ValueType } from "@types";
 
 interface Option {
   value: ValueType;

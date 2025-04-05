@@ -1,6 +1,7 @@
+import { style, styleVariants } from "@vanilla-extract/css";
+
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
-import { style, styleVariants } from "@vanilla-extract/css";
 
 export const selectBoxStyle = style([
   vars.fonts.body08_18_sb,
@@ -78,7 +79,7 @@ export const liOptionLeftStyle = style([
 ]);
 
 export const liSubValueStyle = style([
-    vars.fonts.c3_caption_03_14,
+  vars.fonts.c3_caption_03_14,
   {
     color: vars.colors.gray04,
   },
