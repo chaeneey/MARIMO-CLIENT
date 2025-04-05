@@ -1,42 +1,79 @@
 "use client";
 
 import React, { useState } from "react";
-import { selectBoxStyle } from "./SelectBox.css";
+import {
+  arrowIconStyle,
+  dividerStyle,
+  liOptionLeftStyle,
+  liOptionStyle,
+  liStyle,
+  liSubValueStyle,
+  selectBoxBorderStyle,
+  selectBoxStyle,
+  ulStyle,
+} from "./SelectBox.css";
+import { IcArrowUnderGray05 } from "@/assets/svgs";
+import { ValueType } from "@types";
 
-interface SelectBoxProps {
+interface Option {
+  value: ValueType;
+  price: string;
+}
+export interface SelectBoxProps {
   label: string;
-  options: string[];
-  selected?: string;
-  onSelect: (value: string) => void;
+  options: Option[];
+  selected: ValueType;
+  onSelect: (value: ValueType) => void;
 }
 
-const SelectBox: React.FC<SelectBoxProps> = ({
-  label,
-  options,
-  selected,
-  onSelect,
-}) => {
+const SelectBox = ({ label, options, selected, onSelect }: SelectBoxProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
-  const handleSelect = (value: string) => {
+  const handleSelect = (value: ValueType) => {
     onSelect(value);
     setIsOpen(false);
   };
 
   return (
     <div>
-      <button className={selectBoxStyle} onClick={toggleDropdown}>
-        <span>{selected || label}</span>
-        <p>화살표</p>
+      <button
+        className={`${selectBoxStyle} ${isOpen && selectBoxBorderStyle.open}`}
+        onClick={toggleDropdown}
+      >
+        <span>
+          {selected.keyValue ? (
+            <>
+              <span>{selected.keyValue}</span>{" "}
+              <span className={liSubValueStyle}>{selected.subValue}</span>
+            </>
+          ) : (
+            <span>{label}</span>
+          )}
+        </span>
+
+        <IcArrowUnderGray05 className={arrowIconStyle} />
       </button>
 
       {isOpen && (
-        <ul>
-          {options.map((option) => (
-            <li key={option} onClick={() => handleSelect(option)}>
-              {option}
+        <ul className={ulStyle}>
+          {options.map((option, idx) => (
+            <li
+              key={option.value.keyValue}
+              className={liStyle}
+              onClick={() => handleSelect(option.value)}
+            >
+              <div className={liOptionStyle}>
+                <div className={liOptionLeftStyle}>
+                  <span>{option.value.keyValue}</span>
+                  <span className={liSubValueStyle}>
+                    {option.value.subValue}
+                  </span>
+                </div>
+                <span>{option.price}</span>
+              </div>
+              {idx !== options.length - 1 && <div className={dividerStyle} />}
             </li>
           ))}
         </ul>
