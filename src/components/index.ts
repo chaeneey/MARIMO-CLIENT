@@ -1,3 +1,4 @@
+import Chip from "./Chip/Chip";
 import CustomImage from "./CustomImage/CustomImage";
 
-export { CustomImage };
+export { Chip, CustomImage };
