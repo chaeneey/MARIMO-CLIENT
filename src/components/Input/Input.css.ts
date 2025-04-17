@@ -7,17 +7,18 @@ import { vars } from "@styles/theme.css";
 export const InputContainer = style([
   flexGenerator("column", "flex-start", "flex-start"),
   {
-    gap: "1.2rem",
+    gap: "0.8rem",
   },
 ]);
 
 export const InputStyle = recipe({
   base: [
-    vars.fonts.body06_20_m_24,
+    vars.fonts.body11_18_m,
     {
       width: "100%",
       color: vars.colors.black,
-      padding: "2.3rem 1.8rem",
+      padding: "1.7rem 1.6rem",
+      border: `1px solid ${vars.colors.gray03}`,
       borderRadius: "2px",
 
       "::placeholder": {
@@ -31,7 +32,7 @@ export const InputStyle = recipe({
   ],
 
   variants: {
-    error: {
+    errorMessage: {
       true: {
         border: `1px solid ${vars.colors.alert01}`,
       },
@@ -43,14 +44,14 @@ export const InputStyle = recipe({
 });
 
 export const InputInfoText = style([
-  vars.fonts.body06_20_m_24,
+  vars.fonts.caption_04_me,
   {
     color: vars.colors.gray04,
   },
 ]);
 
 export const InputErrorText = style([
-  vars.fonts.body06_20_m_24,
+  vars.fonts.caption_04_me,
   {
     color: vars.colors.alert01,
   },

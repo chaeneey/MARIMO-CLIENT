@@ -1,5 +1,4 @@
-import { InputHTMLAttributes } from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
+import { forwardRef, InputHTMLAttributes } from "react";
 
 import {
   InputContainer,
@@ -9,36 +8,29 @@ import {
 } from "./Input.css";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  name: string;
-  register: UseFormRegisterReturn;
-  error?: boolean;
-  errorText?: string;
-  infoText?: string;
+  errorMessage?: string;
+  infoMessage?: string;
 }
 
-const Input = ({
-  name,
-  register,
-  error = false,
-  errorText,
-  infoText,
-  placeholder,
-}: InputProps) => {
-  return (
-    <div className={InputContainer}>
-      <input
-        id={name}
-        {...register}
-        className={InputStyle({ error })}
-        placeholder={placeholder}
-      />
-      {error ? (
-        <span className={InputErrorText}>{errorText}</span>
-      ) : (
-        <span className={InputInfoText}>{infoText}</span>
-      )}
-    </div>
-  );
-};
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ errorMessage, infoMessage, ...props }, ref) => {
+    return (
+      <div className={InputContainer}>
+        <input
+          ref={ref}
+          className={InputStyle({ errorMessage: !!errorMessage })}
+          {...props}
+        />
+        {errorMessage ? (
+          <span className={InputErrorText}>{errorMessage}</span>
+        ) : (
+          <span className={InputInfoText}>{infoMessage}</span>
+        )}
+      </div>
+    );
+  },
+);
+
+Input.displayName = "Input";
 
 export default Input;

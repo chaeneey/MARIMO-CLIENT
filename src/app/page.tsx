@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 import Input from "@/components/Input/Input";
 
 type FormValues = {
-  name: string;
-  phoneNumber: string;
+  orderName: string;
+  email: string;
 };
 
 export default function Home() {
@@ -24,22 +24,28 @@ export default function Home() {
     <form onSubmit={handleSubmit(onSubmit)}>
       Home
       <Input
-        name="이름"
-        register={register("name", { required: "주문자명을 입력해주세요" })}
-        error={!!errors.name}
-        errorText={errors.name?.message}
         placeholder="주문자명을 입력해주세요"
-        infoText="디자인 확인(교정)이 가능한 분의 성함을 기입해 주세요."
+        infoMessage="디자인 확인(교정)이 가능한 분의 성함을 기입해 주세요."
+        {...register("orderName", {
+          required: "주문자명을 입력해주세요",
+          maxLength: {
+            value: 10,
+            message: "주문자명은 10자 이내로 작성해주세요.",
+          },
+        })}
+        errorMessage={errors.orderName?.message}
       />
       <Input
-        name="전화번호"
-        register={register("phoneNumber", {
-          required: "전화번호를 입력해주세요",
+        placeholder="이메일을 입력하세요."
+        infoMessage="이메일을 똑바로 입력하세요."
+        {...register("email", {
+          required: "이메일을 입력해주세요",
+          maxLength: {
+            value: 10,
+            message: "이메일은 10자 이내로 작성해주세요.",
+          },
         })}
-        error={!!errors.phoneNumber}
-        errorText={errors.phoneNumber?.message}
-        placeholder="010-1234-5678"
-        infoText="정확한 전화번호를 입력해주세요."
+        errorMessage={errors.email?.message}
       />
       <button type="submit">제출</button>
     </form>
