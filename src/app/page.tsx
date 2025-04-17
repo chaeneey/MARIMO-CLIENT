@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 
-import Input from "@/components/Input";
+import Input from "@/components/Input/Input";
 
 type FormValues = {
   name: string;
