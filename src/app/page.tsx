@@ -1,5 +1,4 @@
 "use client";
-
 import { useForm } from "react-hook-form";
 
 import Input from "@/components/Input/Input";
@@ -13,6 +12,8 @@ export default function Home() {
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors },
   } = useForm<FormValues>();
 
@@ -24,6 +25,9 @@ export default function Home() {
     <form onSubmit={handleSubmit(onSubmit)}>
       Home
       <Input
+        content="orderName"
+        value={watch("orderName")}
+        setValue={setValue}
         placeholder="주문자명을 입력해주세요"
         infoMessage="디자인 확인(교정)이 가능한 분의 성함을 기입해 주세요."
         {...register("orderName", {
@@ -36,8 +40,10 @@ export default function Home() {
         errorMessage={errors.orderName?.message}
       />
       <Input
+        content="email"
+        value={watch("email")}
+        setValue={setValue}
         placeholder="이메일을 입력하세요."
-        infoMessage="이메일을 똑바로 입력하세요."
         {...register("email", {
           required: "이메일을 입력해주세요",
           maxLength: {

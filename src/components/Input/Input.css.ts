@@ -11,9 +11,14 @@ export const InputContainer = style([
   },
 ]);
 
+export const InputWrapper = style({
+  width: "100%",
+  position: "relative",
+});
+
 export const InputStyle = recipe({
   base: [
-    vars.fonts.body11_18_m,
+    vars.fonts.caption_04_me,
     {
       width: "100%",
       color: vars.colors.black,
@@ -41,6 +46,12 @@ export const InputStyle = recipe({
       },
     },
   },
+});
+
+export const deleteButtonStyle = style({
+  position: "absolute",
+  top: "1.9rem",
+  right: "1.7rem",
 });
 
 export const InputInfoText = style([
