@@ -27,11 +27,17 @@ const Accordion = ({ title, hasCheckbox, children }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
-  const handleToggle = () => setIsOpen((prev) => !prev);
+  const handleToggle = () => {
+    if (!isChecked && hasCheckbox) return;
+    setIsOpen((prev) => !prev);
+  };
 
   const handleCheck = () => {
-    setIsChecked((prev) => !prev);
-    setIsOpen((prev) => !prev);
+    setIsChecked((prev) => {
+      const next = !prev;
+      if (!next) setIsOpen(false);
+      return next;
+    });
   };
 
   return (
