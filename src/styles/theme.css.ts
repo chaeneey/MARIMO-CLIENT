@@ -96,7 +96,7 @@ export const vars = createGlobalTheme(":root", {
       fontWeight: "600",
       fontSize: "2rem",
       lineHeight: "34px",
-      letterSpacing: "-1px",
+      letterSpacing: "-0.4px",
     },
     body05_20_24: {
       fontFamily: "Pretendard",
