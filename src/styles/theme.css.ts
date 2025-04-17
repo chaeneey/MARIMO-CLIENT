@@ -11,6 +11,7 @@ export const vars = createGlobalTheme(":root", {
     lime06: "#BEFF5F",
     lime07: "#78B100",
     lime08: "#4A6A08",
+    lime09: "#9CA989",
 
     // Alert colors
     alert01: "#FF5151",
