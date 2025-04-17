@@ -4,7 +4,7 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-const SvgIcArrowUnderGray05 = ({
+const SvgIcArrowUnderGray0534 = ({
   title,
   titleId,
   ...props
@@ -17,13 +17,13 @@ const SvgIcArrowUnderGray05 = ({
   >
     {title ? <title id={titleId}>{title}</title> : null}
     <path
-      d="M2 8L11.8 16.4L21.6 8"
+      d="M5.33325 12.333L16.7666 22.133L28.1999 12.333"
       stroke="#292F38"
-      strokeWidth={2}
+      strokeWidth={2.33333}
       strokeLinecap="round"
       strokeLinejoin="round"
     />
   </svg>
 );
-const Memo = memo(SvgIcArrowUnderGray05);
+const Memo = memo(SvgIcArrowUnderGray0534);
 export default Memo;

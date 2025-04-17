@@ -1,14 +1,13 @@
-import { flexGenerator } from "@styles/generator.css";
-import { vars } from "@styles/theme.css";
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
+
+import { flexGenerator } from "@styles/generator.css";
+import { vars } from "@styles/theme.css";
 
 export const accordionWrapper = style([
   flexGenerator("column"),
   {
     width: "100%",
-
-    border: "1px solid black",
   },
 ]);
 
@@ -16,8 +15,8 @@ export const accordionBoxStyle = style([
   flexGenerator("row", "space-between"),
   {
     width: "100%",
-    height: "10rem",
-    padding: "3.4rem 3.2rem",
+    height: "8rem",
+    padding: "2.3rem 2.5rem",
   },
 ]);
 
@@ -30,9 +29,9 @@ export const leftSectionWrapper = style([
 
 export const checkboxStyle = recipe({
   base: {
-    width: "3.2rem",
-    height: "3.2rem",
-    border: "2px solid",
+    width: "2.4rem",
+    height: "2.4rem",
+    border: "1.5px solid",
 
     cursor: "pointer",
   },
@@ -53,7 +52,7 @@ export const checkboxStyle = recipe({
 });
 
 export const titleStyle = recipe({
-  base: style([vars.fonts.head02_28]),
+  base: style([vars.fonts.head04_22]),
   variants: {
     colorType: {
       black: {
@@ -67,6 +66,33 @@ export const titleStyle = recipe({
 });
 
 export const arrowIconStyle = style({
-  width: "4.8rem",
-  height: "4.8rem",
+  width: "3.4rem",
+  height: "3.4rem",
+
+  cursor: "pointer",
+  transition: "transform 0.3s ease",
 });
+
+export const arrowRotateStyle = style({
+  transform: "rotate(180deg)",
+});
+
+export const accordionContentWrapper = style([
+  flexGenerator("column", "flex-start", "flex-start"),
+  {
+    width: "100%",
+    height: "10rem",
+
+    padding: "0 2.5rem",
+  },
+]);
+
+export const dividerStyle = style([
+  flexGenerator(),
+  {
+    width: "100%",
+    height: "0.3rem",
+
+    backgroundColor: vars.colors.black,
+  },
+]);

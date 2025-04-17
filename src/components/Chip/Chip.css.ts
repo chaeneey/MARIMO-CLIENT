@@ -4,7 +4,7 @@ import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
 
 export const chipStyle = style([
-  vars.fonts.c3_caption_03_14,
+  vars.fonts.caption_03_14,
   flexGenerator(),
   {
     color: vars.colors.lime04,

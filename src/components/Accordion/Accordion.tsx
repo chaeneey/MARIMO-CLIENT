@@ -1,22 +1,29 @@
 "use client";
 
+import clsx from "clsx";
 import { useState } from "react";
+
+import { IcArrowUnderGray0534 } from "@/assets/svgs";
+
 import {
   accordionBoxStyle,
+  accordionContentWrapper,
   accordionWrapper,
   arrowIconStyle,
+  arrowRotateStyle,
   checkboxStyle,
+  dividerStyle,
   leftSectionWrapper,
   titleStyle,
 } from "./Accordion.css";
-import { IcArrowUnderGray05 } from "@/assets/svgs";
 
 export interface AccordionProps {
   title: string;
   hasCheckbox?: boolean;
+  children?: React.ReactNode;
 }
 
-const Accordion = ({ title, hasCheckbox }: AccordionProps) => {
+const Accordion = ({ title, hasCheckbox, children }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
@@ -50,10 +57,19 @@ const Accordion = ({ title, hasCheckbox }: AccordionProps) => {
         {hasCheckbox && !isChecked ? (
           <></>
         ) : (
-          <IcArrowUnderGray05 className={arrowIconStyle} />
+          <IcArrowUnderGray0534
+            className={clsx(arrowIconStyle, {
+              [arrowRotateStyle]: isOpen,
+            })}
+          />
         )}
       </div>
-      {isOpen && <div>1</div>}
+      {isOpen && (
+        <div className={accordionContentWrapper}>
+          <div className={dividerStyle} />
+          {children}
+        </div>
+      )}
     </div>
   );
 };
