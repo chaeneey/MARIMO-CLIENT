@@ -96,7 +96,7 @@ export const vars = createGlobalTheme(":root", {
       fontWeight: "600",
       fontSize: "2rem",
       lineHeight: "34px",
-      letterSpacing: "-1px",
+      letterSpacing: "-0.4px",
     },
     body05_20_24: {
       fontFamily: "Pretendard",
@@ -148,6 +148,36 @@ export const vars = createGlobalTheme(":root", {
       letterSpacing: "0px",
     },
 
+    // 한글 caption
+    caption_01_22: {
+      fontFamily: "Pretendard",
+      fontWeight: "700",
+      fontSize: "2.2rem",
+      lineHeight: "26px",
+      letterSpacing: "-0.44px",
+    },
+    caption_02_18: {
+      fontFamily: "Pretendard",
+      fontWeight: "400",
+      fontSize: "1.8rem",
+      lineHeight: "36px",
+      letterSpacing: "-0.36px",
+    },
+    caption_03_14: {
+      fontFamily: "Pretendard",
+      fontWeight: "600",
+      fontSize: "1.4rem",
+      lineHeight: "20px",
+      letterSpacing: "-0.28px",
+    },
+    caption_04_me: {
+      fontFamily: "Pretendard",
+      fontWeight: "500",
+      fontSize: "1.4rem",
+      lineHeight: "20px",
+      letterSpacing: "-0.28px",
+    },
+
     // 영어
     eh0_head00_32_eb: {
       fontFamily: "SUIT",
@@ -190,29 +220,6 @@ export const vars = createGlobalTheme(":root", {
       fontSize: "1.8rem",
       lineHeight: "22px",
       letterSpacing: "-0.36px",
-    },
-
-    //caption
-    c1_caption_01_22: {
-      fontFamily: "Pretendard",
-      fontWeight: "700",
-      fontSize: "2.2rem",
-      lineHeight: "2.6rem",
-      letterSpacing: "-0.44px",
-    },
-    c2_caption_02_18: {
-      fontFamily: "Pretendard",
-      fontWeight: "400",
-      fontSize: "1.8rem",
-      lineHeight: "3.6rem",
-      letterSpacing: "-0.36px",
-    },
-    c3_caption_03_14: {
-      fontFamily: "Pretendard",
-      fontWeight: "600",
-      fontSize: "1.4rem",
-      lineHeight: "2.0rem",
-      letterSpacing: "-0.28px",
     },
   },
 });
