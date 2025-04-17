@@ -221,28 +221,5 @@ export const vars = createGlobalTheme(":root", {
       lineHeight: "22px",
       letterSpacing: "-0.36px",
     },
-
-    //caption
-    c1_caption_01_22: {
-      fontFamily: "Pretendard",
-      fontWeight: "700",
-      fontSize: "2.2rem",
-      lineHeight: "2.6rem",
-      letterSpacing: "-0.44px",
-    },
-    c2_caption_02_18: {
-      fontFamily: "Pretendard",
-      fontWeight: "400",
-      fontSize: "1.8rem",
-      lineHeight: "3.6rem",
-      letterSpacing: "-0.36px",
-    },
-    c3_caption_03_14: {
-      fontFamily: "Pretendard",
-      fontWeight: "600",
-      fontSize: "1.4rem",
-      lineHeight: "2.0rem",
-      letterSpacing: "-0.28px",
-    },
   },
 });
