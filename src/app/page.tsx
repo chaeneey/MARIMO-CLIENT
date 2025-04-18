@@ -7,15 +7,15 @@ import TextArea from "@/components/TextArea/TextArea";
 type FormValues = {
   orderName: string;
   email: string;
-  text: string;
+  intro: string;
 };
 
 export default function Home() {
   const {
     register,
     handleSubmit,
-    setValue,
     watch,
+    setValue,
     formState: { errors },
   } = useForm<FormValues>({ mode: "onChange" });
 
@@ -27,9 +27,7 @@ export default function Home() {
     <form onSubmit={handleSubmit(onSubmit)}>
       Home
       <Input
-        content="orderName"
         value={watch("orderName")}
-        setValue={setValue}
         placeholder="주문자명을 입력해주세요"
         infoMessage="디자인 확인(교정)이 가능한 분의 성함을 기입해 주세요."
         {...register("orderName", {
@@ -40,11 +38,10 @@ export default function Home() {
           },
         })}
         errorMessage={errors.orderName?.message}
+        handleClearInput={() => setValue("orderName", "")}
       />
       <Input
-        content="email"
         value={watch("email")}
-        setValue={setValue}
         placeholder="이메일을 입력하세요."
         {...register("email", {
           required: "이메일을 입력해주세요",
@@ -54,18 +51,19 @@ export default function Home() {
           },
         })}
         errorMessage={errors.email?.message}
+        // handleClearInput={() => setValue("email", "")}
       />
       <TextArea
         placeholder="반드시 오탈자, 띄어쓰기가 제대로 되어있는지 다시 한 번 확인해 주세요!"
-        {...register("text", {
+        {...register("intro", {
           required: "청첩장 소개 문구를 작성해주세요",
           maxLength: {
-            value: 499,
+            value: 500,
             message: "500자 이내로 작성해주세요.",
           },
         })}
-        errorMessage={errors.text?.message}
-        currentLength={watch("text")?.length ?? 0}
+        errorMessage={errors.intro?.message}
+        currentLength={watch("intro")?.length ?? 0}
         maxLength={500}
       />
       <button type="submit">제출</button>

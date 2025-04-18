@@ -11,20 +11,15 @@ import {
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   errorMessage?: string;
   currentLength: number;
-  maxLength?: number;
+  maxLength: number;
 }
 
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ errorMessage, currentLength, maxLength, ...props }, ref) => {
     return (
       <div className={TextAreaContainer}>
-        <div className={TextAreaWrapper}>
-          <textarea
-            ref={ref}
-            {...props}
-            className={TextAreaStyle({ errorMessage: !!errorMessage })}
-            maxLength={maxLength}
-          />
+        <div className={TextAreaWrapper({ errorMessage: !!errorMessage })}>
+          <textarea ref={ref} {...props} className={TextAreaStyle} />
           <span className={CountTextStyle}>
             {currentLength} / {maxLength}
           </span>

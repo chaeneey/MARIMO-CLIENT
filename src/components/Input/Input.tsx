@@ -1,5 +1,4 @@
-import { forwardRef, InputHTMLAttributes } from "react";
-import { UseFormSetValue } from "react-hook-form";
+import { forwardRef, InputHTMLAttributes, useState } from "react";
 
 import { IcBtnDelete } from "@/assets/svgs";
 
@@ -12,24 +11,15 @@ import {
   InputWrapper,
 } from "./Input.css";
 
-type FormValue = "orderName" | "email";
-interface FormValues {
-  orderName: string;
-  email: string;
-}
-
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   errorMessage?: string;
   infoMessage?: string;
-  content: FormValue;
-  setValue: UseFormSetValue<FormValues>;
+  handleClearInput?: () => void;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ errorMessage, infoMessage, value, content, setValue, ...props }, ref) => {
-    const handleClearInput = () => {
-      setValue(content, "");
-    };
+  ({ errorMessage, infoMessage, handleClearInput, value, ...props }, ref) => {
+    const [isFocused, setIsFocused] = useState(false);
 
     return (
       <div className={InputContainer}>
@@ -38,13 +28,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             className={InputStyle({ errorMessage: !!errorMessage })}
             {...props}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
           />
 
-          {value && (
+          {value && isFocused && handleClearInput && (
             <IcBtnDelete
               width={18}
               height={18}
               className={deleteButtonStyle}
+              onMouseDown={(e) => e.preventDefault()}
               onClick={handleClearInput}
             />
           )}
