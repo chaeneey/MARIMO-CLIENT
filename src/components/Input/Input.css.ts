@@ -22,7 +22,7 @@ export const inputStyle = recipe({
     {
       width: "100%",
       color: vars.colors.black,
-      padding: "1.7rem 1.6rem",
+      padding: "1.8rem 4rem 1.8rem 1.6rem",
       border: `1px solid ${vars.colors.gray03}`,
       borderRadius: "2px",
 
@@ -49,8 +49,10 @@ export const inputStyle = recipe({
 });
 
 export const deleteButtonStyle = style({
+  width: "1.8rem",
+  height: "1.8rem",
   position: "absolute",
-  top: "1.9rem",
+  top: "2rem",
   right: "1.7rem",
 });
 

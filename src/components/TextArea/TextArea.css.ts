@@ -15,7 +15,7 @@ export const textAreaWrapper = recipe({
     {
       width: "100%",
       height: "24.6rem",
-      padding: "1.7rem 1.6rem",
+      padding: "1.8rem 1.6rem",
       borderRadius: "2px",
 
       ":focus-within": {

@@ -34,8 +34,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
           {value && isFocused && handleClearInput && (
             <IcBtnDelete
-              width={18}
-              height={18}
               className={deleteButtonStyle}
               onMouseDown={(e) => e.preventDefault()}
               onClick={handleClearInput}
@@ -46,7 +44,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {errorMessage ? (
           <span className={inputErrorText}>{errorMessage}</span>
         ) : (
-          <span className={inputInfoText}>{infoMessage}</span>
+          infoMessage && <span className={inputInfoText}>{infoMessage}</span>
         )}
       </div>
     );
