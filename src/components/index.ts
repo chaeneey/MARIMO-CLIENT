@@ -1,5 +1,7 @@
 import Chip from "./Chip/Chip";
+import CustomImage from "./CustomImage/CustomImage";
+import IUButton from "./IUButton/IUButton";
 import SelectBox from "./SelectBox/SelectBox";
-import TabBar from "./TabBar/TabBar";
+import  from "./TabBar/TabBar";
 
-export { Chip, SelectBox, TabBar };
+export { Chip, CustomImage, IUButton, SelectBox, TabBar };
