@@ -16,3 +16,7 @@ export const buttonStyle = style([
     borderRadius: "2px",
   },
 ]);
+
+export const inputStyle = style({
+  display: "none",
+});
