@@ -4,7 +4,14 @@ import { recipe } from "@vanilla-extract/recipes";
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
 
-export const tabStyle = style([flexGenerator("row", "space-between"), {}]);
+export const tabStyle = style([
+  flexGenerator("row", "space-between"),
+  {
+    position: "relative",
+    width: "100%",
+    paddingBottom: "0.5rem",
+  },
+]);
 
 export const tabButton = recipe({
   base: [
@@ -35,6 +42,27 @@ export const clickTab = recipe({
       },
       productTab: {
         color: vars.colors.black,
+      },
+    },
+  },
+});
+
+export const tabIndicator = recipe({
+  base: {
+    position: "absolute",
+    bottom: "-0.5rem",
+    width: "100%",
+    transition: "left 0.3s ease, width 0.3s ease",
+  },
+  variants: {
+    tabType: {
+      headerTab: {
+        height: "0.5rem",
+        backgroundColor: vars.colors.lime04,
+      },
+      productTab: {
+        height: "0.5rem",
+        backgroundColor: vars.colors.black,
       },
     },
   },
