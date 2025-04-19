@@ -4,11 +4,11 @@ import { IcBtnDelete } from "@/assets/svgs";
 
 import {
   deleteButtonStyle,
-  InputContainer,
-  InputErrorText,
-  InputInfoText,
-  InputStyle,
-  InputWrapper,
+  inputContainer,
+  inputErrorText,
+  inputInfoText,
+  inputStyle,
+  inputWrapper,
 } from "./Input.css";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -22,11 +22,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const [isFocused, setIsFocused] = useState(false);
 
     return (
-      <div className={InputContainer}>
-        <div className={InputWrapper}>
+      <div className={inputContainer}>
+        <div className={inputWrapper}>
           <input
             ref={ref}
-            className={InputStyle({ errorMessage: !!errorMessage })}
+            className={inputStyle({ errorMessage: !!errorMessage })}
             {...props}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
@@ -44,9 +44,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         </div>
 
         {errorMessage ? (
-          <span className={InputErrorText}>{errorMessage}</span>
+          <span className={inputErrorText}>{errorMessage}</span>
         ) : (
-          <span className={InputInfoText}>{infoMessage}</span>
+          <span className={inputInfoText}>{infoMessage}</span>
         )}
       </div>
     );

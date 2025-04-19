@@ -4,12 +4,12 @@ import { recipe } from "@vanilla-extract/recipes";
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
 
-export const TextAreaContainer = style([
+export const textAreaContainer = style([
   flexGenerator("column", "flex-start", "flex-start"),
   { gap: "0.8rem" },
 ]);
 
-export const TextAreaWrapper = recipe({
+export const textAreaWrapper = recipe({
   base: [
     flexGenerator("column", "space-between", "flex-end"),
     {
@@ -35,7 +35,7 @@ export const TextAreaWrapper = recipe({
   },
 });
 
-export const TextAreaStyle = style([
+export const textAreaStyle = style([
   vars.fonts.caption_03_14,
   {
     width: "100%",
@@ -48,7 +48,7 @@ export const TextAreaStyle = style([
   },
 ]);
 
-export const CountTextStyle = style([
+export const countTextStyle = style([
   vars.fonts.caption_03_14,
   {
     color: vars.colors.gray05,
@@ -56,7 +56,7 @@ export const CountTextStyle = style([
   },
 ]);
 
-export const TextAreaErrorText = style([
+export const textAreaErrorText = style([
   vars.fonts.caption_04_me,
   {
     color: vars.colors.alert01,

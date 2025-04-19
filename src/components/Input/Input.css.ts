@@ -4,19 +4,19 @@ import { recipe } from "@vanilla-extract/recipes";
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
 
-export const InputContainer = style([
+export const inputContainer = style([
   flexGenerator("column", "flex-start", "flex-start"),
   {
     gap: "0.8rem",
   },
 ]);
 
-export const InputWrapper = style({
+export const inputWrapper = style({
   width: "100%",
   position: "relative",
 });
 
-export const InputStyle = recipe({
+export const inputStyle = recipe({
   base: [
     vars.fonts.caption_04_me,
     {
@@ -54,14 +54,14 @@ export const deleteButtonStyle = style({
   right: "1.7rem",
 });
 
-export const InputInfoText = style([
+export const inputInfoText = style([
   vars.fonts.caption_04_me,
   {
     color: vars.colors.gray04,
   },
 ]);
 
-export const InputErrorText = style([
+export const inputErrorText = style([
   vars.fonts.caption_04_me,
   {
     color: vars.colors.alert01,
