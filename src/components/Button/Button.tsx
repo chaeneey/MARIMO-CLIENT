@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from "react";
 
-import { ButtonColorStyle, ButtonSizeStyle } from "./Button.css";
+import { buttonColorStyle, buttonSizeStyle } from "./Button.css";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size: "56" | "50" | "38" | "35";
@@ -9,8 +9,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({ children, size, color, ...props }: ButtonProps) => {
   const className = [
-    ButtonSizeStyle({ size }),
-    ButtonColorStyle({ color }),
+    buttonSizeStyle({ size }),
+    buttonColorStyle({ color }),
   ].join(" ");
 
   return (

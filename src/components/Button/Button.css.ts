@@ -3,7 +3,7 @@ import { recipe } from "@vanilla-extract/recipes";
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
 
-export const ButtonSizeStyle = recipe({
+export const buttonSizeStyle = recipe({
   base: [
     flexGenerator(),
     {
@@ -34,7 +34,7 @@ export const ButtonSizeStyle = recipe({
   },
 });
 
-export const ButtonColorStyle = recipe({
+export const buttonColorStyle = recipe({
   base: {},
   variants: {
     color: {
