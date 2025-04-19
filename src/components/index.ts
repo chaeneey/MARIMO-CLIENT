@@ -1,3 +1,4 @@
 import Chip from "./Chip/Chip";
+import SelectBox from "./SelectBox/SelectBox";
 
-export { Chip };
+export { Chip, SelectBox };
