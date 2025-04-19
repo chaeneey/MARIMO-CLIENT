@@ -16,11 +16,11 @@ export const buttonSizeStyle = recipe({
     size: {
       "56": {
         ...vars.fonts.head04_22,
-        padding: "1.3rem 1.5rem",
+        padding: "1.8rem 3.6rem",
       },
       "50": {
         ...vars.fonts.head04_22,
-        padding: "1rem 4.9rem",
+        padding: "1rem 5.3rem",
       },
       "38": {
         ...vars.fonts.head05_20,
@@ -28,7 +28,11 @@ export const buttonSizeStyle = recipe({
       },
       "35": {
         ...vars.fonts.body09_18_sb_narrow,
-        padding: "0.75rem 1.2rem",
+        padding: "0.7rem 1.2rem",
+      },
+      "30": {
+        ...vars.fonts.eh5_head05_18,
+        padding: "0.4rem 1.7rem",
       },
     },
   },
@@ -45,6 +49,11 @@ export const buttonColorStyle = recipe({
       lime03: {
         color: vars.colors.lime03,
         backgroundColor: vars.colors.gray07,
+      },
+      lime04: {
+        color: vars.colors.lime04,
+        backgroundColor: "transparent",
+        border: `1px solid ${vars.colors.lime04}`,
       },
       gray: {
         color: vars.colors.gray03,
