@@ -27,5 +27,5 @@ export const tabBarSection = style({
 
 export const buttonSection = style({
   width: "10.2rem",
-  marginLeft: "21.7rem",
+  marginLeft: "auto",
 });

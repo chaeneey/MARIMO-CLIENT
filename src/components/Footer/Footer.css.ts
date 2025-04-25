@@ -7,47 +7,34 @@ export const footerStyle = style([
   flexGenerator("row", "space-between"),
   {
     width: "100%",
-    height: "20rem",
+    height: "11rem",
 
-    padding: "0 13.7rem",
+    marginTop: "auto",
+    padding: "3.7rem 13.9rem",
+    bottom: 0,
 
     backgroundColor: vars.colors.black,
   },
 ]);
 
-// 로고 이미지 나오면 수정할 예정
-export const logoStyle = style({
-  width: "30rem",
-  height: "9rem",
-
-  color: vars.colors.white,
-
-  border: `1px solid ${vars.colors.gray01}`,
-});
-
-export const footerCenter = style([
-  vars.fonts.caption_01_22,
+export const footerLeft = style([
+  vars.fonts.body08_18_sb,
   flexGenerator(),
   {
-    gap: "3rem",
+    gap: "2.8rem",
     color: vars.colors.gray02,
   },
 ]);
 export const dividerStyle = style({
   width: "0.1rem",
-  height: "3rem",
+  height: "2rem",
 
   backgroundColor: vars.colors.gray03,
 });
 
-export const snsIconWrapper = style([
+export const footerRight = style([
   flexGenerator(),
   {
-    gap: "2rem",
+    gap: "2.4rem",
   },
 ]);
-
-export const iconStyle = style({
-  width: "4.8rem",
-  height: "4.8rem",
-});
