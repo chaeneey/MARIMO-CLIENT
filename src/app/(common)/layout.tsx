@@ -3,9 +3,23 @@ import Footer from "@/components/Footer/Footer";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <Header />
-      <div style={{ minHeight: "calc(100dvh - 21rem)" }}>{children}</div>
+      <div
+        style={{
+          minHeight: "calc(100dvh - 21rem)",
+          maxWidth: "87.2rem",
+          width: "100%",
+        }}
+      >
+        {children}
+      </div>
       <Footer />
     </div>
   );
