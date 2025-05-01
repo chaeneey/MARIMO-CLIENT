@@ -4,13 +4,7 @@ import { useEffect, useState } from "react";
 
 import { CustomImage } from "@/components";
 
-import {
-  bannerSectionStyle,
-  entireBar,
-  imageStyle,
-  presentBar,
-  progressBarContainer,
-} from "./MainBanner.css";
+import * as styles from "./MainBanner.css";
 
 const realImages = [
   "/images/감딸기.jpeg",
@@ -72,7 +66,7 @@ const MainBanner = () => {
         : currentIdx - 1;
 
   return (
-    <section className={bannerSectionStyle}>
+    <section className={styles.bannerSectionStyle}>
       <div
         style={{
           display: "flex",
@@ -83,15 +77,15 @@ const MainBanner = () => {
         }}
       >
         {images.map((src, i) => (
-          <div key={i} className={imageStyle}>
+          <div key={i} className={styles.imageStyle}>
             <CustomImage src={src} alt={`banner-${i}`} />
           </div>
         ))}
       </div>
-      <div className={progressBarContainer}>
-        <div className={entireBar}>
+      <div className={styles.progressBarContainer}>
+        <div className={styles.entireBar}>
           <div
-            className={presentBar}
+            className={styles.presentBar}
             style={{
               transform: `translateX(${realIdx * 100}%)`,
             }}

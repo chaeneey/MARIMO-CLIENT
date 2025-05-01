@@ -47,12 +47,3 @@ export const body11Style = style([
     color: vars.colors.gray04,
   },
 ]);
-
-export const invitationProductsSection = style([
-  flexGenerator(),
-  {
-    width: "100%",
-    gap: "4.6rem",
-    marginTop: "9.8rem",
-  },
-]);
