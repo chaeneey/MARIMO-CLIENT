@@ -1,9 +1,10 @@
-import { MainBanner } from "./_components";
+import { InvitationMain, MainBanner } from "./_components";
 
 const page = () => {
   return (
     <div>
       <MainBanner />
+      <InvitationMain />
     </div>
   );
 };
