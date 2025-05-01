@@ -56,7 +56,7 @@ const MainBanner = () => {
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [currentIdx, images.length]);
+  }, [currentIdx]);
 
   const realIdx =
     currentIdx === 0

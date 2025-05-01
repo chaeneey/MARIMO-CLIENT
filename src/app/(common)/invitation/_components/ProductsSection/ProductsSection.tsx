@@ -1,6 +1,7 @@
 import { invitationProductsSection } from "./ProductsSection.css";
 import InvitationProduct from "../InvitationProduct/InvitationProduct";
 
+// 추후 청첩장 데이터를 가져올 예정
 const products = [
   {
     imageUrl: "/images/감딸기.jpeg",
