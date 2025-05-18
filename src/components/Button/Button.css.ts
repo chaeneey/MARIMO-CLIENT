@@ -63,6 +63,14 @@ export const buttonColorStyle = recipe({
         color: vars.colors.white,
         backgroundColor: vars.colors.gray07,
       },
+      stroke: [
+        vars.fonts.caption_03_14,
+        {
+          color: vars.colors.black,
+          backgroundColor: vars.colors.white,
+          border: `1px solid ${vars.colors.black}`,
+        },
+      ],
     },
   },
 });

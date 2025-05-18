@@ -6,7 +6,7 @@ import { vars } from "@styles/theme.css";
 
 export const textAreaContainer = style([
   flexGenerator("column", "flex-start", "flex-start"),
-  { gap: "0.8rem" },
+  { gap: "0.8rem", width: "100%" },
 ]);
 
 export const textAreaWrapper = recipe({
