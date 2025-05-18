@@ -25,7 +25,7 @@ export interface AccordionProps {
 }
 
 const Accordion = ({ title, hasCheckbox, children }: AccordionProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(!hasCheckbox);
   const [isChecked, setIsChecked] = useState(false);
 
   const handleToggle = () => {
