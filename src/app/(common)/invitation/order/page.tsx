@@ -3,6 +3,7 @@
 import { Accordion, Button } from "@/components";
 import ImageDragBox from "@/components/ImageDragBox/ImageDragBox";
 
+import AccountSection from "./components/AccountSection/AccountSection";
 import AttendSection from "./components/AttendSection/AttendSection";
 import BusSection from "./components/BusSection/BusSection";
 import CommonInfoSection from "./components/CommonInfoSection/CommonInfoSection";
@@ -61,7 +62,9 @@ const Page = () => {
           <PhoneInfoSection />
         </Accordion>
 
-        <Accordion title="축의금 계좌" hasCheckbox></Accordion>
+        <Accordion title="축의금 계좌" hasCheckbox>
+          <AccountSection />
+        </Accordion>
 
         <Accordion title="달력" hasCheckbox />
 
