@@ -26,9 +26,16 @@ export interface SelectBoxProps {
   options: Option[];
   selected: ValueType;
   onSelect: (value: ValueType) => void;
+  variant?: "product" | "order";
 }
 
-const SelectBox = ({ label, options, selected, onSelect }: SelectBoxProps) => {
+const SelectBox = ({
+  label,
+  options,
+  selected,
+  onSelect,
+  variant = "product",
+}: SelectBoxProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => setIsOpen((prev) => !prev);
@@ -41,7 +48,7 @@ const SelectBox = ({ label, options, selected, onSelect }: SelectBoxProps) => {
   return (
     <div>
       <button
-        className={`${selectBoxStyle} ${isOpen && selectBoxBorderStyle.open}`}
+        className={`${selectBoxStyle({ variant })} ${isOpen && selectBoxBorderStyle.open}`}
         onClick={toggleDropdown}
       >
         <span>

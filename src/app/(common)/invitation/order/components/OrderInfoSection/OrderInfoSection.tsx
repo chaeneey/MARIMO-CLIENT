@@ -47,6 +47,7 @@ const OrderInfoSection = () => {
             options={["직접 입력", "naver.com"]}
             selected={"직접 입력"}
             onSelect={() => {}}
+            variant="order"
           />
         </div>
       </div>

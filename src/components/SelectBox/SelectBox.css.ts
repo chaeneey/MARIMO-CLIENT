@@ -1,23 +1,39 @@
 import { style, styleVariants } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
 
-export const selectBoxStyle = style([
-  vars.fonts.caption_03_14,
-  flexGenerator("row", "space-between"),
-  {
-    width: "100%",
-    height: "4.8rem",
-    padding: "1.4rem 2rem 1.4rem 1.8rem",
+export const selectBoxStyle = recipe({
+  base: [
+    vars.fonts.caption_03_14,
+    flexGenerator("row", "space-between"),
+    {
+      padding: "1.4rem 2rem 1.4rem 1.8rem",
 
-    color: vars.colors.gray05,
-    backgroundColor: vars.colors.white,
+      color: vars.colors.gray05,
+      backgroundColor: vars.colors.white,
 
-    border: "1px solid transparent",
-    borderRadius: "2px",
+      border: "1px solid transparent",
+      borderRadius: "2px",
+    },
+  ],
+  variants: {
+    variant: {
+      order: {
+        border: "1px solid black",
+        width: "16rem",
+        height: "5.6rem",
+      },
+
+      product: {
+        border: "1px solid transparent",
+        width: "100%",
+        height: "4.8rem",
+      },
+    },
   },
-]);
+});
 
 export const selectBoxBorderStyle = styleVariants({
   default: {

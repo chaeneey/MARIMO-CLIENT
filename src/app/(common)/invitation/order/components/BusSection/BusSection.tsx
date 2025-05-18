@@ -1,6 +1,7 @@
 import { Input, SelectBox } from "@/components";
 
 import * as styles from "./BusSection.css";
+import AddButton from "../AddButton/AddButton";
 
 const BusSection = () => {
   return (
@@ -15,7 +16,7 @@ const BusSection = () => {
       </section>
 
       <section className={styles.busContainer}>
-        <button>일시 추가</button>
+        <AddButton>일시 추가</AddButton>
         <div className={styles.busInputWrapper}>
           <span className={styles.inputTextStyle}>버스 정차 시간</span>
           <div className={styles.timeWrapper}>
@@ -24,12 +25,14 @@ const BusSection = () => {
               options={["시간", "1"]}
               selected={"시간"}
               onSelect={() => {}}
+              variant="order"
             />
             <SelectBox
               label="분"
               options={["분", "1"]}
               selected={"분"}
               onSelect={() => {}}
+              variant="order"
             />
           </div>
         </div>

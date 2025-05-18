@@ -123,12 +123,14 @@ const CommonInfoSection = () => {
             options={["시간", "1"]}
             selected={"시간"}
             onSelect={() => {}}
+            variant="order"
           />
           <SelectBox
             label="분"
             options={["분", "1"]}
             selected={"분"}
             onSelect={() => {}}
+            variant="order"
           />
         </div>
       </section>
