@@ -13,6 +13,7 @@ export const selectBoxStyle = recipe({
 
       color: vars.colors.gray05,
       backgroundColor: vars.colors.white,
+      width: "100%",
 
       border: "1px solid transparent",
       borderRadius: "2px",
@@ -22,13 +23,12 @@ export const selectBoxStyle = recipe({
     variant: {
       order: {
         border: "1px solid black",
-        width: "16rem",
+        maxWidth: "16rem",
         height: "5.6rem",
       },
 
       product: {
         border: "1px solid transparent",
-        width: "100%",
         height: "4.8rem",
       },
     },

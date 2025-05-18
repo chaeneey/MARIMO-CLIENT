@@ -2,7 +2,6 @@ import { Input } from "@/components";
 
 import {
   accountSectionContainer,
-  accountSectionLayout,
   accountSubTextStyle,
   inputColumnWrapper,
   inputInfoTextStyle,
@@ -15,7 +14,7 @@ import AddButton from "../AddButton/AddButton";
 
 const AccountSection = () => {
   return (
-    <section className={accountSectionLayout}>
+    <>
       <section className={accountSectionContainer}>
         <section className={inputTitleWrapper}>
           <span className={inputTitleTextStyle}>신랑측 정보</span>
@@ -29,9 +28,9 @@ const AccountSection = () => {
             <span className={accountSubTextStyle}>계좌정보</span>
 
             <div className={inputWrapper}>
-              <Input placeholder="은행" width="20rem" />
-              <Input placeholder="예금주" width="20rem" />
-              <Input placeholder="계좌번호" width="28rem" />
+              <Input placeholder="은행" maxWidth="20rem" />
+              <Input placeholder="예금주" maxWidth="20rem" />
+              <Input placeholder="계좌번호" maxWidth="28rem" />
             </div>
           </div>
         </section>
@@ -50,14 +49,14 @@ const AccountSection = () => {
             <span className={accountSubTextStyle}>계좌정보</span>
 
             <div className={inputWrapper}>
-              <Input placeholder="은행" width="20rem" />
-              <Input placeholder="예금주" width="20rem" />
-              <Input placeholder="계좌번호" width="28rem" />
+              <Input placeholder="은행" maxWidth="20rem" />
+              <Input placeholder="예금주" maxWidth="20rem" />
+              <Input placeholder="계좌번호" maxWidth="28rem" />
             </div>
           </div>
         </section>
       </section>
-    </section>
+    </>
   );
 };
 

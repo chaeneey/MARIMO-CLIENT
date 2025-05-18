@@ -12,7 +12,7 @@ const CommonInfoSection = () => {
           <div className={styles.nameInfoInputWrapper}>
             <span className={styles.nameInfoSubTextStyle}>아버님</span>
             <div className={styles.nameInfoInputWithCheckbox}>
-              <Input placeholder="성함을 작성해주세요" width="32rem" />
+              <Input placeholder="성함을 작성해주세요" maxWidth="32rem" />
               <div className={styles.nameInfoCheckboxWrapper}>
                 <div className={styles.nameInfoCheckboxStyle}>
                   <CheckBox />
@@ -31,7 +31,7 @@ const CommonInfoSection = () => {
           <div className={styles.nameInfoInputWrapper}>
             <span className={styles.nameInfoSubTextStyle}>어머님</span>
             <div className={styles.nameInfoInputWithCheckbox}>
-              <Input placeholder="성함을 작성해주세요" width="32rem" />
+              <Input placeholder="성함을 작성해주세요" maxWidth="32rem" />
               <div className={styles.nameInfoCheckboxWrapper}>
                 <div className={styles.nameInfoCheckboxStyle}>
                   <CheckBox />
@@ -49,7 +49,7 @@ const CommonInfoSection = () => {
 
           <div className={styles.nameInfoInputWrapper}>
             <span className={styles.nameInfoSubTextStyle}>신랑님</span>
-            <Input placeholder="성함을 작성해주세요" width="32rem" />
+            <Input placeholder="성함을 작성해주세요" maxWidth="32rem" />
           </div>
         </div>
       </section>
@@ -60,7 +60,7 @@ const CommonInfoSection = () => {
           <div className={styles.nameInfoInputWrapper}>
             <span className={styles.nameInfoSubTextStyle}>아버님</span>
             <div className={styles.nameInfoInputWithCheckbox}>
-              <Input placeholder="성함을 작성해주세요" width="32rem" />
+              <Input placeholder="성함을 작성해주세요" maxWidth="32rem" />
               <div className={styles.nameInfoCheckboxWrapper}>
                 <div className={styles.nameInfoCheckboxStyle}>
                   <CheckBox />
@@ -79,7 +79,7 @@ const CommonInfoSection = () => {
           <div className={styles.nameInfoInputWrapper}>
             <span className={styles.nameInfoSubTextStyle}>어머님</span>
             <div className={styles.nameInfoInputWithCheckbox}>
-              <Input placeholder="성함을 작성해주세요" width="32rem" />
+              <Input placeholder="성함을 작성해주세요" maxWidth="32rem" />
               <div className={styles.nameInfoCheckboxWrapper}>
                 <div className={styles.nameInfoCheckboxStyle}>
                   <CheckBox />
@@ -97,7 +97,7 @@ const CommonInfoSection = () => {
 
           <div className={styles.nameInfoInputWrapper}>
             <span className={styles.nameInfoSubTextStyle}>신부님</span>
-            <Input placeholder="성함을 작성해주세요" width="32rem" />
+            <Input placeholder="성함을 작성해주세요" maxWidth="32rem" />
           </div>
         </div>
       </section>
@@ -117,7 +117,7 @@ const CommonInfoSection = () => {
       <section className={styles.dateContainer}>
         <span className={styles.inputTextStyle}>예식일시</span>
         <div className={styles.dateInputWrapper}>
-          <Input width="32rem" placeholder="년도/월/일을 작성해주세요" />
+          <Input maxWidth="32rem" placeholder="년도/월/일을 작성해주세요" />
           <SelectBox
             label="시간"
             options={["시간", "1"]}
@@ -139,14 +139,14 @@ const CommonInfoSection = () => {
         <h3 className={styles.inputTextStyle}>주소</h3>
         <div className={styles.customerAdressInputWrapper}>
           <div className={styles.customerAdressSearchWrapper}>
-            <Input width="32rem" placeholder="우편번호를 입력해주세요" />
+            <Input maxWidth="32rem" placeholder="우편번호를 입력해주세요" />
             <Button size="56" color="stroke">
               주소검색
             </Button>
           </div>
-          <Input width="62rem" />
+          <Input maxWidth="62rem" />
           <Input
-            width="62rem"
+            maxWidth="62rem"
             placeholder="상세 주소를 입력해주세요. 예시) 마리빌 205호"
           />
         </div>

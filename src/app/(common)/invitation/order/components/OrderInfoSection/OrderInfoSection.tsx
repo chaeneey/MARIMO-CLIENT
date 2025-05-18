@@ -10,7 +10,7 @@ const OrderInfoSection = () => {
         <Input
           placeholder="주문자명을 입력해주세요"
           infoMessage="디자인 확인(교정)이 가능한 분의 성합을 기입해 주세요."
-          width="32rem"
+          maxWidth="32rem"
         />
       </div>
 
@@ -18,14 +18,14 @@ const OrderInfoSection = () => {
         <h3 className={styles.inputTextStyle}>주소</h3>
         <div className={styles.customerAdressInputWrapper}>
           <div className={styles.customerAdressSearchWrapper}>
-            <Input width="32rem" placeholder="우편번호를 입력해주세요" />
+            <Input maxWidth="32rem" placeholder="우편번호를 입력해주세요" />
             <Button size="56" color="stroke">
               주소검색
             </Button>
           </div>
-          <Input width="62rem" />
+          <Input maxWidth="62rem" />
           <Input
-            width="62rem"
+            maxWidth="62rem"
             placeholder="상세 주소를 입력해주세요. 예시) 마리빌 205호"
           />
         </div>
@@ -33,15 +33,15 @@ const OrderInfoSection = () => {
 
       <div className={styles.customerPhoneNumberWrapper}>
         <h3 className={styles.inputTextStyle}>휴대전화</h3>
-        <Input width="32rem" placeholder="010-0000-0000"></Input>
+        <Input maxWidth="32rem" placeholder="010-0000-0000"></Input>
       </div>
 
       <div className={styles.customerEmailWrapper}>
         <h3 className={styles.inputTextStyle}>이메일</h3>
         <div className={styles.customerEmailInputWrapper}>
-          <Input width="24rem" placeholder="marimo1234" />
+          <Input maxWidth="24rem" placeholder="marimo1234" />
           <span className={styles.customerEmailTextStyle}>@</span>
-          <Input width="24rem" placeholder="gmail.com" />
+          <Input maxWidth="24rem" placeholder="gmail.com" />
           <SelectBox
             label="직접 입력"
             options={["직접 입력", "naver.com"]}

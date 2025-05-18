@@ -9,7 +9,7 @@ const BusSection = () => {
       <section className={styles.busInputWrapper}>
         <span className={styles.inputTextStyle}>버스 정차 위치</span>
         <Input
-          width="32rem"
+          maxWidth="32rem"
           placeholder="버스 정차 위치를 입력해주세요"
           infoMessage="정확한 장소를 기입해주세요"
         />

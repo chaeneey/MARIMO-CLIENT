@@ -30,7 +30,8 @@ export const titleContainer = style([
 export const titleWrapper = style([
   flexGenerator("row", "space-between"),
   {
-    width: "87.2rem",
+    width: "100%",
+    maxWidth: "87.2rem",
   },
 ]);
 
@@ -41,7 +42,8 @@ export const orderButtonStyle = style({
 });
 
 export const orderBarStyle = style({
-  width: "87.2rem",
+  width: "100%",
+  maxWidth: "87.2rem",
   height: "0.8rem",
   backgroundColor: vars.colors.black,
 });
@@ -50,7 +52,8 @@ export const orderBarStyle = style({
 export const accordionContainer = style([
   flexGenerator("column"),
   {
-    width: "87.2rem",
+    width: "100%",
+    maxWidth: "87.2rem",
     gap: "3rem",
   },
 ]);

@@ -5,12 +5,13 @@ import { vars } from "@styles/theme.css";
 
 export const inputTextStyle = style([
   vars.fonts.body08_18_sb,
-  { color: vars.colors.gray05, marginTop: "2rem" },
+  { color: vars.colors.gray05, marginTop: "2rem", minWidth: "fit-content" },
 ]);
 
 export const inputTitleTextStyle = style({
   ...vars.fonts.body03_20_36,
   color: vars.colors.gray05,
+  minWidth: "fit-content",
 });
 
 // 종이 + 모바일 청첩장 표지 업로드
@@ -28,9 +29,10 @@ export const textWithButtonWrapper = style([
 ]);
 
 export const urlWrapper = style([
-  flexGenerator(),
+  flexGenerator("row", "flex-start"),
   {
     gap: "1.6rem",
+    width: "100%",
   },
 ]);
 

@@ -7,7 +7,7 @@ export const buttonSizeStyle = recipe({
   base: [
     flexGenerator(),
     {
-      width: "fit-content",
+      minWidth: "fit-content",
       borderRadius: "2px",
       cursor: "pointer",
     },

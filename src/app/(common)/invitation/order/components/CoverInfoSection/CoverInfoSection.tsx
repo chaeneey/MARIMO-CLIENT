@@ -18,7 +18,7 @@ const CoverInfoSection = ({ type = "paper" }: CoverInfoSectionType) => {
             <span
               className={styles.urlTextStyle}
             >{`https://mcard.marimo.co.kr/`}</span>
-            <Input width="32rem" placeholder="주소를 생성해주세요" />
+            <Input maxWidth="32rem" placeholder="주소를 생성해주세요" />
             <Button color="gray" size="35">
               중복 확인
             </Button>

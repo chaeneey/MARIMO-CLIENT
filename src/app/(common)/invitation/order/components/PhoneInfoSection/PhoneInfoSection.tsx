@@ -10,17 +10,17 @@ const PhoneInfoSection = () => {
         <div className={styles.phoneNumberWrapper}>
           <div className={styles.phoneNumberInputWrapper}>
             <span className={styles.phoneNumberSubTextStyle}>아버님</span>
-            <Input width="32rem" placeholder="010-0000-0000" />
+            <Input maxWidth="32rem" placeholder="010-0000-0000" />
           </div>
 
           <div className={styles.phoneNumberInputWrapper}>
             <span className={styles.phoneNumberSubTextStyle}>어머님</span>
-            <Input width="32rem" placeholder="010-0000-0000" />
+            <Input maxWidth="32rem" placeholder="010-0000-0000" />
           </div>
 
           <div className={styles.phoneNumberInputWrapper}>
             <span className={styles.phoneNumberSubTextStyle}>신랑님</span>
-            <Input width="32rem" placeholder="010-0000-0000" />
+            <Input maxWidth="32rem" placeholder="010-0000-0000" />
           </div>
         </div>
       </section>
@@ -30,17 +30,17 @@ const PhoneInfoSection = () => {
         <div className={styles.phoneNumberWrapper}>
           <div className={styles.phoneNumberInputWrapper}>
             <span className={styles.phoneNumberSubTextStyle}>아버님</span>
-            <Input width="32rem" placeholder="010-0000-0000" />
+            <Input maxWidth="32rem" placeholder="010-0000-0000" />
           </div>
 
           <div className={styles.phoneNumberInputWrapper}>
             <span className={styles.phoneNumberSubTextStyle}>어머님</span>
-            <Input width="32rem" placeholder="010-0000-0000" />
+            <Input maxWidth="32rem" placeholder="010-0000-0000" />
           </div>
 
           <div className={styles.phoneNumberInputWrapper}>
             <span className={styles.phoneNumberSubTextStyle}>신부님</span>
-            <Input width="32rem" placeholder="010-0000-0000" />
+            <Input maxWidth="32rem" placeholder="010-0000-0000" />
           </div>
         </div>
       </section>
