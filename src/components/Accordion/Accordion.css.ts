@@ -8,6 +8,7 @@ export const accordionWrapper = style([
   flexGenerator("column"),
   {
     width: "100%",
+    backgroundColor: vars.colors.white,
   },
 ]);
 

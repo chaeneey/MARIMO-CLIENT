@@ -17,7 +17,7 @@ import * as styles from "./page.css";
 const Page = () => {
   return (
     <form className={styles.orderPageLayout}>
-      <div className={styles.boxWrapper}>
+      <div className={styles.titleContainer}>
         <div className={styles.titleWrapper}>
           <h1 className={styles.titleTextStyle}>청첩장 주문하기</h1>
           <Button size="50" color="lime01">

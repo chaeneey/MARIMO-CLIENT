@@ -2,6 +2,7 @@ import { globalFontFace, globalStyle } from "@vanilla-extract/css";
 
 import { base } from "./layers.css";
 import "./reset.css";
+import { vars } from "./theme.css";
 
 // :root 변수 정의
 globalStyle(":root", {
@@ -26,6 +27,7 @@ globalStyle("html, body", {
       scrollBehavior: "smooth",
       overscrollBehavior: "none",
       WebkitTapHighlightColor: "transparent",
+      backgroundColor: vars.colors.gray01,
     },
   },
 });

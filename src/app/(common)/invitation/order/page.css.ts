@@ -8,28 +8,29 @@ export const orderPageLayout = style([
   {
     gap: "2.8rem",
     width: "100%",
-    marginTop: "12rem",
+    marginTop: "10rem",
     marginBottom: "16rem",
   },
 ]);
 
 // 청첩장 주문하기 상단 부분
-export const titleWrapper = style([
-  flexGenerator("row", "space-between"),
-  {
-    width: "100%",
-  },
-]);
-
-export const boxWrapper = style([
+export const titleContainer = style([
   flexGenerator("column"),
   {
     position: "sticky",
-    top: "3rem",
-    background: vars.colors.white,
+    top: "0rem",
     zIndex: "1",
     width: "100%",
     gap: "2.8rem",
+    paddingTop: "2.8rem",
+    backgroundColor: vars.colors.gray01,
+  },
+]);
+
+export const titleWrapper = style([
+  flexGenerator("row", "space-between"),
+  {
+    width: "87.2rem",
   },
 ]);
 
@@ -40,12 +41,16 @@ export const orderButtonStyle = style({
 });
 
 export const orderBarStyle = style({
-  width: "100%",
+  width: "87.2rem",
   height: "0.8rem",
   backgroundColor: vars.colors.black,
 });
 
 // 아코디언 전체 묶음
-export const accordionContainer = style({
-  width: "100%",
-});
+export const accordionContainer = style([
+  flexGenerator("column"),
+  {
+    width: "87.2rem",
+    gap: "3rem",
+  },
+]);
