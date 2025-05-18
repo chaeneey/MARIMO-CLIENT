@@ -58,7 +58,7 @@ export const customerEmailWrapper = style([
 ]);
 
 export const customerEmailInputWrapper = style([
-  flexGenerator("row", "flex-start", "flex-start"),
+  flexGenerator("row", "flex-start"),
   {
     gap: "0.8rem",
     width: "100%",

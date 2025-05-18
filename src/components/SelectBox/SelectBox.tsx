@@ -46,7 +46,7 @@ const SelectBox = ({
   };
 
   return (
-    <div>
+    <>
       <button
         className={`${selectBoxStyle({ variant })} ${isOpen && selectBoxBorderStyle.open}`}
         onClick={toggleDropdown}
@@ -87,7 +87,7 @@ const SelectBox = ({
           ))}
         </ul>
       )}
-    </div>
+    </>
   );
 };
 

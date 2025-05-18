@@ -4,8 +4,8 @@ import { vars } from "@styles/theme.css";
 
 export const checkboxStyle = recipe({
   base: {
-    width: "2.4rem",
-    height: "2.4rem",
+    minWidth: "2.4rem",
+    minHeight: "2.4rem",
     border: "1.5px solid",
 
     cursor: "pointer",
