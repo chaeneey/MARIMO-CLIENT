@@ -16,7 +16,7 @@ export const buttonSizeStyle = recipe({
     size: {
       "56": {
         ...vars.fonts.head04_22,
-        padding: "1.8rem 3.6rem",
+        padding: "1.3rem 15rem",
       },
       "50": {
         ...vars.fonts.head04_22,
