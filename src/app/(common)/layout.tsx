@@ -5,7 +5,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <Header />
-      <div style={{ minHeight: "calc(100dvh - 11rem)" }}>{children}</div>
+      <div style={{ minHeight: "calc(100dvh - 21rem)" }}>{children}</div>
       <Footer />
     </div>
   );
