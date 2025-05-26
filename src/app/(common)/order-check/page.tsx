@@ -19,7 +19,7 @@ import {
 
 type orderType = "invitation" | "video";
 
-const page = () => {
+const Page = () => {
   const [selectedOrderType, setSelectedOrderType] =
     useState<orderType>("invitation");
 
@@ -74,4 +74,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

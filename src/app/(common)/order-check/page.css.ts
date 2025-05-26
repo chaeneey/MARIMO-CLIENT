@@ -8,7 +8,7 @@ export const orderCheckLayout = style([
   {
     gap: "3.6rem",
     width: "100%",
-    paddingTop: "5rem",
+    paddingTop: "7rem",
   },
 ]);
 
