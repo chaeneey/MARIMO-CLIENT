@@ -3,29 +3,27 @@ import { style } from "@vanilla-extract/css";
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
 
-export const MemoSectionLayout = style([
+export const videoInfoLayout = style([
   flexGenerator("column", "flex-start", "flex-start"),
-  { gap: "1.3rem", width: "100%" },
+  {
+    gap: "2.4rem",
+  },
 ]);
 
-export const MemoWrapper = style([
+export const videoInfoTextWrapper = style([
   flexGenerator("row", "flex-start"),
-  { gap: "7.3rem", width: "100%" },
+  {
+    gap: "8rem",
+  },
 ]);
 
-export const MemoTextStyle = style({
+export const videoInfoTypeTextStyle = style({
   ...vars.fonts.caption_04_me,
   color: vars.colors.gray04,
-  minWidth: "fit-content",
+  minWidth: "4.8rem",
 });
 
-export const MemoSubTextStyle = style({
+export const videoInfoTextStyle = style({
   ...vars.fonts.caption_03_14,
   color: vars.colors.gray05,
-});
-
-export const MemoStyle = style({
-  backgroundColor: vars.colors.gray01,
-  padding: "1rem",
-  width: "100%",
 });
