@@ -4,19 +4,11 @@ import { recipe } from "@vanilla-extract/recipes";
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
 
-export const selectBoxStyle = recipe({
+export const selectBoxLayout = recipe({
   base: [
-    vars.fonts.caption_03_14,
-    flexGenerator("row", "space-between"),
     {
-      padding: "1.4rem 2rem 1.4rem 1.8rem",
-
-      color: vars.colors.gray05,
-      backgroundColor: vars.colors.white,
+      position: "relative",
       width: "100%",
-
-      border: "1px solid transparent",
-      borderRadius: "2px",
     },
   ],
   variants: {
@@ -35,6 +27,21 @@ export const selectBoxStyle = recipe({
   },
 });
 
+export const selectBoxStyle = style([
+  vars.fonts.caption_03_14,
+  flexGenerator("row", "space-between"),
+  {
+    padding: "1.4rem 2rem 1.4rem 1.8rem",
+
+    color: vars.colors.gray05,
+    backgroundColor: vars.colors.white,
+    width: "100%",
+
+    border: "1px solid transparent",
+    borderRadius: "2px",
+  },
+]);
+
 export const selectBoxBorderStyle = styleVariants({
   default: {
     borderColor: "transparent",
@@ -49,19 +56,32 @@ export const arrowIconStyle = style({
   height: "2.4rem",
 });
 
-export const ulStyle = style([
-  flexGenerator("column"),
-  {
-    width: "100%",
-    gap: "0.2rem",
-    padding: "1.1rem 0",
+export const ulStyle = recipe({
+  base: [
+    flexGenerator("column"),
+    {
+      width: "100%",
+      overflowY: "auto",
+      gap: "0.2rem",
+      padding: "1.1rem 0",
+      position: "absolute",
+      zIndex: 1,
 
-    backgroundColor: vars.colors.white,
+      backgroundColor: vars.colors.white,
+      border: `1px solid ${vars.colors.gray03}`,
 
-    borderRadius: "2px",
-    border: `1px solid ${vars.colors.gray03}`,
+      borderRadius: "2px",
+    },
+  ],
+  variants: {
+    variant: {
+      product: {},
+      order: {
+        // top: 60,
+      },
+    },
   },
-]);
+});
 
 export const liStyle = style([
   vars.fonts.caption_03_14,
@@ -98,6 +118,7 @@ export const liSubValueStyle = style([
   vars.fonts.caption_03_14,
   {
     color: vars.colors.gray04,
+    minWidth: "fit-content",
   },
 ]);
 

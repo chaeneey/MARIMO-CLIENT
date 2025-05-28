@@ -19,7 +19,7 @@ export const titleContainer = style([
   {
     position: "sticky",
     top: "0rem",
-    zIndex: "1",
+    zIndex: "5",
     width: "100%",
     gap: "2.8rem",
     paddingTop: "2.8rem",

@@ -1,8 +1,14 @@
+"use client";
+
+import { useState } from "react";
+
 import { Button, Input, SelectBox } from "@/components";
 
 import * as styles from "./OrderInfoSection.css";
 
 const OrderInfoSection = () => {
+  const [email, setEmail] = useState("직접 입력");
+
   return (
     <>
       <div className={styles.customerNameWrapper}>
@@ -44,9 +50,15 @@ const OrderInfoSection = () => {
           <Input maxWidth="24rem" placeholder="gmail.com" />
           <SelectBox
             label="직접 입력"
-            options={["직접 입력", "naver.com"]}
-            selected={"직접 입력"}
-            onSelect={() => {}}
+            options={[
+              { value: { keyValue: "직접 입력" } },
+              { value: { keyValue: "naver.com" } },
+              { value: { keyValue: "google.com" } },
+              { value: { keyValue: "daum.net" } },
+              { value: { keyValue: "nate.com" } },
+            ]}
+            selected={{ keyValue: email }}
+            onSelect={(value) => setEmail(value.keyValue)}
             variant="order"
           />
         </div>

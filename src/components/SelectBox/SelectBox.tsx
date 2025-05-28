@@ -13,13 +13,14 @@ import {
   liStyle,
   liSubValueStyle,
   selectBoxBorderStyle,
+  selectBoxLayout,
   selectBoxStyle,
   ulStyle,
 } from "./SelectBox.css";
 
 interface Option {
   value: ValueType;
-  price: string;
+  price?: string;
 }
 export interface SelectBoxProps {
   label: string;
@@ -46,10 +47,11 @@ const SelectBox = ({
   };
 
   return (
-    <>
+    <div className={selectBoxLayout({ variant })}>
       <button
-        className={`${selectBoxStyle({ variant })} ${isOpen && selectBoxBorderStyle.open}`}
+        className={`${selectBoxStyle} ${variant == "product" && isOpen && selectBoxBorderStyle.open}`}
         onClick={toggleDropdown}
+        type="button"
       >
         <span>
           {selected.keyValue ? (
@@ -66,7 +68,7 @@ const SelectBox = ({
       </button>
 
       {isOpen && (
-        <ul className={ulStyle}>
+        <ul className={ulStyle({ variant })}>
           {options.map((option, idx) => (
             <li
               key={option.value.keyValue}
@@ -87,7 +89,7 @@ const SelectBox = ({
           ))}
         </ul>
       )}
-    </>
+    </div>
   );
 };
 

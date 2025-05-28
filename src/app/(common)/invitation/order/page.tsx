@@ -1,18 +1,19 @@
 "use client";
 
-import { Accordion, Button } from "@/components";
-import ImageDragBox from "@/components/ImageDragBox/ImageDragBox";
+import { Accordion, Button, ImageDragBox } from "@/components";
 
-import AccountSection from "./components/AccountSection/AccountSection";
-import AttendSection from "./components/AttendSection/AttendSection";
-import BusSection from "./components/BusSection/BusSection";
-import CommonInfoSection from "./components/CommonInfoSection/CommonInfoSection";
-import CoverInfoSection from "./components/CoverInfoSection/CoverInfoSection";
-import GuestSection from "./components/GuestSection/GuestSection";
-import MemoSection from "./components/MemoSection/MemoSection";
-import OrderInfoSection from "./components/OrderInfoSection/OrderInfoSection";
-import PartySection from "./components/PartySection/PartySection";
-import PhoneInfoSection from "./components/PhoneInfoSection/PhoneInfoSection";
+import {
+  AccountSection,
+  AttendSection,
+  BusSection,
+  CommonInfoSection,
+  CoverInfoSection,
+  GuestSection,
+  MemoSection,
+  OrderInfoSection,
+  PartySection,
+  PhoneInfoSection,
+} from "./_components";
 import * as styles from "./page.css";
 
 const Page = () => {

@@ -4,6 +4,7 @@ import Chip from "./Chip/Chip";
 import CustomImage from "./CustomImage/CustomImage";
 import Header from "./Header/Header";
 import IUButton from "./IUButton/IUButton";
+import ImageDragBox from "./ImageDragBox/ImageDragBox";
 import Input from "./Input/Input";
 import SelectBox from "./SelectBox/SelectBox";
 import TabBar from "./TabBar/TabBar";
@@ -20,4 +21,5 @@ export {
   SelectBox,
   TabBar,
   TextArea,
+  ImageDragBox,
 };
