@@ -16,7 +16,7 @@ const SourceCheckSection = () => {
       </div>
 
       <div className={styles.sourceRowWrapper}>
-        <span className={styles.sourceTypeTextStyle}>피로연</span>
+        <span className={styles.sourceTypeTextStyle}>영상파일</span>
         <span className={styles.sourceTextStyle}>장세희.MP4</span>
       </div>
     </>

@@ -2,7 +2,7 @@ import * as styles from "./MemoSection.css";
 
 const MemoSection = () => {
   return (
-    <div className={styles.MemoSectionLayout}>
+    <>
       <div className={styles.MemoWrapper}>
         <span className={styles.MemoTextStyle}>요청사항</span>
         <div className={styles.MemoStyle}>
@@ -17,7 +17,7 @@ const MemoSection = () => {
         <span className={styles.MemoTextStyle}>파일첨부</span>
         <span className={styles.MemoSubTextStyle}>장세희.MP4</span>
       </div>
-    </div>
+    </>
   );
 };
 

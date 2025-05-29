@@ -9,7 +9,7 @@ export const MemoSectionLayout = style([
 ]);
 
 export const MemoWrapper = style([
-  flexGenerator("row", "flex-start"),
+  flexGenerator("row", "flex-start", "flex-start"),
   { gap: "7.3rem", width: "100%" },
 ]);
 

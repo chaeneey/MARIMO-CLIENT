@@ -4,7 +4,7 @@ import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
 
 export const inviCommonContainer = style([
-  flexGenerator("column"),
+  flexGenerator("column", "flex-start", "flex-start"),
   {
     gap: "2.4rem",
   },

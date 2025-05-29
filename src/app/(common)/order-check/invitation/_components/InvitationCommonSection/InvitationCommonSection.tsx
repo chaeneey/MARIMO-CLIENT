@@ -17,7 +17,9 @@ const InvitationCommonSection = () => {
           <span className={styles.inviCommonRoleTextStyle}>신랑님</span>
           <span className={styles.inviCommonNameTextStyle}>박채연</span>
         </div>
+      </section>
 
+      <section className={styles.inviCommonContainer}>
         <span className={styles.inviCommonTitleStyle}>신부측 정보</span>
         <div className={styles.inviCommonTextWrapper}>
           <span className={styles.inviCommonRoleTextStyle}>아버님</span>
@@ -31,7 +33,9 @@ const InvitationCommonSection = () => {
           <span className={styles.inviCommonRoleTextStyle}>신랑님</span>
           <span className={styles.inviCommonNameTextStyle}>박채연</span>
         </div>
+      </section>
 
+      <section className={styles.inviCommonContainer}>
         <span className={styles.inviCommonTitleStyle}>예식 정보</span>
         <div className={styles.inviCommonTextWrapper}>
           <span className={styles.inviCommonRoleTextStyle}>예식장 장소</span>

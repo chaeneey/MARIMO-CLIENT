@@ -82,7 +82,7 @@ export const accordionContentWrapper = style([
   flexGenerator("column", "flex-start", "flex-start"),
   {
     width: "100%",
-    // height: "10rem",
+    minHeight: "10rem",
 
     padding: "0 2.5rem",
   },
@@ -96,4 +96,9 @@ export const dividerStyle = style([
 
     backgroundColor: vars.colors.black,
   },
+]);
+
+export const accordionChildrenWrapper = style([
+  flexGenerator("column", "flex-start", "flex-start"),
+  { width: "100%", gap: "3.6rem", padding: "3.6rem 0rem" },
 ]);

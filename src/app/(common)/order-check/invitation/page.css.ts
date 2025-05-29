@@ -4,7 +4,18 @@ import { flexGenerator } from "@styles/generator.css";
 
 export const orderCheckInvitationLayout = style([
   flexGenerator("row", "center", "flex-start"),
-  { width: "100%", gap: "2rem", paddingTop: "12rem", paddingBottom: "25rem" },
+  {
+    width: "100%",
+    gap: "2rem",
+    paddingTop: "12rem",
+    paddingBottom: "25rem",
+    "@media": {
+      "screen and (max-width: 872px)": {
+        flexDirection: "column",
+        alignItems: "center",
+      },
+    },
+  },
 ]);
 
 export const orderCheckInviLeftSection = style([
