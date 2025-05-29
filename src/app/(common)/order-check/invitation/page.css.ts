@@ -7,7 +7,7 @@ export const orderCheckInvitationLayout = style([
   {
     width: "100%",
     gap: "2rem",
-    paddingTop: "12rem",
+    paddingTop: "22rem",
     paddingBottom: "25rem",
     "@media": {
       "screen and (max-width: 872px)": {
@@ -34,6 +34,6 @@ export const orderCheckInviRightSection = style([
     maxWidth: "35rem",
     gap: "1.8rem",
     position: "sticky",
-    top: 10,
+    top: "12rem",
   },
 ]);
