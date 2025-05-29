@@ -51,6 +51,13 @@ export const nameInfoInputWithCheckbox = style([
   {
     gap: "2.9rem",
     width: "100%",
+
+    "@media": {
+      "screen and (max-width: 500px)": {
+        flexDirection: "column",
+        alignItems: "flex-start",
+      },
+    },
   },
 ]);
 
@@ -111,7 +118,16 @@ export const dateContainer = style([
 
 export const dateInputWrapper = style([
   flexGenerator("row", "flex-start", "flex-start"),
-  { gap: "0.8rem", width: "100%" },
+  {
+    gap: "0.8rem",
+    width: "100%",
+    "@media": {
+      "screen and (max-width: 500px)": {
+        flexDirection: "column",
+        alignItems: "flex-start",
+      },
+    },
+  },
 ]);
 
 export const adressWrapper = style([

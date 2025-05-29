@@ -25,7 +25,9 @@ export const coverContentContainer = style([
 
 export const textWithButtonWrapper = style([
   flexGenerator("row", "flex-start"),
-  { gap: "2rem" },
+  {
+    gap: "2rem",
+  },
 ]);
 
 export const urlWrapper = style([
@@ -33,6 +35,13 @@ export const urlWrapper = style([
   {
     gap: "1.6rem",
     width: "100%",
+
+    "@media": {
+      "screen and (max-width: 500px)": {
+        flexDirection: "column",
+        alignItems: "flex-start",
+      },
+    },
   },
 ]);
 

@@ -67,6 +67,13 @@ export const customerEmailInputWrapper = style([
   {
     gap: "0.8rem",
     width: "100%",
+
+    "@media": {
+      "screen and (max-width: 500px)": {
+        flexDirection: "column",
+        alignItems: "flex-start",
+      },
+    },
   },
 ]);
 
