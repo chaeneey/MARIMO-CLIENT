@@ -34,12 +34,16 @@ export const customerAdressInputWrapper = style([
 ]);
 
 export const customerAdressSearchWrapper = style([
-  flexGenerator("row", "flex-start", "flex-start"),
+  flexGenerator("row", "flex-start"),
   {
     gap: "0.7rem",
     width: "100%",
   },
 ]);
+
+export const customerAdressSearchStyle = style({
+  maxWidth: "12rem",
+});
 
 export const customerPhoneNumberWrapper = style([
   flexGenerator("row", "flex-start", "flex-start"),

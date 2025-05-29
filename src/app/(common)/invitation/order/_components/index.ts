@@ -5,10 +5,8 @@ import BusSection from "./BusSection/BusSection";
 import CommonInfoSection from "./CommonInfoSection/CommonInfoSection";
 import CoverInfoSection from "./CoverInfoSection/CoverInfoSection";
 import GuestSection from "./GuestSection/GuestSection";
-import MemoSection from "./MemoSection/MemoSection";
-import OrderInfoSection from "./OrderInfoSection/OrderInfoSection";
-import PartySection from "./PartySection/PartySection";
-import PhoneInfoSection from "./PhoneInfoSection/PhoneInfoSection";
+import MemoSection from "../../../_components/MemoSection/MemoSection";
+import OrderInfoSection from "../../../_components/OrderInfoSection/OrderInfoSection";
 
 export {
   AccountSection,
@@ -20,6 +18,4 @@ export {
   GuestSection,
   MemoSection,
   OrderInfoSection,
-  PartySection,
-  PhoneInfoSection,
 };
