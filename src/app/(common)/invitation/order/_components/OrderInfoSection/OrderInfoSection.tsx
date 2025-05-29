@@ -8,6 +8,7 @@ import * as styles from "./OrderInfoSection.css";
 
 const OrderInfoSection = () => {
   const [email, setEmail] = useState("직접 입력");
+  const [phoneNumber, setPhoneNumber] = useState("010");
 
   return (
     <>
@@ -24,12 +25,16 @@ const OrderInfoSection = () => {
         <h3 className={styles.inputTextStyle}>주소</h3>
         <div className={styles.customerAdressInputWrapper}>
           <div className={styles.customerAdressSearchWrapper}>
-            <Input maxWidth="32rem" placeholder="우편번호를 입력해주세요" />
+            <Input
+              maxWidth="32rem"
+              placeholder="우편번호를 입력해주세요"
+              readOnly={true}
+            />
             <Button size="56" color="stroke">
               주소검색
             </Button>
           </div>
-          <Input maxWidth="62rem" />
+          <Input maxWidth="62rem" readOnly={true} />
           <Input
             maxWidth="62rem"
             placeholder="상세 주소를 입력해주세요. 예시) 마리빌 205호"
@@ -39,7 +44,21 @@ const OrderInfoSection = () => {
 
       <div className={styles.customerPhoneNumberWrapper}>
         <h3 className={styles.inputTextStyle}>휴대전화</h3>
-        <Input maxWidth="32rem" placeholder="010-0000-0000"></Input>
+        <div className={styles.customerPhoneNumberInputWrapper}>
+          <SelectBox
+            label="시간"
+            options={[
+              { value: { keyValue: "010" } },
+              { value: { keyValue: "011" } },
+              { value: { keyValue: "012" } },
+            ]}
+            selected={{ keyValue: phoneNumber }}
+            onSelect={(value) => setPhoneNumber(value.keyValue)}
+            variant="order"
+          />
+          <Input maxWidth="15rem" placeholder="1234" />
+          <Input maxWidth="15rem" placeholder="1234" />
+        </div>
       </div>
 
       <div className={styles.customerEmailWrapper}>

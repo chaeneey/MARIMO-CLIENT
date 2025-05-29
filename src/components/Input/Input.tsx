@@ -18,18 +18,27 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   infoMessage?: string;
   handleClearInput?: () => void;
   maxWidth?: string;
+  readOnly?: boolean;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { errorMessage, infoMessage, handleClearInput, value, maxWidth, ...props },
+    {
+      errorMessage,
+      infoMessage,
+      handleClearInput,
+      value,
+      maxWidth,
+      readOnly = false,
+      ...props
+    },
     ref
   ) => {
     const [isFocused, setIsFocused] = useState(false);
 
     return (
       <div className={inputContainer} style={{ maxWidth }}>
-        <div className={inputWrapper}>
+        <div className={inputWrapper({ readOnly })}>
           <input
             ref={ref}
             className={inputStyle({ errorMessage: !!errorMessage })}

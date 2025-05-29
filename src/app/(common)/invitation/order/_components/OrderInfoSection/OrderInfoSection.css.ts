@@ -49,6 +49,11 @@ export const customerPhoneNumberWrapper = style([
   },
 ]);
 
+export const customerPhoneNumberInputWrapper = style([
+  flexGenerator("row", "flex-start"),
+  { gap: "1rem" },
+]);
+
 export const customerEmailWrapper = style([
   flexGenerator("row", "flex-start", "flex-start"),
   {
