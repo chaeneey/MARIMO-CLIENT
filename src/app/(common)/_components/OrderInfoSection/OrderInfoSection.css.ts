@@ -38,7 +38,6 @@ export const customerAdressSearchWrapper = style([
   {
     gap: "0.7rem",
     width: "100%",
-    maxWidth: "45rem",
   },
 ]);
 
