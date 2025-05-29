@@ -1,4 +1,4 @@
-import CheckBox from "@/components/CheckBox/CheckBox";
+import { CheckBox } from "@/components";
 
 import * as styles from "./AttendSection.css";
 

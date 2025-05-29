@@ -1,5 +1,6 @@
 import Accordion from "./Accordion/Accordion";
 import Button from "./Button/Button";
+import CheckBox from "./CheckBox/CheckBox";
 import Chip from "./Chip/Chip";
 import CustomImage from "./CustomImage/CustomImage";
 import Header from "./Header/Header";
@@ -13,6 +14,7 @@ import TextArea from "./TextArea/TextArea";
 export {
   Accordion,
   Button,
+  CheckBox,
   Chip,
   CustomImage,
   Header,

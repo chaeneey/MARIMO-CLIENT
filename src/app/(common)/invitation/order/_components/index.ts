@@ -1,4 +1,5 @@
 import AccountSection from "./AccountSection/AccountSection";
+import AddButton from "./AddButton/AddButton";
 import AttendSection from "./AttendSection/AttendSection";
 import BusSection from "./BusSection/BusSection";
 import CommonInfoSection from "./CommonInfoSection/CommonInfoSection";
@@ -11,6 +12,7 @@ import PhoneInfoSection from "./PhoneInfoSection/PhoneInfoSection";
 
 export {
   AccountSection,
+  AddButton,
   AttendSection,
   BusSection,
   CommonInfoSection,
