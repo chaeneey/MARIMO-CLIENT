@@ -8,12 +8,26 @@ export const inputContainer = style([
   flexGenerator("column", "flex-start", "flex-start"),
   {
     gap: "0.8rem",
+    width: "100%",
   },
 ]);
 
-export const inputWrapper = style({
-  width: "100%",
-  position: "relative",
+export const inputWrapper = recipe({
+  base: {
+    width: "100%",
+    position: "relative",
+  },
+  variants: {
+    readOnly: {
+      true: {
+        backgroundColor: vars.colors.gray01,
+        pointerEvents: "none",
+      },
+      false: {
+        backgroundColor: vars.colors.white,
+      },
+    },
+  },
 });
 
 export const inputStyle = recipe({

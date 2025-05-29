@@ -1,3 +1,5 @@
+"use client";
+
 import { forwardRef, InputHTMLAttributes, useState } from "react";
 
 import { IcBtnDelete } from "@/assets/svgs";
@@ -15,15 +17,28 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   errorMessage?: string;
   infoMessage?: string;
   handleClearInput?: () => void;
+  maxWidth?: string;
+  readOnly?: boolean;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ errorMessage, infoMessage, handleClearInput, value, ...props }, ref) => {
+  (
+    {
+      errorMessage,
+      infoMessage,
+      handleClearInput,
+      value,
+      maxWidth,
+      readOnly = false,
+      ...props
+    },
+    ref
+  ) => {
     const [isFocused, setIsFocused] = useState(false);
 
     return (
-      <div className={inputContainer}>
-        <div className={inputWrapper}>
+      <div className={inputContainer} style={{ maxWidth }}>
+        <div className={inputWrapper({ readOnly })}>
           <input
             ref={ref}
             className={inputStyle({ errorMessage: !!errorMessage })}

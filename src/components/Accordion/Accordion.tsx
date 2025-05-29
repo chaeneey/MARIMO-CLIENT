@@ -7,6 +7,7 @@ import { IcArrowUnderGray0534 } from "@/assets/svgs";
 
 import {
   accordionBoxStyle,
+  accordionChildrenWrapper,
   accordionContentWrapper,
   accordionWrapper,
   arrowIconStyle,
@@ -24,7 +25,7 @@ export interface AccordionProps {
 }
 
 const Accordion = ({ title, hasCheckbox, children }: AccordionProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(!hasCheckbox);
   const [isChecked, setIsChecked] = useState(false);
 
   const handleToggle = () => {
@@ -60,7 +61,7 @@ const Accordion = ({ title, hasCheckbox, children }: AccordionProps) => {
             {title}
           </span>
         </div>
-        {hasCheckbox && !isChecked ? (
+        {(hasCheckbox && !isChecked) || (isChecked && !children) ? (
           <></>
         ) : (
           <IcArrowUnderGray0534
@@ -73,7 +74,7 @@ const Accordion = ({ title, hasCheckbox, children }: AccordionProps) => {
       {isOpen && (
         <div className={accordionContentWrapper}>
           <div className={dividerStyle} />
-          {children}
+          <div className={accordionChildrenWrapper}>{children}</div>
         </div>
       )}
     </div>
