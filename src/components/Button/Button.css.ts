@@ -7,7 +7,7 @@ export const buttonSizeStyle = recipe({
   base: [
     flexGenerator(),
     {
-      width: "100%",
+      minWidth: "fit-content",
       borderRadius: "2px",
       cursor: "pointer",
     },
@@ -63,6 +63,14 @@ export const buttonColorStyle = recipe({
         color: vars.colors.white,
         backgroundColor: vars.colors.gray07,
       },
+      stroke: [
+        vars.fonts.caption_03_14,
+        {
+          color: vars.colors.black,
+          backgroundColor: vars.colors.white,
+          border: `1px solid ${vars.colors.black}`,
+        },
+      ],
     },
   },
 });

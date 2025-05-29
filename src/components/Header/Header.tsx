@@ -1,10 +1,12 @@
 "use client";
 import clsx from "clsx";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+
+import { IcLogoSmall } from "@/assets/svgs";
 
 import {
   buttonSection,
-  headerLogoStyle,
   headerWrapper,
   headerWrapperScrolled,
   tabBarSection,
@@ -15,6 +17,9 @@ import TabBar from "../TabBar/TabBar";
 const Header = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const isDarkHeaderPage = pathname?.includes("/order");
+  console.log(pathname);
 
   const handleTabChange = (tab: number) => {
     setActiveTab(tab);
@@ -30,9 +35,13 @@ const Header = () => {
   }, []);
   return (
     <header
-      className={clsx(headerWrapper, isScrolled && headerWrapperScrolled)}
+      className={clsx(
+        headerWrapper,
+        (isScrolled || isDarkHeaderPage) && headerWrapperScrolled
+      )}
     >
-      <div className={headerLogoStyle}>Logo</div>
+      <IcLogoSmall width={122} height={50} />
+
       <section className={tabBarSection}>
         <TabBar
           tabType="headerTab"
@@ -40,6 +49,7 @@ const Header = () => {
           onTabChange={(index) => handleTabChange(index)}
         />
       </section>
+
       <section className={buttonSection}>
         <Button size="30" color="lime04">
           주문 조회

@@ -14,13 +14,19 @@ export const footerStyle = style([
     bottom: 0,
 
     backgroundColor: vars.colors.black,
+
+    "@media": {
+      "screen and (max-width: 1186px)": {
+        padding: "2rem 3rem",
+      },
+    },
   },
 ]);
 
 export const footerLeft = style([
-  vars.fonts.body08_18_sb,
   flexGenerator(),
   {
+    ...vars.fonts.body08_18_sb,
     gap: "2.8rem",
     color: vars.colors.gray02,
   },
@@ -36,5 +42,11 @@ export const footerRight = style([
   flexGenerator(),
   {
     gap: "2.4rem",
+
+    "@media": {
+      "screen and (max-width: 440px)": {
+        display: "none",
+      },
+    },
   },
 ]);

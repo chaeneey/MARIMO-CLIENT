@@ -5,3 +5,5 @@ export { default as IcInsta } from "./IcInsta";
 export { default as IcKakao } from "./IcKakao";
 export { default as IcRadioFill } from "./IcRadioFill";
 export { default as IcRadioStroke } from "./IcRadioStroke";
+export { default as IcLogoSmall } from "./IcLogoSmall";
+export { default as IcPlusGray0418 } from "./IcPlusGray0418";
