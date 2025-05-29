@@ -50,7 +50,10 @@ const OrderInfoSection = () => {
             options={[
               { value: { keyValue: "010" } },
               { value: { keyValue: "011" } },
-              { value: { keyValue: "012" } },
+              { value: { keyValue: "016" } },
+              { value: { keyValue: "017" } },
+              { value: { keyValue: "018" } },
+              { value: { keyValue: "019" } },
             ]}
             selected={{ keyValue: phoneNumber }}
             onSelect={(value) => setPhoneNumber(value.keyValue)}

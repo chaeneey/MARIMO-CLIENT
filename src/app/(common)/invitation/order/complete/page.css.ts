@@ -6,7 +6,7 @@ import { vars } from "@styles/theme.css";
 export const completeLayout = style([
   flexGenerator("column"),
   {
-    paddingTop: "12rem",
+    paddingTop: "20rem",
     gap: "4.4rem",
   },
 ]);
