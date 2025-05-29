@@ -69,6 +69,7 @@ export const buttonColorStyle = recipe({
           color: vars.colors.black,
           backgroundColor: vars.colors.white,
           border: `1px solid ${vars.colors.black}`,
+          padding: "1.8rem 3.6rem",
         },
       ],
     },

@@ -8,8 +8,8 @@ export const orderPageLayout = style([
   {
     gap: "2.8rem",
     width: "100%",
-    paddingTop: "20rem",
-    paddingBottom: "16rem",
+    marginTop: "20rem",
+    marginBottom: "16rem",
   },
 ]);
 

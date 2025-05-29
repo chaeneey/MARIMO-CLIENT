@@ -175,12 +175,16 @@ const CommonInfoSection = () => {
         <h3 className={styles.inputTextStyle}>주소</h3>
         <div className={styles.customerAdressInputWrapper}>
           <div className={styles.customerAdressSearchWrapper}>
-            <Input maxWidth="32rem" placeholder="우편번호를 입력해주세요" />
+            <Input
+              maxWidth="32rem"
+              placeholder="우편번호를 입력해주세요"
+              readOnly={true}
+            />
             <Button size="56" color="stroke">
               주소검색
             </Button>
           </div>
-          <Input maxWidth="62rem" />
+          <Input maxWidth="62rem" readOnly={true} />
           <Input
             maxWidth="62rem"
             placeholder="상세 주소를 입력해주세요. 예시) 마리빌 205호"

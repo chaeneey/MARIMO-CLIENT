@@ -11,9 +11,9 @@ import {
   GuestSection,
   MemoSection,
   OrderInfoSection,
-  PartySection,
-  PhoneInfoSection,
 } from "./_components";
+import PartySection from "./_components/PartySection/PartySection";
+import PhoneInfoSection from "./_components/PhoneInfoSection/PhoneInfoSection";
 import * as styles from "./page.css";
 
 const accordionItems = [
