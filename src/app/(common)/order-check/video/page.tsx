@@ -1,13 +1,13 @@
 import { Accordion } from "@/components";
 import Button from "@/components/Button/Button";
 
+import {
+  ProductInfoSection,
+  SourceCheckSection,
+  VideoInfoSection,
+} from "./_components";
 import * as styles from "./page.css";
-import MemoSection from "../_components/MemoSection/MemoSection";
-import OrderInfoSection from "../_components/OrderInfoSection/OrderInfoSection";
-import Receipt from "../_components/Receipt/Receipt";
-import ProductInfoSection from "./_components/ProductInfoSection/ProductInfoSection";
-import SourceCheckSection from "./_components/SourceCheckSection/SourceCheckSection";
-import VideoInfoSection from "./_components/VideoInfoSection/VideoInfoSection";
+import { MemoSection, OrderInfoSection, Receipt } from "../_components";
 
 const page = () => {
   const accordionItems = [

@@ -1,14 +1,14 @@
 import { Accordion } from "@/components";
 import Button from "@/components/Button/Button";
 
+import {
+  InvitationCommonSection,
+  MobileInvitationSection,
+  PaperInvitationSection,
+  ProductInfoSection,
+} from "./_components";
 import * as styles from "./page.css";
-import Receipt from "../_components/Receipt/Receipt";
-import ProductInfoSection from "./_components/ProductInfoSection/ProductInfoSection";
-import OrderInfoSection from "../_components/OrderInfoSection/OrderInfoSection";
-import InvitationCommonSection from "./_components/InvitationCommonSection/InvitationCommonSection";
-import MobileInvitationSection from "./_components/MobileInvitationSection/MobileInvitationSection";
-import PaperInvitationSection from "./_components/PaperInvitationSection/PaperInvitationSection";
-import MemoSection from "../_components/MemoSection/MemoSection";
+import { MemoSection, OrderInfoSection, Receipt } from "../_components";
 
 const page = () => {
   const priceInfoObj = {
