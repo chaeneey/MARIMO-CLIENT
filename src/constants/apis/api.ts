@@ -11,11 +11,8 @@ export const POST_INVITATION = `/orders/invitations`;
 export const POST_PREVIDEO = `/orders/pre-videos`;
 export const GET_PRISIGNED_URL = (attachmentType: string) =>
   `/files/presigned-url?attachmentType=${attachmentType}`;
-export const FETCH_INVITATION_ORDER = (
+export const FETCH_ORDER_INFO = (
+  orderType: "invitations" | "pre-videos",
   customerName: string,
   orderCode: string
-) =>
-  `/orders/invitations?customerName=${customerName}&orderCode=${orderCode}`;
-export const FETCH_PREVIDEO_ORDER = (customerName: string, orderCode: string) =>
-  `/orders/pre-videos?customerName=${customerName}&orderCode=${orderCode}`;
-
+) => `/orders/${orderType}?customerName=${customerName}&orderCode=${orderCode}`;
