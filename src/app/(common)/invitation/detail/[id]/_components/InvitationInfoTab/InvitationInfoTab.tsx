@@ -41,11 +41,13 @@ const InvitationInfoTab = () => {
 
   return (
     <div className={styles.containerStyle}>
-      <TabBar
-        tabType="productTab"
-        activeTab={activeTab}
-        onTabChange={handleTabChange}
-      />
+      <div className={styles.tabBarWrapper}>
+        <TabBar
+          tabType="productTab"
+          activeTab={activeTab}
+          onTabChange={handleTabChange}
+        />
+      </div>
       <section ref={productInfoRef}>
         <div>
           <h2 className={styles.h2Style}>종이청첩장</h2>
@@ -119,7 +121,7 @@ const InvitationInfoTab = () => {
       </section>
       <section ref={shippingReturnRef}>
         <h2 className={styles.h2Style}>배송 및 환불정보</h2>
-        <div>
+        <div className={styles.shippingReturnWrapper}>
           <Accordion title="배송정보"></Accordion>
           <Accordion title="환불정보"></Accordion>
         </div>

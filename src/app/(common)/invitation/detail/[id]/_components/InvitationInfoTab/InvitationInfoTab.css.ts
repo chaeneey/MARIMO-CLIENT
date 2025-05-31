@@ -12,6 +12,12 @@ export const containerStyle = style([
   },
 ]);
 
+export const tabBarWrapper = style({
+  width: "100%",
+  paddingBottom: "0.5rem",
+  borderBottom: `1px solid ${vars.colors.gray03}`,
+});
+
 export const h2Style = style([
   vars.fonts.head02_28,
   {
@@ -33,5 +39,13 @@ export const checkListUlStyle = style([
     listStyleType: "disc",
     paddingLef: "1.5rem",
     color: vars.colors.gray05,
+  },
+]);
+
+export const shippingReturnWrapper = style([
+  flexGenerator("column"),
+  {
+    width: "87.2rem",
+    gap: "1.8rem",
   },
 ]);
