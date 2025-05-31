@@ -10,5 +10,5 @@ type Banner = {
 export async function fetchBanner(
   productType: "INVITATION" | "PREVIDEO"
 ): Promise<Banner[]> {
-  return get<Banner[]>(FETCH_BANNER(productType));
+  return get<Banner[]>(FETCH_BANNER(productType), { cache: "force-cache" });
 }

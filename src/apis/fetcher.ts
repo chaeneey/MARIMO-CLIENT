@@ -25,7 +25,6 @@ async function fetcher<T>(url: string, options: RequestInit): Promise<T> {
   return data as T;
 }
 
-// GET 요청: body는 없고, url만 받음
 export function get<T>(url: string, options?: FetcherOptions): Promise<T> {
   return fetcher<T>(url, { ...options, method: "GET" });
 }
