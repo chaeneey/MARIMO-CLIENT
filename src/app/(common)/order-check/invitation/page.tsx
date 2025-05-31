@@ -1,14 +1,15 @@
-import { Accordion } from "@/components";
-import Button from "@/components/Button/Button";
-
+import { Accordion } from "@/components/common";
 import {
   InvitationCommonSection,
+  MemoSection,
   MobileInvitationSection,
+  OrderInfoSection,
   PaperInvitationSection,
   ProductInfoSection,
-} from "./_components";
+  Receipt,
+} from "@/components/order-check";
+
 import * as styles from "./page.css";
-import { MemoSection, OrderInfoSection, Receipt } from "../_components";
 
 const page = () => {
   const priceInfoObj = {
@@ -44,10 +45,6 @@ const page = () => {
           total={124000}
           title="최종 결제 금액"
         />
-
-        <Button size="56" color="white">
-          확인
-        </Button>
       </section>
     </div>
   );

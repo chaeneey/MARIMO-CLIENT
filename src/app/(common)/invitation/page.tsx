@@ -1,4 +1,4 @@
-import { InvitationMain, MainBanner } from "./_components";
+import { InvitationMain, MainBanner } from "@/components/invitation";
 
 const page = () => {
   return (

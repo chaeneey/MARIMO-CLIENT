@@ -1,8 +1,7 @@
-import { QueryClientProvider } from "@tanstack/react-query";
 import type { Metadata } from "next";
 
 import "@styles/global.css";
-import queryClient from "@/apis/configs/QueryClient";
+import ClientProviders from "@/apis/configs/ClientProviders";
 
 export const metadata: Metadata = {
   title: "MARIMO",
@@ -16,9 +15,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <QueryClientProvider client={queryClient}>
-          {children}
-        </QueryClientProvider>
+        <ClientProviders>{children}</ClientProviders>
       </body>
     </html>
   );

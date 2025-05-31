@@ -1,13 +1,14 @@
-import { Accordion } from "@/components";
-import Button from "@/components/Button/Button";
-
+import { Accordion } from "@/components/common";
 import {
+  MemoSection,
+  OrderInfoSection,
   ProductInfoSection,
+  Receipt,
   SourceCheckSection,
   VideoInfoSection,
-} from "./_components";
+} from "@/components/order-check";
+
 import * as styles from "./page.css";
-import { MemoSection, OrderInfoSection, Receipt } from "../_components";
 
 const page = () => {
   const accordionItems = [
@@ -39,10 +40,6 @@ const page = () => {
           total={124000}
           title="최종 결제 금액"
         />
-
-        <Button size="56" color="white">
-          확인
-        </Button>
       </section>
     </div>
   );

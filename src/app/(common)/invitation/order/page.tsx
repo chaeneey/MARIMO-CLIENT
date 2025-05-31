@@ -1,7 +1,6 @@
 "use client";
 
-import { Accordion, Button, ImageDragBox } from "@/components";
-
+import { Accordion, Button, ImageDragBox } from "@/components/common";
 import {
   AccountSection,
   AttendSection,
@@ -11,9 +10,10 @@ import {
   GuestSection,
   MemoSection,
   OrderInfoSection,
-} from "./_components";
-import PartySection from "./_components/PartySection/PartySection";
-import PhoneInfoSection from "./_components/PhoneInfoSection/PhoneInfoSection";
+  PartySection,
+  PhoneInfoSection,
+} from "@/components/order";
+
 import * as styles from "./page.css";
 
 const accordionItems = [

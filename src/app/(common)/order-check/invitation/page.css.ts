@@ -27,13 +27,9 @@ export const orderCheckInviLeftSection = style([
   },
 ]);
 
-export const orderCheckInviRightSection = style([
-  flexGenerator("column"),
-  {
-    width: "100%",
-    maxWidth: "35rem",
-    gap: "1.8rem",
-    position: "sticky",
-    top: "12rem",
-  },
-]);
+export const orderCheckInviRightSection = style({
+  width: "100%",
+  maxWidth: "35rem",
+  position: "sticky",
+  top: "12rem",
+});
