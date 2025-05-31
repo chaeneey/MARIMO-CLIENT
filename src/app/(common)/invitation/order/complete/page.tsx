@@ -1,4 +1,4 @@
-import { CompleteSection } from "@/app/(common)/_components";
+import { CompleteSection } from "@/components/order";
 
 const page = () => {
   return <CompleteSection />;

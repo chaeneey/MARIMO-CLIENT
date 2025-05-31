@@ -1,9 +1,12 @@
 "use client";
 
-import { Accordion, Button, ImageDragBox } from "@/components";
+import { Accordion, Button, ImageDragBox } from "@/components/common";
+import {
+  MemoSection,
+  OrderInfoSection,
+  VideoInfoSection,
+} from "@/components/order";
 
-import { MemoSection, OrderInfoSection } from "../../_components";
-import { VideoInfoSection } from "./_components/VideoInfoSection";
 import * as styles from "./page.css";
 
 const accordionItems = [

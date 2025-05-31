@@ -14,6 +14,7 @@ const eslintConfig = [
     "next/core-web-vitals",
     "next/typescript",
     "plugin:prettier/recommended",
+    "prettier",
   ),
   {
     rules: {
@@ -32,7 +33,6 @@ const eslintConfig = [
           "newlines-between": "always",
         },
       ],
-      "comma-dangle": "off",
     },
   },
 ];

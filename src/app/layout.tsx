@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+
 import "@styles/global.css";
+import ClientProviders from "@/apis/configs/ClientProviders";
 
 export const metadata: Metadata = {
   title: "MARIMO",
@@ -12,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <ClientProviders>{children}</ClientProviders>
+      </body>
     </html>
   );
 }

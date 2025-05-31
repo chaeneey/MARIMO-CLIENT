@@ -8,7 +8,7 @@ export const invitationDetailPageStyle = style([
   {
     width: "100dvw",
     padding: "12rem 0rem 25rem",
-    margin: "0 auto",
+    paddingTop: "22rem",
   },
 ]);
 
