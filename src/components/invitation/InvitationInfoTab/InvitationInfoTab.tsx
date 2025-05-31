@@ -11,7 +11,7 @@ import {
   CardPayment,
   CardShare,
 } from "@/assets/svgs";
-import { Accordion, CustomImage, TabBar } from "@/components";
+import { Accordion, TabBar } from "@/components/common";
 
 import * as styles from "./InvitationInfoTab.css";
 

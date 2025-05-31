@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Button, CustomImage, SelectBox } from "@/components";
+import { Button, CustomImage, SelectBox } from "@/components/common";
 import { ValueType } from "@types";
 
 import * as styles from "./InvitationSelect.css";
@@ -73,7 +73,9 @@ const InvitationSelect = () => {
             <span className={styles.discountRateStyle}>
               {product.discountRate}%
             </span>
-            <span className={styles.priceStyle}>{product.price}</span>
+            <span className={styles.priceStyle}>
+              {product.price.toLocaleString()}
+            </span>
           </div>
           <small className={styles.descriptionStyle}>
             {product.description}

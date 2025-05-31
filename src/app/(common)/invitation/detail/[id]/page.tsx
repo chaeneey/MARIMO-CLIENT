@@ -1,4 +1,5 @@
-import { InvitationInfoTab, InvitationSelect } from "./_components";
+import { InvitationInfoTab, InvitationSelect } from "@/components/invitation";
+
 import * as styles from "./page.css";
 
 const page = () => {

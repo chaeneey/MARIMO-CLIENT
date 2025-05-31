@@ -18,7 +18,7 @@ const Header = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-  const isDarkHeaderPage = pathname?.includes("/order");
+  const isTransparentMode = pathname === "/invitation" || pathname === "/video";
 
   const handleTabChange = (tab: number) => {
     setActiveTab(tab);
@@ -35,8 +35,8 @@ const Header = () => {
   return (
     <header
       className={clsx(
-        headerWrapper,
-        (isScrolled || isDarkHeaderPage) && headerWrapperScrolled,
+        headerWrapper({ isTransparentMode }),
+        isScrolled && headerWrapperScrolled,
       )}
     >
       <IcLogoSmall width={122} height={50} />
