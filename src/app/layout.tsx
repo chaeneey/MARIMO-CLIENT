@@ -2,7 +2,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import type { Metadata } from "next";
 
 import "@styles/global.css";
-import queryClient from "@/apis/QueryClient";
+import queryClient from "@/apis/configs/QueryClient";
 
 export const metadata: Metadata = {
   title: "MARIMO",

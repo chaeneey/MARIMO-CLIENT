@@ -14,5 +14,5 @@ export const GET_PRISIGNED_URL = (attachmentType: string) =>
 export const FETCH_ORDER_INFO = (
   orderType: "invitations" | "pre-videos",
   customerName: string,
-  orderCode: string
+  orderCode: string,
 ) => `/orders/${orderType}?customerName=${customerName}&orderCode=${orderCode}`;

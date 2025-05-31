@@ -32,7 +32,7 @@ export function get<T>(url: string, options?: FetcherOptions): Promise<T> {
 export function post<T>(
   url: string,
   body: unknown,
-  options?: FetcherOptions
+  options?: FetcherOptions,
 ): Promise<T> {
   return fetcher<T>(url, {
     ...options,
@@ -44,7 +44,7 @@ export function post<T>(
 export function put<T>(
   url: string,
   body: unknown,
-  options?: FetcherOptions
+  options?: FetcherOptions,
 ): Promise<T> {
   return fetcher<T>(url, {
     ...options,
@@ -56,7 +56,7 @@ export function put<T>(
 export function patch<T>(
   url: string,
   body: unknown,
-  options?: FetcherOptions
+  options?: FetcherOptions,
 ): Promise<T> {
   return fetcher<T>(url, {
     ...options,

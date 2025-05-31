@@ -1,6 +1,6 @@
-import { FETCH_BANNER } from "@/constants/apis/api";
+import { FETCH_BANNER } from "@/apis/configs/conatants";
 
-import { get } from "./fetcher";
+import { get } from "../../configs/fetcher";
 
 type Banner = {
   fileUrl: string;
@@ -8,7 +8,7 @@ type Banner = {
 };
 
 export async function fetchBanner(
-  productType: "INVITATION" | "PREVIDEO"
+  productType: "INVITATION" | "PREVIDEO",
 ): Promise<Banner[]> {
   return get<Banner[]>(FETCH_BANNER(productType), { cache: "force-cache" });
 }
