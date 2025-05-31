@@ -11,7 +11,7 @@ interface TabBarProps {
 
 const tabs = {
   headerTab: ["WEDDING INVITATION", "PRE-CEREMONY VIDEO"],
-  productTab: ["상품정보", "상세페이지", "주문 전 체크", "배송/환불"],
+  productTab: ["상품정보", "상세이미지", "주문 전 체크", "배송/환불"],
 };
 
 const TabBar = ({ tabType, activeTab, onTabChange }: TabBarProps) => {

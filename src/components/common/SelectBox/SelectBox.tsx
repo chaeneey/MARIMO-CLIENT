@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-import { IcArrowUnderGray05 } from "@/assets/svgs";
+import { IcArrowUnderGray0518 } from "@/assets/svgs";
 import { ValueType } from "@types";
 
 import {
@@ -63,8 +63,7 @@ const SelectBox = ({
             <span>{label}</span>
           )}
         </span>
-
-        <IcArrowUnderGray05 className={arrowIconStyle} />
+        <IcArrowUnderGray0518 className={arrowIconStyle} />
       </button>
 
       {isOpen && (
