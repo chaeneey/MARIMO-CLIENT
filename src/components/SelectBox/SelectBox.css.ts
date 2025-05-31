@@ -20,7 +20,6 @@ export const selectBoxLayout = recipe({
       },
 
       product: {
-        border: "1px solid transparent",
         height: "4.8rem",
       },
     },
@@ -36,15 +35,16 @@ export const selectBoxStyle = style([
     color: vars.colors.gray05,
     backgroundColor: vars.colors.white,
     width: "100%",
+    lineHeight: "2rem",
 
-    border: "1px solid transparent",
     borderRadius: "2px",
   },
 ]);
 
 export const selectBoxBorderStyle = styleVariants({
   default: {
-    borderColor: "transparent",
+    // borderColor: "transparent",
+    border: "none",
   },
   open: {
     borderColor: vars.colors.gray03,
@@ -52,8 +52,8 @@ export const selectBoxBorderStyle = styleVariants({
 });
 
 export const arrowIconStyle = style({
-  width: "2.4rem",
-  height: "2.4rem",
+  width: "1.8rem",
+  height: "1.8rem",
 });
 
 export const ulStyle = recipe({

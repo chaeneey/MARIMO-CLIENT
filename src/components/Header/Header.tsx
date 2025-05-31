@@ -37,7 +37,7 @@ const Header = () => {
     <header
       className={clsx(
         headerWrapper,
-        (isScrolled || isDarkHeaderPage) && headerWrapperScrolled
+        (isScrolled || isDarkHeaderPage) && headerWrapperScrolled,
       )}
     >
       <IcLogoSmall width={122} height={50} />
