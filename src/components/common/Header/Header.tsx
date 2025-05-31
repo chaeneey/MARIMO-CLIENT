@@ -19,7 +19,6 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const isDarkHeaderPage = pathname?.includes("/order");
-  console.log(pathname);
 
   const handleTabChange = (tab: number) => {
     setActiveTab(tab);
