@@ -37,7 +37,7 @@ export const checkListUlStyle = style([
   vars.fonts.caption_02_18,
   {
     listStyleType: "disc",
-    paddingLef: "1.5rem",
+    paddingLeft: "1.5rem",
     color: vars.colors.gray05,
   },
 ]);
