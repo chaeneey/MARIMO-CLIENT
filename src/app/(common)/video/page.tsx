@@ -1,5 +1,4 @@
-import ProductsSection from "@/components/video/ProductsSection/ProductsSection";
-import VideoPlayer from "@/components/video/VideoPlayer/VideoPlayer";
+import { ProductsSection, VideoPlayer } from "@/components/video";
 
 import { videoPageLayout } from "./page.css";
 
