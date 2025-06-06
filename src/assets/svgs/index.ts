@@ -16,3 +16,5 @@ export { default as IcLogoSmall } from "./IcLogoSmall";
 export { default as IcPlusGray0418 } from "./IcPlusGray0418";
 export { default as IcRadioFill } from "./IcRadioFill";
 export { default as IcRadioStroke } from "./IcRadioStroke";
+export { default as IcTurnOffSound } from "./IcTurnOffSound";
+export { default as IcTurnOnSound } from "./IcTurnOnSound";
