@@ -1,6 +1,7 @@
 "use client";
 import clsx from "clsx";
-import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { IcLogoSmall } from "@/assets/svgs";
@@ -15,6 +16,7 @@ import Button from "../Button/Button";
 import TabBar from "../TabBar/TabBar";
 
 const Header = () => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
@@ -22,6 +24,8 @@ const Header = () => {
 
   const handleTabChange = (tab: number) => {
     setActiveTab(tab);
+    const routes = ["/invitation", "/video"];
+    router.push(routes[tab]);
   };
 
   useEffect(() => {
@@ -39,13 +43,15 @@ const Header = () => {
         isScrolled && headerWrapperScrolled,
       )}
     >
-      <IcLogoSmall width={122} height={50} />
+      <Link href="/">
+        <IcLogoSmall width={122} height={50} />
+      </Link>
 
       <section className={tabBarSection}>
         <TabBar
           tabType="headerTab"
           activeTab={activeTab}
-          onTabChange={(index) => handleTabChange(index)}
+          onTabChange={handleTabChange}
         />
       </section>
 
