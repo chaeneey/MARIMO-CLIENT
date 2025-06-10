@@ -1,5 +1,11 @@
+import { MarimoInfoSection } from "@/components/home";
+
 const Page = () => {
-  return <div>Home Page</div>;
+  return (
+    <div>
+      <MarimoInfoSection />
+    </div>
+  );
 };
 
 export default Page;

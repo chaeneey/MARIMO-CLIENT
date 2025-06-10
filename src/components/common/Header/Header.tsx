@@ -20,7 +20,8 @@ const Header = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-  const isTransparentMode = pathname === "/invitation" || pathname === "/video";
+  const isTransparentMode =
+    pathname === "/" || pathname === "/invitation" || pathname === "/video";
 
   const handleTabChange = (tab: number) => {
     setActiveTab(tab);
