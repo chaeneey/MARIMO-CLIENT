@@ -8,13 +8,13 @@ import {
 
 const Page = () => {
   return (
-    <>
+    <div>
       <HomeHeader />
       <MarimoInfoSection />
       <MarimoProductInfoSection />
       <MarimoConceptSection />
       <Footer />
-    </>
+    </div>
   );
 };
 

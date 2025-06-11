@@ -1,4 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
+import { useLayoutEffect } from "react";
 
 import {
   homeThumbnail,
@@ -13,6 +17,27 @@ import { IcLogoLarge } from "@/assets/svgs";
 import * as styles from "./MarimoInfoSection.css";
 
 const MarimoInfoSection = () => {
+  useLayoutEffect(() => {
+    document.body.style.overflow = "hidden";
+  }, []);
+
+  const listVariants = {
+    showImage: {
+      transition: {
+        staggerChildren: 1.5,
+      },
+    },
+    noShowImage: {},
+  };
+
+  const imageVariants = {
+    noShowImage: { opacity: 0 },
+    showImage: { opacity: 1 },
+    transition: {
+      duration: 150,
+    },
+  };
+
   return (
     <div>
       <section className={styles.marimoInfoTopContainer}>
@@ -22,30 +47,49 @@ const MarimoInfoSection = () => {
             src={homeThumbnail}
             alt="마리모 메인 이미지"
           />
+          <motion.div
+            className={styles.homeThumbnailBlackStyle}
+            initial={{ opacity: 0.5 }}
+            animate={{ opacity: 0.8 }}
+            transition={{ duration: 2 }}
+          />
         </section>
 
-        <section>
-          <Image
-            src={homeTop1}
-            alt="마리모 상단 이미지 1"
-            className={styles.homeSubImageStyle}
-          />
-          <Image
-            src={homeTop2}
-            alt="마리모 상단 이미지 1"
-            className={styles.homeSubImageStyle}
-          />
-          <Image
-            src={homeTop3}
-            alt="마리모 상단 이미지 1"
-            className={styles.homeSubImageStyle}
-          />
-          <Image
-            src={homeTop4}
-            alt="마리모 상단 이미지 1"
-            className={styles.homeSubImageStyle}
-          />
-        </section>
+        <motion.ul
+          variants={listVariants}
+          initial="noShowImage"
+          animate="showImage"
+          onAnimationComplete={() => (document.body.style.overflow = "auto")}
+        >
+          <motion.li variants={imageVariants}>
+            <Image
+              src={homeTop1}
+              alt="마리모 상단 이미지 1"
+              className={styles.homeSubImageStyle}
+            />
+          </motion.li>
+          <motion.li variants={imageVariants}>
+            <Image
+              src={homeTop2}
+              alt="마리모 상단 이미지 1"
+              className={styles.homeSubImageStyle}
+            />
+          </motion.li>
+          <motion.li variants={imageVariants}>
+            <Image
+              src={homeTop3}
+              alt="마리모 상단 이미지 1"
+              className={styles.homeSubImageStyle}
+            />
+          </motion.li>
+          <motion.li variants={imageVariants}>
+            <Image
+              src={homeTop4}
+              alt="마리모 상단 이미지 1"
+              className={styles.homeSubImageStyle}
+            />
+          </motion.li>
+        </motion.ul>
 
         <section className={styles.homeMainTextWrapper}>
           <IcLogoLarge width={403} height={138} />

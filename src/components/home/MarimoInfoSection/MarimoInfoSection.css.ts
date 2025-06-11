@@ -13,6 +13,14 @@ export const homeThumbnailImageStyle = style({
   objectFit: "cover",
 });
 
+export const homeThumbnailBlackStyle = style({
+  width: "100%",
+  height: "100vh",
+  position: "absolute",
+  backgroundColor: vars.colors.black,
+  top: 0,
+});
+
 export const homeSubImageStyle = style({
   position: "absolute",
   bottom: "15rem",
