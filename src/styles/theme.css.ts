@@ -36,7 +36,7 @@ export const vars = createGlobalTheme(":root", {
     // home
     home01_32_el: {
       fontFamily: "Pretendard",
-      fontWeight: "300",
+      fontWeight: "200",
       fontSize: "3.2rem",
       lineHeight: "70px",
       letterSpacing: "-3px",

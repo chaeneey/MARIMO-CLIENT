@@ -1,4 +1,7 @@
 import homeBackground from "./img_background.png";
+import homeBottom1 from "./img_home_bottom1.png";
+import homeBottom2 from "./img_home_bottom2.png";
+import homeBottom3 from "./img_home_bottom3.png";
 import homeCenter1 from "./img_home_center1.png";
 import homeInvitation1 from "./img_home_invitation1.png";
 import homeInvitation2 from "./img_home_invitation2.png";
@@ -28,4 +31,7 @@ export {
   homeVideo1,
   homeVideo2,
   homeVideo3,
+  homeBottom1,
+  homeBottom2,
+  homeBottom3,
 };
