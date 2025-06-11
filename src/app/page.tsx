@@ -1,4 +1,6 @@
+import { Footer } from "@/components/common";
 import {
+  HomeHeader,
   MarimoConceptSection,
   MarimoInfoSection,
   MarimoProductInfoSection,
@@ -6,11 +8,13 @@ import {
 
 const Page = () => {
   return (
-    <div>
+    <>
+      <HomeHeader />
       <MarimoInfoSection />
       <MarimoProductInfoSection />
       <MarimoConceptSection />
-    </div>
+      <Footer />
+    </>
   );
 };
 

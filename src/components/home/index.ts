@@ -1,3 +1,4 @@
+import HomeHeader from "./HomeHeader/HomeHeader";
 import MarimoConceptSection from "./MarimoConceptSection/MarimoConceptSection";
 import MarimoInfoSection from "./MarimoInfoSection/MarimoInfoSection";
 import MarimoProductInfoSection from "./MarimoProductInfoSection/MarimoProductInfoSection";
@@ -7,5 +8,6 @@ export {
   MarimoInfoSection,
   MarimoProductInfoSection,
   ProductCarousel,
+  HomeHeader,
   MarimoConceptSection,
 };
