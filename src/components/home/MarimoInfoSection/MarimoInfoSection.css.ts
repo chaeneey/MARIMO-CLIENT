@@ -5,6 +5,7 @@ import { vars } from "@styles/theme.css";
 
 export const marimoInfoTopContainer = style({
   position: "relative",
+  backgroundColor: vars.colors.black,
 });
 
 export const homeThumbnailImageStyle = style({
