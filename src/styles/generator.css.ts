@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
 export const flexGenerator = (
-  flexDirection: "row" | "column" = "row",
+  flexDirection: "row" | "column" | "row-reverse" = "row",
   justifyContent:
     | "center"
     | "flex-start"

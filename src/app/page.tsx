@@ -1,9 +1,10 @@
-import { MarimoInfoSection } from "@/components/home";
+import { MarimoInfoSection, MarimoProductInfoSection } from "@/components/home";
 
 const Page = () => {
   return (
     <div>
       <MarimoInfoSection />
+      <MarimoProductInfoSection />
     </div>
   );
 };
