@@ -33,6 +33,43 @@ export const vars = createGlobalTheme(":root", {
   },
 
   fonts: {
+    // home
+    home01_32_el: {
+      fontFamily: "Pretendard",
+      fontWeight: "300",
+      fontSize: "3.2rem",
+      lineHeight: "70px",
+      letterSpacing: "-3px",
+    },
+    home02_32_sb: {
+      fontFamily: "Pretendard",
+      fontWeight: "600",
+      fontSize: "3.2rem",
+      lineHeight: "70px",
+      letterSpacing: "-3px",
+    },
+    home03_60_l: {
+      fontFamily: "Pretendard",
+      fontWeight: "400",
+      fontSize: "6rem",
+      lineHeight: "60px",
+      letterSpacing: "0px",
+    },
+    home04_26_m: {
+      fontFamily: "Pretendard",
+      fontWeight: "500",
+      fontSize: "2.6rem",
+      lineHeight: "60px",
+      letterSpacing: "0px",
+    },
+    home05_15_md: {
+      fontFamily: "Pretendard", // sandoll 폰트로 변경
+      fontWeight: "500",
+      fontSize: "15rem",
+      lineHeight: "auto",
+      letterSpacing: "0px",
+    },
+
     // 한글 head
     head01_32: {
       fontFamily: "Pretendard",
