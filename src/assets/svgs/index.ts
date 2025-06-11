@@ -22,6 +22,7 @@ export { default as IcInsta } from "./IcInsta";
 export { default as IcKakao } from "./IcKakao";
 export { default as IcLogoLarge } from "./IcLogoLarge";
 export { default as IcLogoSmall } from "./IcLogoSmall";
+export { default as IcMarimoSymbol } from "./IcMarimoSymbol";
 export { default as IcPlusGray0418 } from "./IcPlusGray0418";
 export { default as IcRadioFill } from "./IcRadioFill";
 export { default as IcRadioStroke } from "./IcRadioStroke";

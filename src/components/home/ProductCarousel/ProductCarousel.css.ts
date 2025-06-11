@@ -8,7 +8,6 @@ export const carouselLayout = style([
   flexGenerator("column"),
   {
     gap: "5rem",
-    backgroundColor: "black",
     width: "100%",
   },
 ]);

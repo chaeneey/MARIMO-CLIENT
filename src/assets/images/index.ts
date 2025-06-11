@@ -1,4 +1,5 @@
 import homeBackground from "./img_background.png";
+import homeCenter1 from "./img_home_center1.png";
 import homeInvitation1 from "./img_home_invitation1.png";
 import homeInvitation2 from "./img_home_invitation2.png";
 import homeInvitation3 from "./img_home_invitation3.png";
@@ -19,6 +20,7 @@ export {
   homeTop3,
   homeTop4,
   homeBackground,
+  homeCenter1,
   marimoLabel,
   homeInvitation1,
   homeInvitation2,

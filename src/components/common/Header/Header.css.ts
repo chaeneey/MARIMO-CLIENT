@@ -14,7 +14,7 @@ export const headerWrapper = recipe({
       maxWidth: "100vw",
       padding: "2.5rem 13.1rem 2.5rem 14.2rem",
 
-      zIndex: "1",
+      zIndex: "10",
 
       backgroundColor: vars.colors.black,
       transition: "background-color 0.2s ease-in-out",
