@@ -48,6 +48,12 @@ export const marimoInfoBottomContainer = style([
     width: "100%",
     height: "60rem",
     backgroundColor: vars.colors.black,
+  },
+]);
+
+export const marimoInfoBottomTextWrapper = style([
+  flexGenerator("column"),
+  {
     gap: "2rem",
   },
 ]);

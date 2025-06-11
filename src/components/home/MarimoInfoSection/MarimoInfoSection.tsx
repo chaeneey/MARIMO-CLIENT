@@ -22,19 +22,19 @@ const MarimoInfoSection = () => {
   }, []);
 
   const listVariants = {
-    showImage: {
+    showItem: {
       transition: {
-        staggerChildren: 1.5,
+        staggerChildren: 1,
       },
     },
-    noShowImage: {},
+    noShowItem: {},
   };
 
-  const imageVariants = {
-    noShowImage: { opacity: 0 },
-    showImage: { opacity: 1 },
+  const variants = {
+    noShowItem: { opacity: 0 },
+    showItem: { opacity: 1 },
     transition: {
-      duration: 150,
+      duration: 2,
     },
   };
 
@@ -57,32 +57,32 @@ const MarimoInfoSection = () => {
 
         <motion.ul
           variants={listVariants}
-          initial="noShowImage"
-          animate="showImage"
+          initial="noShowItem"
+          animate="showItem"
           onAnimationComplete={() => (document.body.style.overflow = "auto")}
         >
-          <motion.li variants={imageVariants}>
+          <motion.li variants={variants}>
             <Image
               src={homeTop1}
               alt="마리모 상단 이미지 1"
               className={styles.homeSubImageStyle}
             />
           </motion.li>
-          <motion.li variants={imageVariants}>
+          <motion.li variants={variants}>
             <Image
               src={homeTop2}
               alt="마리모 상단 이미지 1"
               className={styles.homeSubImageStyle}
             />
           </motion.li>
-          <motion.li variants={imageVariants}>
+          <motion.li variants={variants}>
             <Image
               src={homeTop3}
               alt="마리모 상단 이미지 1"
               className={styles.homeSubImageStyle}
             />
           </motion.li>
-          <motion.li variants={imageVariants}>
+          <motion.li variants={variants}>
             <Image
               src={homeTop4}
               alt="마리모 상단 이미지 1"
@@ -98,8 +98,13 @@ const MarimoInfoSection = () => {
         </section>
       </section>
 
-      <section>
-        <div className={styles.marimoInfoBottomContainer}>
+      <section className={styles.marimoInfoBottomContainer}>
+        <motion.div
+          className={styles.marimoInfoBottomTextWrapper}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
           <h2 className={styles.homeSubMediumTextStyle}>Marimo는</h2>
           <h2 className={styles.homeSubBoldTextStyle}>
             두 사람의 특별한 순간을 더 아름답게 만들어주는
@@ -107,10 +112,10 @@ const MarimoInfoSection = () => {
           <h2 className={styles.homeSubMediumTextStyle}>
             웨딩 콘텐츠 브랜드입니다
           </h2>
-        </div>
-
-        <Image src={marimoLabel} alt="marimo label" style={{ width: "100%" }} />
+        </motion.div>
       </section>
+
+      <Image src={marimoLabel} alt="marimo label" style={{ width: "100%" }} />
     </div>
   );
 };
