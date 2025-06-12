@@ -23,7 +23,13 @@ export const conceptSectionMainTextStyle = style({
   color: vars.colors.white,
 });
 
-export const conceptSectionImageWrapper = style([flexGenerator()]);
+export const conceptSectionImageWrapper = style([
+  flexGenerator(),
+  {
+    width: "81rem",
+    flexWrap: "wrap",
+  },
+]);
 
 export const conceptSectionBottomContainer = style([
   flexGenerator("column"),

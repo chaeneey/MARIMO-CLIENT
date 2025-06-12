@@ -83,11 +83,23 @@ const MarimoProductInfoSection = () => {
       </section>
 
       <section className={styles.productInfoBottomCantainer}>
-        <Image src={homeCenter1} alt="마리모 소개 이미지" />
-        <div className={styles.productInfoTextWrapper}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className={styles.productInfoBottomImageStyle}
+        >
+          <Image src={homeCenter1} alt="마리모 소개 이미지" />
+        </motion.div>
+        <motion.div
+          className={styles.productInfoTextWrapper}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
           <span>결혼이라는 특별한 시작을</span>
           <span>마리모와 함께 더욱 특별하게 완성해보세요</span>
-        </div>
+        </motion.div>
       </section>
     </section>
   );

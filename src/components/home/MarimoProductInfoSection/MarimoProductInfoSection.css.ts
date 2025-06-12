@@ -10,7 +10,7 @@ export const productInfoLayout = style([
     width: "100%",
     paddingTop: "14rem",
     paddingBottom: "35rem",
-    gap: "40rem",
+    gap: "50rem",
     backgroundColor: vars.colors.black,
   },
 ]);
@@ -19,7 +19,7 @@ export const productInfoTopContainer = style([
   flexGenerator("column"),
   {
     position: "relative",
-    gap: "15rem",
+    gap: "40rem",
   },
 ]);
 
@@ -51,6 +51,11 @@ export const productInfoBottomCantainer = style([
     zIndex: 5,
   },
 ]);
+
+export const productInfoBottomImageStyle = style({
+  width: "44rem",
+  height: "55rem",
+});
 
 export const productInfoTextWrapper = style([
   flexGenerator("column"),

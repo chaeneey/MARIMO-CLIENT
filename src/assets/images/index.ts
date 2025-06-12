@@ -1,7 +1,4 @@
 import homeBackground from "./img_background.png";
-import homeBottom1 from "./img_home_bottom1.png";
-import homeBottom2 from "./img_home_bottom2.png";
-import homeBottom3 from "./img_home_bottom3.png";
 import homeCenter1 from "./img_home_center1.png";
 import homeInvitation1 from "./img_home_invitation1.png";
 import homeInvitation2 from "./img_home_invitation2.png";
@@ -15,6 +12,9 @@ import homeVideo1 from "./img_home_video1.png";
 import homeVideo2 from "./img_home_video2.png";
 import homeVideo3 from "./img_home_video3.png";
 import marimoLabel from "./img_marimo_label.png";
+import homeBottom1 from "./marimo_home_bottom1.png";
+import homeBottom2 from "./marimo_home_bottom2.png";
+import homeBottom3 from "./marimo_home_bottom3.png";
 
 export {
   homeThumbnail,
