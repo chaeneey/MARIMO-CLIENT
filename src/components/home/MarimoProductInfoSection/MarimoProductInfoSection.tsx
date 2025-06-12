@@ -1,4 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState } from "react";
 
 import {
   homeBackground,
@@ -16,6 +20,9 @@ import * as styles from "./MarimoProductInfoSection.css";
 import ProductCarousel from "../ProductCarousel/ProductCarousel";
 
 const MarimoProductInfoSection = () => {
+  const [invitationScrollEvent, setInvitationScrollEvent] = useState(false);
+  const [videoScrollEvent, setVideoScrollEvent] = useState(false);
+
   return (
     <section className={styles.productInfoLayout}>
       <Image
@@ -25,22 +32,53 @@ const MarimoProductInfoSection = () => {
       />
 
       <section className={styles.productInfoTopContainer}>
-        <IcMarimoSymbol className={styles.productInfoMarimoSymbolStyle} />
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+        >
+          <IcMarimoSymbol className={styles.productInfoMarimoSymbolStyle} />
+        </motion.div>
 
         <section className={styles.productInfoCarouselWrapper}>
-          <ProductCarousel
-            mainText="WEDDING INVITATION"
-            subText="마리모만의 감각적인 청첩장 디자인부터"
-            direction="right"
-            carouselImages={[homeInvitation1, homeInvitation2, homeInvitation3]}
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+            onAnimationComplete={() => {
+              setInvitationScrollEvent(true);
+            }}
+          >
+            <ProductCarousel
+              mainText="WEDDING INVITATION"
+              subText="마리모만의 감각적인 청첩장 디자인부터"
+              direction="right"
+              carouselImages={[
+                homeInvitation1,
+                homeInvitation2,
+                homeInvitation3,
+                homeInvitation1,
+              ]}
+              scrollState={invitationScrollEvent}
+            />
+          </motion.div>
 
-          <ProductCarousel
-            mainText="PRE-CEREMONY VIDEO"
-            subText="두 사람의 이야기를 특별한 감성으로 담아낸 식전영상까지"
-            direction="left"
-            carouselImages={[homeVideo1, homeVideo2, homeVideo3]}
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            onAnimationComplete={() => {
+              setVideoScrollEvent(true);
+            }}
+          >
+            <ProductCarousel
+              mainText="PRE-CEREMONY VIDEO"
+              subText="두 사람의 이야기를 특별한 감성으로 담아낸 식전영상까지"
+              direction="left"
+              carouselImages={[homeVideo1, homeVideo2, homeVideo3]}
+              scrollState={videoScrollEvent}
+            />
+          </motion.div>
         </section>
       </section>
 

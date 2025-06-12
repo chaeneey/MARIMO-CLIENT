@@ -50,11 +50,33 @@ export const carouselSubTextStyle = style({
   color: vars.colors.gray03,
 });
 
-export const carouselBottomContainer = style([
-  flexGenerator("row", "flex-start"),
-  {
-    gap: "3rem",
-    overflow: "scroll",
-    padding: "0rem 13.8rem",
+export const carouselBottomContainer = recipe({
+  base: [
+    flexGenerator("row", "flex-start"),
+    {
+      gap: "3rem",
+      overflow: "scroll",
+      width: "100%",
+      padding: "0rem 30rem 0rem 13.8rem",
+    },
+  ],
+
+  variants: {
+    direction: {
+      right: [{}],
+      left: {
+        transform: "scaleX(-1)",
+      },
+    },
   },
-]);
+});
+
+export const carouselRightImageStyle = style({
+  width: "36rem",
+  height: "36rem",
+});
+
+export const carouselLeftImageStyle = style({
+  width: "48rem",
+  height: "32rem",
+});

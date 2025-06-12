@@ -18,6 +18,7 @@ export const productInfoLayout = style([
 export const productInfoTopContainer = style([
   flexGenerator("column"),
   {
+    position: "relative",
     gap: "15rem",
   },
 ]);

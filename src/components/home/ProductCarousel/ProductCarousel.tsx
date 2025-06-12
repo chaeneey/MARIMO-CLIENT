@@ -1,7 +1,8 @@
 "use client";
 
+import { animate } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { IcStrokeLeft, IcStrokeRight } from "@/assets/svgs";
 
@@ -12,6 +13,7 @@ interface ProductCarouselProps {
   subText: string;
   direction: "right" | "left";
   carouselImages: StaticImageData[];
+  scrollState?: boolean;
 }
 
 const ProductCarousel = ({
@@ -19,14 +21,26 @@ const ProductCarousel = ({
   subText,
   direction,
   carouselImages,
+  scrollState,
 }: ProductCarouselProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft = scrollRef.current.scrollWidth;
+  useEffect(() => {
+    if (scrollState && scrollRef.current) {
+      const currentScroll = scrollRef.current;
+      const maxScroll = currentScroll.scrollWidth - currentScroll.clientWidth;
+
+      const controls = animate(0, maxScroll, {
+        duration: 5,
+        ease: "easeInOut",
+        onUpdate: (latest) => {
+          currentScroll.scrollLeft = latest;
+        },
+      });
+
+      return () => controls.stop();
     }
-  }, []);
+  }, [scrollState]);
 
   return (
     <div className={styles.carouselLayout}>
@@ -39,11 +53,20 @@ const ProductCarousel = ({
       </section>
 
       <section
-        className={styles.carouselBottomContainer}
-        ref={direction == "left" ? scrollRef : null}
+        className={styles.carouselBottomContainer({ direction })}
+        ref={scrollRef}
       >
         {carouselImages.map((image, index) => (
-          <Image src={image} alt={`${image}`} key={index} />
+          <Image
+            src={image}
+            alt={`${image}`}
+            key={index}
+            className={
+              direction == "right"
+                ? styles.carouselRightImageStyle
+                : styles.carouselLeftImageStyle
+            }
+          />
         ))}
       </section>
     </div>
