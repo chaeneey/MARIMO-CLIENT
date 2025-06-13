@@ -28,6 +28,12 @@ export const conceptSectionImageWrapper = style([
   {
     width: "81rem",
     flexWrap: "wrap",
+
+    "@media": {
+      "screen and (max-width: 935px)": {
+        width: "30rem",
+      },
+    },
   },
 ]);
 

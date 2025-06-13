@@ -43,11 +43,31 @@ export const carouselTopTextWrapper = recipe({
 export const carouselMainTextStyle = style({
   ...vars.fonts.home03_60_l,
   color: vars.colors.white,
+
+  "@media": {
+    "screen and (max-width: 935px)": {
+      ...vars.fonts.head01_32,
+    },
+  },
 });
 
 export const carouselSubTextStyle = style({
   ...vars.fonts.home04_26_m,
   color: vars.colors.gray03,
+
+  "@media": {
+    "screen and (max-width: 935px)": {
+      ...vars.fonts.caption_02_18,
+    },
+  },
+});
+
+export const carouselArrowStyle = style({
+  "@media": {
+    "screen and (max-width: 1160px)": {
+      display: "none",
+    },
+  },
 });
 
 export const carouselBottomContainer = recipe({
@@ -58,6 +78,12 @@ export const carouselBottomContainer = recipe({
       overflow: "scroll",
       width: "100%",
       padding: "0rem 30rem 0rem 13.8rem",
+
+      "@media": {
+        "screen and (max-width: 935px)": {
+          padding: "0rem 13.8rem",
+        },
+      },
     },
   ],
 
@@ -74,9 +100,23 @@ export const carouselBottomContainer = recipe({
 export const carouselRightImageStyle = style({
   width: "36rem",
   height: "36rem",
+
+  "@media": {
+    "screen and (max-width: 935px)": {
+      width: "26rem",
+      height: "26rem",
+    },
+  },
 });
 
 export const carouselLeftImageStyle = style({
   width: "48rem",
   height: "32rem",
+
+  "@media": {
+    "screen and (max-width: 935px)": {
+      width: "38rem",
+      height: "22rem",
+    },
+  },
 });

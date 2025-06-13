@@ -10,12 +10,14 @@ const HomeHeader = () => {
     <div className={styles.homeHeaderLayout}>
       <div className={styles.homeHeaderLeftContainer}>
         <IcLogoSmallHome width={127} height={27} />
-        <Link href={"/invitation"} className={styles.homeHeaderLinkStyle}>
-          WEDDING INVITATION
-        </Link>
-        <Link href={"/video"} className={styles.homeHeaderLinkStyle}>
-          PRE-CEREMONY VIDEO
-        </Link>
+        <div className={styles.homeHeaderLeftWrapper}>
+          <Link href={"/invitation"} className={styles.homeHeaderLinkStyle}>
+            WEDDING INVITATION
+          </Link>
+          <Link href={"/video"} className={styles.homeHeaderLinkStyle}>
+            PRE-CEREMONY VIDEO
+          </Link>
+        </div>
       </div>
 
       <Button size="30" color="lime04">

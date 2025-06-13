@@ -42,6 +42,13 @@ const ProductCarousel = ({
     }
   }, [scrollState]);
 
+  const handleClickButton = () => {
+    scrollRef.current?.scrollTo({
+      left: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className={styles.carouselLayout}>
       <section className={styles.carouselTopContainer({ direction })}>
@@ -49,7 +56,17 @@ const ProductCarousel = ({
           <h1 className={styles.carouselMainTextStyle}>{mainText}</h1>
           <span className={styles.carouselSubTextStyle}>{subText}</span>
         </div>
-        {direction == "right" ? <IcStrokeRight /> : <IcStrokeLeft />}
+        {direction == "right" ? (
+          <IcStrokeRight
+            onClick={handleClickButton}
+            className={styles.carouselArrowStyle}
+          />
+        ) : (
+          <IcStrokeLeft
+            onClick={handleClickButton}
+            className={styles.carouselArrowStyle}
+          />
+        )}
       </section>
 
       <section

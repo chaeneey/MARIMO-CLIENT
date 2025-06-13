@@ -27,6 +27,12 @@ export const homeSubImageStyle = style({
   position: "absolute",
   bottom: "15rem",
   left: "15rem",
+
+  "@media": {
+    "screen and (max-width: 670px)": {
+      display: "none",
+    },
+  },
 });
 
 export const homeMainTextWrapper = style([

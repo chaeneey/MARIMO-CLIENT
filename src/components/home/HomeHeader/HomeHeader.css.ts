@@ -12,6 +12,12 @@ export const homeHeaderLayout = style([
     position: "absolute",
     zIndex: "10",
     width: "100%",
+
+    "@media": {
+      "screen and (max-width: 1186px)": {
+        padding: "2.5rem 3rem",
+      },
+    },
   },
 ]);
 
@@ -19,6 +25,19 @@ export const homeHeaderLeftContainer = style([
   flexGenerator(),
   {
     gap: "6rem",
+  },
+]);
+
+export const homeHeaderLeftWrapper = style([
+  flexGenerator(),
+  {
+    gap: "6rem",
+
+    "@media": {
+      "screen and (max-width: 960px)": {
+        display: "none",
+      },
+    },
   },
 ]);
 
