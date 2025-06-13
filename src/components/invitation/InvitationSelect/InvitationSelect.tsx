@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 import { Button, CustomImage, SelectBox } from "@/components/common";
@@ -156,9 +157,11 @@ const InvitationSelect = () => {
           </li>
         </ul>
         <div className={styles.orderButtonWrapper}>
-          <Button size="56" color="lime01">
-            주문하기
-          </Button>
+          <Link href={"/invitation/order"}>
+            <Button size="56" color="lime01">
+              주문하기
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

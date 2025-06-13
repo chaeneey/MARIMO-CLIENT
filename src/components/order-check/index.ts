@@ -1,4 +1,5 @@
 import InvitationCommonSection from "./InvitationCommonSection/InvitationCommonSection";
+import InvitationProductSection from "./InvitationProductSection/InvitationProductSection";
 import MemoSection from "./MemoSection/MemoSection";
 import MobileInvitationSection from "./MobileInvitationSection/MobileInvitationSection";
 import OrderInfoSection from "./OrderInfoSection/OrderInfoSection";
@@ -18,4 +19,5 @@ export {
   ProductInfoSection,
   SourceCheckSection,
   VideoInfoSection,
+  InvitationProductSection,
 };

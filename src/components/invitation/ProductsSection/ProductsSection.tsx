@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { invitationProductsSection } from "./ProductsSection.css";
 import InvitationProduct from "../InvitationProduct/InvitationProduct";
 
@@ -33,7 +35,9 @@ const ProductsSection = () => {
   return (
     <div className={invitationProductsSection}>
       {products.map((product) => (
-        <InvitationProduct product={product} key={product.id} />
+        <Link href={`/invitation/detail/${product.id}`} key={product.id}>
+          <InvitationProduct product={product} />
+        </Link>
       ))}
     </div>
   );

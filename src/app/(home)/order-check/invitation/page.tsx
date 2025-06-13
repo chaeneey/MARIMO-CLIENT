@@ -1,11 +1,11 @@
 import { Accordion } from "@/components/common";
 import {
   InvitationCommonSection,
+  InvitationProductSection,
   MemoSection,
   MobileInvitationSection,
   OrderInfoSection,
   PaperInvitationSection,
-  ProductInfoSection,
   Receipt,
 } from "@/components/order-check";
 
@@ -21,7 +21,7 @@ const page = () => {
   };
 
   const accordionItems = [
-    { title: "상품 정보", component: <ProductInfoSection /> },
+    { title: "상품 정보", component: <InvitationProductSection /> },
     { title: "주문자 정보", component: <OrderInfoSection /> },
     { title: "청첩장 공통 정보", component: <InvitationCommonSection /> },
     { title: "종이 청첩장 기본 정보", component: <PaperInvitationSection /> },
