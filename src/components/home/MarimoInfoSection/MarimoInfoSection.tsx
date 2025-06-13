@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import {
   homeThumbnail,
@@ -16,27 +16,44 @@ import { IcLogoLarge } from "@/assets/svgs";
 
 import * as styles from "./MarimoInfoSection.css";
 
+const homeTopImageList = [homeTop1, homeTop2, homeTop3, homeTop4];
+
 const MarimoInfoSection = () => {
+  const [index, setIndex] = useState(0);
+  const canScroll = useRef(true);
+  const maxCount = homeTopImageList.length - 1;
+
   useLayoutEffect(() => {
+    window.scrollTo(0, 0);
     document.body.style.overflow = "hidden";
   }, []);
 
-  const listVariants = {
-    showItem: {
-      transition: {
-        staggerChildren: 1,
-      },
-    },
-    noShowItem: {},
-  };
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (!canScroll.current) return;
+      e.preventDefault();
 
-  const variants = {
-    noShowItem: { opacity: 0 },
-    showItem: { opacity: 1 },
-    transition: {
-      duration: 2,
-    },
-  };
+      canScroll.current = false;
+      if (e.deltaY > 0 && index < maxCount) {
+        setIndex((prev) => prev + 1);
+      }
+
+      setTimeout(() => {
+        canScroll.current = true;
+      }, 1000); // 1.5초 쿨타임
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      if (index >= maxCount) {
+        setTimeout(() => {
+          window.removeEventListener("wheel", handleWheel);
+          document.body.style.overflow = "auto";
+        }, 1000);
+      }
+    };
+  }, [index]);
 
   return (
     <div>
@@ -50,45 +67,27 @@ const MarimoInfoSection = () => {
           <motion.div
             className={styles.homeThumbnailBlackStyle}
             initial={{ opacity: 0.5 }}
-            animate={{ opacity: 0.8 }}
-            transition={{ duration: 2 }}
+            whileInView={{ opacity: 0.8 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
           />
         </section>
 
-        <motion.ul
-          variants={listVariants}
-          initial="noShowItem"
-          animate="showItem"
-          onAnimationComplete={() => (document.body.style.overflow = "auto")}
-        >
-          <motion.li variants={variants}>
-            <Image
-              src={homeTop1}
-              alt="마리모 상단 이미지 1"
-              className={styles.homeSubImageStyle}
-            />
-          </motion.li>
-          <motion.li variants={variants}>
-            <Image
-              src={homeTop2}
-              alt="마리모 상단 이미지 1"
-              className={styles.homeSubImageStyle}
-            />
-          </motion.li>
-          <motion.li variants={variants}>
-            <Image
-              src={homeTop3}
-              alt="마리모 상단 이미지 1"
-              className={styles.homeSubImageStyle}
-            />
-          </motion.li>
-          <motion.li variants={variants}>
-            <Image
-              src={homeTop4}
-              alt="마리모 상단 이미지 1"
-              className={styles.homeSubImageStyle}
-            />
-          </motion.li>
+        <motion.ul>
+          {homeTopImageList.map((src, idx) => (
+            <motion.li
+              key={idx}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: index > idx ? 1 : 0 }}
+              transition={{ duration: 1.5 }}
+            >
+              <Image
+                src={src}
+                alt={`마리모 상단 이미지 ${idx}`}
+                className={styles.homeSubImageStyle}
+              />
+            </motion.li>
+          ))}
         </motion.ul>
 
         <section className={styles.homeMainTextWrapper}>

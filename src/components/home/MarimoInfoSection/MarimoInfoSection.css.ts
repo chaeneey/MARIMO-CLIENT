@@ -19,6 +19,7 @@ export const homeThumbnailBlackStyle = style({
   height: "100vh",
   position: "absolute",
   backgroundColor: vars.colors.black,
+  opacity: "0.8",
   top: 0,
 });
 
