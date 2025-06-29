@@ -17,10 +17,14 @@ import TabBar from "../TabBar/TabBar";
 
 const Header = () => {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState(0);
-  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+
+  const [activeTab, setActiveTab] = useState(
+    pathname.includes("/invitation") ? 0 : 1,
+  );
+  const [isScrolled, setIsScrolled] = useState(false);
   const isTransparentMode = pathname === "/invitation" || pathname === "/video";
+  const hasHideMode = pathname.includes("/order");
 
   const handleTabChange = (tab: number) => {
     setActiveTab(tab);
@@ -36,11 +40,12 @@ const Header = () => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
   return (
     <header
       className={clsx(
         headerWrapper({ isTransparentMode }),
-        isScrolled && headerWrapperScrolled,
+        isScrolled && headerWrapperScrolled({ hasHideMode }),
       )}
     >
       <Link href="/">
@@ -56,9 +61,11 @@ const Header = () => {
       </section>
 
       <section className={buttonSection}>
-        <Button size="30" color="lime04">
-          주문 조회
-        </Button>
+        <Link href={"/order-check"}>
+          <Button size="30" color="lime04">
+            주문 조회
+          </Button>
+        </Link>
       </section>
     </header>
   );

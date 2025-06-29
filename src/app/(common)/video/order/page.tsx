@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { Accordion, Button, ImageDragBox } from "@/components/common";
 import {
   MemoSection,
@@ -22,9 +24,11 @@ const Page = () => {
       <div className={styles.titleContainer}>
         <div className={styles.titleWrapper}>
           <h1 className={styles.titleTextStyle}>식전영상 주문하기</h1>
-          <Button size="50" color="lime01">
-            주문하기
-          </Button>
+          <Link href={"/video/order/complete"}>
+            <Button size="50" color="lime01">
+              주문하기
+            </Button>
+          </Link>
         </div>
 
         <div className={styles.orderBarStyle} />

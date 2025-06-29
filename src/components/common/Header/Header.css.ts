@@ -6,15 +6,16 @@ import { vars } from "@styles/theme.css";
 
 export const headerWrapper = recipe({
   base: [
-    flexGenerator("row", "flex-start", "center"),
+    flexGenerator("row", "space-between"),
     {
       position: "fixed",
       top: "0",
       width: "100%",
       maxWidth: "100vw",
       padding: "2.5rem 13.1rem 2.5rem 14.2rem",
+      height: "10rem",
 
-      zIndex: "1",
+      zIndex: "10",
 
       backgroundColor: vars.colors.black,
       transition: "background-color 0.2s ease-in-out",
@@ -39,10 +40,26 @@ export const headerWrapper = recipe({
   },
 });
 
-export const headerWrapperScrolled = style({
-  backgroundColor: vars.colors.black,
-  transition: "background-color 0.2s ease-in-out",
+export const headerWrapperScrolled = recipe({
+  base: {
+    backgroundColor: vars.colors.black,
+  },
+  variants: {
+    hasHideMode: {
+      true: {
+        transform: "translateY(-100%)",
+        transition: "transform 0.2s ease-in-out",
+      },
+      false: {
+        transition: "background-color 0.2s ease-in-out",
+      },
+    },
+  },
 });
+
+// export const hideHeader = style({
+
+// });
 
 export const tabBarSection = style({
   width: "59.6rem",

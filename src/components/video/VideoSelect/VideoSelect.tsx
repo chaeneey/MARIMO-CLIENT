@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Button } from "@/components/common";
 
 import * as styles from "./VideoSelect.css";
@@ -39,9 +41,11 @@ const VideoSelect = () => {
         </section>
 
         <div className={styles.videoOrderButtonStyle}>
-          <Button size="56" color="lime01">
-            주문하기
-          </Button>
+          <Link href={"/video/order"}>
+            <Button size="56" color="lime01">
+              주문하기
+            </Button>
+          </Link>
         </div>
       </section>
     </div>

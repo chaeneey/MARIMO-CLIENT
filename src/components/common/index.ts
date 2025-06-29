@@ -3,6 +3,7 @@ import Button from "./Button/Button";
 import CheckBox from "./CheckBox/CheckBox";
 import Chip from "./Chip/Chip";
 import CustomImage from "./CustomImage/CustomImage";
+import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import IUButton from "./IUButton/IUButton";
 import ImageDragBox from "./ImageDragBox/ImageDragBox";
@@ -24,4 +25,5 @@ export {
   TabBar,
   TextArea,
   ImageDragBox,
+  Footer,
 };
