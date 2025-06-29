@@ -6,20 +6,19 @@ import { CustomImage } from "@/components/common";
 
 import * as styles from "./MainBanner.css";
 
-const realImages = [
-  "/images/감딸기.jpeg",
-  "/images/상어.png",
-  "/images/짤2.jpeg",
-];
-const images = [
-  realImages[realImages.length - 1],
-  ...realImages,
-  realImages[0],
-];
+interface MainBannerProps {
+  realImages: string[];
+}
 
-const MainBanner = () => {
+const MainBanner = ({ realImages }: MainBannerProps) => {
   const [currentIdx, setCurrentIdx] = useState(1);
   const [transitioning, setTransitioning] = useState(true);
+
+  const images = [
+    realImages[realImages.length - 1],
+    ...realImages,
+    realImages[0],
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
