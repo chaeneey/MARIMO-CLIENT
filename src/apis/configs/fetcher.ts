@@ -1,4 +1,4 @@
-const BASE_URL = process.env.MARIMO_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_MARIMO_BASE_URL;
 
 type FetcherOptions = Omit<RequestInit, "method" | "body">;
 
