@@ -11,11 +11,12 @@ import {
   CardPayment,
   CardShare,
 } from "@/assets/svgs";
+import { CustomImage } from "@/components/common";
 import { Accordion, TabBar } from "@/components/common";
 
 import * as styles from "./InvitationInfoTab.css";
 
-const InvitationInfoTab = () => {
+const InvitationInfoTab = ({ detailImageList }: string[]) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const productInfoRef = useRef<HTMLDivElement>(null);
@@ -67,7 +68,11 @@ const InvitationInfoTab = () => {
           </div>
         </div>
       </section>
-      <section ref={detailImageRef}>{/* <CustomImage /> */}</section>
+      <section ref={detailImageRef} className={styles.imageSectionStyle}>
+        {detailImageList.map((image, i) => (
+          <CustomImage key={i} src={image} alt="청첩장 이미지" />
+        ))}
+      </section>
       <section ref={checkBeforeOrderRef}>
         <h2 className={styles.h2Style}>주문 전 체크</h2>
         <ul className={styles.checkListUlStyle}>

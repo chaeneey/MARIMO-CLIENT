@@ -33,6 +33,12 @@ export const mobileCardWrapper = style({
   gap: "1.8rem 3.4rem",
 });
 
+export const imageSectionStyle = style({
+  width: "100%",
+  height: "400rem",
+  backgroundColor: "pink",
+});
+
 export const checkListUlStyle = style([
   vars.fonts.caption_02_18,
   {
