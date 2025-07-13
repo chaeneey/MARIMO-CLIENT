@@ -4,45 +4,21 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { Button, CustomImage, SelectBox } from "@/components/common";
-import { ValueType } from "@types";
+import convertToSelectOptions from "@/utils/convertToSelectOptions";
+import { InvitationItemDetail, ValueType } from "@types";
 
 import * as styles from "./InvitationSelect.css";
 
-const product = {
-  imageUrl: "/images/감딸기.jpeg",
-  title: "이건 이런 청첩장이라구요?",
-  description: "이건 이런 청첩장이라니까요? 이런 스타일을 가지고 있어요!",
-  discountRate: 15,
-  price: 304000,
-  id: 1,
-};
 
-const selectOptions = {
-  quantity: [
-    { value: { keyValue: "100장", subValue: "기본 수량" } },
-    { value: { keyValue: "150장", subValue: "+10,000원" } },
-    { value: { keyValue: "200장", subValue: "+20,000원" } },
-  ],
-  sticker: [
-    { value: { keyValue: "기본 스티커", subValue: "" } },
-    { value: { keyValue: "고급 스티커", subValue: "+1,000원" } },
-  ],
-  envelope: [
-    { value: { keyValue: "흰색 봉투", subValue: "기본 제공" } },
-    { value: { keyValue: "크림 봉투", subValue: "+500원" } },
-  ],
-  ribbon: [
-    { value: { keyValue: "없음", subValue: "" } },
-    { value: { keyValue: "리본 포함", subValue: "+3,000원" } },
-  ],
-  service: [
-    { value: { keyValue: "없음", subValue: "" } },
-    { value: { keyValue: "엽서 추가", subValue: "+2,000원" } },
-  ],
-  mobile: [{ value: { keyValue: "제공", subValue: "무료 제공" } }],
-};
-
-const InvitationSelect = () => {
+const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
+  const {
+    mainImageUrl,
+    name,
+    discountRate,
+    price,
+    description,
+    optionGroupList,
+  } = invitationItemDetail;
   const [formState, setFormState] = useState({
     quantity: { keyValue: "", subValue: "" },
     sticker: { keyValue: "", subValue: "" },
@@ -61,26 +37,17 @@ const InvitationSelect = () => {
   return (
     <section className={styles.sectionStyle}>
       <div className={styles.invitationImageStyle}>
-        <CustomImage
-          src={product.imageUrl}
-          alt={`${product.imageUrl}-${product.id}`}
-        />
+        <CustomImage src={mainImageUrl} alt={`${mainImageUrl}-${name}`} />
       </div>
       <div>
         <div className={styles.invitationInfoBox}>
           <div className={styles.invitationInfoTop}>
-            <span className={styles.invitationTitleStyle}>{product.title}</span>
+            <span className={styles.invitationTitleStyle}>{name}</span>
             <div className={styles.dividerStyle} />
-            <span className={styles.discountRateStyle}>
-              {product.discountRate}%
-            </span>
-            <span className={styles.priceStyle}>
-              {product.price.toLocaleString()}
-            </span>
+            <span className={styles.discountRateStyle}>{discountRate}%</span>
+            <span className={styles.priceStyle}>{price.toLocaleString()}</span>
           </div>
-          <small className={styles.descriptionStyle}>
-            {product.description}
-          </small>
+          <small className={styles.descriptionStyle}>{description}</small>
         </div>
         <ul className={styles.ulStyle}>
           <li className={styles.liStyle}>
@@ -88,7 +55,7 @@ const InvitationSelect = () => {
             <div className={styles.selectBoxWrapper}>
               <SelectBox
                 label="수량 (필수)"
-                options={selectOptions.quantity}
+                options={convertToSelectOptions(optionGroupList, "QUANTITY")}
                 selected={formState.quantity}
                 onSelect={(value) => handleSelect("quantity", value)}
                 variant="product"
@@ -100,7 +67,7 @@ const InvitationSelect = () => {
             <div className={styles.selectBoxWrapper}>
               <SelectBox
                 label="종류 (선택)"
-                options={selectOptions.sticker}
+                options={convertToSelectOptions(optionGroupList, "STICKER")}
                 selected={formState.sticker}
                 onSelect={(value) => handleSelect("sticker", value)}
                 variant="product"
@@ -112,7 +79,7 @@ const InvitationSelect = () => {
             <div className={styles.selectBoxWrapper}>
               <SelectBox
                 label="종류 (선택)"
-                options={selectOptions.envelope}
+                options={convertToSelectOptions(optionGroupList, "ENVELOPE")}
                 selected={formState.envelope}
                 onSelect={(value) => handleSelect("envelope", value)}
                 variant="product"
@@ -124,7 +91,7 @@ const InvitationSelect = () => {
             <div className={styles.selectBoxWrapper}>
               <SelectBox
                 label="종류 (선택)"
-                options={selectOptions.ribbon}
+                options={convertToSelectOptions(optionGroupList, "RIBBON")}
                 selected={formState.ribbon}
                 onSelect={(value) => handleSelect("ribbon", value)}
                 variant="product"
@@ -136,7 +103,7 @@ const InvitationSelect = () => {
             <div className={styles.selectBoxWrapper}>
               <SelectBox
                 label="추가 서비스 (선택)"
-                options={selectOptions.service}
+                options={convertToSelectOptions(optionGroupList, "ADDITIONAL")}
                 selected={formState.service}
                 onSelect={(value) => handleSelect("service", value)}
                 variant="product"
@@ -148,7 +115,7 @@ const InvitationSelect = () => {
             <div className={styles.selectBoxWrapper}>
               <SelectBox
                 label="무료 제공 (선택)"
-                options={selectOptions.mobile}
+                options={convertToSelectOptions(optionGroupList, "MOBILE")}
                 selected={formState.mobile}
                 onSelect={(value) => handleSelect("mobile", value)}
                 variant="product"
