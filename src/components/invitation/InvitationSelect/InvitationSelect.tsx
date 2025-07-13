@@ -9,7 +9,6 @@ import { InvitationItemDetail, ValueType } from "@types";
 
 import * as styles from "./InvitationSelect.css";
 
-
 const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
   const {
     mainImageUrl,

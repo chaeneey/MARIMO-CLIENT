@@ -42,6 +42,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             className={inputStyle({ errorMessage: !!errorMessage })}
+            value={value}
             {...props}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
