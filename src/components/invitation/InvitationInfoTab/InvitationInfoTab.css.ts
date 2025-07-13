@@ -26,6 +26,15 @@ export const h2Style = style([
   },
 ]);
 
+export const paperCardWrapper = style([
+  flexGenerator("row", "space-between"),
+  {
+    width: "100%",
+    height: "100%",
+    marginBottom: "12.15rem",
+  },
+]);
+
 export const mobileCardWrapper = style({
   width: "100%",
   display: "grid",

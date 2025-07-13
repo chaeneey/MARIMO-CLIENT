@@ -32,3 +32,7 @@ export { default as IcStrokeLeft } from "./IcStrokeLeft";
 export { default as IcStrokeRight } from "./IcStrokeRight";
 export { default as IcTurnOffSound } from "./IcTurnOffSound";
 export { default as IcTurnOnSound } from "./IcTurnOnSound";
+export { default as SvgCardsize } from "./SvgCardsize";
+export { default as SvgRibbon } from "./SvgRibbon";
+export { default as SvgShape } from "./SvgShape";
+export { default as SvgSize } from "./SvgSize";

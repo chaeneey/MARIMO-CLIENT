@@ -1,21 +1,22 @@
 "use client";
-import { useState } from "react";
-
 import { checkboxStyle } from "./CheckBox.css";
 
-const CheckBox = () => {
-  const [isChecked, setIsChecked] = useState(false);
+interface CheckBoxProps {
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+}
 
-  const handleCheck = () => {
-    setIsChecked((prev) => !prev);
+const CheckBox = ({ checked, onChange }: CheckBoxProps) => {
+  const handleClick = () => {
+    onChange(!checked);
   };
 
   return (
     <div
       className={checkboxStyle({
-        state: isChecked ? "checked" : "unchecked",
+        state: checked ? "checked" : "unchecked",
       })}
-      onClick={handleCheck}
+      onClick={handleClick}
     />
   );
 };
