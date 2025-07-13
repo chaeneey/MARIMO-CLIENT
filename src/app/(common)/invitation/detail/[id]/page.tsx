@@ -16,7 +16,9 @@ const page = async ({ params }) => {
           후 결제하실 수 있습니다. (영업일 기준 2~3일 소요)
         </small>
       </div>
-      <InvitationInfoTab detailImageList={invitationItemDetail.detailImageList} />
+      <InvitationInfoTab
+        detailImageList={invitationItemDetail.detailImageList}
+      />
     </div>
   );
 };
