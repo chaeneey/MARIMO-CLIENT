@@ -1,7 +1,11 @@
+import { fetchInvitationItemList } from "@/apis/domains/invitation/fetchInvitationItemList";
+
 import * as styles from "./InvitationMain.css";
 import ProductsSection from "../ProductsSection/ProductsSection";
 
-const InvitationMain = () => {
+const InvitationMain = async () => {
+  const invitationItemList = await fetchInvitationItemList();
+
   return (
     <section className={styles.mainSectionStyle}>
       <div className={styles.textSectionStyle}>
@@ -17,7 +21,7 @@ const InvitationMain = () => {
           </span>
         </p>
       </div>
-      <ProductsSection />
+      <ProductsSection invitationItemList={invitationItemList} />
     </section>
   );
 };

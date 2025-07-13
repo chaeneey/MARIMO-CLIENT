@@ -1,34 +1,24 @@
 import { Chip, CustomImage } from "@/components/common";
+import { InvitationItem } from "@types";
 
 import * as styles from "./InvitationProduct.css";
 
-interface InvitationProductProps {
-  imageUrl: string;
-  title: string;
-  discountRate: number;
-  price: number;
-  piece: number;
-  id: number;
-}
-type ProductProps = {
-  product: InvitationProductProps;
-};
-
-const InvitationProduct = ({ product }: ProductProps) => {
-  const { imageUrl, title, discountRate, price, piece, id } = product;
+const InvitationProduct = ({ invitationItem }: InvitationItem) => {
+  const { id, imageUrl, hasBundle, name, discountRate, price, quantity } =
+    invitationItem;
   return (
     <article className={styles.articleWrapperStyle}>
       <div className={styles.imageSection}>
         <CustomImage src={imageUrl} alt={`${imageUrl}-${id}`} />
       </div>
-      <Chip text="세트 구성" />
+      {hasBundle && <Chip text="세트 구성" />}
       <div className={styles.discriptionBox}>
-        <span className={styles.titleStyle}>{title}</span>
+        <span className={styles.titleStyle}>{name}</span>
         <div className={styles.detailWrapper}>
           <span className={styles.discountRateStyle}>{discountRate}%</span>
           <span className={styles.body08BlackStyle}>{price}원</span>
           <div className={styles.dividerStyle} />
-          <span className={styles.body08BlackStyle}>{piece}장</span>
+          <span className={styles.body08BlackStyle}>{quantity}</span>
         </div>
       </div>
     </article>
