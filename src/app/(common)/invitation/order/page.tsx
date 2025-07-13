@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 
 import { Accordion, Button, ImageDragBox } from "@/components/common";
@@ -19,9 +18,18 @@ import {
 import * as styles from "./page.css";
 
 const accordionItems = [
-  { title: "주문자 정보", content: <OrderInfoSection /> },
-  { title: "청첩장 공통정보 입력", content: <CommonInfoSection /> },
-  { title: "종이 청첩장 기본 정보", content: <CoverInfoSection /> },
+  {
+    title: "주문자 정보",
+    content: <OrderInfoSection />,
+  },
+  {
+    title: "청첩장 공통정보 입력",
+    content: <CommonInfoSection />,
+  },
+  {
+    title: "종이 청첩장 기본 정보",
+    content: <CoverInfoSection />,
+  },
   { title: "전세버스", hasCheckbox: true, content: <BusSection /> },
   { title: "피로연", hasCheckbox: true, content: <PartySection /> },
   {

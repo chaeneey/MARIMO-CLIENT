@@ -1,14 +1,19 @@
 "use client";
-
 import { useState } from "react";
 
 import { Button, Input, SelectBox } from "@/components/common";
+import useOrderFormData from "@/hooks/useOrderFormData";
 
 import * as styles from "./OrderInfoSection.css";
 
 const OrderInfoSection = () => {
+  const { orderFormData, handleOrderFormData } = useOrderFormData();
+  const { getValues } = useForm();
+
   const [email, setEmail] = useState("직접 입력");
   const [phoneNumber, setPhoneNumber] = useState("010");
+
+  
 
   return (
     <>
@@ -18,6 +23,8 @@ const OrderInfoSection = () => {
           placeholder="주문자명을 입력해주세요"
           infoMessage="디자인 확인(교정)이 가능한 분의 성합을 기입해 주세요."
           maxWidth="32rem"
+          
+          // {...register()}
         />
       </div>
 
