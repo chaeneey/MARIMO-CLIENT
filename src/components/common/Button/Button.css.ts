@@ -1,3 +1,4 @@
+import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
 import { flexGenerator } from "@styles/generator.css";
@@ -74,4 +75,9 @@ export const buttonColorStyle = recipe({
       ],
     },
   },
+});
+
+export const disabledStyle = style({
+  backgroundColor: vars.colors.gray03,
+  color: vars.colors.gray04,
 });

@@ -1,9 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 
-import { Button, CustomImage, SelectBox } from "@/components/common";
+import {
+  Button,
+  CustomImage,
+  SelectBox,
+  Modal,
+  AgreeModal,
+} from "@/components/common";
 import convertToSelectOptions from "@/utils/convertToSelectOptions";
 import { InvitationItemDetail, ValueType } from "@types";
 
@@ -26,6 +31,11 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
     service: { keyValue: "", subValue: "" },
     mobile: { keyValue: "", subValue: "" },
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
 
   const handleSelect = (key: keyof typeof formState, value: ValueType) => {
     setFormState((prev) => ({
@@ -123,13 +133,16 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
           </li>
         </ul>
         <div className={styles.orderButtonWrapper}>
-          <Link href={"/invitation/order"}>
-            <Button size="56" color="lime01">
-              주문하기
-            </Button>
-          </Link>
+          <Button size="56" color="lime01" onClick={() => setIsModalOpen(true)}>
+            주문하기
+          </Button>
         </div>
       </div>
+      {isModalOpen && (
+        <Modal onClose={handleModalClose}>
+          <AgreeModal onClose={handleModalClose} />
+        </Modal>
+      )}
     </section>
   );
 };
