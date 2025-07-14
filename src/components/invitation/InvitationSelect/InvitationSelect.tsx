@@ -143,7 +143,7 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
       </div>
       {isModalOpen && (
         <Modal onClose={handleModalClose}>
-          <AgreeModal />
+          <AgreeModal onClose={handleModalClose} />
         </Modal>
       )}
     </section>

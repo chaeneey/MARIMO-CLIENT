@@ -18,6 +18,7 @@ export { default as IcArrowUnderGray05 } from "./IcArrowUnderGray05";
 export { default as IcArrowUnderGray0518 } from "./IcArrowUnderGray0518";
 export { default as IcArrowUnderGray0534 } from "./IcArrowUnderGray0534";
 export { default as IcBtnDelete } from "./IcBtnDelete";
+export { default as IcDeleteGray0428 } from "./IcDeleteGray0428";
 export { default as IcInsta } from "./IcInsta";
 export { default as IcKakao } from "./IcKakao";
 export { default as IcLogoLarge } from "./IcLogoLarge";

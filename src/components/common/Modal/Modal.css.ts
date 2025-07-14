@@ -26,7 +26,7 @@ export const modalContentStyle = style([
     transform: "translate(-50%, -50%)",
     zIndex: "4",
 
-    borderRadius: "10px",
+    borderRadius: "12px",
     backgroundColor: vars.colors.white,
   },
 ]);
