@@ -29,7 +29,7 @@ export const modalHeaderH1 = style([
 ]);
 
 export const deleteBtnStyle = style({
-  cursor: "pointer"
+  cursor: "pointer",
 });
 
 export const questionBox = style([

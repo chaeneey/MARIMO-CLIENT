@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 
 import {
@@ -134,11 +133,9 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
           </li>
         </ul>
         <div className={styles.orderButtonWrapper}>
-          {/* <Link href={"/invitation/order"}> */}
           <Button size="56" color="lime01" onClick={() => setIsModalOpen(true)}>
             주문하기
           </Button>
-          {/* </Link> */}
         </div>
       </div>
       {isModalOpen && (

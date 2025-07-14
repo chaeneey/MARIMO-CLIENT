@@ -8,10 +8,10 @@ import Button from "../Button/Button";
 import CheckBox from "../CheckBox/CheckBox";
 
 interface AgreeModalProps {
-    onClose: () => void;
+  onClose: () => void;
 }
 
-const AgreeModal = ({onClose}: AgreeModalProps) => {
+const AgreeModal = ({ onClose }: AgreeModalProps) => {
   const [agreePersonal, setAgreePersonal] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [agreeMarketing, setAgreeMarketing] = useState(false);
