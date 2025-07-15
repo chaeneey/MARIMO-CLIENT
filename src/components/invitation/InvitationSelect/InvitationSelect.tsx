@@ -1,5 +1,5 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import {
@@ -15,6 +15,8 @@ import { InvitationItemDetail, ValueType } from "@types";
 import * as styles from "./InvitationSelect.css";
 
 const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
+  const router = useRouter();
+
   const {
     mainImageUrl,
     name,
@@ -43,6 +45,19 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
       [key]: value,
     }));
   };
+
+  const handleFinalOrder = () => {
+    const query = new URLSearchParams();
+
+    Object.entries(formState).forEach(([key, value]) => {
+      query.append(`${key}`, value.keyValue);
+    });
+
+    router.push(`/invitation/order?${query.toString()}`);
+  };
+
+  const isOrderDisabled = !formState.quantity.keyValue;
+
   return (
     <section className={styles.sectionStyle}>
       <div className={styles.invitationImageStyle}>
@@ -133,14 +148,22 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
           </li>
         </ul>
         <div className={styles.orderButtonWrapper}>
-          <Button size="56" color="lime01" onClick={() => setIsModalOpen(true)}>
+          <Button
+            size="56"
+            color="lime01"
+            disabled={isOrderDisabled}
+            onClick={() => setIsModalOpen(true)}
+          >
             주문하기
           </Button>
         </div>
       </div>
       {isModalOpen && (
         <Modal onClose={handleModalClose}>
-          <AgreeModal onClose={handleModalClose} />
+          <AgreeModal
+            onClose={handleModalClose}
+            onFinalOrder={handleFinalOrder}
+          />
         </Modal>
       )}
     </section>

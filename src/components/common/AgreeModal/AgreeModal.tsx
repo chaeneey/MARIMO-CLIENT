@@ -9,9 +9,10 @@ import CheckBox from "../CheckBox/CheckBox";
 
 interface AgreeModalProps {
   onClose: () => void;
+  onFinalOrder: () => void;
 }
 
-const AgreeModal = ({ onClose }: AgreeModalProps) => {
+const AgreeModal = ({ onClose, onFinalOrder }: AgreeModalProps) => {
   const [agreePersonal, setAgreePersonal] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [agreeMarketing, setAgreeMarketing] = useState(false);
@@ -92,7 +93,12 @@ const AgreeModal = ({ onClose }: AgreeModalProps) => {
         위의 사항에 대해 전체 동의합니다.
       </span>
       <div className={styles.buttonWrapper}>
-        <Button size="50" color="lime01" disabled={!isRequiredAgreed}>
+        <Button
+          size="50"
+          color="lime01"
+          disabled={!isRequiredAgreed}
+          onClick={onFinalOrder}
+        >
           주문하기
         </Button>
       </div>
