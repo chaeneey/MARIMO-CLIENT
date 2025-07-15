@@ -1,5 +1,5 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import {
@@ -15,6 +15,8 @@ import { InvitationItemDetail, ValueType } from "@types";
 import * as styles from "./InvitationSelect.css";
 
 const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
+  const router = useRouter();
+
   const {
     mainImageUrl,
     name,
@@ -43,6 +45,18 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
       [key]: value,
     }));
   };
+
+  const handleFinalOrder = () => {
+    const query = new URLSearchParams();
+
+    Object.entries(formState).forEach(([key, value]) => {
+      query.append(`${key}`, value.keyValue);
+    });
+
+    router.push(`/invitation/order?${query.toString()}`);
+  };
+
+  console.log(formState);
   return (
     <section className={styles.sectionStyle}>
       <div className={styles.invitationImageStyle}>
@@ -140,7 +154,10 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
       </div>
       {isModalOpen && (
         <Modal onClose={handleModalClose}>
-          <AgreeModal onClose={handleModalClose} />
+          <AgreeModal
+            onClose={handleModalClose}
+            onFinalOrder={handleFinalOrder}
+          />
         </Modal>
       )}
     </section>
