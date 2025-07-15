@@ -45,6 +45,15 @@ export interface InvitationItemDetail {
   detailImageList: string[];
 }
 
+export interface PreVideoDetail {
+  mainImageUrl: string;
+  name: string;
+  discountRate: number;
+  price: number;
+  description: string;
+  sampleVideoUrl: string;
+}
+
 export type PreVideoItem = {
   id: number;
   imageUrl: string;
