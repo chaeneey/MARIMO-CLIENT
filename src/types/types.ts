@@ -44,3 +44,16 @@ export interface InvitationItemDetail {
   optionGroupList: OptionGroup[];
   detailImageList: string[];
 }
+
+export type PreVideoItem = {
+  id: number;
+  imageUrl: string;
+  sampleVideoUrl: string;
+  name: string;
+  discountRate: number;
+  price: number;
+};
+
+export type PreVideoItemList = {
+  preVideoList: PreVideoItem[];
+};
