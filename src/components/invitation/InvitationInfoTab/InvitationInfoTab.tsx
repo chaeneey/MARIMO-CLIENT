@@ -10,12 +10,17 @@ import {
   CardMessage,
   CardPayment,
   CardShare,
+  SvgCardsize,
+  SvgRibbon,
+  SvgShape,
+  SvgSize,
 } from "@/assets/svgs";
+import { CustomImage } from "@/components/common";
 import { Accordion, TabBar } from "@/components/common";
 
 import * as styles from "./InvitationInfoTab.css";
 
-const InvitationInfoTab = () => {
+const InvitationInfoTab = ({ detailImageList }: string[]) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const productInfoRef = useRef<HTMLDivElement>(null);
@@ -51,7 +56,12 @@ const InvitationInfoTab = () => {
       <section ref={productInfoRef}>
         <div>
           <h2 className={styles.h2Style}>종이청첩장</h2>
-          <div>종이 청첩장 카드 4개 들어갈거임</div>
+          <div className={styles.paperCardWrapper}>
+            <SvgCardsize width={192} height={136} />
+            <SvgShape width={192} height={136} />
+            <SvgSize width={192} height={136} />
+            <SvgRibbon width={192} height={136} />
+          </div>
         </div>
         <div>
           <h2 className={styles.h2Style}>모바일 청첩장</h2>
@@ -67,7 +77,11 @@ const InvitationInfoTab = () => {
           </div>
         </div>
       </section>
-      <section ref={detailImageRef}>{/* <CustomImage /> */}</section>
+      <section ref={detailImageRef} className={styles.imageSectionStyle}>
+        {detailImageList.map((image, i) => (
+          <CustomImage key={i} src={image} alt="청첩장 이미지" />
+        ))}
+      </section>
       <section ref={checkBeforeOrderRef}>
         <h2 className={styles.h2Style}>주문 전 체크</h2>
         <ul className={styles.checkListUlStyle}>

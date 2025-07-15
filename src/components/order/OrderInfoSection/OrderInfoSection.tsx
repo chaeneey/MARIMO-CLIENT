@@ -1,17 +1,20 @@
 "use client";
 import { ChangeEvent, useState } from "react";
+import { useDaumPostcodePopup } from "react-daum-postcode";
 
 import { Button, Input, SelectBox } from "@/components/common";
 import { CustomerInfoType } from "@types";
 
 import * as styles from "./OrderInfoSection.css";
-
 interface OrderInfoSectionProps {
   customerInfoData: CustomerInfoType;
   handleCustomerInfoChange: (
     key: keyof CustomerInfoType,
   ) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
+
+const scriptUrl =
+  "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
 
 const OrderInfoSection = ({
   customerInfoData,
@@ -27,6 +30,11 @@ const OrderInfoSection = ({
     second: "",
     third: "",
   });
+  const [form, setForm] = useState({
+    address: "",
+    addressDetail: "",
+    zonecode: "",
+  });
 
   const handleChangePhoneNumber = () => {
     const fullNumber =
@@ -41,6 +49,34 @@ const OrderInfoSection = ({
     handleCustomerInfoChange("email")({
       target: { value: fullEmail },
     } as ChangeEvent<HTMLInputElement>);
+  };
+
+  const open = useDaumPostcodePopup(scriptUrl);
+
+  const handleComplete = (data: DaumPostcodeData) => {
+    let fullAddress = data.address;
+    let extraAddress = "";
+
+    if (data.addressType === "R") {
+      if (data.bname !== "") {
+        extraAddress += data.bname;
+      }
+      if (data.buildingName !== "") {
+        extraAddress +=
+          extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
+      }
+      fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
+    }
+
+    setForm((prevForm) => ({
+      ...prevForm,
+      address: fullAddress,
+      zonecode: data.zonecode,
+    }));
+  };
+
+  const handleClick = () => {
+    open({ onComplete: handleComplete });
   };
 
   return (
@@ -61,16 +97,27 @@ const OrderInfoSection = ({
         <div className={styles.customerAdressInputWrapper}>
           <div className={styles.customerAdressSearchWrapper}>
             <Input
+              value={form.zonecode}
               maxWidth="32rem"
               placeholder="우편번호를 입력해주세요"
-              readOnly={true}
+              readOnly
             />
-            <Button size="56" color="stroke">
+            <Button size="56" color="stroke" onClick={handleClick}>
               주소검색
             </Button>
           </div>
-          <Input maxWidth="62rem" readOnly={true} />
           <Input
+            value={form.address}
+            type="text"
+            placeholder="건물, 지번 또는 도로명 검색"
+            maxWidth="62rem"
+            readOnly={true}
+          />
+          <Input
+            value={form.addressDetail}
+            onChange={(e) =>
+              setForm({ ...form, addressDetail: e.target.value })
+            }
             maxWidth="62rem"
             placeholder="상세 주소를 입력해주세요. 예시) 마리빌 205호"
             value={customerInfoData.detailAddress}
