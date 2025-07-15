@@ -1,19 +1,47 @@
 "use client";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 import { Button, Input, SelectBox } from "@/components/common";
-import useOrderFormData from "@/hooks/useOrderFormData";
+import { CustomerInfoType } from "@types";
 
 import * as styles from "./OrderInfoSection.css";
 
-const OrderInfoSection = () => {
-  const { orderFormData, handleOrderFormData } = useOrderFormData();
-  const { getValues } = useForm();
+interface OrderInfoSectionProps {
+  customerInfoData: CustomerInfoType;
+  handleCustomerInfoChange: (
+    key: keyof CustomerInfoType,
+  ) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+}
 
-  const [email, setEmail] = useState("직접 입력");
-  const [phoneNumber, setPhoneNumber] = useState("010");
+const OrderInfoSection = ({
+  customerInfoData,
+  handleCustomerInfoChange,
+}: OrderInfoSectionProps) => {
+  const [email, setEmail] = useState({
+    emailId: "",
+    emailDomain: "",
+  });
+  const [selectedEmailDomain, setSelectedEmailDomain] = useState("직접 입력");
+  const [firstPhoneNumber, setFirstPhoneNumber] = useState("010");
+  const [phoneNumber, setPhoneNumber] = useState({
+    second: "",
+    third: "",
+  });
 
-  
+  const handleChangePhoneNumber = () => {
+    const fullNumber =
+      firstPhoneNumber + "-" + phoneNumber.second + "-" + phoneNumber.third;
+    handleCustomerInfoChange("phoneNumber")({
+      target: { value: fullNumber },
+    } as ChangeEvent<HTMLInputElement>);
+  };
+
+  const handleChangeEmail = () => {
+    const fullEmail = email.emailId + "@" + email.emailDomain;
+    handleCustomerInfoChange("email")({
+      target: { value: fullEmail },
+    } as ChangeEvent<HTMLInputElement>);
+  };
 
   return (
     <>
@@ -23,8 +51,8 @@ const OrderInfoSection = () => {
           placeholder="주문자명을 입력해주세요"
           infoMessage="디자인 확인(교정)이 가능한 분의 성합을 기입해 주세요."
           maxWidth="32rem"
-          
-          // {...register()}
+          value={customerInfoData.name}
+          onChange={handleCustomerInfoChange("name")}
         />
       </div>
 
@@ -45,6 +73,8 @@ const OrderInfoSection = () => {
           <Input
             maxWidth="62rem"
             placeholder="상세 주소를 입력해주세요. 예시) 마리빌 205호"
+            value={customerInfoData.detailAddress}
+            onChange={handleCustomerInfoChange("detailAddress")}
           />
         </div>
       </div>
@@ -62,21 +92,62 @@ const OrderInfoSection = () => {
               { value: { keyValue: "018" } },
               { value: { keyValue: "019" } },
             ]}
-            selected={{ keyValue: phoneNumber }}
-            onSelect={(value) => setPhoneNumber(value.keyValue)}
+            selected={{ keyValue: firstPhoneNumber }}
+            onSelect={(value) => {
+              setFirstPhoneNumber(value.keyValue);
+              handleChangePhoneNumber();
+            }}
             variant="order"
           />
-          <Input maxWidth="15rem" placeholder="1234" />
-          <Input maxWidth="15rem" placeholder="1234" />
+          <Input
+            maxWidth="15rem"
+            placeholder="1234"
+            value={phoneNumber["second"]}
+            onChange={(e) => {
+              setPhoneNumber((prev) => ({ ...prev, second: e.target.value }));
+            }}
+          />
+          <Input
+            maxWidth="15rem"
+            placeholder="1234"
+            value={phoneNumber["third"]}
+            onChange={(e) => {
+              setPhoneNumber((prev) => ({ ...prev, third: e.target.value }));
+              handleChangePhoneNumber();
+            }}
+          />
         </div>
       </div>
 
       <div className={styles.customerEmailWrapper}>
         <h3 className={styles.inputTextStyle}>이메일</h3>
         <div className={styles.customerEmailInputWrapper}>
-          <Input maxWidth="24rem" placeholder="marimo1234" />
+          <Input
+            maxWidth="24rem"
+            placeholder="marimo1234"
+            value={email.emailId}
+            onChange={(e) => {
+              setEmail((prev) => ({ ...prev, emailId: e.target.value }));
+              handleChangeEmail();
+            }}
+          />
           <span className={styles.customerEmailTextStyle}>@</span>
-          <Input maxWidth="24rem" placeholder="gmail.com" />
+          <Input
+            maxWidth="24rem"
+            placeholder="gmail.com"
+            value={email.emailDomain}
+            onChange={(e) => {
+              if (selectedEmailDomain == "직접 입력") {
+                setEmail((prev) => ({ ...prev, emailDomain: e.target.value }));
+              } else {
+                setEmail((prev) => ({
+                  ...prev,
+                  emailDomain: selectedEmailDomain,
+                }));
+              }
+              handleChangeEmail();
+            }}
+          />
           <SelectBox
             label="직접 입력"
             options={[
@@ -86,8 +157,11 @@ const OrderInfoSection = () => {
               { value: { keyValue: "daum.net" } },
               { value: { keyValue: "nate.com" } },
             ]}
-            selected={{ keyValue: email }}
-            onSelect={(value) => setEmail(value.keyValue)}
+            selected={{ keyValue: selectedEmailDomain }}
+            onSelect={(value) => {
+              setSelectedEmailDomain(value.keyValue);
+              handleChangeEmail();
+            }}
             variant="order"
           />
         </div>

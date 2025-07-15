@@ -14,7 +14,7 @@ import {
 } from "./Input.css";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  errorMessage?: string;
+  errorMessage?: string | undefined;
   infoMessage?: string;
   handleClearInput?: () => void;
   maxWidth?: string;
