@@ -16,7 +16,9 @@ const InvitationProduct = ({ invitationItem }: InvitationItem) => {
         <span className={styles.titleStyle}>{name}</span>
         <div className={styles.detailWrapper}>
           <span className={styles.discountRateStyle}>{discountRate}%</span>
-          <span className={styles.body08BlackStyle}>{price}원</span>
+          <span className={styles.body08BlackStyle}>
+            {price.toLocaleString()}원
+          </span>
           <div className={styles.dividerStyle} />
           <span className={styles.body08BlackStyle}>{quantity}</span>
         </div>
