@@ -4,12 +4,12 @@ import { VideoInfoTab, VideoSelect } from "@/components/video";
 import { videoDetailLayout } from "./page.css";
 
 const page = async ({ params }) => {
-  const { id } = params;
+  const { id } = await params;
   const preVideoDetail = await fetchVideoItemDetail(id);
   return (
     <div className={videoDetailLayout}>
       <VideoSelect preVideoDetail={preVideoDetail} />
-      <VideoInfoTab />
+      <VideoInfoTab videoUrl={preVideoDetail.sampleVideoUrl} />
     </div>
   );
 };

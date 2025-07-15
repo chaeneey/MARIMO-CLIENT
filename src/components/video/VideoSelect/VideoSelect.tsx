@@ -6,13 +6,12 @@ import { PreVideoDetail } from "@types";
 import * as styles from "./VideoSelect.css";
 
 const VideoSelect = ({ preVideoDetail }: PreVideoDetail) => {
-  console.log(preVideoDetail);
   const { mainImageUrl, name, discountRate, price, description } =
     preVideoDetail;
   return (
     <div className={styles.videoSelectLayout}>
       <div className={styles.videoImageStyle}>
-        <CustomImage src={mainImageUrl} />
+        <CustomImage src={mainImageUrl} alt="식전영상-썸네일" priority />
       </div>
       <section className={styles.videoOrderContainer}>
         <section className={styles.videoOrderTopSection}>
@@ -36,7 +35,9 @@ const VideoSelect = ({ preVideoDetail }: PreVideoDetail) => {
           <div className={styles.videoSelectBar} />
           <div className={styles.videoOrderCenterWrapper}>
             <span className={styles.videoTextStyle}>1개</span>
-            <span className={styles.videoTextStyle}>{price.toLocaleString()}원</span>
+            <span className={styles.videoTextStyle}>
+              {price.toLocaleString()}원
+            </span>
           </div>
         </section>
 
@@ -44,7 +45,9 @@ const VideoSelect = ({ preVideoDetail }: PreVideoDetail) => {
 
         <section className={styles.videoOrderCenterWrapper}>
           <span className={styles.videoTotalTextStyle}>총 주문금액</span>
-          <span className={styles.videoTotalPriceStyle}>{price.toLocaleString()}원</span>
+          <span className={styles.videoTotalPriceStyle}>
+            {price.toLocaleString()}원
+          </span>
         </section>
 
         <div className={styles.videoOrderButtonStyle}>
