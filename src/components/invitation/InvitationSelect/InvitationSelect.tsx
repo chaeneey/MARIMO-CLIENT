@@ -56,7 +56,8 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
     router.push(`/invitation/order?${query.toString()}`);
   };
 
-  console.log(formState);
+  const isOrderDisabled = !formState.quantity.keyValue;
+
   return (
     <section className={styles.sectionStyle}>
       <div className={styles.invitationImageStyle}>
@@ -147,7 +148,12 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
           </li>
         </ul>
         <div className={styles.orderButtonWrapper}>
-          <Button size="56" color="lime01" onClick={() => setIsModalOpen(true)}>
+          <Button
+            size="56"
+            color="lime01"
+            disabled={isOrderDisabled}
+            onClick={() => setIsModalOpen(true)}
+          >
             주문하기
           </Button>
         </div>
