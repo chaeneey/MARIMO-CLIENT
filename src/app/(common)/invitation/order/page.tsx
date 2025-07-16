@@ -36,6 +36,7 @@ const Page = () => {
     handleOptionListChange,
     handleCustomerInfoChange,
     handleInvitationCommonInfoChange,
+    handleInvitationCommonInfoBooleanChange,
     handlePaperInvitationChange,
     handleCharterBusChange,
     handleReceptionChange,
@@ -64,6 +65,9 @@ const Page = () => {
         <CommonInfoSection
           invitationCommonInfoData={invitationCommonInfoData}
           handleInvitationCommonInfoChange={handleInvitationCommonInfoChange}
+          handleInvitationCommonInfoBooleanChange={
+            handleInvitationCommonInfoBooleanChange
+          }
         />
       ),
     },
@@ -174,7 +178,7 @@ const Page = () => {
             size="50"
             color="lime01"
             onClick={() => {
-              console.log(customerInfoData);
+              console.log(customerInfoData, invitationCommonInfoData);
             }}
             type="button"
           >

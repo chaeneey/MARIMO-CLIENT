@@ -1,6 +1,9 @@
 import { useState } from "react";
 
-import { createChangeHandler } from "@/utils/createChangeHandler";
+import {
+  createBooleanChangeHandler,
+  createChangeHandler,
+} from "@/utils/createChangeHandler";
 
 const useOrderFormData = () => {
   const [productOrderData, setProductOrderData] = useState({
@@ -17,8 +20,13 @@ const useOrderFormData = () => {
     zoneCode: "",
     address: "",
     detailAddress: "",
-    phoneNumber: "",
-    email: "",
+    // phoneNumber: "",
+    firstPhoneNumber: "010",
+    secondPhoneNumber: "",
+    thirdPhoneNumber: "",
+    // email: "",
+    emailId: "",
+    emailDomain: "직접 입력",
   });
 
   const [invitationCommonInfoData, setInvitationCommonInfoData] = useState({
@@ -29,8 +37,10 @@ const useOrderFormData = () => {
     groomMotherDeceased: false,
     hasGroomMotherChristianName: false,
     groomMotherName: "",
-    groomMotherChristianName: false,
+    groomMotherChristianName: "",
+    hasGroomChristianName: false,
     groomName: "",
+    groomChristianName: "",
     brideFatherDeceased: false,
     hasBrideFatherChristianName: false,
     brideFatherName: "",
@@ -39,8 +49,13 @@ const useOrderFormData = () => {
     hasBrideMotherChristianName: false,
     brideMotherName: "",
     brideMotherChristianName: "",
+    hasBrideChristianName: false,
     brideName: "",
-    weddingDatetime: "",
+    brideChristianName: false,
+    // weddingDatetime: "",
+    weddingDate: "",
+    weddingHour: "",
+    weddingMinite: "",
     weddingVenueZoneCode: "",
     weddingVenueAddress: "",
     weddingVenueDetailAddress: "",
@@ -123,6 +138,10 @@ const useOrderFormData = () => {
   const handleInvitationCommonInfoChange = createChangeHandler(
     setInvitationCommonInfoData,
   );
+  const handleInvitationCommonInfoBooleanChange = createBooleanChangeHandler(
+    setInvitationCommonInfoData,
+  );
+
   const handlePaperInvitationChange = createChangeHandler(
     setPaperInvitationInfoData,
   );
@@ -158,6 +177,7 @@ const useOrderFormData = () => {
     handleProductOrderChange,
     handleCustomerInfoChange,
     handleInvitationCommonInfoChange,
+    handleInvitationCommonInfoBooleanChange,
     handlePaperInvitationChange,
     handleCharterBusChange,
     handleReceptionChange,

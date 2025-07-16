@@ -47,7 +47,7 @@ export const nameInfoInputWrapper = style([
 ]);
 
 export const nameInfoInputWithCheckbox = style([
-  flexGenerator("row", "flex-start"),
+  flexGenerator("row", "flex-start", "flex-start"),
   {
     gap: "2.9rem",
     width: "100%",
@@ -58,6 +58,15 @@ export const nameInfoInputWithCheckbox = style([
         alignItems: "flex-start",
       },
     },
+  },
+]);
+
+export const nameInfoInputAddStyle = style([
+  flexGenerator("column", "flex-start", "flex-start"),
+  {
+    width: "100%",
+    maxWidth: "32rem",
+    gap: "0.5rem",
   },
 ]);
 
@@ -72,6 +81,7 @@ export const nameInfoCheckboxStyle = style([
   flexGenerator("row", "flex-start"),
   {
     gap: "1rem",
+    paddingTop: "1.6rem",
   },
 ]);
 

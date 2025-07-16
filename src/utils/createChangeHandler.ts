@@ -7,3 +7,11 @@ export const createChangeHandler =
     const value = e.target.value as T[K];
     setState((prev) => ({ ...prev, [key]: value }));
   };
+
+export const createBooleanChangeHandler =
+  <T>(setState: Dispatch<SetStateAction<T>>) =>
+  <K extends keyof T>(key: K) =>
+  (checked: boolean) => {
+    const value = checked as T[K];
+    setState((prev) => ({ ...prev, [key]: value }));
+  };

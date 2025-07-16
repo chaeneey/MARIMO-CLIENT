@@ -23,31 +23,49 @@ export type CustomerInfoType = {
   zoneCode: string;
   address: string;
   detailAddress?: string;
-  phoneNumber: string;
-  email: string;
+  // phoneNumber: string;
+  // email: string;
+  firstPhoneNumber: string;
+  secondPhoneNumber: string;
+  thirdPhoneNumber: string;
+  // email: "",
+  emailId: string;
+  emailDomain: string;
 };
 
-export type InvitationCommonInfo = {
+export type InvitationCommonInfoType = {
   groomFatherDeceased: boolean;
   hasGroomFatherChristianName: boolean;
   groomFatherName?: string;
   groomFatherChristianName?: string;
+
   groomMotherDeceased: boolean;
   hasGroomMotherChristianName: boolean;
   groomMotherName?: string;
-  groomMotherChristianName?: boolean;
+  groomMotherChristianName?: string;
+
+  hasGroomChristianName: boolean;
   groomName: string;
+  groomChristianName?: string;
+
   brideFatherDeceased: boolean;
   hasBrideFatherChristianName: boolean;
   brideFatherName?: string;
   brideFatherChristianName?: string;
-  brideMotherDeceased: false;
-  hasBrideMotherChristianName: false;
+
+  brideMotherDeceased: boolean;
+  hasBrideMotherChristianName: boolean;
   brideMotherName?: string;
   brideMotherChristianName?: string;
-  brideName: string;
 
-  weddingDatetime: string;
+  hasBrideChristianName: boolean;
+  brideName: string;
+  brideChristianName: string;
+
+  // weddingDateTime: string;
+  weddingDate: string;
+  weddingHour: string;
+  weddingMinite: string;
   weddingVenueZoneCode: string;
   weddingVenueAddress: string;
   weddingVenueDetailAddress?: string;
@@ -156,4 +174,3 @@ export interface InvitationItemDetail {
   optionGroupList: OptionGroup[];
   detailImageList: string[];
 }
-
