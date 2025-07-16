@@ -24,8 +24,6 @@ const InvitationProductSection = ({
   options,
   hasMobileInvitation,
 }: InvitationProductSectionProps) => {
-  console.log(options);
-
   const quantityOption = options.find((opt) => opt.optionType === "QUANTITY");
   const envelopeOption = options.find((opt) => opt.optionType === "ENVELOPE");
   const ribbonOption = options.find((opt) => opt.optionType === "RIBBON");

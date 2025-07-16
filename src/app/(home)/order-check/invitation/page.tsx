@@ -32,7 +32,6 @@ const Page = () => {
     customerName,
     orderCode,
   });
-  console.log(data);
 
   if (!data) {
     return <div>로딩 중...</div>;
@@ -112,7 +111,6 @@ const Page = () => {
           </Accordion>
         ))}
       </section>
-
       <section className={styles.orderCheckInviRightSection}>
         <Receipt
           priceObj={priceInfoObj}
