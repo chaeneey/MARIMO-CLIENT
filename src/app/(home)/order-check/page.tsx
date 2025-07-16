@@ -28,13 +28,16 @@ const Page = () => {
   const router = useRouter();
 
   const handleSubmit = () => {
-    const query = new URLSearchParams({
-      name: customerName,
-      code: orderCode,
-    });
+    localStorage.setItem(
+      "orderInfo",
+      JSON.stringify({
+        customerName,
+        orderCode,
+      })
+    );
 
-    router.push(`/order-check/${selectedOrderType}?${query.toString()}`)
-  }
+    router.push(`/order-check/${selectedOrderType}`);
+  };
 
   const handleChangeOrderType = (type: orderType) => {
     setSelectedOrderType(type);
@@ -49,8 +52,16 @@ const Page = () => {
 
       <section className={orderCheckBottomSection}>
         <div className={orderCheckInputWrapper}>
-          <Input placeholder="주문자명을 입력해주세요" value={customerName} onChange={(e) => setCustomerName(e.target.value)} />
-          <Input placeholder="주문번호를 입력해주세요" value={orderCode} onChange={(e) => setOrderCode(e.target.value)}/>
+          <Input
+            placeholder="주문자명을 입력해주세요"
+            value={customerName}
+            onChange={(e) => setCustomerName(e.target.value)}
+          />
+          <Input
+            placeholder="주문번호를 입력해주세요"
+            value={orderCode}
+            onChange={(e) => setOrderCode(e.target.value)}
+          />
         </div>
 
         <div className={orderCheckRadioContainer}>
