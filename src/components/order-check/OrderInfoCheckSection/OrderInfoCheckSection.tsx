@@ -1,4 +1,3 @@
-"use client";
 import * as styles from "./OrderInfoCheckSection.css";
 
 interface OrderInfoCheckSectionProps {

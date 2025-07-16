@@ -100,3 +100,48 @@ export interface PaperInvitationInfo {
   hasReception: boolean;
   reception?: Reception;
 }
+
+export interface MobileInvitationInfo {
+  url: string;
+  mainImage: string;
+  message: string;
+  hasGallery: boolean;
+  gallery?: {
+    imageList: string[];
+  };
+  hasContactOption: boolean;
+  contactOption?: {
+    groomFatherPhoneNumber: string;
+    groomMotherPhoneNumber: string;
+    groomPhoneNumber: string;
+    brideFatherPhoneNumber: string;
+    brideMotherPhoneNumber: string;
+    bridePhoneNumber: string;
+  };
+  hasGiftAccount: boolean;
+  giftAccount?: {
+    groomGiftAccountList: {
+      bank: string;
+      holder: string;
+      number: string;
+    }[];
+    brideGiftAccountList: {
+      bank: string;
+      holder: string;
+      number: string;
+    }[];
+  };
+  hasCalendar: boolean;
+  hasMapNavigation: boolean;
+  hasGuestbook: boolean;
+  guestbook?: {
+    adminPassword: string;
+  };
+  hasKakaoShare: boolean;
+  hasRsvp: boolean;
+  rsvp?: {
+    hasPrimaryContactField: boolean;
+    hasCompanionField: boolean;
+    hasMealOptionField: boolean;
+  };
+}

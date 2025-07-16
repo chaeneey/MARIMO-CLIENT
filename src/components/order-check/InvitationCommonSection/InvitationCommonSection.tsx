@@ -1,4 +1,3 @@
-"use client";
 import { InvitationCommonInfo } from "@types";
 
 import * as styles from "./InvitationCommonSection.css";

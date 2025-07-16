@@ -1,9 +1,7 @@
-"use client";
+import { CustomImage } from "@/components/common";
 import { PaperInvitationInfo } from "@types";
 
 import * as styles from "./PaperInvitationSection.css";
-
-import { CustomImage } from "@/components/common";
 
 interface PaperInvitationSectionProps {
   info: PaperInvitationInfo;
