@@ -1,22 +1,49 @@
 "use client";
+import { InvitationCommonInfo } from "@types";
+
 import * as styles from "./InvitationCommonSection.css";
 
-const InvitationCommonSection = () => {
+interface InvitationCommonSectionProps {
+  info: InvitationCommonInfo;
+}
+
+const InvitationCommonSection = ({ info }: InvitationCommonSectionProps) => {
+  const {
+    groomFatherName,
+    groomMotherName,
+    groomName,
+    brideFatherName,
+    brideMotherName,
+    brideName,
+    weddingDatetime,
+    weddingVenueAddress,
+  } = info;
+
+  const date = new Date(weddingDatetime);
+
+  const weddingDate = date.toISOString().split("T")[0];
+  const weddingHour = date.getHours().toString().padStart(2, "0");
+  const weddingMinute = date.getMinutes().toString().padStart(2, "0");
+  const weddingTime = `${weddingHour}시 ${weddingMinute}분`;
   return (
     <>
       <section className={styles.inviCommonContainer}>
         <span className={styles.inviCommonTitleStyle}>신랑측 정보</span>
         <div className={styles.inviCommonTextWrapper}>
           <span className={styles.inviCommonRoleTextStyle}>아버님</span>
-          <span className={styles.inviCommonNameTextStyle}>장세희</span>
+          <span className={styles.inviCommonNameTextStyle}>
+            {groomFatherName}
+          </span>
         </div>
         <div className={styles.inviCommonTextWrapper}>
           <span className={styles.inviCommonRoleTextStyle}>어머님</span>
-          <span className={styles.inviCommonNameTextStyle}>손지유</span>
+          <span className={styles.inviCommonNameTextStyle}>
+            {groomMotherName}
+          </span>
         </div>
         <div className={styles.inviCommonTextWrapper}>
           <span className={styles.inviCommonRoleTextStyle}>신랑님</span>
-          <span className={styles.inviCommonNameTextStyle}>박채연</span>
+          <span className={styles.inviCommonNameTextStyle}>{groomName}</span>
         </div>
       </section>
 
@@ -24,15 +51,19 @@ const InvitationCommonSection = () => {
         <span className={styles.inviCommonTitleStyle}>신부측 정보</span>
         <div className={styles.inviCommonTextWrapper}>
           <span className={styles.inviCommonRoleTextStyle}>아버님</span>
-          <span className={styles.inviCommonNameTextStyle}>장세희</span>
+          <span className={styles.inviCommonNameTextStyle}>
+            {brideFatherName}
+          </span>
         </div>
         <div className={styles.inviCommonTextWrapper}>
           <span className={styles.inviCommonRoleTextStyle}>어머님</span>
-          <span className={styles.inviCommonNameTextStyle}>손지유</span>
+          <span className={styles.inviCommonNameTextStyle}>
+            {brideMotherName}
+          </span>
         </div>
         <div className={styles.inviCommonTextWrapper}>
           <span className={styles.inviCommonRoleTextStyle}>신랑님</span>
-          <span className={styles.inviCommonNameTextStyle}>박채연</span>
+          <span className={styles.inviCommonNameTextStyle}>{brideName}</span>
         </div>
       </section>
 
@@ -41,14 +72,19 @@ const InvitationCommonSection = () => {
         <div className={styles.inviCommonTextWrapper}>
           <span className={styles.inviCommonRoleTextStyle}>예식장 장소</span>
           <span className={styles.inviCommonNameTextStyle}>
-            서울특별시 중구 동호로 249 신라호텔 8층 다이너스티홀
+            {weddingVenueAddress}
           </span>
         </div>
         <div className={styles.inviCommonTextWrapper}>
           <span className={styles.inviCommonRoleTextStyle}>예식일시</span>
-          <span className={styles.inviCommonNameTextStyle}>
-            2025-05-05 14시 00분
-          </span>
+          <div className={styles.weddingTimeWrapper}>
+            <span className={styles.inviCommonNameTextStyle}>
+              {weddingDate}
+            </span>
+            <span className={styles.inviCommonNameTextStyle}>
+              {weddingTime}
+            </span>
+          </div>
         </div>
       </section>
     </>

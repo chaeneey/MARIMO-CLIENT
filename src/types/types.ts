@@ -66,3 +66,18 @@ export type PreVideoItem = {
 export type PreVideoItemList = {
   preVideoList: PreVideoItem[];
 };
+
+export interface InvitationCommonInfo {
+  groomFatherName: string;
+  groomMotherName: string;
+  groomMotherChristianName?: string;
+  groomName: string;
+
+  brideFatherName: string;
+  brideFatherChristianName?: string;
+  brideMotherName: string;
+  brideName: string;
+
+  weddingDatetime: string;
+  weddingVenueAddress: string;
+}
