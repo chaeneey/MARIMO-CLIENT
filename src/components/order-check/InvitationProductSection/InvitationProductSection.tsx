@@ -28,7 +28,9 @@ const InvitationProductSection = ({
   const envelopeOption = options.find((opt) => opt.optionType === "ENVELOPE");
   const ribbonOption = options.find((opt) => opt.optionType === "RIBBON");
   const stickerOption = options.find((opt) => opt.optionType === "STICKER");
-
+  const additionalOption = options.find(
+    (opt) => opt.optionType === "ADDITIONAL"
+  );
   return (
     <div className={styles.productInfoSectionLayout}>
       <section className={styles.productInfoTopContainer}>
@@ -44,7 +46,6 @@ const InvitationProductSection = ({
                 {quantityOption?.name}
               </span>
             </div>
-
             <span className={styles.productTitleStyle}>
               {quantityOption.finalPrice.toLocaleString()}원
             </span>
@@ -101,6 +102,21 @@ const InvitationProductSection = ({
             </span>
             <span className={styles.optionSubTextStyle}>
               {stickerOption.quantity}개
+            </span>
+          </div>
+        </div>
+
+        <div className={styles.optionBarStyle} />
+
+        <div className={styles.productInfoOptionWrapper}>
+          <span className={styles.optionTextStyle}>추가서비스</span>
+          <div className={styles.optionTextWrapper}>
+            <span className={styles.optionSubTextStyle}>
+              {additionalOption &&
+                `${additionalOption.name} / ${additionalOption.detailOption} / ${additionalOption.price.toLocaleString()}원`}
+            </span>
+            <span className={styles.optionSubTextStyle}>
+              {additionalOption.quantity}개
             </span>
           </div>
         </div>

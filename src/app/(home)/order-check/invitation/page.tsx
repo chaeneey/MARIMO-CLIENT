@@ -53,13 +53,25 @@ const Page = () => {
     finalAmount,
   } = data;
 
-  const priceInfoObj = {
-    "상품 가격": 504000,
-    봉투: 8000,
-    리본: 8000,
-    스티커: 8000,
-    "상품 할인": -204000,
+  const optionTypeNameMap: Record<string, string> = {
+    QUANTITY: "상품 가격",
+    STICKER: "스티커",
+    ENVELOPE: "봉투",
+    RIBBON: "리본",
+    ADDITIONAL: "기타 옵션",
+    MOBILE: "모바일 청첩장",
   };
+
+  const priceInfoObj = selectedOptionList.reduce(
+    (acc, option) => {
+      const label = optionTypeNameMap[option.optionType] || option.optionType;
+      acc[label] = option.finalPrice;
+      return acc;
+    },
+    {} as Record<string, number>
+  );
+
+  priceInfoObj["상품 할인"] = -discountAmount;
 
   const accordionItems = [
     {
@@ -114,7 +126,8 @@ const Page = () => {
       <section className={styles.orderCheckInviRightSection}>
         <Receipt
           priceObj={priceInfoObj}
-          total={124000}
+          total={finalAmount}
+          discountAmount={discountAmount}
           title="최종 결제 금액"
         />
       </section>
