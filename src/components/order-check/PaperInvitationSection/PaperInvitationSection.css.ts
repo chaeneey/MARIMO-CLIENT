@@ -10,7 +10,7 @@ export const paperInviLayout = style([
 
 export const paperInviColContainer = style([
   flexGenerator("column", "flex-start", "flex-start"),
-  { gap: "1.6rem" },
+  { gap: "1.6rem", width: "100%" },
 ]);
 
 export const paperInviRowContainer = style([
@@ -35,7 +35,6 @@ export const parperInviImageWrapper = style([
 export const paperInviImageStyle = style({
   width: "14rem",
   height: "14rem",
-  backgroundColor: vars.colors.gray05, // 나중에 지울 것
 });
 
 export const paperInviTextBoxStyle = style({
@@ -48,3 +47,10 @@ export const paperInviTextStyle = style({
   ...vars.fonts.caption_03_14,
   color: vars.colors.gray05,
 });
+
+export const receptionWrapper = style([
+  flexGenerator("row"),
+  {
+    gap: "1.8rem",
+  },
+]);

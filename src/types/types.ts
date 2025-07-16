@@ -81,3 +81,22 @@ export interface InvitationCommonInfo {
   weddingDatetime: string;
   weddingVenueAddress: string;
 }
+
+export interface CharterBus {
+  busStopLocation: string;
+  busStopTimeList: string[];
+}
+
+export interface Reception {
+  address: string;
+  datetime: string[];
+}
+
+export interface PaperInvitationInfo {
+  mainImage: string;
+  message: string;
+  hasCharterBus: boolean;
+  charterBus?: CharterBus;
+  hasReception: boolean;
+  reception?: Reception;
+}
