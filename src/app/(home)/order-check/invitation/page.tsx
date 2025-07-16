@@ -8,7 +8,7 @@ import {
   InvitationProductSection,
   MemoSection,
   MobileInvitationSection,
-  OrderInfoSection,
+  OrderInfoCheckSection,
   PaperInvitationSection,
   Receipt,
 } from "@/components/order-check";
@@ -77,14 +77,14 @@ const Page = () => {
     {
       title: "주문자 정보",
       component: (
-        <OrderInfoSection
+        <OrderInfoCheckSection
           customerName={fetchedCustomerName}
           address={address}
           phoneNumber={phoneNumber}
           email={email}
         />
       ),
-    }, 
+    },
     {
       title: "청첩장 공통 정보",
       component: <InvitationCommonSection info={invitationCommonInfo} />,
