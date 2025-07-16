@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { IcRadioFill, IcRadioStroke } from "@/assets/svgs";
@@ -21,6 +22,22 @@ type orderType = "invitation" | "video";
 const Page = () => {
   const [selectedOrderType, setSelectedOrderType] =
     useState<orderType>("invitation");
+  const [customerName, setCustomerName] = useState("");
+  const [orderCode, setOrderCode] = useState("");
+
+  const router = useRouter();
+
+  const handleSubmit = () => {
+    localStorage.setItem(
+      "orderInfo",
+      JSON.stringify({
+        customerName,
+        orderCode,
+      })
+    );
+
+    router.push(`/order-check/${selectedOrderType}`);
+  };
 
   const handleChangeOrderType = (type: orderType) => {
     setSelectedOrderType(type);
@@ -35,8 +52,16 @@ const Page = () => {
 
       <section className={orderCheckBottomSection}>
         <div className={orderCheckInputWrapper}>
-          <Input placeholder="주문자명을 입력해주세요" />
-          <Input placeholder="주문번호를 입력해주세요" />
+          <Input
+            placeholder="주문자명을 입력해주세요"
+            value={customerName}
+            onChange={(e) => setCustomerName(e.target.value)}
+          />
+          <Input
+            placeholder="주문번호를 입력해주세요"
+            value={orderCode}
+            onChange={(e) => setOrderCode(e.target.value)}
+          />
         </div>
 
         <div className={orderCheckRadioContainer}>
@@ -65,7 +90,7 @@ const Page = () => {
           </div>
         </div>
 
-        <Button size="56" color="white">
+        <Button size="56" color="white" onClick={handleSubmit}>
           조회하기
         </Button>
       </section>

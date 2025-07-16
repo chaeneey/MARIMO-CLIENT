@@ -50,13 +50,20 @@ export const productInfoBottomContainer = style([
     gap: "2rem",
     width: "100%",
     backgroundColor: vars.colors.gray01,
-    padding: "2rem 1.5rem",
+    padding: "2rem 1.2rem 2rem 1.65rem",
   },
 ]);
 
 export const productInfoOptionWrapper = style([
   flexGenerator("row", "flex-start"),
-  { gap: "5rem" },
+  { width: "100%", gap: "5rem", paddingRight: "3.4rem" },
+]);
+
+export const optionTextWrapper = style([
+  flexGenerator("row", "space-between"),
+  {
+    width: "100%",
+  },
 ]);
 
 export const optionTextStyle = style({

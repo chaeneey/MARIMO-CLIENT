@@ -22,6 +22,13 @@ export const inviCommonTextWrapper = style([
   },
 ]);
 
+export const weddingTimeWrapper = style([
+  flexGenerator("row", "space-between"),
+  {
+    gap: "1.8rem",
+  },
+]);
+
 export const inviCommonRoleTextStyle = style({
   ...vars.fonts.caption_04_me,
   color: vars.colors.gray04,

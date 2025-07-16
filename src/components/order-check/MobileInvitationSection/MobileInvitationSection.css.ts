@@ -6,7 +6,7 @@ import { vars } from "@styles/theme.css";
 // 구조잡기
 export const mobileColContainer = style([
   flexGenerator("column", "flex-start", "flex-start"),
-  { gap: "2rem" },
+  { gap: "2.6rem" },
 ]);
 
 export const mobileRowContainer = style([
@@ -27,6 +27,22 @@ export const mobileRowWrapper = style([
 export const movileRowNarrowWrapper = style([
   flexGenerator("row", "flex-start"),
   { gap: "1rem" },
+]);
+
+export const contactInfoTextWrapper = style({
+  marginBottom: "1.6rem",
+});
+export const contactInfoTextWrapper2 = style({
+  marginTop: "2.65rem",
+  marginBottom: "1.6rem",
+});
+
+export const phoneNumberWrapper = style([
+  flexGenerator("column", "flex-start", "flex-start"),
+  {
+    gap: "2.5rem",
+    marginTop: "0.6rem",
+  },
 ]);
 
 // 폰트 및 꾸며야 하는 것들
