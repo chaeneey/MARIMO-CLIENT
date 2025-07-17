@@ -2,7 +2,7 @@ import InvitationCommonSection from "./InvitationCommonSection/InvitationCommonS
 import InvitationProductSection from "./InvitationProductSection/InvitationProductSection";
 import MemoSection from "./MemoSection/MemoSection";
 import MobileInvitationSection from "./MobileInvitationSection/MobileInvitationSection";
-import OrderInfoSection from "./OrderInfoSection/OrderInfoSection";
+import OrderInfoCheckSection from "./OrderInfoCheckSection/OrderInfoCheckSection";
 import PaperInvitationSection from "./PaperInvitationSection/PaperInvitationSection";
 import ProductInfoSection from "./ProductInfoSection/ProductInfoSection";
 import Receipt from "./Receipt/Receipt";
@@ -11,7 +11,7 @@ import VideoInfoSection from "./VideoInfoSection/VideoInfoSection";
 
 export {
   MemoSection,
-  OrderInfoSection,
+  OrderInfoCheckSection,
   Receipt,
   InvitationCommonSection,
   MobileInvitationSection,

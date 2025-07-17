@@ -15,7 +15,7 @@ import { Accordion, TabBar } from "@/components/common";
 
 import * as styles from "./VideoInfoTab.css";
 
-const VideoInfoTab = () => {
+const VideoInfoTab = ({ videoUrl }: string) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const productInfoRef = useRef<HTMLDivElement>(null);
@@ -57,7 +57,9 @@ const VideoInfoTab = () => {
           <CardRecommendPlayer width={192} height={136} />
         </div>
       </section>
-      <section ref={detailImageRef}>{/* <CustomImage /> */}</section>
+      <section ref={detailImageRef}>
+        <video src={videoUrl} muted autoPlay loop />
+      </section>
       <section ref={productInfoRef}>
         <h2 className={styles.h2Style}>제작단계</h2>
         <div className={styles.mobileCardWrapper}>

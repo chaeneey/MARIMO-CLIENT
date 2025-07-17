@@ -1,49 +1,71 @@
-"use client";
+import { CustomImage } from "@/components/common";
+import { PaperInvitationInfo } from "@types";
+
 import * as styles from "./PaperInvitationSection.css";
 
-const PaperInvitationSection = () => {
+interface PaperInvitationSectionProps {
+  info: PaperInvitationInfo;
+}
+
+const PaperInvitationSection = ({ info }: PaperInvitationSectionProps) => {
+  const {
+    mainImage,
+    message,
+    hasCharterBus,
+    charterBus,
+    hasReception,
+    reception,
+  } = info;
+
+  const formattedReceptionTime = reception?.datetime?.[0]
+    ? new Date(reception.datetime[0])
+    : null;
+
+  const receptionTime =
+    formattedReceptionTime &&
+    `${formattedReceptionTime.getHours()}시 ${formattedReceptionTime
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}분`;
+
   return (
     <>
       <section className={styles.paperInviLayout}>
         <section className={styles.paperInviColContainer}>
-          <span className={styles.paperInviTypeText}>사진 파일(6)</span>
-          <div className={styles.parperInviImageWrapper}>
-            <div className={styles.paperInviImageStyle} />
-            <div className={styles.paperInviImageStyle} />
-            <div className={styles.paperInviImageStyle} />
-            <div className={styles.paperInviImageStyle} />
-            <div className={styles.paperInviImageStyle} />
-            <div className={styles.paperInviImageStyle} />
+          <span className={styles.paperInviTypeText}>메인 이미지</span>
+          <div className={styles.paperInviImageStyle}>
+            <CustomImage src={mainImage} alt="종이청첩장-메인이미지" />
           </div>
         </section>
 
         <section className={styles.paperInviColContainer}>
           <span className={styles.paperInviTypeText}>인사말</span>
           <div className={styles.paperInviTextBoxStyle}>
-            <span className={styles.paperInviTextStyle}>
-              {`모든 것이 새로워지는 봄날, 
-            사랑하는 두 사람이 새 인생을 시작하려 합니다. 
-            두 사람의 결혼을 축복해 주시고 따뜻한 마음으로 격려해
-            주신다면 큰 힘이 되겠습니다.`}
-            </span>
+            <span className={styles.paperInviTextStyle}>{message}</span>
           </div>
         </section>
       </section>
-
       <section className={styles.paperInviLayout}>
-        <section className={styles.paperInviRowContainer}>
-          <span className={styles.paperInviTypeText}>전세버스</span>
-          <span className={styles.paperInviTextStyle}>
-            건대입구역 2번 출구 오전 10시 출발
-          </span>
-        </section>
-
-        <section className={styles.paperInviRowContainer}>
-          <span className={styles.paperInviTypeText}>피로연</span>
-          <span className={styles.paperInviTextStyle}>
-            신나는 파티룸 오후 4시
-          </span>
-        </section>
+        {hasCharterBus && charterBus && (
+          <section className={styles.paperInviRowContainer}>
+            <span className={styles.paperInviTypeText}>전세버스</span>
+            <span className={styles.paperInviTextStyle}>
+              {charterBus.busStopLocation} 출발 시간:{" "}
+              {charterBus.busStopTimeList.join(", ")}
+            </span>
+          </section>
+        )}
+        {hasReception && reception && (
+          <section className={styles.paperInviRowContainer}>
+            <span className={styles.paperInviTypeText}>피로연</span>
+            <div className={styles.receptionWrapper}>
+              <span className={styles.paperInviTextStyle}>
+                {reception.address}
+              </span>
+              <span className={styles.paperInviTextStyle}>{receptionTime}</span>
+            </div>
+          </section>
+        )}
       </section>
     </>
   );

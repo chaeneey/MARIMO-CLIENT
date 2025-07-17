@@ -1,22 +1,44 @@
-"use client";
 import * as styles from "./MemoSection.css";
 
-const MemoSection = () => {
+interface MemoSectionProps {
+  requestText: string;
+  attachmentList: string[];
+}
+
+const MemoSection = ({ request }: MemoSectionProps) => {
+  const { requestText, attachmentList } = request;
   return (
     <>
       <div className={styles.MemoWrapper}>
         <span className={styles.MemoTextStyle}>요청사항</span>
         <div className={styles.MemoStyle}>
-          <span className={styles.MemoSubTextStyle}>
-            장세희는 지금 배고파서 감자탕이 너무 먹고싶다다 그래서 을지로에서
-            졸고있다
-          </span>
+          <span className={styles.MemoSubTextStyle}>{requestText}</span>
         </div>
       </div>
-
       <div className={styles.MemoWrapper}>
         <span className={styles.MemoTextStyle}>파일첨부</span>
-        <span className={styles.MemoSubTextStyle}>장세희.MP4</span>
+        {attachmentList.length > 0 ? (
+          attachmentList.map((fileUrl, index) => {
+            const fileName = decodeURIComponent(
+              fileUrl.split("/").pop() ?? `파일_${index + 1}`
+            );
+            return (
+              <a
+                key={index}
+                href={fileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.MemoSubTextStyle}
+              >
+                {fileName}
+              </a>
+            );
+          })
+        ) : (
+          <span className={styles.MemoSubTextStyle}>
+            첨부된 파일이 없습니다.
+          </span>
+        )}
       </div>
     </>
   );

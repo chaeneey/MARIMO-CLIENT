@@ -4,10 +4,11 @@ import * as styles from "./Receipt.css";
 interface receiptProps {
   priceObj: object;
   total: number;
+  discountAmount: number;
   title: string;
 }
 
-const Receipt = ({ priceObj, total, title }: receiptProps) => {
+const Receipt = ({ priceObj, total, discountAmount, title }: receiptProps) => {
   return (
     <div className={styles.receiptLayout}>
       <section className={styles.receiptTopSection}>
