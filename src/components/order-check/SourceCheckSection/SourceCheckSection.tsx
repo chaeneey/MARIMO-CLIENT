@@ -33,7 +33,7 @@ const SourceCheckSection = ({ media }: SourceCheckSectionProps) => {
               <a
                 href={video}
                 target="_blank"
-                // className={styles.sourceVideoLink}
+                className={styles.sourceVideoLink}
               >
                 영상 {i + 1}
               </a>

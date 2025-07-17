@@ -11,12 +11,13 @@ const VideoInfoCheckSection = ({
   brideName,
   weddingDatetime,
 }: VideoInfoCHeckSectionProps) => {
-  const date = new Date(weddingDatetime);
-
-  const weddingDate = date.toISOString().split("T")[0];
-  const weddingHour = date.getHours().toString().padStart(2, "0");
-  const weddingMinute = date.getMinutes().toString().padStart(2, "0");
-  const weddingTime = `${weddingHour}시 ${weddingMinute}분`;
+  const firstSpaceIndex = weddingDatetime.indexOf(" ");
+  const weddingDate =
+    firstSpaceIndex !== -1
+      ? weddingDatetime.slice(0, firstSpaceIndex)
+      : weddingDatetime;
+  const weddingTime =
+    firstSpaceIndex !== -1 ? weddingDatetime.slice(firstSpaceIndex + 1) : "";
   return (
     <div className={styles.videoInfoLayout}>
       <div className={styles.videoInfoTextWrapper}>
@@ -29,8 +30,10 @@ const VideoInfoCheckSection = ({
       </div>
       <div className={styles.videoInfoTextWrapper}>
         <span className={styles.videoInfoTypeTextStyle}>예식일시</span>
-        <span className={styles.videoInfoTextStyle}>{weddingDate}</span>
-        <span className={styles.videoInfoTextStyle}>{weddingTime}</span>
+        <div className={styles.dateTimeWrapper}>
+          <span className={styles.videoInfoTextStyle}>{weddingDate}</span>
+          <span className={styles.videoInfoTextStyle}>{weddingTime}</span>
+        </div>
       </div>
     </div>
   );
