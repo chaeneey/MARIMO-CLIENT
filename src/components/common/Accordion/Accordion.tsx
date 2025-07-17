@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { IcArrowUnderGray0534 } from "@/assets/svgs";
 
@@ -22,23 +22,33 @@ export interface AccordionProps {
   title: string;
   hasCheckbox?: boolean;
   children?: React.ReactNode;
+  checkboxState?: boolean;
+  handleCheckboxStateChange?: (checked: boolean) => void;
 }
 
-const Accordion = ({ title, hasCheckbox, children }: AccordionProps) => {
-  const [isOpen, setIsOpen] = useState(!hasCheckbox);
-  const [isChecked, setIsChecked] = useState(false);
+const Accordion = ({
+  title,
+  hasCheckbox,
+  children,
+  checkboxState,
+  handleCheckboxStateChange,
+}: AccordionProps) => {
+  const [isOpen, setIsOpen] = useState(() => !hasCheckbox || checkboxState);
+
+  useEffect(() => {
+    if (children && checkboxState) setIsOpen(true);
+    else setIsOpen(false);
+  }, [checkboxState, children]);
 
   const handleToggle = () => {
-    if (!isChecked && hasCheckbox) return;
+    if (hasCheckbox && !checkboxState) return;
     setIsOpen((prev) => !prev);
   };
 
   const handleCheck = () => {
-    setIsChecked((prev) => {
-      const next = !prev;
-      if (!next) setIsOpen(false);
-      return next;
-    });
+    if (handleCheckboxStateChange) {
+      handleCheckboxStateChange(!checkboxState);
+    }
   };
 
   return (
@@ -48,22 +58,21 @@ const Accordion = ({ title, hasCheckbox, children }: AccordionProps) => {
           {hasCheckbox && (
             <div
               className={checkboxStyle({
-                state: isChecked ? "checked" : "unchecked",
+                state: checkboxState ? "checked" : "unchecked",
               })}
               onClick={handleCheck}
             />
           )}
           <span
             className={titleStyle({
-              colorType: !hasCheckbox ? "black" : isChecked ? "black" : "gray",
+              colorType: !hasCheckbox || checkboxState ? "black" : "gray",
             })}
           >
             {title}
           </span>
         </div>
-        {(hasCheckbox && !isChecked) || (isChecked && !children) ? (
-          <></>
-        ) : (
+        {(hasCheckbox && !checkboxState) ||
+        (checkboxState && !children) ? null : (
           <IcArrowUnderGray0534
             className={clsx(arrowIconStyle, {
               [arrowRotateStyle]: isOpen,

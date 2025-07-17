@@ -119,10 +119,19 @@ const useOrderFormData = () => {
     attachmentList: [],
   });
 
-  // const [miscOptionData, setMiscOptionData] = useState({
-  //   hasCalendar: false,
-  //   hasMapNavigation: false,
-  // });
+  const [orderFormData, setOrderFormData] = useState({
+    hasCharterBus: false,
+    hasReception: false,
+    hasMobileInvitation: false,
+    hasGallery: false,
+    hasContactOption: false,
+    hasGiftAccount: false,
+    hasCalendar: false,
+    hasMapNavigation: false,
+    hasGuestbook: false,
+    hasRsvp: false,
+    hasAdditionalRequest: false,
+  });
 
   // handle 함수
   const handleProductOrderChange = createChangeHandler(setProductOrderData);
@@ -151,7 +160,7 @@ const useOrderFormData = () => {
   const handleAdditionalRequestChange = createChangeHandler(
     setAdditionalRequestData,
   );
-  // const handleMiscOptionChange = createChangeHandler(setMiscOptionData);
+  const handleOrderFormChange = createBooleanChangeHandler(setOrderFormData);
 
   return {
     productOrderData,
@@ -168,7 +177,7 @@ const useOrderFormData = () => {
     guestbookData,
     rsvpData,
     additionalRequestData,
-    // miscOptionData,
+    orderFormData,
 
     handleProductOrderChange,
     handleCustomerInfoChange,
@@ -185,7 +194,7 @@ const useOrderFormData = () => {
     handleGuestbookChange,
     handleRsvpChange,
     handleAdditionalRequestChange,
-    // handleMiscOptionChange,
+    handleOrderFormChange,
   };
 };
 

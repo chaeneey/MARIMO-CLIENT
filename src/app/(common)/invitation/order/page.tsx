@@ -19,8 +19,23 @@ import useOrderFormData from "@/hooks/useOrderFormData";
 
 import * as styles from "./page.css";
 
+const HIDDEN_TITLES_WHEN_NO_MOBILE: string[] = [
+  "모바일 청첩장 기본 정보",
+  "갤러리",
+  "전화걸기",
+  "축의금 계좌",
+  "달력",
+  "지도 및 길 찾기",
+  "방명록",
+  "참석의사 전달",
+];
+
 const Page = () => {
+  const searchParams = new URLSearchParams(window.location.search);
+  const isMobileFreeProvided = searchParams.get("mobile") === "무료 제공 희망";
+
   const {
+    productOrderData,
     customerInfoData,
     invitationCommonInfoData,
     // paperInvitationInfoData,
@@ -34,6 +49,7 @@ const Page = () => {
     guestbookData,
     rsvpData,
     additionalRequestData,
+    orderFormData,
     // handleProductOrderChange,
     // handleOptionListChange,
     handleCustomerInfoChange,
@@ -50,7 +66,7 @@ const Page = () => {
     handleGuestbookChange,
     handleRsvpChange,
     handleAdditionalRequestChange,
-    // handleMiscOptionChange,
+    handleOrderFormChange,
   } = useOrderFormData();
 
   const accordionItems = [
@@ -93,6 +109,8 @@ const Page = () => {
           handleCharterBusChange={handleCharterBusChange}
         />
       ),
+      checkboxState: orderFormData.hasCharterBus,
+      handleCheckboxStateChange: handleOrderFormChange("hasCharterBus"),
     },
     {
       title: "피로연",
@@ -103,6 +121,8 @@ const Page = () => {
           handleReceptionChange={handleReceptionChange}
         />
       ),
+      checkboxState: orderFormData.hasReception,
+      handleCheckboxStateChange: handleOrderFormChange("hasReception"),
     },
     {
       title: "모바일 청첩장 기본 정보",
@@ -123,6 +143,8 @@ const Page = () => {
           handleGalleryChange={handleGalleryChange}
         />
       ),
+      checkboxState: orderFormData.hasGallery,
+      handleCheckboxStateChange: handleOrderFormChange("hasGallery"),
     },
     {
       title: "전화걸기",
@@ -133,6 +155,8 @@ const Page = () => {
           handleContactOptionChange={handleContactOptionChange}
         />
       ),
+      checkboxState: orderFormData.hasContactOption,
+      handleCheckboxStateChange: handleOrderFormChange("hasContactOption"),
     },
     {
       title: "축의금 계좌",
@@ -143,9 +167,21 @@ const Page = () => {
           handleGiftAccountChange={handleGiftAccountChange}
         />
       ),
+      checkboxState: orderFormData.hasGiftAccount,
+      handleCheckboxStateChange: handleOrderFormChange("hasGiftAccount"),
     },
-    { title: "달력", hasCheckbox: true },
-    { title: "지도 및 길 찾기", hasCheckbox: true },
+    {
+      title: "달력",
+      hasCheckbox: true,
+      checkboxState: orderFormData.hasCalendar,
+      handleCheckboxStateChange: handleOrderFormChange("hasCalendar"),
+    },
+    {
+      title: "지도 및 길 찾기",
+      hasCheckbox: true,
+      checkboxState: orderFormData.hasMapNavigation,
+      handleCheckboxStateChange: handleOrderFormChange("hasMapNavigation"),
+    },
     {
       title: "방명록",
       hasCheckbox: true,
@@ -155,6 +191,8 @@ const Page = () => {
           handleGuestbookChange={handleGuestbookChange}
         />
       ),
+      checkboxState: orderFormData.hasGuestbook,
+      handleCheckboxStateChange: handleOrderFormChange("hasGuestbook"),
     },
     {
       title: "참석의사 전달",
@@ -165,6 +203,8 @@ const Page = () => {
           handleRsvpChange={handleRsvpChange}
         />
       ),
+      checkboxState: orderFormData.hasRsvp,
+      handleCheckboxStateChange: handleOrderFormChange("hasRsvp"),
     },
     {
       title: "기타 요청사항",
@@ -175,6 +215,8 @@ const Page = () => {
           handleAdditionalRequestChange={handleAdditionalRequestChange}
         />
       ),
+      checkboxState: orderFormData.hasAdditionalRequest,
+      handleCheckboxStateChange: handleOrderFormChange("hasAdditionalRequest"),
     },
   ];
 
@@ -197,6 +239,7 @@ const Page = () => {
                 guestbookData,
                 rsvpData,
                 charterBusData,
+                orderFormData,
               );
             }}
             type="button"
@@ -208,11 +251,36 @@ const Page = () => {
       </div>
 
       <div className={styles.accordionContainer}>
-        {accordionItems.map(({ title, hasCheckbox, content }, idx) => (
-          <Accordion key={idx} title={title} hasCheckbox={hasCheckbox}>
-            {content}
-          </Accordion>
-        ))}
+        {accordionItems.map(
+          (
+            {
+              title,
+              hasCheckbox,
+              content,
+              checkboxState,
+              handleCheckboxStateChange,
+            },
+            idx,
+          ) => {
+            const shouldHide =
+              !isMobileFreeProvided &&
+              HIDDEN_TITLES_WHEN_NO_MOBILE.includes(title);
+
+            if (shouldHide) return null;
+
+            return (
+              <Accordion
+                key={idx}
+                title={title}
+                hasCheckbox={hasCheckbox}
+                checkboxState={checkboxState}
+                handleCheckboxStateChange={handleCheckboxStateChange}
+              >
+                {content}
+              </Accordion>
+            );
+          },
+        )}
       </div>
     </form>
   );
