@@ -3,6 +3,14 @@ import { style } from "@vanilla-extract/css";
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
 
+export const receiptContainer = style([
+  flexGenerator("column", "flex-start", "flex-start"),
+  {
+    gap: "1.8rem",
+    width: "100%",
+  },
+]);
+
 export const receiptLayout = style([
   flexGenerator("column", "flex-start", "flex-start"),
   {
@@ -59,3 +67,7 @@ export const receiptRowContainer = style([
   flexGenerator("row", "space-between"),
   { width: "100%" },
 ]);
+
+export const buttonWrapper = style({
+  width: "100%",
+});

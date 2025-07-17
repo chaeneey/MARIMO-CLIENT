@@ -17,7 +17,7 @@ import {
   orderCheckTopSection,
 } from "./page.css";
 
-type orderType = "invitation" | "video";
+type orderType = "invitation" | "pre-video";
 
 const Page = () => {
   const [selectedOrderType, setSelectedOrderType] =
@@ -29,7 +29,7 @@ const Page = () => {
 
   const handleSubmit = () => {
     localStorage.setItem(
-      "orderInfo",
+      `orderInfo-${selectedOrderType}`,
       JSON.stringify({
         customerName,
         orderCode,
