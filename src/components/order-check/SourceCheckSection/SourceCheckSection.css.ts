@@ -37,3 +37,10 @@ export const sourceRowWrapper = style([
   flexGenerator("row", "flex-start"),
   { gap: "8rem" },
 ]);
+
+export const sourceVideoLink = style([
+  vars.fonts.caption_03_14,
+  {
+    color: vars.colors.gray05,
+  },
+]);

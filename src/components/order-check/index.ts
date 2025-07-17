@@ -7,7 +7,7 @@ import PaperInvitationSection from "./PaperInvitationSection/PaperInvitationSect
 import ProductInfoSection from "./ProductInfoSection/ProductInfoSection";
 import Receipt from "./Receipt/Receipt";
 import SourceCheckSection from "./SourceCheckSection/SourceCheckSection";
-import VideoInfoSection from "./VideoInfoSection/VideoInfoSection";
+import VideoInfoCheckSection from "./VideoInfoCheckSection/VideoInfoCheckSection";
 
 export {
   MemoSection,
@@ -18,6 +18,6 @@ export {
   PaperInvitationSection,
   ProductInfoSection,
   SourceCheckSection,
-  VideoInfoSection,
+  VideoInfoCheckSection,
   InvitationProductSection,
 };

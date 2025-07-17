@@ -17,6 +17,13 @@ export const videoInfoTextWrapper = style([
   },
 ]);
 
+export const dateTimeWrapper = style([
+  flexGenerator(),
+  {
+    gap: "0.8rem",
+  },
+]);
+
 export const videoInfoTypeTextStyle = style({
   ...vars.fonts.caption_04_me,
   color: vars.colors.gray04,

@@ -20,7 +20,7 @@ const Page = () => {
   const [orderCode, setOrderCode] = useState("");
 
   useEffect(() => {
-    const stored = localStorage.getItem("orderInfo");
+    const stored = localStorage.getItem("orderInfo-invitation");
     if (stored) {
       const { customerName, orderCode } = JSON.parse(stored);
       setCustomerName(customerName);
@@ -127,7 +127,6 @@ const Page = () => {
         <Receipt
           priceObj={priceInfoObj}
           total={finalAmount}
-          discountAmount={discountAmount}
           title="최종 결제 금액"
         />
       </section>
