@@ -9,7 +9,7 @@ const AddButton = ({
   onClick,
 }: ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
-    <button className={addButtonWrapper} onClick={onClick}>
+    <button className={addButtonWrapper} onClick={onClick} type="button">
       <span className={addButtonTextStyle}>{children}</span>
       <IcPlusGray0418 width={18} height={18} />
     </button>

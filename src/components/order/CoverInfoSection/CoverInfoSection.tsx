@@ -1,14 +1,24 @@
 "use client";
 
+import { ChangeEvent } from "react";
+
 import { Button, Input, IUButton, TextArea } from "@/components/common";
+import { InvitationInfoType } from "@types";
 
 import * as styles from "./CoverInfoSection.css";
-
-interface CoverInfoSectionType {
+interface CoverInfoSectionProps {
   type?: "paper" | "mobile";
+  invitationInfoData: InvitationInfoType;
+  handleInvitationInfoChange: (
+    key: keyof InvitationInfoType,
+  ) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
-const CoverInfoSection = ({ type = "paper" }: CoverInfoSectionType) => {
+const CoverInfoSection = ({
+  type = "paper",
+  invitationInfoData,
+  handleInvitationInfoChange,
+}: CoverInfoSectionProps) => {
   return (
     <>
       {type == "mobile" && (
@@ -20,7 +30,12 @@ const CoverInfoSection = ({ type = "paper" }: CoverInfoSectionType) => {
             <span
               className={styles.urlTextStyle}
             >{`https://mcard.marimo.co.kr/`}</span>
-            <Input maxWidth="32rem" placeholder="주소를 생성해주세요" />
+            <Input
+              maxWidth="32rem"
+              placeholder="주소를 생성해주세요"
+              value={invitationInfoData.urlPath}
+              onChange={handleInvitationInfoChange("urlPath")}
+            />
             <Button color="gray" size="35">
               중복 확인
             </Button>
@@ -59,7 +74,9 @@ const CoverInfoSection = ({ type = "paper" }: CoverInfoSectionType) => {
         <TextArea
           placeholder="반드시 오탈자, 띄어쓰기가 제대로 되어있는지 다시 한 번 확인해 주세요!"
           currentLength={0}
-          maxLength={500}
+          maxLength={150}
+          value={invitationInfoData.message}
+          onChange={handleInvitationInfoChange("message")}
         />
       </section>
     </>

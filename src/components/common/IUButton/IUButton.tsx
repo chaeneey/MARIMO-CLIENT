@@ -30,7 +30,7 @@ const IUButton = ({ onUpload, multiple = false }: IUButtonProps) => {
   };
   return (
     <>
-      <button className={buttonStyle} onClick={handleClick}>
+      <button className={buttonStyle} onClick={handleClick} type="button">
         클릭 후 업로드
       </button>
       <input

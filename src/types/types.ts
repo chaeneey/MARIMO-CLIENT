@@ -71,82 +71,85 @@ export type InvitationCommonInfoType = {
   weddingVenueDetailAddress?: string;
 };
 
-type OptionListType = {
+export type InvitationInfoType = {
+  urlPath?: string;
+  mainImage: string;
+  message: string;
+};
+
+export type CharterBusType = {
+  busStopLocation: string;
+  busStopTimeList: string[];
+};
+
+export type ReceptionType = {
+  address: string;
+  datetimeHour: string;
+  datetimeMinute: string;
+  datetime: string;
+};
+
+export type ContactOptionType = {
+  groomFatherPhoneNumber: string;
+  groomMotherPhoneNumber: string;
+  groomPhoneNumber: string;
+  brideFatherPhoneNumber: string;
+  brideMotherPhoneNumber: string;
+  bridePhoneNumber: string;
+};
+
+export type GalleryType = {
+  imageList: string[];
+};
+
+export type GuestbookType = {
+  adminPassword: string;
+};
+
+export type GiftAccountType = {
+  groomGiftAccountList: AccountType[];
+  brideGiftAccountList: AccountType[];
+};
+
+type AccountType = {
+  bank: string;
+  account: string;
+  holder: string;
+};
+
+export type RsvpType = {
+  hasPrimaryContactField: boolean;
+  hasCompanionField: boolean;
+  hasMealOptionField: boolean;
+};
+
+export type AdditionalRequestType = {
+  requestText: string;
+  attachmentList: string[];
+};
+
+export type OptionListType = {
   optionId: string;
   quantity: string;
 };
 
-type OrderFormType = {
+export type OrderFormType = {
   invitationId: string;
   optionList: OptionListType[];
-
-  paperInvitationInfo: {
-    mainImage: string;
-    message: string;
-  };
-
   hasCharterBus: boolean;
-  charterBus?: {
-    busStopLocation: string;
-    busStopTimeList: string[];
-  };
-
   hasReception: boolean;
-  reception?: {
-    address: string;
-    datetime: string[];
-  };
-
   hasMobileInvitation: boolean;
-  mobileInvitationInfo?: {
-    url: string;
-    mainImage: string;
-    message: string;
-  };
-
   hasGallery: boolean;
-  gallery?: {
-    imageList: string[];
-  };
-
   hasContactOption: boolean;
-  contactOption?: {
-    groomFatherPhoneNumber: string;
-    groomMotherPhoneNumber: string;
-    groomPhoneNumber: string;
-    brideFatherPhoneNumber: string;
-    brideMotherPhoneNumber: string;
-    bridePhoneNumber: string;
-  };
-
   hasGiftAccount: boolean;
-  GiftAccount?: {
-    groomGiftAccountList: string[];
-    brideGiftAccountList: string[];
-  };
-
   hasCalendar: boolean;
   hasMapNavigation: boolean;
-
   hasGuestbook: boolean;
-  guestbook?: {
-    adminPassword: string;
-  };
-
   hasRsvp: boolean;
-  rsvp?: {
-    hasPrimaryContactField: boolean;
-    hasCompanionField: boolean;
-    hasMealOptionField: boolean;
-  };
-
   hasAdditionalRequest: boolean;
-  additionalRequest?: {
-    requestText: string;
-    attachmentList: string[];
-  };
 };
 
+// 여기까지
 export interface Option {
   id: number;
   name: string;

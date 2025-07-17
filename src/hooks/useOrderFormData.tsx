@@ -61,37 +61,33 @@ const useOrderFormData = () => {
     weddingVenueDetailAddress: "",
   });
 
-  const [paperInvitationInfoData, setPaperInvitationInfoData] = useState({
+  const [invitationInfoData, setInvitationInfoData] = useState({
+    urlPath: "",
     mainImage: "",
     message: "",
   });
 
   const [charterBusData, setCharterBusData] = useState({
-    hasCharterBus: false,
+    // hasCharterBus: false,
     busStopLocation: "",
-    busStopTimeList: [] as string[],
+    busStopTimeList: [],
   });
 
   const [receptionData, setReceptionData] = useState({
-    hasReception: false,
+    // hasReception: false,
     address: "",
-    datetime: [] as string[],
-  });
-
-  const [mobileInvitationData, setMobileInvitationData] = useState({
-    hasMobileInvitation: false,
-    url: "",
-    mainImage: "",
-    message: "",
+    datetime: "",
+    datetimeHour: "시간",
+    datetimeMinute: "분",
   });
 
   const [galleryData, setGalleryData] = useState({
-    hasGallery: false,
+    // hasGallery: false,
     imageList: [] as string[],
   });
 
   const [contactOptionData, setContactOptionData] = useState({
-    hasContactOption: false,
+    // hasContactOption: false,
     groomFatherPhoneNumber: "",
     groomMotherPhoneNumber: "",
     groomPhoneNumber: "",
@@ -101,36 +97,32 @@ const useOrderFormData = () => {
   });
 
   const [giftAccountData, setGiftAccountData] = useState({
-    hasGiftAccount: false,
-    groomGiftAccountList: [] as {
-      bank: string;
-      account: string;
-      owner: string;
-    }[],
-    brideGiftAccountList: [] as {
-      bank: string;
-      account: string;
-      owner: string;
-    }[],
+    // hasGiftAccount: false,
+    groomGiftAccountList: [],
+    brideGiftAccountList: [],
+  });
+
+  const [guestbookData, setGuestbookData] = useState({
+    adminPassword: "",
   });
 
   const [rsvpData, setRsvpData] = useState({
-    hasRsvp: false,
+    // hasRsvp: false,
     hasPrimaryContactField: false,
     hasCompanionField: false,
     hasMealOptionField: false,
   });
 
   const [additionalRequestData, setAdditionalRequestData] = useState({
-    hasAdditionalRequest: false,
+    // hasAdditionalRequest: false,
     requestText: "",
-    attachmentList: [] as File[],
+    attachmentList: [],
   });
 
-  const [miscOptionData, setMiscOptionData] = useState({
-    hasCalendar: false,
-    hasMapNavigation: false,
-  });
+  // const [miscOptionData, setMiscOptionData] = useState({
+  //   hasCalendar: false,
+  //   hasMapNavigation: false,
+  // });
 
   // handle 함수
   const handleProductOrderChange = createChangeHandler(setProductOrderData);
@@ -141,53 +133,59 @@ const useOrderFormData = () => {
   const handleInvitationCommonInfoBooleanChange = createBooleanChangeHandler(
     setInvitationCommonInfoData,
   );
+  const handleInvitationInfoChange = createChangeHandler(setInvitationInfoData);
 
-  const handlePaperInvitationChange = createChangeHandler(
-    setPaperInvitationInfoData,
-  );
+  // const handlePaperInvitationChange = createChangeHandler(
+  //   setPaperInvitationInfoData,
+  // );
   const handleCharterBusChange = createChangeHandler(setCharterBusData);
   const handleReceptionChange = createChangeHandler(setReceptionData);
-  const handleMobileInvitationChange = createChangeHandler(
-    setMobileInvitationData,
-  );
+  // const handleMobileInvitationChange = createChangeHandler(
+  //   setMobileInvitationData,
+  // );
   const handleGalleryChange = createChangeHandler(setGalleryData);
   const handleContactOptionChange = createChangeHandler(setContactOptionData);
   const handleGiftAccountChange = createChangeHandler(setGiftAccountData);
-  const handleRsvpChange = createChangeHandler(setRsvpData);
+  const handleGuestbookChange = createChangeHandler(setGuestbookData);
+  const handleRsvpChange = createBooleanChangeHandler(setRsvpData);
   const handleAdditionalRequestChange = createChangeHandler(
     setAdditionalRequestData,
   );
-  const handleMiscOptionChange = createChangeHandler(setMiscOptionData);
+  // const handleMiscOptionChange = createChangeHandler(setMiscOptionData);
 
   return {
     productOrderData,
     customerInfoData,
     invitationCommonInfoData,
-    paperInvitationInfoData,
+    invitationInfoData,
+    // paperInvitationInfoData,
     charterBusData,
     receptionData,
-    mobileInvitationData,
+    // mobileInvitationData,
     galleryData,
     contactOptionData,
     giftAccountData,
+    guestbookData,
     rsvpData,
     additionalRequestData,
-    miscOptionData,
+    // miscOptionData,
 
     handleProductOrderChange,
     handleCustomerInfoChange,
     handleInvitationCommonInfoChange,
     handleInvitationCommonInfoBooleanChange,
-    handlePaperInvitationChange,
+    handleInvitationInfoChange,
+    // handlePaperInvitationChange,
     handleCharterBusChange,
     handleReceptionChange,
-    handleMobileInvitationChange,
+    // handleMobileInvitationChange,
     handleGalleryChange,
     handleContactOptionChange,
     handleGiftAccountChange,
+    handleGuestbookChange,
     handleRsvpChange,
     handleAdditionalRequestChange,
-    handleMiscOptionChange,
+    // handleMiscOptionChange,
   };
 };
 

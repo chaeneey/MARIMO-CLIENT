@@ -23,30 +23,34 @@ const Page = () => {
   const {
     customerInfoData,
     invitationCommonInfoData,
-    paperInvitationInfoData,
+    // paperInvitationInfoData,
+    invitationInfoData,
     charterBusData,
     receptionData,
-    mobileInvitationData,
+    // mobileInvitationData,
     galleryData,
     contactOptionData,
     giftAccountData,
+    guestbookData,
     rsvpData,
     additionalRequestData,
-    handleProductOrderChange,
-    handleOptionListChange,
+    // handleProductOrderChange,
+    // handleOptionListChange,
     handleCustomerInfoChange,
     handleInvitationCommonInfoChange,
     handleInvitationCommonInfoBooleanChange,
-    handlePaperInvitationChange,
+    // handlePaperInvitationChange,
+    handleInvitationInfoChange,
     handleCharterBusChange,
     handleReceptionChange,
-    handleMobileInvitationChange,
+    // handleMobileInvitationChange,
     handleGalleryChange,
     handleContactOptionChange,
     handleGiftAccountChange,
+    handleGuestbookChange,
     handleRsvpChange,
     handleAdditionalRequestChange,
-    handleMiscOptionChange,
+    // handleMiscOptionChange,
   } = useOrderFormData();
 
   const accordionItems = [
@@ -75,8 +79,8 @@ const Page = () => {
       title: "종이 청첩장 기본 정보",
       content: (
         <CoverInfoSection
-          paperInvitationInfoData={paperInvitationInfoData}
-          handlePaperInvitationChange={handlePaperInvitationChange}
+          invitationInfoData={invitationInfoData}
+          handleInvitationInfoChange={handleInvitationInfoChange}
         />
       ),
     },
@@ -105,8 +109,8 @@ const Page = () => {
       content: (
         <CoverInfoSection
           type="mobile"
-          mobileInvitationData={mobileInvitationData}
-          handleMobileInvitationChange={handleMobileInvitationChange}
+          invitationInfoData={invitationInfoData}
+          handleInvitationInfoChange={handleInvitationInfoChange}
         />
       ),
     },
@@ -145,7 +149,12 @@ const Page = () => {
     {
       title: "방명록",
       hasCheckbox: true,
-      content: <GuestSection />, // 필요 시 handleGuestbookChange 추가
+      content: (
+        <GuestSection
+          guestbookData={guestbookData}
+          handleGuestbookChange={handleGuestbookChange}
+        />
+      ),
     },
     {
       title: "참석의사 전달",
@@ -178,7 +187,17 @@ const Page = () => {
             size="50"
             color="lime01"
             onClick={() => {
-              console.log(customerInfoData, invitationCommonInfoData);
+              console.log(
+                customerInfoData,
+                invitationCommonInfoData,
+                invitationInfoData,
+                charterBusData,
+                receptionData,
+                contactOptionData,
+                guestbookData,
+                rsvpData,
+                charterBusData,
+              );
             }}
             type="button"
           >
