@@ -5,8 +5,10 @@ import BusSection from "./BusSection/BusSection";
 import CommonInfoSection from "./CommonInfoSection/CommonInfoSection";
 import CompleteSection from "./CompleteSection/CompleteSection";
 import CoverInfoSection from "./CoverInfoSection/CoverInfoSection";
+import GreetingsSampleModal from "./GreetingsSampleModal/GreetingsSampleModal";
 import GuestSection from "./GuestSection/GuestSection";
 import MemoSection from "./MemoSection/MemoSection";
+import MiniAccordion from "./MiniAccordion/MiniAccordion";
 import OrderInfoSection from "./OrderInfoSection/OrderInfoSection";
 import PartySection from "./PartySection/PartySection";
 import PhoneInfoSection from "./PhoneInfoSection/PhoneInfoSection";
@@ -19,9 +21,11 @@ export {
   BusSection,
   CommonInfoSection,
   CoverInfoSection,
+  GreetingsSampleModal,
   GuestSection,
   CompleteSection,
   MemoSection,
+  MiniAccordion,
   OrderInfoSection,
   PartySection,
   PhoneInfoSection,
