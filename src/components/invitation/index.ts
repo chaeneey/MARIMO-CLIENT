@@ -4,6 +4,7 @@ import InvitationProduct from "./InvitationProduct/InvitationProduct";
 import InvitationSelect from "./InvitationSelect/InvitationSelect";
 import MainBanner from "./MainBanner/MainBanner";
 import ProductsSection from "./ProductsSection/ProductsSection";
+import SelectedOptionCard from "./SelectedOptionCard/SelectedOptionCard";
 
 export {
   MainBanner,
@@ -12,4 +13,5 @@ export {
   ProductsSection,
   InvitationInfoTab,
   InvitationSelect,
+  SelectedOptionCard,
 };

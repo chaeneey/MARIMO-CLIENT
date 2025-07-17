@@ -1,7 +1,9 @@
-export type ValueType = {
-  keyValue: string;
-  subValue?: string;
-};
+export interface Option {
+  id: number;
+  name: string;
+  optionDetail?: string;
+  price: number;
+}
 
 export type InvitationItem = {
   id: number;
