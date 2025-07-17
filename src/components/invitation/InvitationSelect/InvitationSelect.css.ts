@@ -97,3 +97,37 @@ export const orderButtonWrapper = style([
     marginTop: "3.4rem",
   },
 ]);
+
+export const selectedOptionCardWrapper = style([
+  flexGenerator("column", "flex-start", "flex-start"),
+  {
+    gap: "0.5rem",
+    marginTop: "3.4rem",
+  },
+]);
+
+export const finalPriceDivider = style({
+  width: "100%",
+  height: "1px",
+  marginTop: "3.3rem",
+  backgroundColor: vars.colors.gray04,
+});
+
+export const finalPriceWrapper = style([
+  flexGenerator("row", "space-between"),
+  { width: "100%", marginTop: "3.4rem" },
+]);
+
+export const finalPriceLeftTextStyle = style([
+  vars.fonts.body10_18_b,
+  {
+    color: vars.colors.gray04,
+  },
+]);
+
+export const finalPriceTextStyle = style([
+  vars.fonts.body05_20_24,
+  {
+    color: vars.colors.gray06,
+  },
+]);

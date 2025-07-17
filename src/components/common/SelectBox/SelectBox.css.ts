@@ -63,7 +63,6 @@ export const ulStyle = recipe({
       width: "100%",
       overflowY: "auto",
       gap: "0.2rem",
-      padding: "1.1rem 0",
       position: "absolute",
       zIndex: 1,
 
@@ -100,7 +99,6 @@ export const liOptionStyle = style([
   flexGenerator("row", "space-between"),
   {
     width: "100%",
-    height: "4.8rem",
     padding: "1.4rem 2rem 1.4rem 1.8rem",
 
     backgroundColor: vars.colors.white,
@@ -110,7 +108,7 @@ export const liOptionStyle = style([
 export const liOptionLeftStyle = style([
   flexGenerator(),
   {
-    gap: "0.163rem",
+    gap: "0.2rem",
   },
 ]);
 

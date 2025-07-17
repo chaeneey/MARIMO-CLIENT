@@ -26,6 +26,8 @@ export { default as IcLogoSmall } from "./IcLogoSmall";
 export { default as IcLogoSmallHome } from "./IcLogoSmallHome";
 export { default as IcLogoSmallHome2 } from "./IcLogoSmallHome2";
 export { default as IcMarimoSymbol } from "./IcMarimoSymbol";
+export { default as IcMinus } from "./IcMinus";
+export { default as IcPlus } from "./IcPlus";
 export { default as IcPlusGray0418 } from "./IcPlusGray0418";
 export { default as IcRadioFill } from "./IcRadioFill";
 export { default as IcRadioStroke } from "./IcRadioStroke";

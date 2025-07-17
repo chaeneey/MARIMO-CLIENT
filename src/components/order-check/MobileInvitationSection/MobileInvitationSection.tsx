@@ -48,7 +48,9 @@ const MobileInvitationSection = ({ info }: MobileInvitationSectionProps) => {
 
           {hasGallery && gallery && (
             <div className={styles.mobileColWrapper}>
-              <span className={styles.mobileInviTypeTextStyle}>사진파일</span>
+              <span className={styles.mobileInviTypeTextStyle}>
+                사진파일 ({gallery.imageList.length})
+              </span>
               <div className={styles.mobileInviImageWrapper}>
                 {gallery.imageList.map((img, i) => (
                   <div className={styles.mobileInviImageStyle} key={i}>
