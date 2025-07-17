@@ -1,14 +1,21 @@
 "use client";
+import { useState } from "react";
 
-import { Button, Input, IUButton, TextArea } from "@/components/common";
+import { Button, Input, IUButton, Modal, TextArea } from "@/components/common";
 
 import * as styles from "./CoverInfoSection.css";
+import GreetingsSampleModal from "../GreetingsSampleModal/GreetingsSampleModal";
 
 interface CoverInfoSectionType {
   type?: "paper" | "mobile";
 }
 
 const CoverInfoSection = ({ type = "paper" }: CoverInfoSectionType) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <>
       {type == "mobile" && (
@@ -51,7 +58,7 @@ const CoverInfoSection = ({ type = "paper" }: CoverInfoSectionType) => {
       <section className={styles.coverContentContainer}>
         <div className={styles.textWithButtonWrapper}>
           <span className={styles.inputTitleTextStyle}>인사말</span>
-          <Button color="gray" size="35">
+          <Button color="gray" size="35" onClick={openModal}>
             샘플 확인
           </Button>
         </div>
@@ -62,6 +69,11 @@ const CoverInfoSection = ({ type = "paper" }: CoverInfoSectionType) => {
           maxLength={500}
         />
       </section>
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <GreetingsSampleModal onClose={closeModal} />
+        </Modal>
+      )}
     </>
   );
 };

@@ -14,6 +14,7 @@ export { default as CardRunningTime } from "./CardRunningTime";
 export { default as CardScreenRatio } from "./CardScreenRatio";
 export { default as CardShare } from "./CardShare";
 export { default as CardSupply } from "./CardSupply";
+export { default as IcArrowDownGray0418 } from "./IcArrowDownGray0418";
 export { default as IcArrowUnderGray05 } from "./IcArrowUnderGray05";
 export { default as IcArrowUnderGray0518 } from "./IcArrowUnderGray0518";
 export { default as IcArrowUnderGray0534 } from "./IcArrowUnderGray0534";
