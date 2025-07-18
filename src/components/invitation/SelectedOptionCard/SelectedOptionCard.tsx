@@ -5,6 +5,7 @@ import * as styles from "./SelectedOptionCard.css";
 
 interface SelectedOptionCardProps {
   id: string;
+  type: string;
   name: string;
   price: number;
   quantity: number;
@@ -14,13 +15,14 @@ interface SelectedOptionCardProps {
 
 const SelectedOptionCard = ({
   id,
+  type,
   name,
   price,
   quantity,
   onIncrease,
   onDecrease,
 }: SelectedOptionCardProps) => {
-  const isFixedQuantity = id === "quantity" || id === "mobile";
+  const isFixedQuantity = type === "quantity" || type === "mobile";
   return (
     <div className={styles.cardContainer}>
       <div className={styles.cardHeader}>

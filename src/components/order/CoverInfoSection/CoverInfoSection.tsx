@@ -1,12 +1,14 @@
 "use client";
-
+import { useState } from "react";
 import { ChangeEvent } from "react";
 
-import { Button, Input, IUButton, TextArea } from "@/components/common";
+import { Button, Input, IUButton, Modal, TextArea } from "@/components/common";
 import { InvitationInfoType } from "@types";
 
 import * as styles from "./CoverInfoSection.css";
-interface CoverInfoSectionProps {
+import GreetingsSampleModal from "../GreetingsSampleModal/GreetingsSampleModal";
+
+interface CoverInfoSectionType {
   type?: "paper" | "mobile";
   invitationInfoData: InvitationInfoType;
   handleInvitationInfoChange: (
@@ -18,7 +20,12 @@ const CoverInfoSection = ({
   type = "paper",
   invitationInfoData,
   handleInvitationInfoChange,
-}: CoverInfoSectionProps) => {
+}: CoverInfoSectionType) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <>
       {type == "mobile" && (
@@ -66,7 +73,7 @@ const CoverInfoSection = ({
       <section className={styles.coverContentContainer}>
         <div className={styles.textWithButtonWrapper}>
           <span className={styles.inputTitleTextStyle}>인사말</span>
-          <Button color="gray" size="35">
+          <Button color="gray" size="35" onClick={openModal}>
             샘플 확인
           </Button>
         </div>
@@ -79,6 +86,11 @@ const CoverInfoSection = ({
           onChange={handleInvitationInfoChange("message")}
         />
       </section>
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <GreetingsSampleModal onClose={closeModal} />
+        </Modal>
+      )}
     </>
   );
 };
