@@ -2,6 +2,8 @@
 import Link from "next/link";
 // import { useForm, FormProvider } from "react-hook-form";
 
+import { useEffect, useState } from "react";
+
 import { Accordion, Button, ImageDragBox } from "@/components/common";
 import {
   AccountSection,
@@ -31,8 +33,9 @@ const HIDDEN_TITLES_WHEN_NO_MOBILE: string[] = [
 ];
 
 const Page = () => {
-  const searchParams = new URLSearchParams(window.location.search);
-  const isMobileFreeProvided = searchParams.get("mobile") === "무료 제공 희망";
+  const [isMobileFreeProvided, setIsMobileFreeProvided] = useState<
+    boolean | null
+  >(null);
 
   const {
     productOrderData,
@@ -52,6 +55,7 @@ const Page = () => {
     orderFormData,
     // handleProductOrderChange,
     // handleOptionListChange,
+    setProductOrderData,
     handleCustomerInfoChange,
     handleInvitationCommonInfoChange,
     handleInvitationCommonInfoBooleanChange,
@@ -68,6 +72,35 @@ const Page = () => {
     handleAdditionalRequestChange,
     handleOrderFormChange,
   } = useOrderFormData();
+
+  useEffect(() => {
+    const invitationId = localStorage.getItem("invitationId");
+    const selectedOptions = localStorage.getItem("selectedOptions");
+
+    if (invitationId && selectedOptions) {
+      const optionList = JSON.parse(selectedOptions);
+
+      const newOptionList = optionList.map(
+        (option: { id: number; quantity: number }) => ({
+          optionId: option.id,
+          quantity: option.quantity,
+        }),
+      );
+
+      const hasMobile = optionList.some(
+        (option: { type: string }) => option.type === "mobile",
+      );
+
+      setIsMobileFreeProvided(hasMobile);
+
+      setProductOrderData({
+        invitationId: `${JSON.parse(invitationId)}`,
+        optionList: newOptionList,
+      });
+    } else {
+      setIsMobileFreeProvided(false);
+    }
+  }, []);
 
   const accordionItems = [
     {
@@ -230,6 +263,7 @@ const Page = () => {
             color="lime01"
             onClick={() => {
               console.log(
+                productOrderData,
                 customerInfoData,
                 invitationCommonInfoData,
                 invitationInfoData,

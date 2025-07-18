@@ -134,7 +134,7 @@ const useOrderFormData = () => {
   });
 
   // handle 함수
-  const handleProductOrderChange = createChangeHandler(setProductOrderData);
+  // const handleProductOrderChange = createChangeHandler(setProductOrderData);
   const handleCustomerInfoChange = createChangeHandler(setCustomerInfoData);
   const handleInvitationCommonInfoChange = createChangeHandler(
     setInvitationCommonInfoData,
@@ -179,7 +179,8 @@ const useOrderFormData = () => {
     additionalRequestData,
     orderFormData,
 
-    handleProductOrderChange,
+    // handleProductOrderChange,
+    setProductOrderData,
     handleCustomerInfoChange,
     handleInvitationCommonInfoChange,
     handleInvitationCommonInfoBooleanChange,

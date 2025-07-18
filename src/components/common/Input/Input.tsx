@@ -32,7 +32,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       readOnly = false,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isFocused, setIsFocused] = useState(false);
 
@@ -64,7 +64,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";

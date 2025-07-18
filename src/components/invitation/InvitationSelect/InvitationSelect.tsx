@@ -93,7 +93,7 @@ const InvitationSelect = ({
       const exists = prev.find((opt) => opt.id === key);
       if (exists) {
         return prev.map((opt) =>
-          opt.id === key ? { ...opt, ...newOption } : opt
+          opt.id === key ? { ...opt, ...newOption } : opt,
         );
       }
       return [...prev, newOption];
@@ -103,8 +103,8 @@ const InvitationSelect = ({
   const handleIncrease = (id: string) => {
     setSelectedOptions((prev) =>
       prev.map((opt) =>
-        opt.id === id ? { ...opt, quantity: opt.quantity + 1 } : opt
-      )
+        opt.id === id ? { ...opt, quantity: opt.quantity + 1 } : opt,
+      ),
     );
   };
 
@@ -113,8 +113,8 @@ const InvitationSelect = ({
       prev.map((opt) =>
         opt.id === id && opt.quantity > 1
           ? { ...opt, quantity: opt.quantity - 1 }
-          : opt
-      )
+          : opt,
+      ),
     );
   };
 
@@ -126,7 +126,7 @@ const InvitationSelect = ({
 
   const getOptionsByKey = (key: string) => {
     const group = optionGroupList.find(
-      (group) => group.optionType === key.toUpperCase()
+      (group) => group.optionType === key.toUpperCase(),
     );
     return group?.optionList ?? [];
   };
@@ -135,7 +135,7 @@ const InvitationSelect = ({
 
   const totalPrice = selectedOptions.reduce(
     (acc, curr) => acc + curr.price * curr.quantity,
-    0
+    0,
   );
 
   return (
@@ -174,7 +174,7 @@ const InvitationSelect = ({
         <div className={styles.selectedOptionCardWrapper}>
           {selectedOptions.map((opt) => {
             const matchedType = Object.keys(formState).find(
-              (key) => formState[key]?.id === opt.id
+              (key) => formState[key]?.id === opt.id,
             );
 
             return (

@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { IcArrowUnderGray0534 } from "@/assets/svgs";
 
@@ -35,10 +35,9 @@ const Accordion = ({
 }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(() => !hasCheckbox || checkboxState);
 
-  useEffect(() => {
-    if (children && checkboxState) setIsOpen(true);
-    else setIsOpen(false);
-  }, [checkboxState, children]);
+  // useEffect(() => {
+  //   if (children && checkboxState) setIsOpen((prev) => !prev);
+  // }, [checkboxState, children]);
 
   const handleToggle = () => {
     if (hasCheckbox && !checkboxState) return;

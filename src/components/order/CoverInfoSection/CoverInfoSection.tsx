@@ -43,7 +43,7 @@ const CoverInfoSection = ({
               value={invitationInfoData.urlPath}
               onChange={handleInvitationInfoChange("urlPath")}
             />
-            <Button color="gray" size="35">
+            <Button color="gray" size="35" onClick={() => {}}>
               중복 확인
             </Button>
           </div>
