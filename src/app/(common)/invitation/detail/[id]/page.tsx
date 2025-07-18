@@ -8,7 +8,10 @@ const page = async ({ params }) => {
   const invitationItemDetail = await fetchInvitationItemDetail(id);
   return (
     <div className={styles.invitationDetailPageStyle}>
-      <InvitationSelect invitationItemDetail={invitationItemDetail} />
+      <InvitationSelect
+        invitationId={id}
+        invitationItemDetail={invitationItemDetail}
+      />
       <div className={styles.noteWrapper}>
         <span className={styles.noteSpanStyle}>주문 시 유의사항</span>
         <small className={styles.noteSmallStyle}>
