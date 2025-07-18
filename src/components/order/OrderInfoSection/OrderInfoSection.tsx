@@ -1,11 +1,12 @@
 "use client";
 import { ChangeEvent, useState } from "react";
 
-import { Button, Input, SelectBox } from "@/components/common";
+import { Button, Input } from "@/components/common";
 import { useDaumPostcode } from "@/hooks/useDaumPostcode";
 import { CustomerInfoType } from "@types";
 
 import * as styles from "./OrderInfoSection.css";
+import OrderSelectBox from "../OrderSelectBox/OrderSelectBox";
 interface OrderInfoSectionProps {
   customerInfoData: CustomerInfoType;
   handleCustomerInfoChange: (
@@ -98,7 +99,7 @@ const OrderInfoSection = ({
       <div className={styles.customerPhoneNumberWrapper}>
         <h3 className={styles.inputTextStyle}>휴대전화</h3>
         <div className={styles.customerPhoneNumberInputWrapper}>
-          <SelectBox
+          <OrderSelectBox
             label="시간"
             options={[
               { value: { keyValue: "010" } },
@@ -152,7 +153,7 @@ const OrderInfoSection = ({
             }
             onChange={handleCustomerInfoChange("emailDomain")}
           />
-          <SelectBox
+          <OrderSelectBox
             label="직접 입력"
             options={[
               { value: { keyValue: "직접 입력" } },

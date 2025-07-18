@@ -3,11 +3,12 @@
 import { ChangeEvent, useState } from "react";
 
 import { IcBtnDelete } from "@/assets/svgs";
-import { Input, SelectBox } from "@/components/common";
+import { Input } from "@/components/common";
 import { CharterBusType } from "@types";
 
 import * as styles from "./BusSection.css";
 import AddButton from "../AddButton/AddButton";
+import OrderSelectBox from "../OrderSelectBox/OrderSelectBox";
 
 interface BusSectionProps {
   charterBusData: CharterBusType;
@@ -62,7 +63,7 @@ const BusSection = ({
           <span className={styles.inputTextStyle}>버스 정차 시간</span>
           <div className={styles.selectedTimeContainer}>
             <div className={styles.timeWrapper}>
-              <SelectBox
+              <OrderSelectBox
                 label="시간"
                 options={[
                   { value: { keyValue: "08시" } },
@@ -86,7 +87,7 @@ const BusSection = ({
                 variant="order"
               />
 
-              <SelectBox
+              <OrderSelectBox
                 label="분"
                 options={[
                   { value: { keyValue: "00분" } },

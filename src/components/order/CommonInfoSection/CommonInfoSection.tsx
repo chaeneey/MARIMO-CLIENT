@@ -2,12 +2,13 @@
 
 import { ChangeEvent } from "react";
 
-import { Button, Input, SelectBox } from "@/components/common";
+import { Button, Input } from "@/components/common";
 import CheckBox from "@/components/common/CheckBox/CheckBox";
 import { useDaumPostcode } from "@/hooks/useDaumPostcode";
 import { InvitationCommonInfoType } from "@types";
 
 import * as styles from "./CommonInfoSection.css";
+import OrderSelectBox from "../OrderSelectBox/OrderSelectBox";
 
 interface CommonInfoSectionProps {
   invitationCommonInfoData: InvitationCommonInfoType;
@@ -372,24 +373,24 @@ const CommonInfoSection = ({
             onChange={handleChangeDate}
             maxLength={10}
           />
-          <SelectBox
+          <OrderSelectBox
             label="시간"
             options={[
-              { value: { keyValue: "오전 8시" } },
-              { value: { keyValue: "오전 9시" } },
-              { value: { keyValue: "오전 10시" } },
-              { value: { keyValue: "오전 11시" } },
-              { value: { keyValue: "오후 12시" } },
-              { value: { keyValue: "오후 1시" } },
-              { value: { keyValue: "오후 2시" } },
-              { value: { keyValue: "오후 3시" } },
-              { value: { keyValue: "오후 4시" } },
-              { value: { keyValue: "오후 5시" } },
-              { value: { keyValue: "오후 6시" } },
-              { value: { keyValue: "오후 7시" } },
-              { value: { keyValue: "오후 8시" } },
-              { value: { keyValue: "오후 9시" } },
-              { value: { keyValue: "오후 10시" } },
+              { value: { keyValue: "08시" } },
+              { value: { keyValue: "09시" } },
+              { value: { keyValue: "10시" } },
+              { value: { keyValue: "11시" } },
+              { value: { keyValue: "12시" } },
+              { value: { keyValue: "13시" } },
+              { value: { keyValue: "14시" } },
+              { value: { keyValue: "15시" } },
+              { value: { keyValue: "16시" } },
+              { value: { keyValue: "17시" } },
+              { value: { keyValue: "18시" } },
+              { value: { keyValue: "19시" } },
+              { value: { keyValue: "20시" } },
+              { value: { keyValue: "21시" } },
+              { value: { keyValue: "22시" } },
             ]}
             selected={{ keyValue: invitationCommonInfoData.weddingHour }}
             onSelect={(value) =>
@@ -400,7 +401,7 @@ const CommonInfoSection = ({
             variant="order"
           />
 
-          <SelectBox
+          <OrderSelectBox
             label="분"
             options={[
               { value: { keyValue: "00분" } },

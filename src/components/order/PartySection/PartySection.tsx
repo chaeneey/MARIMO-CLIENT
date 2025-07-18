@@ -1,10 +1,11 @@
 "use client";
 import { ChangeEvent } from "react";
 
-import { Input, SelectBox } from "@/components/common";
+import { Input } from "@/components/common";
 import { ReceptionType } from "@types";
 
 import * as styles from "./PartySection.css";
+import OrderSelectBox from "../OrderSelectBox/OrderSelectBox";
 
 interface PartySectionProps {
   receptionData: ReceptionType;
@@ -59,7 +60,7 @@ const PartySection = ({
             onChange={handleChangeDate}
           />
 
-          <SelectBox
+          <OrderSelectBox
             label="시간"
             options={[
               { value: { keyValue: "오전 8시" } },
@@ -87,7 +88,7 @@ const PartySection = ({
             variant="order"
           />
 
-          <SelectBox
+          <OrderSelectBox
             label="분"
             options={[
               { value: { keyValue: "00분" } },
