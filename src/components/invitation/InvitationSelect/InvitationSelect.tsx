@@ -30,7 +30,15 @@ const optionKeys = [
   { key: "mobile", label: "무료 제공 (선택)", text: "모바일 청첩장" },
 ];
 
-const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
+interface InvitationSelectProps {
+  invitationId: number;
+  invitationItemDetail: InvitationItemDetail;
+}
+
+const InvitationSelect = ({
+  invitationId,
+  invitationItemDetail,
+}: InvitationSelectProps) => {
   const router = useRouter();
 
   const {
@@ -52,10 +60,10 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
     mobile: null,
   });
 
-  console.log(selectedOptions);
-
   const [openBox, setOpenBox] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  console.log(selectedOptions);
 
   const handleModalClose = () => {
     setIsModalOpen(false);
@@ -74,7 +82,8 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
     const fixedQuantity = key === "quantity" || key === "mobile" ? 1 : 0;
 
     const newOption: SelectedOption = {
-      id: key,
+      id: option.id,
+      type: key,
       name: option.name,
       price: option.price,
       quantity: fixedQuantity || 1,
@@ -91,7 +100,6 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
     });
   };
 
-  // 수량 증가/감소 핸들러
   const handleIncrease = (id: string) => {
     setSelectedOptions((prev) =>
       prev.map((opt) =>
@@ -112,6 +120,7 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
 
   const handleFinalOrder = () => {
     localStorage.setItem("selectedOptions", JSON.stringify(selectedOptions));
+    localStorage.setItem("invitationId", String(invitationId));
     router.push("/invitation/order");
   };
 
@@ -163,17 +172,24 @@ const InvitationSelect = ({ invitationItemDetail }: InvitationItemDetail) => {
           ))}
         </ul>
         <div className={styles.selectedOptionCardWrapper}>
-          {selectedOptions.map((opt) => (
-            <SelectedOptionCard
-              key={opt.id}
-              id={opt.id}
-              name={opt.name}
-              price={opt.price}
-              quantity={opt.quantity}
-              onIncrease={() => handleIncrease(opt.id)}
-              onDecrease={() => handleDecrease(opt.id)}
-            />
-          ))}
+          {selectedOptions.map((opt) => {
+            const matchedType = Object.keys(formState).find(
+              (key) => formState[key]?.id === opt.id
+            );
+
+            return (
+              <SelectedOptionCard
+                key={opt.id}
+                id={opt.id}
+                type={matchedType || ""}
+                name={opt.name}
+                price={opt.price}
+                quantity={opt.quantity}
+                onIncrease={() => handleIncrease(opt.id)}
+                onDecrease={() => handleDecrease(opt.id)}
+              />
+            );
+          })}
         </div>
         <div className={styles.finalPriceDivider} />
         <div className={styles.finalPriceWrapper}>
