@@ -10,16 +10,13 @@ import {
   img02,
   img03,
   img04,
-  marimoLabel,
+  // marimoLabel,
 } from "@/assets/images";
 import { IcLogoLarge } from "@/assets/svgs";
 
 import * as styles from "./MarimoInfoSection.css";
 
-const homeTopImageList = [img01,
-  img02,
-  img03,
-  img04];
+const homeTopImageList = [img01, img02, img03, img04];
 
 const MarimoInfoSection = () => {
   const [index, setIndex] = useState(0);
@@ -121,7 +118,12 @@ const MarimoInfoSection = () => {
         </motion.div>
       </section>
 
-      <Image src={marimoLabel} alt="marimo label" style={{ width: "100%" }} />
+      {/* <Image src={marimoLabel} alt="marimo label" style={{ width: "100%" }} /> */}
+      <img
+        src={"/video/marimoLogoLabel.gif"}
+        alt="marimo Label"
+        style={{ width: "100%" }}
+      />
     </div>
   );
 };
