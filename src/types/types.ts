@@ -201,8 +201,13 @@ export type InvitationCommonInfoType = {
   weddingVenueDetailAddress?: string;
 };
 
-export type InvitationInfoType = {
-  urlPath?: string;
+export type PaperInfoType = {
+  mainImage: string;
+  message: string;
+};
+
+export type MobileInfoType = {
+  urlSlug: string;
   mainImage: string;
   message: string;
 };
@@ -281,5 +286,102 @@ export type OrderFormType = {
   hasRsvp: boolean;
   hasAdditionalRequest: boolean;
 };
-
 // orderPage Type 여기까지
+
+// types.ts
+export interface PostOrderInfoRequest {
+  invitationId: number;
+  optionList: { optionId: number; quantity: number }[];
+  customerInfo: {
+    name: string;
+    zoneCode: string;
+    address: string;
+    detailAddress: string;
+    phoneNumber: string;
+    email: string;
+  };
+  invitationCommonInfo: {
+    groomFatherDeceased: boolean;
+    hasGroomFatherChristianName: boolean;
+    groomFatherName: string;
+    groomMotherDeceased: boolean;
+    hasGroomMotherChristianName: boolean;
+    groomMotherName: string;
+    groomMotherChristianName?: string;
+    hasGroomChristianName: boolean;
+    groomName: string;
+    brideFatherDeceased: boolean;
+    hasBrideFatherChristianName: boolean;
+    brideFatherName: string;
+    brideFatherChristianName?: string;
+    brideMotherDeceased: boolean;
+    hasBrideMotherChristianName: boolean;
+    brideMotherName: string;
+    hasBrideChristianName: boolean;
+    brideName: string;
+    brideChristianName?: string;
+    weddingDateTime: string;
+    weddingVenueZoneCode: string;
+    weddingVenueAddress: string;
+    weddingVenueDetailAddress: string;
+  };
+  paperInvitationInfo: {
+    mainImage: string;
+    message: string;
+  };
+  hasCharterBus: boolean;
+  charterBus?: {
+    busStopLocation: string;
+    busStopTimeList: string[];
+  };
+  hasReception: boolean;
+  reception?: {
+    address: string;
+    dateTime: string;
+  };
+  hasMobileInvitation: boolean;
+  mobileInvitationInfo?: {
+    urlSlug: string;
+    mainImage: string;
+    message: string;
+  };
+  hasGallery: boolean;
+  gallery?: {
+    imageList: string[];
+  };
+  hasContactOption: boolean;
+  contactOption?: {
+    groomFatherPhoneNumber: string;
+    groomMotherPhoneNumber: string;
+    groomPhoneNumber: string;
+    brideFatherPhoneNumber: string;
+    brideMotherPhoneNumber: string;
+    bridePhoneNumber: string;
+  };
+  hasGiftAccount: boolean;
+  giftAccount?: {
+    groomGiftAccountList: { bank: string; holder: string; number: string }[];
+    brideGiftAccountList: { bank: string; holder: string; number: string }[];
+  };
+  hasCalendar: boolean;
+  hasMapNavigation: boolean;
+  hasGuestbook: boolean;
+  guestbook?: {
+    adminPassword: string;
+  };
+  hasRsvp: boolean;
+  rsvp?: {
+    hasPrimaryContactField: boolean;
+    hasCompanionField: boolean;
+    hasMealOptionField: boolean;
+  };
+  hasAdditionalRequest: boolean;
+  additionalRequest?: {
+    requestText: string;
+    attachmentList: string[];
+  };
+}
+
+export interface PostOrderInfoResponse {
+  orderCode: string;
+}

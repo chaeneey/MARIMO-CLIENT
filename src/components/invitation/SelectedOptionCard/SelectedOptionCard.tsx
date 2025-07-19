@@ -1,5 +1,5 @@
 import { IcMinus, IcPlus } from "@/assets/svgs";
-import { Button } from "@/components/common";
+// import { Button } from "@/components/common";
 
 import * as styles from "./SelectedOptionCard.css";
 
@@ -14,7 +14,6 @@ interface SelectedOptionCardProps {
 }
 
 const SelectedOptionCard = ({
-  id,
   type,
   name,
   price,
@@ -35,17 +34,17 @@ const SelectedOptionCard = ({
         ) : (
           <div className={styles.buttonsWrapper}>
             <div className={styles.buttonStyle}>
-              <Button onClick={onDecrease}>
+              <button onClick={onDecrease}>
                 <IcMinus width={12} height={12} />
-              </Button>
+              </button>
             </div>
             <div className={styles.buttonDividerStyle} />
             <div className={styles.quantityTextStyle}>{quantity}</div>
             <div className={styles.buttonDividerStyle} />
             <div className={styles.buttonStyle}>
-              <Button onClick={onIncrease}>
+              <button onClick={onIncrease}>
                 <IcPlus width={12} height={12} />
-              </Button>
+              </button>
             </div>
           </div>
         )}

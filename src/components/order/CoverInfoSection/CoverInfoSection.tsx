@@ -3,16 +3,16 @@ import { useState } from "react";
 import { ChangeEvent } from "react";
 
 import { Button, Input, IUButton, Modal, TextArea } from "@/components/common";
-import { InvitationInfoType } from "@types";
+import { MobileInfoType, PaperInfoType } from "@types";
 
 import * as styles from "./CoverInfoSection.css";
 import GreetingsSampleModal from "../GreetingsSampleModal/GreetingsSampleModal";
 
 interface CoverInfoSectionType {
   type?: "paper" | "mobile";
-  invitationInfoData: InvitationInfoType;
+  invitationInfoData: PaperInfoType | MobileInfoType;
   handleInvitationInfoChange: (
-    key: keyof InvitationInfoType,
+    key: keyof PaperInfoType | keyof MobileInfoType,
   ) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
@@ -40,8 +40,12 @@ const CoverInfoSection = ({
             <Input
               maxWidth="32rem"
               placeholder="주소를 생성해주세요"
-              value={invitationInfoData.urlPath}
-              onChange={handleInvitationInfoChange("urlPath")}
+              value={
+                type === "mobile"
+                  ? (invitationInfoData as MobileInfoType).urlSlug
+                  : ""
+              }
+              onChange={handleInvitationInfoChange("urlSlug")}
             />
             <Button color="gray" size="35" onClick={() => {}}>
               중복 확인
@@ -80,7 +84,7 @@ const CoverInfoSection = ({
 
         <TextArea
           placeholder="반드시 오탈자, 띄어쓰기가 제대로 되어있는지 다시 한 번 확인해 주세요!"
-          currentLength={0}
+          currentLength={invitationInfoData.message.length}
           maxLength={150}
           value={invitationInfoData.message}
           onChange={handleInvitationInfoChange("message")}

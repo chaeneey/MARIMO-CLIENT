@@ -1,9 +1,10 @@
 "use client";
-import Link from "next/link";
+// import Link from "next/link";
 // import { useForm, FormProvider } from "react-hook-form";
 
 import { useEffect, useState } from "react";
 
+import { usePostOrderInfo } from "@/apis/domains/order/usePostOrderInfo";
 import { Accordion, Button, ImageDragBox } from "@/components/common";
 import {
   AccountSection,
@@ -18,6 +19,7 @@ import {
   PhoneInfoSection,
 } from "@/components/order";
 import useOrderFormData from "@/hooks/useOrderFormData";
+import { PostOrderInfoRequest } from "@types";
 
 import * as styles from "./page.css";
 
@@ -42,7 +44,8 @@ const Page = () => {
     customerInfoData,
     invitationCommonInfoData,
     // paperInvitationInfoData,
-    invitationInfoData,
+    paperInfoData,
+    mobileInfoData,
     charterBusData,
     receptionData,
     // mobileInvitationData,
@@ -56,15 +59,17 @@ const Page = () => {
     // handleProductOrderChange,
     // handleOptionListChange,
     setProductOrderData,
+    setOrderFormData,
     handleCustomerInfoChange,
     handleInvitationCommonInfoChange,
     handleInvitationCommonInfoBooleanChange,
     // handlePaperInvitationChange,
-    handleInvitationInfoChange,
+    handlePaperInfoChange,
+    handleMobileInfoChange,
     handleCharterBusChange,
     handleReceptionChange,
     // handleMobileInvitationChange,
-    handleGalleryChange,
+    // handleGalleryChange,
     handleContactOptionChange,
     handleGiftAccountChange,
     handleGuestbookChange,
@@ -92,6 +97,7 @@ const Page = () => {
       );
 
       setIsMobileFreeProvided(hasMobile);
+      setOrderFormData((prev) => ({ ...prev, hasMobileInvitation: hasMobile }));
 
       setProductOrderData({
         invitationId: `${JSON.parse(invitationId)}`,
@@ -128,8 +134,8 @@ const Page = () => {
       title: "종이 청첩장 기본 정보",
       content: (
         <CoverInfoSection
-          invitationInfoData={invitationInfoData}
-          handleInvitationInfoChange={handleInvitationInfoChange}
+          invitationInfoData={paperInfoData}
+          handleInvitationInfoChange={handlePaperInfoChange}
         />
       ),
     },
@@ -162,8 +168,8 @@ const Page = () => {
       content: (
         <CoverInfoSection
           type="mobile"
-          invitationInfoData={invitationInfoData}
-          handleInvitationInfoChange={handleInvitationInfoChange}
+          invitationInfoData={mobileInfoData}
+          handleInvitationInfoChange={handleMobileInfoChange}
         />
       ),
     },
@@ -172,8 +178,8 @@ const Page = () => {
       hasCheckbox: true,
       content: (
         <ImageDragBox
-          galleryData={galleryData}
-          handleGalleryChange={handleGalleryChange}
+        // galleryData={galleryData}
+        // handleGalleryChange={handleGalleryChange}
         />
       ),
       checkboxState: orderFormData.hasGallery,
@@ -253,6 +259,160 @@ const Page = () => {
     },
   ];
 
+  const { mutate: postOrderInfo } = usePostOrderInfo();
+
+  const handleSubmit = () => {
+    if (!productOrderData) {
+      alert("상품 정보가 없습니다.");
+      return;
+    }
+
+    const phoneNumber = `${customerInfoData.firstPhoneNumber}-${customerInfoData.secondPhoneNumber}-${customerInfoData.thirdPhoneNumber}`;
+    const email = `${customerInfoData.emailId}@${customerInfoData.emailDomain}`;
+
+    const cleanedCustomerInfo = {
+      name: customerInfoData.name,
+      zoneCode: customerInfoData.zoneCode,
+      address: customerInfoData.address,
+      detailAddress: customerInfoData.detailAddress,
+      phoneNumber,
+      email,
+    };
+
+    const cleanedInvitationCommonInfo = {
+      groomFatherDeceased: invitationCommonInfoData.groomFatherDeceased,
+      hasGroomFatherChristianName:
+        invitationCommonInfoData.hasGroomFatherChristianName,
+      groomFatherName: invitationCommonInfoData.groomFatherName,
+      ...(invitationCommonInfoData.hasGroomFatherChristianName && {
+        groomFatherChristianName:
+          invitationCommonInfoData.groomFatherChristianName,
+      }),
+
+      groomMotherDeceased: invitationCommonInfoData.groomMotherDeceased,
+      hasGroomMotherChristianName:
+        invitationCommonInfoData.hasGroomMotherChristianName,
+      groomMotherName: invitationCommonInfoData.groomMotherName,
+      ...(invitationCommonInfoData.hasGroomMotherChristianName && {
+        groomMotherChristianName:
+          invitationCommonInfoData.groomMotherChristianName,
+      }),
+
+      hasGroomChristianName: invitationCommonInfoData.hasGroomChristianName,
+      groomName: invitationCommonInfoData.groomName,
+      // groomChristianName: invitationCommonInfoData.groomChristianName,
+      ...(invitationCommonInfoData.hasGroomChristianName && {
+        groomChristianName: invitationCommonInfoData.groomChristianName,
+      }),
+
+      brideFatherDeceased: invitationCommonInfoData.brideFatherDeceased,
+      hasBrideFatherChristianName:
+        invitationCommonInfoData.hasBrideFatherChristianName,
+      brideFatherName: invitationCommonInfoData.brideFatherName,
+      ...(invitationCommonInfoData.hasBrideFatherChristianName && {
+        brideFatherChristianName:
+          invitationCommonInfoData.brideFatherChristianName,
+      }),
+      //  brideFatherChristianName: invitationCommonInfoData.brideFatherChristianName,
+
+      brideMotherDeceased: invitationCommonInfoData.brideMotherDeceased,
+      hasBrideMotherChristianName:
+        invitationCommonInfoData.hasBrideMotherChristianName,
+      brideMotherName: invitationCommonInfoData.brideMotherName,
+      // brideMotherChristianName:
+      //   invitationCommonInfoData.hasBrideMotherChristianName,
+      ...(invitationCommonInfoData.hasBrideMotherChristianName && {
+        brideMotherChristianName:
+          invitationCommonInfoData.brideMotherChristianName,
+      }),
+
+      hasBrideChristianName: invitationCommonInfoData.hasBrideChristianName,
+      brideName: invitationCommonInfoData.brideName,
+      // brideChristianName: invitationCommonInfoData.brideChristianName,
+      ...(invitationCommonInfoData.hasBrideChristianName && {
+        brideChristianName: invitationCommonInfoData.brideChristianName,
+      }),
+
+      weddingDateTime: `${invitationCommonInfoData.weddingDate} ${invitationCommonInfoData.weddingHour} ${invitationCommonInfoData.weddingMinite}`,
+      weddingVenueZoneCode: invitationCommonInfoData.weddingVenueZoneCode,
+      weddingVenueAddress: invitationCommonInfoData.weddingVenueAddress,
+      weddingVenueDetailAddress:
+        invitationCommonInfoData.weddingVenueDetailAddress,
+    };
+
+    const cleanedInvitationInfoData = {
+      mainImage: paperInfoData.mainImage,
+      message: paperInfoData.message,
+    };
+
+    const payload: PostOrderInfoRequest = {
+      ...productOrderData,
+      customerInfo: cleanedCustomerInfo,
+      invitationCommonInfo: cleanedInvitationCommonInfo,
+      paperInvitationInfo: cleanedInvitationInfoData,
+
+      hasCharterBus: orderFormData.hasCharterBus,
+      ...(orderFormData.hasCharterBus && { charterBus: charterBusData }),
+
+      hasReception: orderFormData.hasReception,
+      ...(orderFormData.hasReception && { reception: receptionData }),
+
+      hasMobileInvitation: orderFormData.hasMobileInvitation,
+      ...(orderFormData.hasMobileInvitation && {
+        mobileInvitationInfo: mobileInfoData,
+      }),
+
+      ...(orderFormData.hasMobileInvitation && {
+        hasGallery: orderFormData.hasGallery,
+      }),
+      ...(orderFormData.hasGallery && { gallery: galleryData }),
+
+      ...(orderFormData.hasMobileInvitation && {
+        hasContactOption: orderFormData.hasContactOption,
+      }),
+      ...(orderFormData.hasContactOption && {
+        contactOption: contactOptionData,
+      }),
+
+      ...(orderFormData.hasMobileInvitation && {
+        hasGiftAccount: orderFormData.hasGiftAccount,
+      }),
+      ...(orderFormData.hasGiftAccount && { giftAccount: giftAccountData }),
+
+      ...(orderFormData.hasMobileInvitation && {
+        hasCalendar: orderFormData.hasCalendar,
+      }),
+      ...(orderFormData.hasMobileInvitation && {
+        hasMapNavigation: orderFormData.hasMapNavigation,
+      }),
+
+      ...(orderFormData.hasMobileInvitation && {
+        hasGuestbook: orderFormData.hasGuestbook,
+      }),
+      ...(orderFormData.hasGuestbook && { guestbook: guestbookData }),
+
+      ...(orderFormData.hasMobileInvitation && {
+        hasRsvp: orderFormData.hasRsvp,
+      }),
+      ...(orderFormData.hasRsvp && { rsvp: rsvpData }),
+
+      hasAdditionalRequest: orderFormData.hasAdditionalRequest,
+      ...(orderFormData.hasAdditionalRequest && {
+        additionalRequest: additionalRequestData,
+      }),
+    };
+
+    postOrderInfo(payload, {
+      onSuccess: (response) => {
+        alert(`주문이 완료되었습니다! 주문코드: ${response.orderCode}`);
+      },
+      onError: (error) => {
+        alert("주문 중 오류가 발생했습니다. 다시 시도해주세요.");
+        console.error(error);
+      },
+    });
+  };
+
   return (
     <form className={styles.orderPageLayout}>
       <div className={styles.titleContainer}>
@@ -266,7 +426,6 @@ const Page = () => {
                 productOrderData,
                 customerInfoData,
                 invitationCommonInfoData,
-                invitationInfoData,
                 charterBusData,
                 receptionData,
                 contactOptionData,
@@ -274,7 +433,10 @@ const Page = () => {
                 rsvpData,
                 charterBusData,
                 orderFormData,
+                paperInfoData,
+                mobileInfoData,
               );
+              handleSubmit();
             }}
             type="button"
           >

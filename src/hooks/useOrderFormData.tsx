@@ -34,24 +34,30 @@ const useOrderFormData = () => {
     hasGroomFatherChristianName: false,
     groomFatherName: "",
     groomFatherChristianName: "",
+
     groomMotherDeceased: false,
     hasGroomMotherChristianName: false,
     groomMotherName: "",
     groomMotherChristianName: "",
+
     hasGroomChristianName: false,
     groomName: "",
     groomChristianName: "",
+
     brideFatherDeceased: false,
     hasBrideFatherChristianName: false,
     brideFatherName: "",
     brideFatherChristianName: "",
+
     brideMotherDeceased: false,
     hasBrideMotherChristianName: false,
     brideMotherName: "",
     brideMotherChristianName: "",
+
     hasBrideChristianName: false,
     brideName: "",
-    brideChristianName: false,
+    brideChristianName: "",
+
     // weddingDatetime: "",
     weddingDate: "",
     weddingHour: "",
@@ -61,9 +67,14 @@ const useOrderFormData = () => {
     weddingVenueDetailAddress: "",
   });
 
-  const [invitationInfoData, setInvitationInfoData] = useState({
-    urlPath: "",
-    mainImage: "",
+  const [paperInfoData, setPaperInfoData] = useState({
+    mainImage: "http://chaeneey.jpg",
+    message: "",
+  });
+
+  const [mobileInfoData, setMobileInfoData] = useState({
+    urlSlug: "",
+    mainImage: "http://chaeneey.jpg",
     message: "",
   });
 
@@ -142,7 +153,9 @@ const useOrderFormData = () => {
   const handleInvitationCommonInfoBooleanChange = createBooleanChangeHandler(
     setInvitationCommonInfoData,
   );
-  const handleInvitationInfoChange = createChangeHandler(setInvitationInfoData);
+
+  const handlePaperInfoChange = createChangeHandler(setPaperInfoData);
+  const handleMobileInfoChange = createChangeHandler(setMobileInfoData);
 
   // const handlePaperInvitationChange = createChangeHandler(
   //   setPaperInvitationInfoData,
@@ -166,7 +179,8 @@ const useOrderFormData = () => {
     productOrderData,
     customerInfoData,
     invitationCommonInfoData,
-    invitationInfoData,
+    paperInfoData,
+    mobileInfoData,
     // paperInvitationInfoData,
     charterBusData,
     receptionData,
@@ -181,10 +195,12 @@ const useOrderFormData = () => {
 
     // handleProductOrderChange,
     setProductOrderData,
+    setOrderFormData,
     handleCustomerInfoChange,
     handleInvitationCommonInfoChange,
     handleInvitationCommonInfoBooleanChange,
-    handleInvitationInfoChange,
+    handlePaperInfoChange,
+    handleMobileInfoChange,
     // handlePaperInvitationChange,
     handleCharterBusChange,
     handleReceptionChange,

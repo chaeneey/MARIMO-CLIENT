@@ -18,16 +18,16 @@ type OrderInfoDetail = {
 
 const fetchOrderInfo = async (
   orderType: OrderType,
-  orderInfo: OrderInfo
+  orderInfo: OrderInfo,
 ): Promise<OrderInfoDetail[]> => {
   return get<OrderInfoDetail[]>(
-    FETCH_ORDER_INFO(orderType, orderInfo.customerName, orderInfo.orderCode)
+    FETCH_ORDER_INFO(orderType, orderInfo.customerName, orderInfo.orderCode),
   );
 };
 
 export const useFetchOrderInfo = (
   orderType: OrderType,
-  orderInfo: OrderInfo
+  orderInfo: OrderInfo,
 ) => {
   return useQuery({
     queryKey: [
