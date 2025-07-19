@@ -8,17 +8,41 @@ import {
   OrderInfoSection,
   VideoInfoSection,
 } from "@/components/order";
+import useOrderFormData from "@/hooks/useOrderFormData";
 
 import * as styles from "./page.css";
 
-const accordionItems = [
-  { title: "주문자 정보", content: <OrderInfoSection /> },
-  { title: "식전영상 공통정보 입력", content: <VideoInfoSection /> },
-  { title: "사진 / 영상 업로드", content: <ImageDragBox /> },
-  { title: "기타 요청사항", content: <MemoSection /> },
-];
-
 const Page = () => {
+  const {
+    customerInfoData,
+    additionalRequestData,
+    handleCustomerInfoChange,
+    handleAdditionalRequestChange,
+  } = useOrderFormData();
+
+  const accordionItems = [
+    {
+      title: "주문자 정보",
+      content: (
+        <OrderInfoSection
+          customerInfoData={customerInfoData}
+          handleCustomerInfoChange={handleCustomerInfoChange}
+        />
+      ),
+    },
+    { title: "식전영상 공통정보 입력", content: <VideoInfoSection /> },
+    { title: "사진 / 영상 업로드", content: <ImageDragBox /> },
+    {
+      title: "기타 요청사항",
+      content: (
+        <MemoSection
+          additionalRequestData={additionalRequestData}
+          handleAdditionalRequestChange={handleAdditionalRequestChange}
+        />
+      ),
+    },
+  ];
+
   return (
     <form className={styles.orderPageLayout}>
       <div className={styles.titleContainer}>

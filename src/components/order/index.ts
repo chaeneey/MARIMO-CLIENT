@@ -10,6 +10,7 @@ import GuestSection from "./GuestSection/GuestSection";
 import MemoSection from "./MemoSection/MemoSection";
 import MiniAccordion from "./MiniAccordion/MiniAccordion";
 import OrderInfoSection from "./OrderInfoSection/OrderInfoSection";
+import OrderSelectBox from "./OrderSelectBox/OrderSelectBox";
 import PartySection from "./PartySection/PartySection";
 import PhoneInfoSection from "./PhoneInfoSection/PhoneInfoSection";
 import { VideoInfoSection } from "./VideoInfoSection";
@@ -30,4 +31,5 @@ export {
   PartySection,
   PhoneInfoSection,
   VideoInfoSection,
+  OrderSelectBox,
 };

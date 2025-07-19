@@ -16,11 +16,16 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 }
 
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  ({ errorMessage, currentLength, maxLength, ...props }, ref) => {
+  ({ errorMessage, currentLength, maxLength, value, ...props }, ref) => {
     return (
       <div className={textAreaContainer}>
         <div className={textAreaWrapper({ errorMessage: !!errorMessage })}>
-          <textarea ref={ref} {...props} className={textAreaStyle} />
+          <textarea
+            ref={ref}
+            {...props}
+            className={textAreaStyle}
+            value={value}
+          />
           <span className={countTextStyle}>
             {currentLength} / {maxLength}
           </span>

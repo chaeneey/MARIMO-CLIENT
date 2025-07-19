@@ -55,3 +55,28 @@ export const accountSubTextStyle = style({
   marginTop: "2rem",
   minWidth: "fit-content",
 });
+
+export const selectedAccountInfoContainer = style([
+  flexGenerator("column", "flex-start", "flex-start"),
+  {
+    gap: "0.8rem",
+    width: "100%",
+  },
+]);
+
+export const selectedAccountInfoWrapper = style([
+  flexGenerator("row", "space-between"),
+  {
+    width: "100%",
+    // maxWidth: "32.8rem",
+    padding: "1.9rem 2.7rem",
+    border: `${vars.colors.black} solid 1px`,
+    borderRadius: "1px",
+    backgroundColor: vars.colors.white,
+  },
+]);
+
+export const selectedAccountInfoTextStyle = style({
+  ...vars.fonts.caption_04_me,
+  color: vars.colors.black,
+});

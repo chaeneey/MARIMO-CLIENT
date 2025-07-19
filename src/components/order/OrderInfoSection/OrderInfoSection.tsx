@@ -1,51 +1,55 @@
 "use client";
+import { ChangeEvent, useState } from "react";
 
-import { useState } from "react";
-import { useDaumPostcodePopup } from "react-daum-postcode";
-
-import { Button, Input, SelectBox } from "@/components/common";
+import { Button, Input } from "@/components/common";
+import { useDaumPostcode } from "@/hooks/useDaumPostcode";
+import { CustomerInfoType } from "@types";
 
 import * as styles from "./OrderInfoSection.css";
+import OrderSelectBox from "../OrderSelectBox/OrderSelectBox";
+interface OrderInfoSectionProps {
+  customerInfoData: CustomerInfoType;
+  handleCustomerInfoChange: (
+    key: keyof CustomerInfoType,
+  ) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+}
 
-const scriptUrl =
-  "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+const OrderInfoSection = ({
+  customerInfoData,
+  handleCustomerInfoChange,
+}: OrderInfoSectionProps) => {
+  const [selectedDomain, setSelectedDomain] = useState("직접 입력");
 
-const OrderInfoSection = () => {
-  const [form, setForm] = useState({
-    address: "",
-    addressDetail: "",
-    zonecode: "",
-  });
-  const [email, setEmail] = useState("직접 입력");
-  const [phoneNumber, setPhoneNumber] = useState("010");
+  const handleAddressData = (address: string, zoneCode: string) => {
+    handleCustomerInfoChange("address")({
+      target: { value: address },
+    } as ChangeEvent<HTMLInputElement>);
 
-  const open = useDaumPostcodePopup(scriptUrl);
-
-  const handleComplete = (data: DaumPostcodeData) => {
-    let fullAddress = data.address;
-    let extraAddress = "";
-
-    if (data.addressType === "R") {
-      if (data.bname !== "") {
-        extraAddress += data.bname;
-      }
-      if (data.buildingName !== "") {
-        extraAddress +=
-          extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
-      }
-      fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
-    }
-
-    setForm((prevForm) => ({
-      ...prevForm,
-      address: fullAddress,
-      zonecode: data.zonecode,
-    }));
+    handleCustomerInfoChange("zoneCode")({
+      target: { value: zoneCode },
+    } as ChangeEvent<HTMLInputElement>);
   };
 
-  const handleClick = () => {
-    open({ onComplete: handleComplete });
-  };
+  const { handleClick } = useDaumPostcode(handleAddressData);
+
+  // const handleChangePhoneNumber = (key: string, value: string) => {
+  //   const updated = { ...phoneNumber, [key]: value };
+  //   setPhoneNumber(updated);
+  //   const fullNumber =
+  //     updated.first + "-" + updated.second + "-" + updated.third;
+  //   handleCustomerInfoChange("phoneNumber")({
+  //     target: { value: fullNumber },
+  //   } as ChangeEvent<HTMLInputElement>);
+  // };
+
+  // const handleChangeEmail = (key: string, value: string) => {
+  //   const updated = { ...email, [key]: value };
+  //   setEmail(updated);
+  //   const fullEmail = updated.emailId + "@" + updated.emailDomain;
+  //   handleCustomerInfoChange("email")({
+  //     target: { value: fullEmail },
+  //   } as ChangeEvent<HTMLInputElement>);
+  // };
 
   return (
     <>
@@ -55,6 +59,8 @@ const OrderInfoSection = () => {
           placeholder="주문자명을 입력해주세요"
           infoMessage="디자인 확인(교정)이 가능한 분의 성합을 기입해 주세요."
           maxWidth="32rem"
+          value={customerInfoData.name}
+          onChange={handleCustomerInfoChange("name")}
         />
       </div>
 
@@ -63,7 +69,8 @@ const OrderInfoSection = () => {
         <div className={styles.customerAdressInputWrapper}>
           <div className={styles.customerAdressSearchWrapper}>
             <Input
-              value={form.zonecode}
+              value={customerInfoData.zoneCode}
+              onChange={handleCustomerInfoChange("zoneCode")}
               maxWidth="32rem"
               placeholder="우편번호를 입력해주세요"
               readOnly
@@ -73,19 +80,18 @@ const OrderInfoSection = () => {
             </Button>
           </div>
           <Input
-            value={form.address}
+            value={customerInfoData.address}
+            onChange={handleCustomerInfoChange("address")}
             type="text"
             placeholder="건물, 지번 또는 도로명 검색"
             maxWidth="62rem"
             readOnly={true}
           />
           <Input
-            value={form.addressDetail}
-            onChange={(e) =>
-              setForm({ ...form, addressDetail: e.target.value })
-            }
             maxWidth="62rem"
             placeholder="상세 주소를 입력해주세요. 예시) 마리빌 205호"
+            value={customerInfoData.detailAddress}
+            onChange={handleCustomerInfoChange("detailAddress")}
           />
         </div>
       </div>
@@ -93,7 +99,7 @@ const OrderInfoSection = () => {
       <div className={styles.customerPhoneNumberWrapper}>
         <h3 className={styles.inputTextStyle}>휴대전화</h3>
         <div className={styles.customerPhoneNumberInputWrapper}>
-          <SelectBox
+          <OrderSelectBox
             label="시간"
             options={[
               { value: { keyValue: "010" } },
@@ -103,22 +109,51 @@ const OrderInfoSection = () => {
               { value: { keyValue: "018" } },
               { value: { keyValue: "019" } },
             ]}
-            selected={{ keyValue: phoneNumber }}
-            onSelect={(value) => setPhoneNumber(value.keyValue)}
+            selected={{ keyValue: customerInfoData.firstPhoneNumber }}
+            onSelect={(value) => {
+              // handleChangePhoneNumber("first", value.keyValue);
+              handleCustomerInfoChange("firstPhoneNumber")({
+                target: { value: value.keyValue },
+              } as ChangeEvent<HTMLInputElement>);
+            }}
             variant="order"
           />
-          <Input maxWidth="15rem" placeholder="1234" />
-          <Input maxWidth="15rem" placeholder="1234" />
+          <Input
+            maxWidth="15rem"
+            placeholder="1234"
+            value={customerInfoData.secondPhoneNumber}
+            onChange={handleCustomerInfoChange("secondPhoneNumber")}
+          />
+          <Input
+            maxWidth="15rem"
+            placeholder="1234"
+            value={customerInfoData.thirdPhoneNumber}
+            onChange={handleCustomerInfoChange("thirdPhoneNumber")}
+          />
         </div>
       </div>
 
       <div className={styles.customerEmailWrapper}>
         <h3 className={styles.inputTextStyle}>이메일</h3>
         <div className={styles.customerEmailInputWrapper}>
-          <Input maxWidth="24rem" placeholder="marimo1234" />
+          <Input
+            maxWidth="24rem"
+            placeholder="marimo1234"
+            value={customerInfoData.emailId}
+            onChange={handleCustomerInfoChange("emailId")}
+          />
           <span className={styles.customerEmailTextStyle}>@</span>
-          <Input maxWidth="24rem" placeholder="gmail.com" />
-          <SelectBox
+          <Input
+            maxWidth="24rem"
+            placeholder="gmail.com"
+            value={
+              selectedDomain == "직접 입력"
+                ? customerInfoData.emailDomain
+                : (customerInfoData.emailDomain = selectedDomain)
+            }
+            onChange={handleCustomerInfoChange("emailDomain")}
+          />
+          <OrderSelectBox
             label="직접 입력"
             options={[
               { value: { keyValue: "직접 입력" } },
@@ -127,8 +162,10 @@ const OrderInfoSection = () => {
               { value: { keyValue: "daum.net" } },
               { value: { keyValue: "nate.com" } },
             ]}
-            selected={{ keyValue: email }}
-            onSelect={(value) => setEmail(value.keyValue)}
+            selected={{ keyValue: selectedDomain }}
+            onSelect={(value) => {
+              setSelectedDomain(value.keyValue);
+            }}
             variant="order"
           />
         </div>

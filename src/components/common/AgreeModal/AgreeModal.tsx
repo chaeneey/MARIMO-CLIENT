@@ -27,7 +27,7 @@ const AgreeModal = ({ onClose, onFinalOrder }: AgreeModalProps) => {
 
   const handleIndividualChange = (
     setter: React.Dispatch<React.SetStateAction<boolean>>,
-    checked: boolean
+    checked: boolean,
   ) => {
     setter(checked);
     const newState = {

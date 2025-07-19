@@ -14,7 +14,7 @@ import {
 } from "./Input.css";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  errorMessage?: string;
+  errorMessage?: string | undefined;
   infoMessage?: string;
   handleClearInput?: () => void;
   maxWidth?: string;
@@ -32,7 +32,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       readOnly = false,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isFocused, setIsFocused] = useState(false);
 
@@ -64,7 +64,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";
