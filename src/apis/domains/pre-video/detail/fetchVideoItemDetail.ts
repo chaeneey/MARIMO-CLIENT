@@ -6,7 +6,7 @@ export async function fetchVideoItemDetail(
   preVideoId: number
 ): Promise<PreVideoDetail> {
   const res = await get<PreVideoDetail>(FETCH_PREVIDEO_DETAIL(preVideoId), {
-    cache: "force-cache",
+    // cache: "force-cache",
   });
   return res;
 }

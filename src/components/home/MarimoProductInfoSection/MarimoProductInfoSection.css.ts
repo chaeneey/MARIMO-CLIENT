@@ -49,6 +49,7 @@ export const productInfoBottomCantainer = style([
   {
     gap: "8rem",
     zIndex: 5,
+    position: "relative",
   },
 ]);
 

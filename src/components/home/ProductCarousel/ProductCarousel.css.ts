@@ -112,6 +112,7 @@ export const carouselRightImageStyle = style({
 export const carouselLeftImageStyle = style({
   width: "48rem",
   height: "32rem",
+  transform: "scaleX(-1)",
 
   "@media": {
     "screen and (max-width: 935px)": {
