@@ -57,8 +57,8 @@ const VideoInfoTab = ({ videoUrl }: string) => {
           <CardRecommendPlayer width={192} height={136} />
         </div>
       </section>
-      <section ref={detailImageRef}>
-        <video src={videoUrl} muted autoPlay loop />
+      <section ref={detailImageRef} style={{ width: "100%" }}>
+        <video src={videoUrl} muted autoPlay loop style={{ width: "100%" }} />
       </section>
       <section ref={productInfoRef}>
         <h2 className={styles.h2Style}>제작단계</h2>
