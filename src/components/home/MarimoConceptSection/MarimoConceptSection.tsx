@@ -2,7 +2,14 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-import { img_bottom_01, img_bottom_02, img_bottom_03, img_bottom_04, img_bottom_05, img_bottom_06 } from "@/assets/images";
+import {
+  img_bottom_01,
+  img_bottom_02,
+  img_bottom_03,
+  img_bottom_04,
+  img_bottom_05,
+  img_bottom_06,
+} from "@/assets/images";
 
 import * as styles from "./MarimoConceptSection.css";
 

@@ -6,7 +6,6 @@ import { useState } from "react";
 
 import {
   background02,
-  homeCenter1,
   img_invitation_thumbnail01,
   img_invitation_thumbnail02,
   img_invitation_thumbnail03,
@@ -75,7 +74,11 @@ const MarimoProductInfoSection = () => {
               mainText="PRE-CEREMONY VIDEO"
               subText="두 사람의 이야기를 특별한 감성으로 담아낸 식전영상까지"
               direction="left"
-              carouselImages={[img_video_thumbnail01, img_video_thumbnail02, img_video_thumbnail03]}
+              carouselImages={[
+                img_video_thumbnail01,
+                img_video_thumbnail02,
+                img_video_thumbnail03,
+              ]}
               scrollState={videoScrollEvent}
             />
           </motion.div>

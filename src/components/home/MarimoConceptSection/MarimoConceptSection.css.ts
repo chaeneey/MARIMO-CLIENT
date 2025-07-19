@@ -26,7 +26,7 @@ export const conceptSectionMainTextStyle = style({
 export const conceptSectionImageWrapper = style([
   flexGenerator(),
   {
-    width: "81rem",
+    width: "91rem",
     flexWrap: "wrap",
 
     "@media": {
