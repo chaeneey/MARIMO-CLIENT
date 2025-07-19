@@ -10,7 +10,12 @@ import {
   videoStyle,
 } from "./VideoPlayer.css";
 
-const VideoPlayer = () => {
+interface VideoPlayerProps {
+  realVideo: string[];
+}
+
+const VideoPlayer = ({ realVideo }: VideoPlayerProps) => {
+  console.log(realVideo);
   const [mutedState, setMutedState] = useState(true);
   const handleClickSoundIcon = () => {
     setMutedState((prev) => !prev);
@@ -19,7 +24,7 @@ const VideoPlayer = () => {
     <section className={videoPlayerLayout}>
       <video
         className={videoStyle}
-        src={"/video/pre-video.MP4"}
+        src={realVideo}
         autoPlay
         muted={mutedState}
         loop

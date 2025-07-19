@@ -30,7 +30,7 @@ export const conceptSectionImageWrapper = style([
     flexWrap: "wrap",
 
     "@media": {
-      "screen and (max-width: 935px)": {
+      "screen and (max-width: 900px)": {
         width: "30rem",
       },
     },

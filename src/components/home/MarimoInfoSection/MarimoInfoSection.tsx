@@ -5,18 +5,21 @@ import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import {
-  homeThumbnail,
-  homeTop1,
-  homeTop2,
-  homeTop3,
-  homeTop4,
+  background01,
+  img01,
+  img02,
+  img03,
+  img04,
   marimoLabel,
 } from "@/assets/images";
 import { IcLogoLarge } from "@/assets/svgs";
 
 import * as styles from "./MarimoInfoSection.css";
 
-const homeTopImageList = [homeTop1, homeTop2, homeTop3, homeTop4];
+const homeTopImageList = [img01,
+  img02,
+  img03,
+  img04];
 
 const MarimoInfoSection = () => {
   const [index, setIndex] = useState(0);
@@ -65,7 +68,7 @@ const MarimoInfoSection = () => {
         <section>
           <Image
             className={styles.homeThumbnailImageStyle}
-            src={homeThumbnail}
+            src={background01}
             alt="마리모 메인 이미지"
           />
           <motion.div

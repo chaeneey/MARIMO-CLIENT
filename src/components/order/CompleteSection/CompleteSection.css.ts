@@ -1,7 +1,30 @@
-import { style } from "@vanilla-extract/css";
+import { keyframes, style } from "@vanilla-extract/css";
 
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
+
+const fadeInUpLoop = keyframes({
+  "0%": {
+    opacity: 0,
+    transform: "translateY(20px)",
+  },
+  "10%": {
+    opacity: 1,
+    transform: "translateY(0)",
+  },
+  "90%": {
+    opacity: 1,
+    transform: "translateY(0)",
+  },
+  "100%": {
+    opacity: 0,
+    transform: "translateY(-10px)",
+  },
+});
+
+export const completeIconWrapper = style({
+  animation: `${fadeInUpLoop} 3s ease-in-out infinite`,
+});
 
 export const completeLayout = style([
   flexGenerator("column"),

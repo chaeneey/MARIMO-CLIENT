@@ -1,5 +1,5 @@
 // path
-export const FETCH_BANNER = (productType: "INVITATION" | "PREVIDEO") =>
+export const FETCH_BANNER = (productType: "INVITATION" | "PRE_VIDEO") =>
   `/banners?productType=${productType}`;
 export const FETCH_INVITATION_LIST = `/invitations`;
 export const FETCH_PREVIDEO_LIST = `/pre-videos`;
@@ -14,5 +14,5 @@ export const GET_PRISIGNED_URL = (attachmentType: string) =>
 export const FETCH_ORDER_INFO = (
   orderType: "invitations" | "pre-videos",
   customerName: string,
-  orderCode: string,
+  orderCode: string
 ) => `/orders/${orderType}?customerName=${customerName}&orderCode=${orderCode}`;
