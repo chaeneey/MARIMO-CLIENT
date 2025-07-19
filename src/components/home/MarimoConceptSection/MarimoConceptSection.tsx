@@ -2,7 +2,14 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-import { homeBottom1, homeBottom2, homeBottom3 } from "@/assets/images";
+import {
+  img_bottom_01,
+  img_bottom_02,
+  img_bottom_03,
+  img_bottom_04,
+  img_bottom_05,
+  img_bottom_06,
+} from "@/assets/images";
 
 import * as styles from "./MarimoConceptSection.css";
 
@@ -43,42 +50,42 @@ const MarimoConceptSection = () => {
           >
             <motion.li variants={variants}>
               <Image
-                src={homeBottom1}
+                src={img_bottom_01}
                 alt="마리모 컨셉사진1"
                 style={{ transform: "rotate(6.57deg)" }}
               />
             </motion.li>
             <motion.li variants={variants}>
               <Image
-                src={homeBottom2}
+                src={img_bottom_02}
                 alt="마리모 컨셉사진2"
                 style={{ transform: "rotate(-3.16deg) translateY(-50px)" }}
               />
             </motion.li>
             <motion.li variants={variants}>
               <Image
-                src={homeBottom3}
+                src={img_bottom_03}
                 alt="마리모 컨셉사진3"
                 style={{ transform: "rotate(11.72deg)" }}
               />
             </motion.li>
             <motion.li variants={variants}>
               <Image
-                src={homeBottom1}
+                src={img_bottom_04}
                 alt="마리모 컨셉사진1"
                 style={{ transform: "rotate(-15.25deg)" }}
               />
             </motion.li>
             <motion.li variants={variants}>
               <Image
-                src={homeBottom2}
+                src={img_bottom_05}
                 alt="마리모 컨셉사진2"
                 style={{ transform: "rotate(4.65deg) translateY(-50px)" }}
               />
             </motion.li>
             <motion.li variants={variants}>
               <Image
-                src={homeBottom3}
+                src={img_bottom_06}
                 alt="마리모 컨셉사진3"
                 style={{ transform: "rotate(-0.17deg)" }}
               />

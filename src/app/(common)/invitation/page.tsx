@@ -4,7 +4,6 @@ import { InvitationMain, MainBanner } from "@/components/invitation";
 const page = async () => {
   const bannerList = await fetchInvitationBanner("INVITATION");
   const realImages = bannerList.map((banner) => banner.fileUrl);
-
   return (
     <>
       <MainBanner realImages={realImages} />

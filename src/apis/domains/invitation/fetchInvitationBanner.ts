@@ -11,13 +11,14 @@ type Banner = {
   bannerList: BannerItem[];
 };
 
-type productType = "INVITATION" | "PREVIDEO";
+type productType = "INVITATION" | "PRE_VIDEO";
 
 export async function fetchInvitationBanner(
-  productType: productType,
+  productType: productType
 ): Promise<BannerItem[]> {
   const res = await get<Banner>(FETCH_BANNER(productType), {
-    cache: "force-cache",
+    cache: "no-store",
   });
+  console.log(res);
   return res.bannerList;
 }

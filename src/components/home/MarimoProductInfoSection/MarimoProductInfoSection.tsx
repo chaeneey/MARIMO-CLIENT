@@ -5,14 +5,14 @@ import Image from "next/image";
 import { useState } from "react";
 
 import {
-  homeBackground,
-  homeCenter1,
-  homeInvitation1,
-  homeInvitation2,
-  homeInvitation3,
-  homeVideo1,
-  homeVideo2,
-  homeVideo3,
+  background02,
+  img_invitation_thumbnail01,
+  img_invitation_thumbnail02,
+  img_invitation_thumbnail03,
+  img_video_thumbnail01,
+  img_video_thumbnail02,
+  img_video_thumbnail03,
+  img_card,
 } from "@/assets/images";
 import { IcMarimoSymbol } from "@/assets/svgs";
 
@@ -26,7 +26,7 @@ const MarimoProductInfoSection = () => {
   return (
     <section className={styles.productInfoLayout}>
       <Image
-        src={homeBackground}
+        src={background02}
         alt="배경 이미지"
         className={styles.productInfoBackgoundImageStyle}
       />
@@ -54,10 +54,9 @@ const MarimoProductInfoSection = () => {
               subText="마리모만의 감각적인 청첩장 디자인부터"
               direction="right"
               carouselImages={[
-                homeInvitation1,
-                homeInvitation2,
-                homeInvitation3,
-                homeInvitation1,
+                img_invitation_thumbnail01,
+                img_invitation_thumbnail02,
+                img_invitation_thumbnail03,
               ]}
               scrollState={invitationScrollEvent}
             />
@@ -75,7 +74,11 @@ const MarimoProductInfoSection = () => {
               mainText="PRE-CEREMONY VIDEO"
               subText="두 사람의 이야기를 특별한 감성으로 담아낸 식전영상까지"
               direction="left"
-              carouselImages={[homeVideo1, homeVideo2, homeVideo3]}
+              carouselImages={[
+                img_video_thumbnail01,
+                img_video_thumbnail02,
+                img_video_thumbnail03,
+              ]}
               scrollState={videoScrollEvent}
             />
           </motion.div>
@@ -89,7 +92,7 @@ const MarimoProductInfoSection = () => {
           transition={{ duration: 1 }}
           className={styles.productInfoBottomImageStyle}
         >
-          <Image src={homeCenter1} alt="마리모 소개 이미지" />
+          <Image src={img_card} alt="마리모 소개 이미지" />
         </motion.div>
         <motion.div
           className={styles.productInfoTextWrapper}

@@ -26,11 +26,11 @@ export const conceptSectionMainTextStyle = style({
 export const conceptSectionImageWrapper = style([
   flexGenerator(),
   {
-    width: "81rem",
+    width: "91rem",
     flexWrap: "wrap",
 
     "@media": {
-      "screen and (max-width: 935px)": {
+      "screen and (max-width: 900px)": {
         width: "30rem",
       },
     },

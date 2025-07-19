@@ -1,4 +1,7 @@
+import { IcComplete80 } from "@/assets/svgs";
+
 import {
+  completeIconWrapper,
   completeLayout,
   completeMainTextStyle,
   completeMessageTextStyle,
@@ -11,10 +14,9 @@ import {
 const CompleteSection = () => {
   return (
     <div className={completeLayout}>
-      <div
-        style={{ width: "10rem", height: "10rem", border: "1px solid red" }}
-      />
-
+      <div className={completeIconWrapper}>
+        <IcComplete80 width={81} height={81} />
+      </div>
       <div className={completeTextWrapper}>
         <h1 className={completeMainTextStyle}>주문이 완료되었습니다!</h1>
         <div className={completeSubTextWrapper}>
