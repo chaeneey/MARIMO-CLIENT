@@ -15,7 +15,6 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayer = ({ realVideo }: VideoPlayerProps) => {
-  console.log(realVideo);
   const [mutedState, setMutedState] = useState(true);
   const handleClickSoundIcon = () => {
     setMutedState((prev) => !prev);

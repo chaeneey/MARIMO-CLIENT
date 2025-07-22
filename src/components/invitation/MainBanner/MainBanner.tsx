@@ -84,11 +84,12 @@ const MainBanner = ({ realImages }: MainBannerProps) => {
       <div className={styles.progressBarContainer}>
         <div className={styles.entireBar}>
           <div
-            className={styles.presentBar}
-            style={{
-              transform: `translateX(${realIdx * 100}%)`,
-            }}
-          />
+  className={styles.presentBar}
+  style={{
+    transform: `translateX(${realIdx * 100}%)`,
+    width: `${100 / realImages.length}%`, // 이미지 개수에 따라 너비 조정
+  }}
+/>
         </div>
       </div>
     </section>

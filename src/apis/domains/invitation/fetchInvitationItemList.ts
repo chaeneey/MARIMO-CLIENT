@@ -4,7 +4,7 @@ import { InvitationItemList } from "@types";
 
 export async function fetchInvitationItemList() {
   const res = await get<InvitationItemList>(FETCH_INVITATION_LIST, {
-    cache: "force-cache",
+    cache: "no-store",
   });
   return res.invitationList;
 }
