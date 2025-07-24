@@ -8,7 +8,7 @@ export async function fetchInvitationItemDetail(
   const res = await get<InvitationItemDetail>(
     FETCH_INVITATION_DETAIL(invitationId),
     {
-      cache: "force-cache",
+      cache: "no-store",
     }
   );
   return res;

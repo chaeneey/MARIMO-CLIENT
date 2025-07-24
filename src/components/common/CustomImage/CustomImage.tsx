@@ -16,10 +16,12 @@ const CustomImage = ({ src, alt, priority }: ImageProps) => {
       <Image
         src={src}
         alt={alt}
-        fill
+        width={0}
+        height={0}
         sizes="100vw"
         className={imageStyle}
         priority={priority}
+        style={{ width: "100%", height: "auto" }}
       />
     </div>
   );
