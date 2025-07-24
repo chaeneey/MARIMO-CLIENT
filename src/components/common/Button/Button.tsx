@@ -4,8 +4,8 @@ import { buttonColorStyle, buttonSizeStyle, disabledStyle } from "./Button.css";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   type?: string;
-  size: "56" | "50" | "38" | "30" | "35";
-  color: "lime01" | "lime03" | "lime04" | "gray" | "white" | "stroke";
+  size: "56" | "50" | "40" | "38" | "30" | "35";
+  color: "lime01" | "lime03" | "lime04" | "gray01" | "gray" | "white" | "stroke";
 }
 
 const Button = ({

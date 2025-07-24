@@ -29,7 +29,13 @@ export const vars = createGlobalTheme(":root", {
     gray03: "#D7E0EE",
     gray02: "#E7EDF8",
     gray01: "#FAFAFA",
+    new_gray01: "#D5D5D5",
+    new_gray02: "#585858",
     white: "#FFFFFF",
+
+    // beige, yellow
+    beige: "#FFF9F2",
+    yellow01: "#FFBB00"
   },
 
   fonts: {
@@ -258,6 +264,92 @@ export const vars = createGlobalTheme(":root", {
       fontSize: "1.8rem",
       lineHeight: "22px",
       letterSpacing: "-0.36px",
+    },
+
+    // 모바일
+    mh1_head01_20: {
+      fontFamily: "Pretendard",
+      fontWeight: "500",
+      fontSize: "2rem",
+      lineHeight: "24px",
+      letterSpacing: "0px",
+    },
+    mh2_head02_18_sb: {
+      fontFamily: "Pretendard",
+      fontWeight: "600",
+      fontSize: "1.8rem",
+      lineHeight: "30px",
+      letterSpacing: "-0.72px",
+    },
+    mh3_head03_18: {
+      fontFamily: "Pretendard",
+      fontWeight: "500",
+      fontSize: "1.8rem",
+      lineHeight: "20px",
+      letterSpacing: "-0.72px",
+    },
+    mb1_body01_14_sb: {
+      fontFamily: "Pretendard",
+      fontWeight: "600",
+      fontSize: "1.4rem",
+      lineHeight: "20px",
+      letterSpacing: "-0.56px",
+    },
+    mb2_body02_14_m: {
+      fontFamily: "Pretendard",
+      fontWeight: "500",
+      fontSize: "1.4rem",
+      lineHeight: "14px",
+      letterSpacing: "-0.56px",
+    },
+    mb3_body03_14_re_narrow: {
+      fontFamily: "Pretendard",
+      fontWeight: "400",
+      fontSize: "1.4rem",
+      lineHeight: "24px",
+      letterSpacing: "-0.84px",
+    },
+    mb4_body04_14_re_default: {
+      fontFamily: "Pretendard",
+      fontWeight: "400",
+      fontSize: "1.4rem",
+      lineHeight: "20px",
+      letterSpacing: "-0.56px",
+    },
+    mb5_body05_14_re: {
+      fontFamily: "Pretendard",
+      fontWeight: "400",
+      fontSize: "1.4rem",
+      lineHeight: "24px",
+      letterSpacing: "-0.28px",
+    },
+    mc1_cation01_12_m: {
+      fontFamily: "Pretendard",
+      fontWeight: "500",
+      fontSize: "1.2rem",
+      lineHeight: "14px",
+      letterSpacing: "-0.96px",
+    },
+    mc2_cation02_12_re: {
+      fontFamily: "Pretendard",
+      fontWeight: "400",
+      fontSize: "1.2rem",
+      lineHeight: "22px",
+      letterSpacing: "-0.48px",
+    },
+    mc3_cation03_12_light: {
+      fontFamily: "Pretendard",
+      fontWeight: "300",
+      fontSize: "1.2rem",
+      lineHeight: "14px",
+      letterSpacing: "-0.96px",
+    },
+    mc4_cation04_12_el: {
+      fontFamily: "Pretendard",
+      fontWeight: "200",
+      fontSize: "1.2rem",
+      lineHeight: "14px",
+      letterSpacing: "-0.96px",
     },
   },
 });

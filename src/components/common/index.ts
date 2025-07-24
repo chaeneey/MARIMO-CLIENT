@@ -1,3 +1,4 @@
+import AccessRestrictModal from "./AccessRestrictModal/AccessRestrictModal";
 import Accordion from "./Accordion/Accordion";
 import AgreeModal from "./AgreeModal/AgreeModal";
 import Button from "./Button/Button";
@@ -9,12 +10,14 @@ import Header from "./Header/Header";
 import IUButton from "./IUButton/IUButton";
 import ImageDragBox from "./ImageDragBox/ImageDragBox";
 import Input from "./Input/Input";
+import MobileDetect from "./MobileDetect/MobileDetect";
 import Modal from "./Modal/Modal";
 import SelectBox from "./SelectBox/SelectBox";
 import TabBar from "./TabBar/TabBar";
 import TextArea from "./TextArea/TextArea";
 
 export {
+  AccessRestrictModal,
   Accordion,
   AgreeModal,
   Button,
@@ -24,6 +27,7 @@ export {
   Header,
   IUButton,
   Input,
+  MobileDetect,
   Modal,
   SelectBox,
   TabBar,
