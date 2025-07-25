@@ -4,7 +4,7 @@ import { PreVideoItemList } from "@types";
 
 export async function fetchVideoItemList() {
   const res = await get<PreVideoItemList>(FETCH_PREVIDEO_LIST, {
-    cache: "force-cache",
+    cache: "no-store",
   });
 
   return res.preVideoList;
