@@ -10,7 +10,7 @@ export const productInfoLayout = style([
     width: "100%",
     paddingTop: "14rem",
     paddingBottom: "35rem",
-    gap: "50rem",
+    gap: "40rem",
     backgroundColor: vars.colors.black,
   },
 ]);
@@ -50,6 +50,7 @@ export const productInfoBottomCantainer = style([
     gap: "8rem",
     zIndex: 5,
     position: "relative",
+    paddingTop: "20rem"
   },
 ]);
 

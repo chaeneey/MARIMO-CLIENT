@@ -8,7 +8,7 @@ export const homeHeaderLayout = recipe({
   base: [
     flexGenerator("row", "space-between"),
     {
-      height: "10rem",
+      height: "8rem",
       padding: "2.5rem 13.1rem 2.5rem 14.2rem",
 
       position: "absolute",
@@ -40,7 +40,7 @@ export const homeHeaderLayout = recipe({
 export const homeHeaderLeftContainer = style([
   flexGenerator(),
   {
-    gap: "6rem",
+    gap: "10rem",
   },
 ]);
 
@@ -60,4 +60,5 @@ export const homeHeaderLeftWrapper = style([
 export const homeHeaderLinkStyle = style({
   ...vars.fonts.eh4_head04_24_b,
   color: vars.colors.lime09,
+  fontSize: "20px"
 });

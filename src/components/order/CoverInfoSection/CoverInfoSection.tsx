@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { ChangeEvent } from "react";
 
+import { fetchUrlSlug } from "@/apis/domains/order/fetchUrlSlug";
 import { Button, Input, IUButton, Modal, TextArea } from "@/components/common";
 import { MobileInfoType, PaperInfoType } from "@types";
 
@@ -26,6 +27,15 @@ const CoverInfoSection = ({
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+const handleClickButton = async () => {
+  try {
+    const result = await fetchUrlSlug((invitationInfoData as MobileInfoType).urlSlug);
+    console.log(result)
+  } catch (error) {
+    console.error("API 호출 중 오류 발생:", error);
+  }
+};
+
   return (
     <>
       {type == "mobile" && (
@@ -47,7 +57,7 @@ const CoverInfoSection = ({
               }
               onChange={handleInvitationInfoChange("urlSlug")}
             />
-            <Button color="gray" size="35" onClick={() => {}}>
+            <Button color="gray" size="35" onClick={handleClickButton}>
               중복 확인
             </Button>
           </div>
