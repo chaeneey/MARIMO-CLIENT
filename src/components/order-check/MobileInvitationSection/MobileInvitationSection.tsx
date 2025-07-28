@@ -9,7 +9,7 @@ interface MobileInvitationSectionProps {
 
 const MobileInvitationSection = ({ info }: MobileInvitationSectionProps) => {
   const {
-    url,
+    urlSlug,
     mainImage,
     message,
     hasGallery,
@@ -30,7 +30,7 @@ const MobileInvitationSection = ({ info }: MobileInvitationSectionProps) => {
         <span className={styles.mobileInviTitleStyle}>모바일 청첩장</span>
         <div className={styles.mobileColWrapper}>
           <span className={styles.mobileInviTypeTextStyle}>URL</span>
-          <span className={styles.mobileInviTextStyle}>{url}</span>
+          <span className={styles.mobileInviTextStyle}>{urlSlug}</span>
         </div>
 
         <div className={styles.mobileColWrapper}>
