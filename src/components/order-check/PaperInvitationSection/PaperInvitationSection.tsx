@@ -17,16 +17,9 @@ const PaperInvitationSection = ({ info }: PaperInvitationSectionProps) => {
     reception,
   } = info;
 
-  const formattedReceptionTime = reception?.datetime?.[0]
-    ? new Date(reception.datetime[0])
-    : null;
-
-  const receptionTime =
-    formattedReceptionTime &&
-    `${formattedReceptionTime.getHours()}시 ${formattedReceptionTime
-      .getMinutes()
-      .toString()
-      .padStart(2, "0")}분`;
+const [receptionDate, receptionTime] = reception?.dateTime?.[0]
+    ? reception.dateTime[0].split(" ")
+    : ["", ""];
 
   return (
     <>
@@ -62,7 +55,7 @@ const PaperInvitationSection = ({ info }: PaperInvitationSectionProps) => {
               <span className={styles.paperInviTextStyle}>
                 {reception.address}
               </span>
-              <span className={styles.paperInviTextStyle}>{receptionTime}</span>
+              <span className={styles.paperInviTextStyle}>{receptionDate} {receptionTime}</span>
             </div>
           </section>
         )}
