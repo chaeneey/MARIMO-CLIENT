@@ -67,7 +67,7 @@ export const tabBarSection = style({
   display: "block",
 
   "@media": {
-    "screen and (max-width: 960px)": {
+    "screen and (max-width: 900px)": {
       display: "none",
     },
   },
@@ -76,4 +76,23 @@ export const tabBarSection = style({
 export const buttonSection = style({
   maxWidth: "10.2rem",
   marginLeft: "auto",
+
+  "@media": {
+    "screen and (max-width: 900px)": {
+      display: "none",
+    },
+  },
 });
+
+export const hamburgerBarSection = style({
+  display: "none",
+  width: "3.8rem",
+  height: "3.8rem",
+
+    "@media": {
+    "screen and (max-width: 900px)": {
+      display: "block",
+    },
+  },
+
+})

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { IcLogoSmallHome, IcLogoSmallHome2 } from "@/assets/svgs";
+import { IcHeaderBar, IcLogoSmallHome, IcLogoSmallHome2 } from "@/assets/svgs";
 import { Button } from "@/components/common";
 
 import * as styles from "./HomeHeader.css";
@@ -32,11 +32,19 @@ const HomeHeader = () => {
         </div>
       </div>
 
-      <Link href={"/order-check"}>
-        <Button size="30" color="lime04">
-          주문 조회
-        </Button>
-      </Link>
+      <div className={styles.homeHeaderOrderButton}>
+        <Link href={"/order-check"}>
+          <Button size="30" color="lime04">
+            주문 조회
+          </Button>
+        </Link>
+      </div>
+
+      <div className={styles.homeHeaderHamburderBar}>
+        <IcHeaderBar />
+      </div>
+
+
     </div>
   );
 };

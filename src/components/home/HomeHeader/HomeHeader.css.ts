@@ -50,7 +50,7 @@ export const homeHeaderLeftWrapper = style([
     gap: "6rem",
 
     "@media": {
-      "screen and (max-width: 960px)": {
+      "screen and (max-width: 900px)": {
         display: "none",
       },
     },
@@ -62,3 +62,22 @@ export const homeHeaderLinkStyle = style({
   color: vars.colors.lime09,
   fontSize: "20px"
 });
+
+export const homeHeaderOrderButton = style({
+      "@media": {
+      "screen and (max-width: 900px)": {
+        display: "none",
+      }
+    }
+})
+
+export const homeHeaderHamburderBar = style({
+  width: "3.8rem",
+  height: "3.8rem",
+  display: "none",
+    "@media": {
+      "screen and (max-width: 900px)": {
+        display: "block",
+      }
+    }
+  })

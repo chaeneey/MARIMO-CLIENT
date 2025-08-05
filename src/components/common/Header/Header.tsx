@@ -4,10 +4,11 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { IcLogoSmall } from "@/assets/svgs";
+import { IcHeaderBar, IcLogoSmall } from "@/assets/svgs";
 
 import {
   buttonSection,
+  hamburgerBarSection,
   headerWrapper,
   headerWrapperScrolled,
   tabBarSection,
@@ -66,6 +67,10 @@ const Header = () => {
             주문 조회
           </Button>
         </Link>
+      </section>
+
+      <section className={hamburgerBarSection}>
+        <IcHeaderBar />
       </section>
     </header>
   );
