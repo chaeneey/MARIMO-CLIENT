@@ -4,7 +4,7 @@ import { animate } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import { useEffect, useRef } from "react";
 
-import { IcStrokeLeft, IcStrokeRight } from "@/assets/svgs";
+import { IcStrokeLeft } from "@/assets/svgs";
 
 import * as styles from "./ProductCarousel.css";
 
@@ -57,9 +57,10 @@ const ProductCarousel = ({
           <span className={styles.carouselSubTextStyle}>{subText}</span>
         </div>
         {direction == "right" ? (
-          <IcStrokeRight
+          <IcStrokeLeft
             onClick={handleClickButton}
             className={styles.carouselArrowStyle}
+            style={{ transform: "scaleX(-1)" }}
           />
         ) : (
           <IcStrokeLeft

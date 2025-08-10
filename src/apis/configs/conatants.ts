@@ -16,3 +16,4 @@ export const FETCH_ORDER_INFO = (
   customerName: string,
   orderCode: string,
 ) => `/orders/${orderType}?customerName=${customerName}&orderCode=${orderCode}`;
+export const FETCH_URLSLUG = (urlSlug: string) => `/mobile-invitations/validate?urlSlug=${urlSlug}`;

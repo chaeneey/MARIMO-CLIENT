@@ -3,6 +3,18 @@ import { style } from "@vanilla-extract/css";
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
 
+export const inputWithErrorMessage = style([
+  flexGenerator("column", "flex-start", "flex-start"),
+  { width: "100%" },
+]);
+
+export const inputErrorTextStyle = style([
+  vars.fonts.caption_04_me,
+  {
+    color: vars.colors.alert01,
+  },
+]);
+
 export const inputTextStyle = style([
   vars.fonts.body08_18_sb,
   { color: vars.colors.gray05, marginTop: "2rem", minWidth: "fit-content" },

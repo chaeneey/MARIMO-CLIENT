@@ -3,6 +3,18 @@ import { style } from "@vanilla-extract/css";
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
 
+export const inputWithErrorMessage = style([
+  flexGenerator("column", "flex-start", "flex-start"),
+  { gap: "0.8rem" },
+]);
+
+export const inputErrorTextStyle = style([
+  vars.fonts.caption_04_me,
+  {
+    color: vars.colors.alert01,
+  },
+]);
+
 export const accountSectionContainer = style([
   flexGenerator("column", "flex-start", "flex-start"),
   { gap: "1.8rem", width: "100%" },

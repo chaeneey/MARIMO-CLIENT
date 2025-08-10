@@ -10,6 +10,7 @@ export const buttonSizeStyle = recipe({
     {
       minWidth: "fit-content",
       // width: "100%",
+      whiteSpace: "nowrap",
       borderRadius: "2px",
       cursor: "pointer",
     },

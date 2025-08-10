@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 import { IcBtnDelete } from "@/assets/svgs";
 import { Input } from "@/components/common";
@@ -10,6 +10,7 @@ import {
   accountSectionContainer,
   accountSubTextStyle,
   inputColumnWrapper,
+  inputErrorTextStyle,
   inputInfoTextStyle,
   inputRowWrapper,
   inputTitleTextStyle,
@@ -24,29 +25,48 @@ import AddButton from "../AddButton/AddButton";
 interface AccountSectionProps {
   giftAccountData: GiftAccountType;
   handleGiftAccountChange: (
-    key: keyof GiftAccountType,
+    key: keyof GiftAccountType
   ) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onValidChange: (isValid: boolean) => void;
 }
 
 const AccountSection = ({
   giftAccountData,
   handleGiftAccountChange,
+  onValidChange,
 }: AccountSectionProps) => {
   const [giftAccount, setGiftAccount] = useState({
     bride: {
       bank: "",
-      account: "",
+      number: "",
       holder: "",
     },
     groom: {
       bank: "",
-      account: "",
+      number: "",
       holder: "",
     },
   });
 
+  const [groomAccountListError, setGroomAccountListError] = useState<
+    string | undefined
+  >(undefined);
+  const [brideAccountListError, setBrideAccountListError] = useState<
+    string | undefined
+  >(undefined);
+
+  useEffect(() => {
+    const isValid =
+      !groomAccountListError &&
+      !brideAccountListError &&
+      giftAccountData.brideGiftAccountList.length > 0 &&
+      giftAccountData.groomGiftAccountList.length > 0;
+
+    onValidChange(isValid);
+  }, [groomAccountListError, brideAccountListError, giftAccountData]);
+
   const handleAccountInfoChange =
-    (key: "bride" | "groom", detailKey: "bank" | "account" | "holder") =>
+    (key: "bride" | "groom", detailKey: "bank" | "number" | "holder") =>
     (e: ChangeEvent<HTMLInputElement>) => {
       const { value } = e.target;
 
@@ -63,35 +83,64 @@ const AccountSection = ({
     if (
       giftAccount[who].bank !== "" ||
       giftAccount[who].holder !== "" ||
-      giftAccount[who].account !== ""
+      giftAccount[who].number !== ""
     ) {
       const newAccountInfo = {
         bank: giftAccount[who].bank,
-        account: giftAccount[who].account,
+        number: giftAccount[who].number,
         holder: giftAccount[who].holder,
       };
 
-      if (who == "groom") {
-        handleGiftAccountChange("groomGiftAccountList")({
-          target: {
-            value: [...giftAccountData.groomGiftAccountList, newAccountInfo],
-          },
-        } as unknown as ChangeEvent<HTMLInputElement>);
-      } else {
-        handleGiftAccountChange("brideGiftAccountList")({
-          target: {
-            value: [...giftAccountData.brideGiftAccountList, newAccountInfo],
-          },
-        } as unknown as ChangeEvent<HTMLInputElement>);
+      const currentList =
+        who === "groom"
+          ? giftAccountData.groomGiftAccountList
+          : giftAccountData.brideGiftAccountList;
+
+      if (currentList.length >= 3) {
+        if (who === "groom") {
+          setGroomAccountListError("계좌는 최대 3개까지 등록할 수 있습니다.");
+        } else {
+          setBrideAccountListError("계좌는 최대 3개까지 등록할 수 있습니다.");
+        }
+        return;
       }
+
+      if (who === "groom") {
+        setGroomAccountListError(undefined);
+      } else {
+        setBrideAccountListError(undefined);
+      }
+
+      const newList = [...currentList, newAccountInfo];
+
+      handleGiftAccountChange(
+        who === "groom" ? "groomGiftAccountList" : "brideGiftAccountList"
+      )({
+        target: { value: newList },
+      } as unknown as ChangeEvent<HTMLInputElement>);
     }
   };
 
   const handleClickDeleteButton = (
     who: "groomGiftAccountList" | "brideGiftAccountList",
-    index: number, // 삭제할 항목의 인덱스
+    index: number
   ) => {
-    const updatedList = giftAccountData[who].filter((_, idx) => idx !== index); // 해당 인덱스를 제외한 배열로 업데이트
+    const updatedList = giftAccountData[who].filter((_, idx) => idx !== index);
+
+    // 삭제 후 0개면 에러
+    if (updatedList.length < 1) {
+      if (who === "groomGiftAccountList") {
+        setGroomAccountListError("계좌 정보를 1개 이상 등록해주세요.");
+      } else {
+        setBrideAccountListError("계좌 정보를 1개 이상 등록해주세요.");
+      }
+    } else {
+      if (who === "groomGiftAccountList") {
+        setGroomAccountListError(undefined);
+      } else {
+        setBrideAccountListError(undefined);
+      }
+    }
 
     handleGiftAccountChange(who)({
       target: { value: updatedList },
@@ -131,10 +180,17 @@ const AccountSection = ({
                 <Input
                   placeholder="계좌번호"
                   maxWidth="28rem"
-                  value={giftAccount.groom.account}
-                  onChange={handleAccountInfoChange("groom", "account")}
+                  value={giftAccount.groom.number}
+                  onChange={handleAccountInfoChange("groom", "number")}
                 />
               </div>
+
+              {/* 신랑 계좌 에러 메시지 */}
+              {groomAccountListError && (
+                <span className={inputErrorTextStyle}>
+                  {groomAccountListError}
+                </span>
+              )}
               <div className={selectedAccountInfoContainer}>
                 {giftAccountData.groomGiftAccountList.length > 0 &&
                   giftAccountData.groomGiftAccountList.map(
@@ -143,20 +199,20 @@ const AccountSection = ({
                         <div key={idx} className={selectedAccountInfoWrapper}>
                           <span
                             className={selectedAccountInfoTextStyle}
-                          >{`${accountInfo.bank}/${accountInfo.holder}/${accountInfo.account} `}</span>
+                          >{`${accountInfo.bank}/${accountInfo.holder}/${accountInfo.number} `}</span>
                           <IcBtnDelete
                             width={18}
                             height={18}
                             onClick={() =>
                               handleClickDeleteButton(
                                 "groomGiftAccountList",
-                                idx,
+                                idx
                               )
                             }
                           />
                         </div>
                       );
-                    },
+                    }
                   )}
               </div>
             </div>
@@ -195,10 +251,17 @@ const AccountSection = ({
                 <Input
                   placeholder="계좌번호"
                   maxWidth="28rem"
-                  value={giftAccount.bride.account}
-                  onChange={handleAccountInfoChange("bride", "account")}
+                  value={giftAccount.bride.number}
+                  onChange={handleAccountInfoChange("bride", "number")}
                 />
               </div>
+
+              {/* 신부 계좌 에러 메시지 */}
+              {brideAccountListError && (
+                <span className={inputErrorTextStyle}>
+                  {brideAccountListError}
+                </span>
+              )}
 
               <div className={selectedAccountInfoContainer}>
                 {giftAccountData.brideGiftAccountList.length > 0 &&
@@ -208,20 +271,20 @@ const AccountSection = ({
                         <div key={idx} className={selectedAccountInfoWrapper}>
                           <span
                             className={selectedAccountInfoTextStyle}
-                          >{`${accountInfo.bank}/${accountInfo.holder}/${accountInfo.account} `}</span>
+                          >{`${accountInfo.bank}/${accountInfo.holder}/${accountInfo.number} `}</span>
                           <IcBtnDelete
                             width={18}
                             height={18}
                             onClick={() =>
                               handleClickDeleteButton(
                                 "brideGiftAccountList",
-                                idx,
+                                idx
                               )
                             }
                           />
                         </div>
                       );
-                    },
+                    }
                   )}
               </div>
             </div>
