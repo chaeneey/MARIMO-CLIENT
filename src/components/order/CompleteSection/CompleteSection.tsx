@@ -1,3 +1,6 @@
+"use client";
+import { useEffect, useState } from "react";
+
 import { IcComplete80 } from "@/assets/svgs";
 
 import {
@@ -11,11 +14,13 @@ import {
   completeTextWrapper,
 } from "./CompleteSection.css";
 
-interface CompleteSectionProps {
-  orderCode: string | null;
-}
+const CompleteSection = () => {
+  const [orderCode, setOrderCode] = useState("0");
 
-const CompleteSection = ({ orderCode }: CompleteSectionProps) => {
+  useEffect(() => {
+    const stored = localStorage.getItem("orderCode");
+    setOrderCode(stored ?? "0");
+  }, []);
   return (
     <div className={completeLayout}>
       <div className={completeIconWrapper}>
