@@ -225,12 +225,12 @@ export type ReceptionType = {
 };
 
 export type ContactOptionType = {
-  groomFatherPhoneNumber: string;
-  groomMotherPhoneNumber: string;
-  groomPhoneNumber: string;
-  brideFatherPhoneNumber: string;
-  brideMotherPhoneNumber: string;
-  bridePhoneNumber: string;
+  groomFatherPhoneNumber?: string;
+  groomMotherPhoneNumber?: string;
+  groomPhoneNumber?: string;
+  brideFatherPhoneNumber?: string;
+  brideMotherPhoneNumber?: string;
+  bridePhoneNumber?: string;
 };
 
 export type GalleryType = {
@@ -248,7 +248,7 @@ export type GiftAccountType = {
 
 type AccountType = {
   bank: string;
-  account: string;
+  number: string;
   holder: string;
 };
 
@@ -303,23 +303,32 @@ export interface PostOrderInfoRequest {
   invitationCommonInfo: {
     groomFatherDeceased: boolean;
     hasGroomFatherChristianName: boolean;
-    groomFatherName: string;
+    groomFatherName?: string;
+    groomFatherChristianName?: string;
+
     groomMotherDeceased: boolean;
     hasGroomMotherChristianName: boolean;
-    groomMotherName: string;
+    groomMotherName?: string;
     groomMotherChristianName?: string;
+
     hasGroomChristianName: boolean;
     groomName: string;
+    groomChristianName?: string;
+
     brideFatherDeceased: boolean;
     hasBrideFatherChristianName: boolean;
-    brideFatherName: string;
+    brideFatherName?: string;
     brideFatherChristianName?: string;
+
     brideMotherDeceased: boolean;
     hasBrideMotherChristianName: boolean;
-    brideMotherName: string;
+    brideMotherName?: string;
+    brideMotherChristianName?: string;
+
     hasBrideChristianName: boolean;
     brideName: string;
     brideChristianName?: string;
+
     weddingDateTime: string;
     weddingVenueZoneCode: string;
     weddingVenueAddress: string;

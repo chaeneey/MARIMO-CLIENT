@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 import { Input } from "@/components/common";
 import { ReceptionType } from "@types";
@@ -10,16 +10,47 @@ import OrderSelectBox from "../OrderSelectBox/OrderSelectBox";
 interface PartySectionProps {
   receptionData: ReceptionType;
   handleReceptionChange: (
-    key: keyof ReceptionType,
+    key: keyof ReceptionType
   ) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onValidChange: (isValid: boolean) => void;
 }
 
 const PartySection = ({
   receptionData,
   handleReceptionChange,
+  onValidChange,
 }: PartySectionProps) => {
-  // 예식 날짜 포맷 설정
-  const handleChangeDate = (e: ChangeEvent<HTMLInputElement>) => {
+  const [addressError, setAddressError] = useState<string | undefined>(
+    undefined
+  );
+  const [datetimeError, setDatetimeError] = useState<string | undefined>(
+    undefined
+  );
+
+  useEffect(() => {
+    const isValid =
+      !addressError &&
+      !datetimeError &&
+      !!receptionData.address &&
+      !!receptionData.datetime &&
+      !!receptionData.datetimeHour &&
+      !!receptionData.datetimeMinute;
+    onValidChange(isValid);
+  }, [addressError, datetimeError, receptionData]);
+
+  const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    handleReceptionChange("address")(e);
+
+    if (!value.trim()) {
+      setAddressError("주소를 입력해주세요.");
+    } else {
+      setAddressError(undefined);
+    }
+  };
+
+  // 예식일자 핸들러 함수
+  const handleDatetimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let raw = e.target.value;
     raw = raw.replace(/[^0-9]/g, "");
     raw = raw.slice(0, 8);
@@ -31,10 +62,17 @@ const PartySection = ({
     } else {
       formatted = `${raw.slice(0, 4)}-${raw.slice(4, 6)}-${raw.slice(6, 8)}`;
     }
-
     handleReceptionChange("datetime")({
       target: { value: formatted },
     } as ChangeEvent<HTMLInputElement>);
+
+    if (!formatted.trim()) {
+      setDatetimeError("예식 일시를 입력해주세요.");
+    } else if (formatted.length < 10) {
+      setDatetimeError("8글자로 입력해주세요.");
+    } else {
+      setDatetimeError(undefined);
+    }
   };
 
   return (
@@ -46,7 +84,8 @@ const PartySection = ({
           placeholder="피로연 장소를 입력해주세요"
           infoMessage="정확한 장소를 입력해주세요"
           value={receptionData.address}
-          onChange={handleReceptionChange("address")}
+          onChange={handleAddressChange}
+          errorMessage={addressError}
         />
       </section>
 
@@ -57,27 +96,28 @@ const PartySection = ({
             maxWidth="32rem"
             placeholder="8글자로 입력해주세요"
             value={receptionData.datetime}
-            onChange={handleChangeDate}
+            onChange={handleDatetimeChange}
+            errorMessage={datetimeError}
           />
 
           <OrderSelectBox
             label="시간"
             options={[
-              { value: { keyValue: "오전 8시" } },
-              { value: { keyValue: "오전 9시" } },
-              { value: { keyValue: "오전 10시" } },
-              { value: { keyValue: "오전 11시" } },
-              { value: { keyValue: "오후 12시" } },
-              { value: { keyValue: "오후 1시" } },
-              { value: { keyValue: "오후 2시" } },
-              { value: { keyValue: "오후 3시" } },
-              { value: { keyValue: "오후 4시" } },
-              { value: { keyValue: "오후 5시" } },
-              { value: { keyValue: "오후 6시" } },
-              { value: { keyValue: "오후 7시" } },
-              { value: { keyValue: "오후 8시" } },
-              { value: { keyValue: "오후 9시" } },
-              { value: { keyValue: "오후 10시" } },
+              { value: { keyValue: "08시" } },
+              { value: { keyValue: "09시" } },
+              { value: { keyValue: "10시" } },
+              { value: { keyValue: "11시" } },
+              { value: { keyValue: "12시" } },
+              { value: { keyValue: "13시" } },
+              { value: { keyValue: "14시" } },
+              { value: { keyValue: "15시" } },
+              { value: { keyValue: "16시" } },
+              { value: { keyValue: "17시" } },
+              { value: { keyValue: "18시" } },
+              { value: { keyValue: "19시" } },
+              { value: { keyValue: "20시" } },
+              { value: { keyValue: "21시" } },
+              { value: { keyValue: "22시" } },
             ]}
             selected={{ keyValue: receptionData.datetimeHour }}
             onSelect={(value) => {

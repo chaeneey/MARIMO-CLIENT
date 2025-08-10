@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 import { Button, Input } from "@/components/common";
 import CheckBox from "@/components/common/CheckBox/CheckBox";
@@ -13,36 +13,38 @@ import OrderSelectBox from "../OrderSelectBox/OrderSelectBox";
 interface CommonInfoSectionProps {
   invitationCommonInfoData: InvitationCommonInfoType;
   handleInvitationCommonInfoChange: (
-    key: keyof InvitationCommonInfoType,
+    key: keyof InvitationCommonInfoType
   ) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   handleInvitationCommonInfoBooleanChange: (
-    key: keyof InvitationCommonInfoType,
+    key: keyof InvitationCommonInfoType
   ) => (checked: boolean) => void;
+  onValidChange: (isValid: boolean) => void;
 }
 
 const CommonInfoSection = ({
   invitationCommonInfoData,
   handleInvitationCommonInfoChange,
   handleInvitationCommonInfoBooleanChange,
+  onValidChange,
 }: CommonInfoSectionProps) => {
   // 예식 날짜 포맷 설정
-  const handleChangeDate = (e: ChangeEvent<HTMLInputElement>) => {
-    let raw = e.target.value;
-    raw = raw.replace(/[^0-9]/g, "");
-    raw = raw.slice(0, 8);
-    let formatted = "";
-    if (raw.length <= 4) {
-      formatted = raw;
-    } else if (raw.length <= 6) {
-      formatted = `${raw.slice(0, 4)}-${raw.slice(4)}`;
-    } else {
-      formatted = `${raw.slice(0, 4)}-${raw.slice(4, 6)}-${raw.slice(6, 8)}`;
-    }
+  // const handleChangeDate = (e: ChangeEvent<HTMLInputElement>) => {
+  //   let raw = e.target.value;
+  //   raw = raw.replace(/[^0-9]/g, "");
+  //   raw = raw.slice(0, 8);
+  //   let formatted = "";
+  //   if (raw.length <= 4) {
+  //     formatted = raw;
+  //   } else if (raw.length <= 6) {
+  //     formatted = `${raw.slice(0, 4)}-${raw.slice(4)}`;
+  //   } else {
+  //     formatted = `${raw.slice(0, 4)}-${raw.slice(4, 6)}-${raw.slice(6, 8)}`;
+  //   }
 
-    handleInvitationCommonInfoChange("weddingDate")({
-      target: { value: formatted },
-    } as ChangeEvent<HTMLInputElement>);
-  };
+  //   handleInvitationCommonInfoChange("weddingDate")({
+  //     target: { value: formatted },
+  //   } as ChangeEvent<HTMLInputElement>);
+  // };
 
   // 주소 API
   const handleAddressData = (address: string, zoneCode: string) => {
@@ -56,6 +58,222 @@ const CommonInfoSection = ({
   };
 
   const { handleClick } = useDaumPostcode(handleAddressData);
+
+  // 에러 메시지 관련 상태
+  const [groomNameError, setGroomNameError] = useState<string | undefined>(
+    undefined
+  );
+  const [groomChristianNameError, setGroomChristianNameError] = useState<
+    string | undefined
+  >(undefined);
+  const [groomFatherNameError, setGroomFatherNameError] = useState<
+    string | undefined
+  >(undefined);
+  const [groomFatherChristianNameError, setGroomFatherChristianNameError] =
+    useState<string | undefined>(undefined);
+  const [groomMotherNameError, setGroomMotherNameError] = useState<
+    string | undefined
+  >(undefined);
+  const [groomMotherChristianNameError, setGroomMotherChristianNameError] =
+    useState<string | undefined>(undefined);
+
+  const [brideNameError, setBrideNameError] = useState<string | undefined>(
+    undefined
+  );
+  const [brideChristianNameError, setBrideChristianNameError] = useState<
+    string | undefined
+  >(undefined);
+  const [brideFatherNameError, setBrideFatherNameError] = useState<
+    string | undefined
+  >(undefined);
+  const [brideFatherChristianNameError, setBrideFatherChristianNameError] =
+    useState<string | undefined>(undefined);
+  const [brideMotherNameError, setBrideMotherNameError] = useState<
+    string | undefined
+  >(undefined);
+  const [brideMotherChristianNameError, setBrideMotherChristianNameError] =
+    useState<string | undefined>(undefined);
+
+  const [weddingDateError, setWeddingDateError] = useState<string | undefined>(
+    undefined
+  );
+  const [weddingDetailAdressError, setWeddingDetailAdressError] = useState<
+    string | undefined
+  >(undefined);
+
+  useEffect(() => {
+    const isValid =
+      !!invitationCommonInfoData.groomName &&
+      !!invitationCommonInfoData.brideName &&
+      !!invitationCommonInfoData.weddingDate &&
+      !!invitationCommonInfoData.weddingVenueAddress &&
+      !!invitationCommonInfoData.weddingVenueDetailAddress &&
+      !groomNameError &&
+      !brideNameError &&
+      !weddingDateError &&
+      !weddingDetailAdressError &&
+      (invitationCommonInfoData.groomFatherDeceased
+        ? true
+        : !groomFatherNameError) &&
+      (invitationCommonInfoData.groomMotherDeceased
+        ? true
+        : !groomMotherNameError) &&
+      (invitationCommonInfoData.hasGroomChristianName
+        ? !groomChristianNameError
+        : true) &&
+      (invitationCommonInfoData.hasGroomFatherChristianName
+        ? !groomFatherChristianNameError
+        : true) &&
+      (invitationCommonInfoData.hasGroomMotherChristianName
+        ? !groomMotherChristianNameError
+        : true) &&
+      (invitationCommonInfoData.hasBrideChristianName
+        ? !brideChristianNameError
+        : true) &&
+      (invitationCommonInfoData.brideFatherDeceased
+        ? true
+        : !brideFatherNameError) &&
+      (invitationCommonInfoData.hasBrideFatherChristianName
+        ? !brideFatherChristianNameError
+        : true) &&
+      (invitationCommonInfoData.brideMotherDeceased
+        ? true
+        : !brideMotherNameError) &&
+      (invitationCommonInfoData.hasBrideMotherChristianName
+        ? !brideMotherChristianNameError
+        : true);
+
+    onValidChange(isValid);
+  }, [
+    invitationCommonInfoData,
+    // 기존 에러 상태들
+    groomNameError,
+    groomChristianNameError,
+    groomFatherNameError,
+    groomFatherChristianNameError,
+    groomMotherNameError,
+    groomMotherChristianNameError,
+    brideNameError,
+    brideChristianNameError,
+    brideFatherNameError,
+    brideFatherChristianNameError,
+    brideMotherNameError,
+    brideMotherChristianNameError,
+    weddingDateError,
+    weddingDetailAdressError,
+  ]);
+
+  // 공통 에러 처리 함수
+  const handleCommonInfoDataInput =
+    (
+      field: keyof InvitationCommonInfoType,
+      setError: React.Dispatch<React.SetStateAction<string | undefined>>,
+      emptyErrorMessage: string
+    ) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value;
+      handleInvitationCommonInfoChange(field)(e);
+
+      if (!value.trim()) {
+        setError(emptyErrorMessage);
+      } else {
+        setError(undefined);
+      }
+    };
+
+  const handleGroomNameChange = handleCommonInfoDataInput(
+    "groomName",
+    setGroomNameError,
+    "신랑 이름을 입력해주세요."
+  );
+  const handleGroomChristianNameChange = handleCommonInfoDataInput(
+    "groomChristianName",
+    setGroomChristianNameError,
+    "신랑 세례명을 입력해주세요."
+  );
+  const handleGroomFatherNameChange = handleCommonInfoDataInput(
+    "groomFatherName",
+    setGroomFatherNameError,
+    "신랑 아버지 이름을 입력해주세요."
+  );
+  const handleGroomFatherChristianNameChange = handleCommonInfoDataInput(
+    "groomFatherChristianName",
+    setGroomFatherChristianNameError,
+    "신랑 아버지 세례명을 입력해주세요."
+  );
+  const handleGroomMotherNameChange = handleCommonInfoDataInput(
+    "groomMotherName",
+    setGroomMotherNameError,
+    "신랑 어머니 이름을 입력해주세요."
+  );
+  const handleGroomMotherChristianNameChange = handleCommonInfoDataInput(
+    "groomMotherChristianName",
+    setGroomMotherChristianNameError,
+    "신랑 어머니 세례명을 입력해주세요."
+  );
+
+  const handleBrideNameChange = handleCommonInfoDataInput(
+    "brideName",
+    setBrideNameError,
+    "신부 이름을 입력해주세요."
+  );
+  const handleBrideChristianNameChange = handleCommonInfoDataInput(
+    "brideChristianName",
+    setBrideChristianNameError,
+    "신부 세례명을 입력해주세요."
+  );
+  const handleBrideFatherNameChange = handleCommonInfoDataInput(
+    "brideFatherName",
+    setBrideFatherNameError,
+    "신부 아버지 이름을 입력해주세요."
+  );
+  const handleBrideFatherChristianNameChange = handleCommonInfoDataInput(
+    "brideFatherChristianName",
+    setBrideFatherChristianNameError,
+    "신부 아버지 세례명을 입력해주세요."
+  );
+  const handleBrideMotherNameChange = handleCommonInfoDataInput(
+    "brideMotherName",
+    setBrideMotherNameError,
+    "신부 어머니 이름을 입력해주세요."
+  );
+  const handleBrideMotherChristianNameChange = handleCommonInfoDataInput(
+    "brideMotherChristianName",
+    setBrideMotherChristianNameError,
+    "신부 어머니 세례명을 입력해주세요."
+  );
+
+  const handleWeddingDetailAddressChange = handleCommonInfoDataInput(
+    "weddingVenueDetailAddress",
+    setWeddingDetailAdressError,
+    "상세 주소를 입력해주세요."
+  );
+
+  // 예식일자 핸들러 함수
+  const handleWeddingDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let raw = e.target.value;
+    raw = raw.replace(/[^0-9]/g, "");
+    raw = raw.slice(0, 8);
+    let formatted = "";
+    if (raw.length <= 4) {
+      formatted = raw;
+    } else if (raw.length <= 6) {
+      formatted = `${raw.slice(0, 4)}-${raw.slice(4)}`;
+    } else {
+      formatted = `${raw.slice(0, 4)}-${raw.slice(4, 6)}-${raw.slice(6, 8)}`;
+    }
+    handleInvitationCommonInfoChange("weddingDate")({
+      target: { value: formatted },
+    } as ChangeEvent<HTMLInputElement>);
+
+    if (!formatted.trim()) {
+      setWeddingDateError("예식 일시를 입력해주세요.");
+    } else if (formatted.length < 10) {
+      setWeddingDateError("8글자로 입력해주세요.");
+    } else {
+      setWeddingDateError(undefined);
+    }
+  };
 
   return (
     <>
@@ -73,8 +291,17 @@ const CommonInfoSection = ({
                       : "성함을 입력해주세요"
                   }
                   maxWidth="32rem"
-                  value={invitationCommonInfoData.groomFatherName}
-                  onChange={handleInvitationCommonInfoChange("groomFatherName")}
+                  value={
+                    invitationCommonInfoData.groomFatherDeceased
+                      ? ""
+                      : invitationCommonInfoData.groomFatherName
+                  }
+                  onChange={handleGroomFatherNameChange}
+                  errorMessage={
+                    invitationCommonInfoData.groomFatherDeceased
+                      ? undefined
+                      : groomFatherNameError
+                  }
                   readOnly={invitationCommonInfoData.groomFatherDeceased}
                 />
                 {invitationCommonInfoData.hasGroomFatherChristianName && (
@@ -82,9 +309,8 @@ const CommonInfoSection = ({
                     placeholder="세례명을 입력해주세요"
                     maxWidth="32rem"
                     value={invitationCommonInfoData.groomFatherChristianName}
-                    onChange={handleInvitationCommonInfoChange(
-                      "groomFatherChristianName",
-                    )}
+                    onChange={handleGroomFatherChristianNameChange}
+                    errorMessage={groomFatherChristianNameError}
                   />
                 )}
               </div>
@@ -94,7 +320,7 @@ const CommonInfoSection = ({
                   <CheckBox
                     checked={invitationCommonInfoData.groomFatherDeceased}
                     onChange={handleInvitationCommonInfoBooleanChange(
-                      "groomFatherDeceased",
+                      "groomFatherDeceased"
                     )}
                   />
                   <span className={styles.nameInfoCheckboxTextStyle}>故</span>
@@ -105,7 +331,7 @@ const CommonInfoSection = ({
                       invitationCommonInfoData.hasGroomFatherChristianName
                     }
                     onChange={handleInvitationCommonInfoBooleanChange(
-                      "hasGroomFatherChristianName",
+                      "hasGroomFatherChristianName"
                     )}
                   />
                   <span className={styles.nameInfoCheckboxTextStyle}>
@@ -127,8 +353,17 @@ const CommonInfoSection = ({
                       : "성함을 입력해주세요"
                   }
                   maxWidth="32rem"
-                  value={invitationCommonInfoData.groomMotherName}
-                  onChange={handleInvitationCommonInfoChange("groomMotherName")}
+                  value={
+                    invitationCommonInfoData.groomMotherDeceased
+                      ? ""
+                      : invitationCommonInfoData.groomMotherName
+                  }
+                  onChange={handleGroomMotherNameChange}
+                  errorMessage={
+                    invitationCommonInfoData.groomMotherDeceased
+                      ? undefined
+                      : groomMotherNameError
+                  }
                   readOnly={invitationCommonInfoData.groomMotherDeceased}
                 />
                 {invitationCommonInfoData.hasGroomMotherChristianName && (
@@ -136,9 +371,8 @@ const CommonInfoSection = ({
                     placeholder="세례명을 입력해주세요"
                     maxWidth="32rem"
                     value={invitationCommonInfoData.groomMotherChristianName}
-                    onChange={handleInvitationCommonInfoChange(
-                      "groomMotherChristianName",
-                    )}
+                    onChange={handleGroomMotherChristianNameChange}
+                    errorMessage={groomMotherChristianNameError}
                   />
                 )}
               </div>
@@ -148,7 +382,7 @@ const CommonInfoSection = ({
                   <CheckBox
                     checked={invitationCommonInfoData.groomMotherDeceased}
                     onChange={handleInvitationCommonInfoBooleanChange(
-                      "groomMotherDeceased",
+                      "groomMotherDeceased"
                     )}
                   />
                   <span className={styles.nameInfoCheckboxTextStyle}>故</span>
@@ -159,7 +393,7 @@ const CommonInfoSection = ({
                       invitationCommonInfoData.hasGroomMotherChristianName
                     }
                     onChange={handleInvitationCommonInfoBooleanChange(
-                      "hasGroomMotherChristianName",
+                      "hasGroomMotherChristianName"
                     )}
                   />
                   <span className={styles.nameInfoCheckboxTextStyle}>
@@ -178,16 +412,16 @@ const CommonInfoSection = ({
                   placeholder="성함을 입력해주세요"
                   maxWidth="32rem"
                   value={invitationCommonInfoData.groomName}
-                  onChange={handleInvitationCommonInfoChange("groomName")}
+                  onChange={handleGroomNameChange}
+                  errorMessage={groomNameError}
                 />
                 {invitationCommonInfoData.hasGroomChristianName && (
                   <Input
                     placeholder="세례명을 입력해주세요"
                     maxWidth="32rem"
                     value={invitationCommonInfoData.groomChristianName}
-                    onChange={handleInvitationCommonInfoChange(
-                      "groomChristianName",
-                    )}
+                    onChange={handleGroomChristianNameChange}
+                    errorMessage={groomChristianNameError}
                   />
                 )}
               </div>
@@ -196,7 +430,7 @@ const CommonInfoSection = ({
                 <CheckBox
                   checked={invitationCommonInfoData.hasGroomChristianName}
                   onChange={handleInvitationCommonInfoBooleanChange(
-                    "hasGroomChristianName",
+                    "hasGroomChristianName"
                   )}
                 />
                 <span className={styles.nameInfoCheckboxTextStyle}>세례명</span>
@@ -220,8 +454,17 @@ const CommonInfoSection = ({
                       : "성함을 입력해주세요"
                   }
                   maxWidth="32rem"
-                  value={invitationCommonInfoData.brideFatherName}
-                  onChange={handleInvitationCommonInfoChange("brideFatherName")}
+                  value={
+                    invitationCommonInfoData.brideFatherDeceased
+                      ? ""
+                      : invitationCommonInfoData.brideFatherName
+                  }
+                  onChange={handleBrideFatherNameChange}
+                  errorMessage={
+                    invitationCommonInfoData.brideFatherDeceased
+                      ? undefined
+                      : brideFatherNameError
+                  }
                   readOnly={invitationCommonInfoData.brideFatherDeceased}
                 />
                 {invitationCommonInfoData.hasBrideFatherChristianName && (
@@ -229,9 +472,8 @@ const CommonInfoSection = ({
                     placeholder="세례명을 입력해주세요"
                     maxWidth="32rem"
                     value={invitationCommonInfoData.brideFatherChristianName}
-                    onChange={handleInvitationCommonInfoChange(
-                      "brideFatherChristianName",
-                    )}
+                    onChange={handleBrideFatherChristianNameChange}
+                    errorMessage={brideFatherChristianNameError}
                   />
                 )}
               </div>
@@ -240,7 +482,7 @@ const CommonInfoSection = ({
                   <CheckBox
                     checked={invitationCommonInfoData.brideFatherDeceased}
                     onChange={handleInvitationCommonInfoBooleanChange(
-                      "brideFatherDeceased",
+                      "brideFatherDeceased"
                     )}
                   />
                   <span className={styles.nameInfoCheckboxTextStyle}>故</span>
@@ -251,7 +493,7 @@ const CommonInfoSection = ({
                       invitationCommonInfoData.hasBrideFatherChristianName
                     }
                     onChange={handleInvitationCommonInfoBooleanChange(
-                      "hasBrideFatherChristianName",
+                      "hasBrideFatherChristianName"
                     )}
                   />
                   <span className={styles.nameInfoCheckboxTextStyle}>
@@ -273,8 +515,17 @@ const CommonInfoSection = ({
                       : "성함을 입력해주세요"
                   }
                   maxWidth="32rem"
-                  value={invitationCommonInfoData.brideMotherName}
-                  onChange={handleInvitationCommonInfoChange("brideMotherName")}
+                  value={
+                    invitationCommonInfoData.brideMotherDeceased
+                      ? ""
+                      : invitationCommonInfoData.brideMotherName
+                  }
+                  onChange={handleBrideMotherNameChange}
+                  errorMessage={
+                    invitationCommonInfoData.brideMotherDeceased
+                      ? undefined
+                      : brideMotherNameError
+                  }
                   readOnly={invitationCommonInfoData.brideMotherDeceased}
                 />
                 {invitationCommonInfoData.hasBrideMotherChristianName && (
@@ -282,9 +533,8 @@ const CommonInfoSection = ({
                     placeholder="세례명을 입력해주세요"
                     maxWidth="32rem"
                     value={invitationCommonInfoData.brideMotherChristianName}
-                    onChange={handleInvitationCommonInfoChange(
-                      "brideMotherChristianName",
-                    )}
+                    onChange={handleBrideMotherChristianNameChange}
+                    errorMessage={brideMotherChristianNameError}
                   />
                 )}
               </div>
@@ -293,7 +543,7 @@ const CommonInfoSection = ({
                   <CheckBox
                     checked={invitationCommonInfoData.brideMotherDeceased}
                     onChange={handleInvitationCommonInfoBooleanChange(
-                      "brideMotherDeceased",
+                      "brideMotherDeceased"
                     )}
                   />
                   <span className={styles.nameInfoCheckboxTextStyle}>故</span>
@@ -304,7 +554,7 @@ const CommonInfoSection = ({
                       invitationCommonInfoData.hasBrideMotherChristianName
                     }
                     onChange={handleInvitationCommonInfoBooleanChange(
-                      "hasBrideMotherChristianName",
+                      "hasBrideMotherChristianName"
                     )}
                   />
                   <span className={styles.nameInfoCheckboxTextStyle}>
@@ -323,16 +573,16 @@ const CommonInfoSection = ({
                   placeholder="성함을 입력해주세요"
                   maxWidth="32rem"
                   value={invitationCommonInfoData.brideName}
-                  onChange={handleInvitationCommonInfoChange("brideName")}
+                  onChange={handleBrideNameChange}
+                  errorMessage={brideNameError}
                 />
                 {invitationCommonInfoData.hasBrideChristianName && (
                   <Input
                     placeholder="세례명을 입력해주세요"
                     maxWidth="32rem"
-                    value={invitationCommonInfoData.groomChristianName}
-                    onChange={handleInvitationCommonInfoChange(
-                      "groomChristianName",
-                    )}
+                    value={invitationCommonInfoData.brideChristianName}
+                    onChange={handleBrideChristianNameChange}
+                    errorMessage={brideChristianNameError}
                   />
                 )}
               </div>
@@ -341,7 +591,7 @@ const CommonInfoSection = ({
                 <CheckBox
                   checked={invitationCommonInfoData.hasBrideChristianName}
                   onChange={handleInvitationCommonInfoBooleanChange(
-                    "hasBrideChristianName",
+                    "hasBrideChristianName"
                   )}
                 />
                 <span className={styles.nameInfoCheckboxTextStyle}>세례명</span>
@@ -370,7 +620,8 @@ const CommonInfoSection = ({
             maxWidth="32rem"
             placeholder="8글자로 입력해주세요"
             value={invitationCommonInfoData.weddingDate}
-            onChange={handleChangeDate}
+            onChange={handleWeddingDateChange}
+            errorMessage={weddingDateError}
             maxLength={10}
           />
           <OrderSelectBox
@@ -435,7 +686,7 @@ const CommonInfoSection = ({
             <Input
               value={invitationCommonInfoData.weddingVenueZoneCode}
               onChange={handleInvitationCommonInfoChange(
-                "weddingVenueZoneCode",
+                "weddingVenueZoneCode"
               )}
               maxWidth="32rem"
               placeholder="우편번호를 입력해주세요"
@@ -455,9 +706,8 @@ const CommonInfoSection = ({
             maxWidth="62rem"
             placeholder="상세 주소를 입력해주세요. 예시) 마리빌 205호"
             value={invitationCommonInfoData.weddingVenueDetailAddress}
-            onChange={handleInvitationCommonInfoChange(
-              "weddingVenueDetailAddress",
-            )}
+            onChange={handleWeddingDetailAddressChange}
+            errorMessage={weddingDetailAdressError}
           />
         </div>
       </section>

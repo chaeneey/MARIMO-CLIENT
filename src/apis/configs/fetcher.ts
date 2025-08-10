@@ -15,7 +15,13 @@ async function fetcher<T>(url: string, options: RequestInit): Promise<T> {
     },
     body,
   });
-  const data = await res.json();
+  // const data = await res.json();
+  const text = await res.text();
+  const data = text ? JSON.parse(text) : null;
+
+  if (!res.ok) {
+    throw new Error(`${res.status} ${res.statusText}`);
+  }
 
   if (!res.ok) {
     // 에러 처리, 추후 수정 예정
@@ -32,7 +38,7 @@ export function get<T>(url: string, options?: FetcherOptions): Promise<T> {
 export function post<T>(
   url: string,
   body: unknown,
-  options?: FetcherOptions,
+  options?: FetcherOptions
 ): Promise<T> {
   return fetcher<T>(url, {
     ...options,
@@ -44,7 +50,7 @@ export function post<T>(
 export function put<T>(
   url: string,
   body: unknown,
-  options?: FetcherOptions,
+  options?: FetcherOptions
 ): Promise<T> {
   return fetcher<T>(url, {
     ...options,
@@ -56,7 +62,7 @@ export function put<T>(
 export function patch<T>(
   url: string,
   body: unknown,
-  options?: FetcherOptions,
+  options?: FetcherOptions
 ): Promise<T> {
   return fetcher<T>(url, {
     ...options,

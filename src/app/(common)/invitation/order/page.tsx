@@ -43,12 +43,10 @@ const Page = () => {
     productOrderData,
     customerInfoData,
     invitationCommonInfoData,
-    // paperInvitationInfoData,
     paperInfoData,
     mobileInfoData,
     charterBusData,
     receptionData,
-    // mobileInvitationData,
     galleryData,
     contactOptionData,
     giftAccountData,
@@ -56,20 +54,15 @@ const Page = () => {
     rsvpData,
     additionalRequestData,
     orderFormData,
-    // handleProductOrderChange,
-    // handleOptionListChange,
     setProductOrderData,
     setOrderFormData,
     handleCustomerInfoChange,
     handleInvitationCommonInfoChange,
     handleInvitationCommonInfoBooleanChange,
-    // handlePaperInvitationChange,
     handlePaperInfoChange,
     handleMobileInfoChange,
     handleCharterBusChange,
     handleReceptionChange,
-    // handleMobileInvitationChange,
-    // handleGalleryChange,
     handleContactOptionChange,
     handleGiftAccountChange,
     handleGuestbookChange,
@@ -77,6 +70,88 @@ const Page = () => {
     handleAdditionalRequestChange,
     handleOrderFormChange,
   } = useOrderFormData();
+
+  const [formValidity, setFormValidity] = useState({
+    customerInfo: false,
+    invitationCommonInfo: false,
+    paperInfo: false,
+    mobileInfo: false,
+    charterBus: false,
+    reception: false,
+    gallery: false,
+    contactOption: false,
+    giftAccount: false,
+    guestbook: false,
+    rsvp: false,
+    additionalRequest: false,
+  });
+
+  useEffect(() => {
+    console.log("customerInfo", formValidity.customerInfo);
+    console.log("invitationCommonInfo", formValidity.invitationCommonInfo);
+    console.log("paperInfo", formValidity.paperInfo);
+    console.log("charterBus", formValidity.charterBus);
+  }, [
+    formValidity.customerInfo,
+    formValidity.invitationCommonInfo,
+    formValidity.paperInfo,
+    formValidity.charterBus,
+  ]);
+
+  const isFormValid = () => {
+    // 필수 섹션: customerInfo, invitationCommonInfo, paperInfo
+    if (!formValidity.customerInfo) {
+      return false;
+    }
+    if (!formValidity.invitationCommonInfo) {
+      return false;
+    }
+    if (!formValidity.paperInfo) {
+      return false;
+    }
+
+    // 조건부 섹션들: 선택된 경우에만 유효성 체크
+    if (orderFormData.hasCharterBus) {
+      if (!formValidity.charterBus) return false;
+    }
+
+    if (orderFormData.hasReception) {
+      if (!formValidity.reception) return false;
+    }
+
+    if (orderFormData.hasMobileInvitation) {
+      if (!formValidity.mobileInfo) return false;
+    }
+
+    if (orderFormData.hasGallery) {
+      if (!formValidity.gallery) return false;
+    }
+
+    if (orderFormData.hasContactOption) {
+      if (!formValidity.contactOption) return false;
+    }
+
+    if (orderFormData.hasGiftAccount) {
+      if (!formValidity.giftAccount) return false;
+    }
+
+    if (orderFormData.hasGuestbook) {
+      if (!formValidity.guestbook) return false;
+    }
+
+    // if (orderFormData.hasRsvp) {
+    //   if (!formValidity.rsvp) return false;
+    // }
+
+    if (orderFormData.hasAdditionalRequest) {
+      if (!formValidity.additionalRequest) return false;
+    }
+
+    // 모든 필요 섹션이 유효하면 true 반환
+    return true;
+  };
+
+  const submitButtonDisabled = !isFormValid();
 
   useEffect(() => {
     const invitationId = localStorage.getItem("invitationId");
@@ -89,16 +164,15 @@ const Page = () => {
         (option: { id: number; quantity: number }) => ({
           optionId: option.id,
           quantity: option.quantity,
-        }),
+        })
       );
 
       const hasMobile = optionList.some(
-        (option: { type: string }) => option.type === "mobile",
+        (option: { type: string }) => option.type === "mobile"
       );
 
       setIsMobileFreeProvided(hasMobile);
       setOrderFormData((prev) => ({ ...prev, hasMobileInvitation: hasMobile }));
-
       setProductOrderData({
         invitationId: `${JSON.parse(invitationId)}`,
         optionList: newOptionList,
@@ -115,6 +189,9 @@ const Page = () => {
         <OrderInfoSection
           customerInfoData={customerInfoData}
           handleCustomerInfoChange={handleCustomerInfoChange}
+          onValidChange={(isValid) =>
+            setFormValidity((prev) => ({ ...prev, customerInfo: isValid }))
+          }
         />
       ),
     },
@@ -127,6 +204,12 @@ const Page = () => {
           handleInvitationCommonInfoBooleanChange={
             handleInvitationCommonInfoBooleanChange
           }
+          onValidChange={(isValid) =>
+            setFormValidity((prev) => ({
+              ...prev,
+              invitationCommonInfo: isValid,
+            }))
+          }
         />
       ),
     },
@@ -136,6 +219,12 @@ const Page = () => {
         <CoverInfoSection
           invitationInfoData={paperInfoData}
           handleInvitationInfoChange={handlePaperInfoChange}
+          onValidChange={(isValid) =>
+            setFormValidity((prev) => ({
+              ...prev,
+              paperInfo: isValid,
+            }))
+          }
         />
       ),
     },
@@ -146,6 +235,12 @@ const Page = () => {
         <BusSection
           charterBusData={charterBusData}
           handleCharterBusChange={handleCharterBusChange}
+          onValidChange={(isValid) =>
+            setFormValidity((prev) => ({
+              ...prev,
+              charterBus: isValid,
+            }))
+          }
         />
       ),
       checkboxState: orderFormData.hasCharterBus,
@@ -158,6 +253,12 @@ const Page = () => {
         <PartySection
           receptionData={receptionData}
           handleReceptionChange={handleReceptionChange}
+          onValidChange={(isValid) =>
+            setFormValidity((prev) => ({
+              ...prev,
+              reception: isValid,
+            }))
+          }
         />
       ),
       checkboxState: orderFormData.hasReception,
@@ -170,6 +271,12 @@ const Page = () => {
           type="mobile"
           invitationInfoData={mobileInfoData}
           handleInvitationInfoChange={handleMobileInfoChange}
+          onValidChange={(isValid) =>
+            setFormValidity((prev) => ({
+              ...prev,
+              mobileInfo: isValid,
+            }))
+          }
         />
       ),
     },
@@ -192,6 +299,12 @@ const Page = () => {
         <PhoneInfoSection
           contactOptionData={contactOptionData}
           handleContactOptionChange={handleContactOptionChange}
+          onValidChange={(isValid) =>
+            setFormValidity((prev) => ({
+              ...prev,
+              contactOption: isValid,
+            }))
+          }
         />
       ),
       checkboxState: orderFormData.hasContactOption,
@@ -204,6 +317,12 @@ const Page = () => {
         <AccountSection
           giftAccountData={giftAccountData}
           handleGiftAccountChange={handleGiftAccountChange}
+          onValidChange={(isValid) =>
+            setFormValidity((prev) => ({
+              ...prev,
+              giftAccount: isValid,
+            }))
+          }
         />
       ),
       checkboxState: orderFormData.hasGiftAccount,
@@ -228,6 +347,9 @@ const Page = () => {
         <GuestSection
           guestbookData={guestbookData}
           handleGuestbookChange={handleGuestbookChange}
+          onValidChange={(isValid) =>
+            setFormValidity((prev) => ({ ...prev, guestbook: isValid }))
+          }
         />
       ),
       checkboxState: orderFormData.hasGuestbook,
@@ -252,6 +374,12 @@ const Page = () => {
         <MemoSection
           additionalRequestData={additionalRequestData}
           handleAdditionalRequestChange={handleAdditionalRequestChange}
+          onValidChange={(isValid) =>
+            setFormValidity((prev) => ({
+              ...prev,
+              additionalRequest: isValid,
+            }))
+          }
         />
       ),
       checkboxState: orderFormData.hasAdditionalRequest,
@@ -283,7 +411,9 @@ const Page = () => {
       groomFatherDeceased: invitationCommonInfoData.groomFatherDeceased,
       hasGroomFatherChristianName:
         invitationCommonInfoData.hasGroomFatherChristianName,
-      groomFatherName: invitationCommonInfoData.groomFatherName,
+      ...(!invitationCommonInfoData.groomFatherDeceased && {
+        groomFatherName: invitationCommonInfoData.groomFatherName,
+      }),
       ...(invitationCommonInfoData.hasGroomFatherChristianName && {
         groomFatherChristianName:
           invitationCommonInfoData.groomFatherChristianName,
@@ -292,7 +422,9 @@ const Page = () => {
       groomMotherDeceased: invitationCommonInfoData.groomMotherDeceased,
       hasGroomMotherChristianName:
         invitationCommonInfoData.hasGroomMotherChristianName,
-      groomMotherName: invitationCommonInfoData.groomMotherName,
+      ...(!invitationCommonInfoData.groomMotherDeceased && {
+        groomMotherName: invitationCommonInfoData.groomMotherName,
+      }),
       ...(invitationCommonInfoData.hasGroomMotherChristianName && {
         groomMotherChristianName:
           invitationCommonInfoData.groomMotherChristianName,
@@ -308,7 +440,9 @@ const Page = () => {
       brideFatherDeceased: invitationCommonInfoData.brideFatherDeceased,
       hasBrideFatherChristianName:
         invitationCommonInfoData.hasBrideFatherChristianName,
-      brideFatherName: invitationCommonInfoData.brideFatherName,
+      ...(!invitationCommonInfoData.brideFatherDeceased && {
+        brideFatherName: invitationCommonInfoData.brideFatherName,
+      }),
       ...(invitationCommonInfoData.hasBrideFatherChristianName && {
         brideFatherChristianName:
           invitationCommonInfoData.brideFatherChristianName,
@@ -318,7 +452,9 @@ const Page = () => {
       brideMotherDeceased: invitationCommonInfoData.brideMotherDeceased,
       hasBrideMotherChristianName:
         invitationCommonInfoData.hasBrideMotherChristianName,
-      brideMotherName: invitationCommonInfoData.brideMotherName,
+      ...(!invitationCommonInfoData.brideMotherDeceased && {
+        brideMotherName: invitationCommonInfoData.brideMotherName,
+      }),
       // brideMotherChristianName:
       //   invitationCommonInfoData.hasBrideMotherChristianName,
       ...(invitationCommonInfoData.hasBrideMotherChristianName && {
@@ -355,30 +491,44 @@ const Page = () => {
       ...(orderFormData.hasCharterBus && { charterBus: charterBusData }),
 
       hasReception: orderFormData.hasReception,
-      ...(orderFormData.hasReception && { reception: receptionData }),
+      ...(orderFormData.hasReception && {
+        reception: {
+          address: receptionData.address,
+          dateTime: `${receptionData.datetime} ${receptionData.datetimeHour} ${receptionData.datetimeMinute}`,
+        },
+      }),
 
       hasMobileInvitation: orderFormData.hasMobileInvitation,
       ...(orderFormData.hasMobileInvitation && {
         mobileInvitationInfo: mobileInfoData,
       }),
 
+      // hasGallery: orderFormData.hasGallery,
       ...(orderFormData.hasMobileInvitation && {
         hasGallery: orderFormData.hasGallery,
       }),
       ...(orderFormData.hasGallery && { gallery: galleryData }),
 
+      // hasContactOption: orderFormData.hasContactOption,
       ...(orderFormData.hasMobileInvitation && {
         hasContactOption: orderFormData.hasContactOption,
       }),
+      // ...(orderFormData.hasContactOption && {
+      //   contactOption: contactOptionData,
+      // }),
       ...(orderFormData.hasContactOption && {
-        contactOption: contactOptionData,
+        contactOption: Object.fromEntries(
+          Object.entries(contactOptionData).filter(([_, value]) => value !== "")
+        ),
       }),
 
+      // hasGiftAccount: orderFormData.hasGiftAccount,
       ...(orderFormData.hasMobileInvitation && {
         hasGiftAccount: orderFormData.hasGiftAccount,
       }),
       ...(orderFormData.hasGiftAccount && { giftAccount: giftAccountData }),
 
+      // hasCalendar: orderFormData.hasCalendar,
       ...(orderFormData.hasMobileInvitation && {
         hasCalendar: orderFormData.hasCalendar,
       }),
@@ -386,11 +536,13 @@ const Page = () => {
         hasMapNavigation: orderFormData.hasMapNavigation,
       }),
 
+      // hasGuestbook: orderFormData.hasGuestbook,
       ...(orderFormData.hasMobileInvitation && {
         hasGuestbook: orderFormData.hasGuestbook,
       }),
       ...(orderFormData.hasGuestbook && { guestbook: guestbookData }),
 
+      // hasRsvp: orderFormData.hasRsvp,
       ...(orderFormData.hasMobileInvitation && {
         hasRsvp: orderFormData.hasRsvp,
       }),
@@ -434,11 +586,12 @@ const Page = () => {
                 charterBusData,
                 orderFormData,
                 paperInfoData,
-                mobileInfoData,
+                mobileInfoData
               );
               handleSubmit();
             }}
             type="button"
+            disabled={submitButtonDisabled}
           >
             주문하기
           </Button>
@@ -456,7 +609,7 @@ const Page = () => {
               checkboxState,
               handleCheckboxStateChange,
             },
-            idx,
+            idx
           ) => {
             const shouldHide =
               !isMobileFreeProvided &&
@@ -475,7 +628,7 @@ const Page = () => {
                 {content}
               </Accordion>
             );
-          },
+          }
         )}
       </div>
     </form>

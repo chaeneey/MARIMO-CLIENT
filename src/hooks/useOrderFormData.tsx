@@ -26,7 +26,7 @@ const useOrderFormData = () => {
     thirdPhoneNumber: "",
     // email: "",
     emailId: "",
-    emailDomain: "직접 입력",
+    emailDomain: "",
   });
 
   const [invitationCommonInfoData, setInvitationCommonInfoData] = useState({
@@ -148,10 +148,10 @@ const useOrderFormData = () => {
   // const handleProductOrderChange = createChangeHandler(setProductOrderData);
   const handleCustomerInfoChange = createChangeHandler(setCustomerInfoData);
   const handleInvitationCommonInfoChange = createChangeHandler(
-    setInvitationCommonInfoData,
+    setInvitationCommonInfoData
   );
   const handleInvitationCommonInfoBooleanChange = createBooleanChangeHandler(
-    setInvitationCommonInfoData,
+    setInvitationCommonInfoData
   );
 
   const handlePaperInfoChange = createChangeHandler(setPaperInfoData);
@@ -171,7 +171,7 @@ const useOrderFormData = () => {
   const handleGuestbookChange = createChangeHandler(setGuestbookData);
   const handleRsvpChange = createBooleanChangeHandler(setRsvpData);
   const handleAdditionalRequestChange = createChangeHandler(
-    setAdditionalRequestData,
+    setAdditionalRequestData
   );
   const handleOrderFormChange = createBooleanChangeHandler(setOrderFormData);
 
