@@ -10,6 +10,7 @@ export const buttonSizeStyle = recipe({
     {
       minWidth: "fit-content",
       // width: "100%",
+      whiteSpace: "nowrap",
       borderRadius: "2px",
       cursor: "pointer",
     },
@@ -23,6 +24,10 @@ export const buttonSizeStyle = recipe({
       "50": {
         ...vars.fonts.head04_22,
         padding: "1rem 5.3rem",
+      },
+      "40": {
+        ...vars.fonts.mb1_body01_14_sb,
+        padding: "1rem 8.8rem",
       },
       "38": {
         ...vars.fonts.head05_20,
@@ -56,6 +61,10 @@ export const buttonColorStyle = recipe({
         color: vars.colors.lime04,
         backgroundColor: "transparent",
         border: `1px solid ${vars.colors.lime04}`,
+      },
+      gray01: {
+        color: vars.colors.gray01,
+        backgroundColor: vars.colors.black,
       },
       gray: {
         color: vars.colors.gray03,

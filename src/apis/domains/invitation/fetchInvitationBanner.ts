@@ -19,6 +19,5 @@ export async function fetchInvitationBanner(
   const res = await get<Banner>(FETCH_BANNER(productType), {
     cache: "no-store",
   });
-  console.log(res);
   return res.bannerList;
 }

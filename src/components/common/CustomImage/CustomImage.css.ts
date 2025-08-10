@@ -8,4 +8,5 @@ export const imageWrapperStyle = style({
 
 export const imageStyle = style({
   objectFit: "cover",
+  display: "block"
 });

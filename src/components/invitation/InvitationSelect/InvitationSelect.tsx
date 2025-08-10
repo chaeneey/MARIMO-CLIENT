@@ -63,8 +63,6 @@ const InvitationSelect = ({
   const [openBox, setOpenBox] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log(selectedOptions);
-
   const handleModalClose = () => {
     setIsModalOpen(false);
   };

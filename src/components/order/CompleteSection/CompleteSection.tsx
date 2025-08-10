@@ -1,3 +1,6 @@
+"use client";
+import { useEffect, useState } from "react";
+
 import { IcComplete80 } from "@/assets/svgs";
 
 import {
@@ -12,6 +15,12 @@ import {
 } from "./CompleteSection.css";
 
 const CompleteSection = () => {
+  const [orderCode, setOrderCode] = useState("0");
+
+  useEffect(() => {
+    const stored = localStorage.getItem("orderCode");
+    setOrderCode(stored ?? "0");
+  }, []);
   return (
     <div className={completeLayout}>
       <div className={completeIconWrapper}>
@@ -21,7 +30,7 @@ const CompleteSection = () => {
         <h1 className={completeMainTextStyle}>주문이 완료되었습니다!</h1>
         <div className={completeSubTextWrapper}>
           <h2 className={completeSubTextStyle}>주문번호</h2>
-          <span className={completeOrderNumberTextStyle}>MRM202503212964</span>
+          <span className={completeOrderNumberTextStyle}>{orderCode}</span>
         </div>
       </div>
 

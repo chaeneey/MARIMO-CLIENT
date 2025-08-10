@@ -4,15 +4,17 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { IcLogoSmall } from "@/assets/svgs";
+import { IcHeaderBar, IcLogoSmall } from "@/assets/svgs";
 
 import {
   buttonSection,
+  hamburgerBarSection,
   headerWrapper,
   headerWrapperScrolled,
   tabBarSection,
 } from "./Header.css";
 import Button from "../Button/Button";
+import HamburgerBar from "../HamburgerBar/HamburgerBar";
 import TabBar from "../TabBar/TabBar";
 
 const Header = () => {
@@ -20,7 +22,7 @@ const Header = () => {
   const pathname = usePathname();
 
   const [activeTab, setActiveTab] = useState(
-    pathname.includes("/invitation") ? 0 : 1,
+    pathname.includes("/invitation") ? 0 : 1
   );
   const [isScrolled, setIsScrolled] = useState(false);
   const isTransparentMode = pathname === "/invitation" || pathname === "/video";
@@ -30,6 +32,11 @@ const Header = () => {
     setActiveTab(tab);
     const routes = ["/invitation", "/video"];
     router.push(routes[tab]);
+  };
+
+  const [isHamburgerBarOpen, setIsHamburgerBarOpen] = useState(false);
+  const handleChanegeHamburgerBar = () => {
+    setIsHamburgerBarOpen((prev) => !prev);
   };
 
   useEffect(() => {
@@ -45,7 +52,7 @@ const Header = () => {
     <header
       className={clsx(
         headerWrapper({ isTransparentMode }),
-        isScrolled && headerWrapperScrolled({ hasHideMode }),
+        isScrolled && headerWrapperScrolled({ hasHideMode })
       )}
     >
       <Link href="/">
@@ -67,6 +74,14 @@ const Header = () => {
           </Button>
         </Link>
       </section>
+
+      <section className={hamburgerBarSection}>
+        <IcHeaderBar onClick={handleChanegeHamburgerBar} />
+      </section>
+
+      {isHamburgerBarOpen && (
+        <HamburgerBar handleCloseHamburgerBar={handleChanegeHamburgerBar} />
+      )}
     </header>
   );
 };

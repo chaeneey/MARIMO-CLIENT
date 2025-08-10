@@ -13,7 +13,7 @@ export const headerWrapper = recipe({
       width: "100%",
       maxWidth: "100vw",
       padding: "2.5rem 13.1rem 2.5rem 14.2rem",
-      height: "10rem",
+      height: "8rem",
 
       zIndex: "10",
 
@@ -63,11 +63,11 @@ export const headerWrapperScrolled = recipe({
 
 export const tabBarSection = style({
   width: "59.6rem",
-  marginLeft: "6rem",
+  marginLeft: "10rem",
   display: "block",
 
   "@media": {
-    "screen and (max-width: 960px)": {
+    "screen and (max-width: 900px)": {
       display: "none",
     },
   },
@@ -76,4 +76,23 @@ export const tabBarSection = style({
 export const buttonSection = style({
   maxWidth: "10.2rem",
   marginLeft: "auto",
+
+  "@media": {
+    "screen and (max-width: 900px)": {
+      display: "none",
+    },
+  },
 });
+
+export const hamburgerBarSection = style({
+  display: "none",
+  width: "3.8rem",
+  height: "3.8rem",
+
+    "@media": {
+    "screen and (max-width: 900px)": {
+      display: "block",
+    },
+  },
+
+})

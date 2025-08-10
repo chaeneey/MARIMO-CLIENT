@@ -14,16 +14,12 @@ const InvitationCommonSection = ({ info }: InvitationCommonSectionProps) => {
     brideFatherName,
     brideMotherName,
     brideName,
-    weddingDatetime,
+    weddingDateTime,
     weddingVenueAddress,
   } = info;
 
-  const date = new Date(weddingDatetime);
-
-  const weddingDate = date.toISOString().split("T")[0];
-  const weddingHour = date.getHours().toString().padStart(2, "0");
-  const weddingMinute = date.getMinutes().toString().padStart(2, "0");
-  const weddingTime = `${weddingHour}시 ${weddingMinute}분`;
+  const [weddingDate, weddingHour, weddingMinute] = weddingDateTime.split(" ");
+  const weddingTime = `${weddingHour} ${weddingMinute}`;
   return (
     <>
       <section className={styles.inviCommonContainer}>

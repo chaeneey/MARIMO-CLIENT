@@ -3,6 +3,18 @@ import { style } from "@vanilla-extract/css";
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
 
+export const inputWithErrorMessage = style([
+  flexGenerator("column", "flex-start", "flex-start"),
+  { gap: "0.8rem" },
+]);
+
+export const inputErrorTextStyle = style([
+  vars.fonts.caption_04_me,
+  {
+    color: vars.colors.alert01,
+  },
+]);
+
 // 주문자 정보
 export const inputTextStyle = style([
   vars.fonts.body08_18_sb,

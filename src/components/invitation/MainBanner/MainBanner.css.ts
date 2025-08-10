@@ -38,7 +38,7 @@ export const presentBar = style({
   position: "absolute",
   top: "-1.5px",
   left: "0",
-  width: "33.3333%",
+  // width: "33.3333%",
   height: "2px",
   backgroundColor: vars.colors.gray03,
   transition: "transform 0.6s ease-in-out",

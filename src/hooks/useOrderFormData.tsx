@@ -26,7 +26,7 @@ const useOrderFormData = () => {
     thirdPhoneNumber: "",
     // email: "",
     emailId: "",
-    emailDomain: "직접 입력",
+    emailDomain: "",
   });
 
   const [invitationCommonInfoData, setInvitationCommonInfoData] = useState({
@@ -144,14 +144,39 @@ const useOrderFormData = () => {
     hasAdditionalRequest: false,
   });
 
+  // video 정보
+  // const [videoProductData, setVideoProductData] = useState({
+  //   preVideoId: "",
+  // });
+
+  const [videoCommonInfoData, setVideoCommonInfoData] = useState({
+    groomName: "",
+    brideName: "",
+    weddingDate: "",
+    weddingHour: "",
+    weddingMinute: "",
+  });
+
+  const [mediaListData, setMediaListData] = useState({
+    mediaList: ["https://s3.amazonaws.com/your-bucket/photo1.jpg"],
+  });
+
+  // const [videoOrderData, setVideoOrderData] = useState({
+  //   hasAdditionalRequest: false,
+  // });
+
+  const handleVideoCommonInfoChange = createChangeHandler(setVideoCommonInfoData);
+  const handleMediaListChange = createChangeHandler(setMediaListData)
+  // const handleVideoOrderChange = createBooleanChangeHandler(setVideoOrderData);
+
   // handle 함수
   // const handleProductOrderChange = createChangeHandler(setProductOrderData);
   const handleCustomerInfoChange = createChangeHandler(setCustomerInfoData);
   const handleInvitationCommonInfoChange = createChangeHandler(
-    setInvitationCommonInfoData,
+    setInvitationCommonInfoData
   );
   const handleInvitationCommonInfoBooleanChange = createBooleanChangeHandler(
-    setInvitationCommonInfoData,
+    setInvitationCommonInfoData
   );
 
   const handlePaperInfoChange = createChangeHandler(setPaperInfoData);
@@ -171,7 +196,7 @@ const useOrderFormData = () => {
   const handleGuestbookChange = createChangeHandler(setGuestbookData);
   const handleRsvpChange = createBooleanChangeHandler(setRsvpData);
   const handleAdditionalRequestChange = createChangeHandler(
-    setAdditionalRequestData,
+    setAdditionalRequestData
   );
   const handleOrderFormChange = createBooleanChangeHandler(setOrderFormData);
 
@@ -192,6 +217,8 @@ const useOrderFormData = () => {
     rsvpData,
     additionalRequestData,
     orderFormData,
+    videoCommonInfoData,
+    mediaListData,
 
     // handleProductOrderChange,
     setProductOrderData,
@@ -212,6 +239,8 @@ const useOrderFormData = () => {
     handleRsvpChange,
     handleAdditionalRequestChange,
     handleOrderFormChange,
+    handleVideoCommonInfoChange,
+    handleMediaListChange
   };
 };
 

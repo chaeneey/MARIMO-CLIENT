@@ -91,8 +91,10 @@ const MarimoProductInfoSection = () => {
           muted
           autoPlay
           loop
-          style={{ width: "100%", position: "absolute", top: "0", left: "0" }}
+          playsInline
+          style={{ width: "100%", position: "absolute", top: "0", left: "-20rem", zIndex: "1"}}
         />
+
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

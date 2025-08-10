@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 
 import { Button, CustomImage } from "@/components/common";
@@ -5,9 +6,16 @@ import { PreVideoDetail } from "@types";
 
 import * as styles from "./VideoSelect.css";
 
-const VideoSelect = ({ preVideoDetail }: PreVideoDetail) => {
+interface VideoSelectProps {
+  preVideoDetail: PreVideoDetail;
+  videoId: string;
+}
+
+const VideoSelect = ({ preVideoDetail, videoId }: VideoSelectProps) => {
   const { mainImageUrl, name, discountRate, price, description } =
     preVideoDetail;
+  localStorage.setItem("videoId", videoId);
+  
   return (
     <div className={styles.videoSelectLayout}>
       <div className={styles.videoImageStyle}>

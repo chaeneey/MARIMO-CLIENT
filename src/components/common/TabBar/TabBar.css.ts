@@ -1,47 +1,64 @@
-import { style } from "@vanilla-extract/css";
+// import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
 import { flexGenerator } from "@styles/generator.css";
 import { vars } from "@styles/theme.css";
 
-export const tabStyle = style([
-  flexGenerator("row", "space-between"),
+export const tabStyle = recipe({
+  base: [  flexGenerator("row", "space-between"),
   {
     position: "relative",
     width: "100%",
     paddingBottom: "0.5rem",
-  },
-]);
+  },],
+  variants: {
+    tabType: {
+      headerTab: {
+        justifyContent: "flex-start" ,
+        gap: "5rem"
+      },
+      productTab: {}
+    }
+  }
+}
+
+);
 
 export const tabButton = recipe({
-  base: [
-    vars.fonts.eh4_head04_24_b,
+  base: 
     {
+...vars.fonts.eh4_head04_24_b,
       display: "flex",
       width: "100%",
     },
-  ],
+  
   variants: {
     tabType: {
       headerTab: {
         color: vars.colors.lime09,
+        // ...vars.fonts.eh5_head05_18
+        fontSize: "20px"
       },
       productTab: {
         color: vars.colors.gray03,
+        
       },
     },
   },
 });
 
 export const clickTab = recipe({
-  base: [vars.fonts.eh3_head03_24_eb, {}],
+  base: {...vars.fonts.eh3_head03_24_eb},
   variants: {
     tabType: {
       headerTab: {
         color: vars.colors.lime04,
+        // ...vars.fonts.eh5_head05_18
+        fontSize: "21px"
       },
       productTab: {
         color: vars.colors.black,
+        
       },
     },
   },

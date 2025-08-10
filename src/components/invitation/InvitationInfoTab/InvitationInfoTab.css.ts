@@ -44,8 +44,8 @@ export const mobileCardWrapper = style({
 
 export const imageSectionStyle = style({
   width: "100%",
-  height: "400rem",
-  backgroundColor: "pink",
+  height: "auto",
+  backgroundColor: vars.colors.white,
 });
 
 export const checkListUlStyle = style([

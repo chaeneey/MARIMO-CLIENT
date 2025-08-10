@@ -31,7 +31,7 @@ const TabBar = ({ tabType, activeTab, onTabChange }: TabBarProps) => {
   }, [activeTab]);
 
   return (
-    <div className={tabStyle}>
+    <div className={tabStyle({tabType})}>
       {tabList.map((tab, index) => (
         <div key={tab}>
           <button

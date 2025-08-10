@@ -13,8 +13,8 @@ const eslintConfig = [
   ...compat.extends(
     "next/core-web-vitals",
     "next/typescript",
-    "plugin:prettier/recommended",
-    "prettier",
+    // "plugin:prettier/recommended",
+    // "prettier",
   ),
   {
     rules: {

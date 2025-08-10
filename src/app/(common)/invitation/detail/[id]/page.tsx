@@ -4,12 +4,12 @@ import { InvitationInfoTab, InvitationSelect } from "@/components/invitation";
 import * as styles from "./page.css";
 
 const page = async ({ params }) => {
-  const { id } = params;
-  const invitationItemDetail = await fetchInvitationItemDetail(id);
+  const invitationId = Number(params.id);
+  const invitationItemDetail = await fetchInvitationItemDetail(invitationId);
   return (
     <div className={styles.invitationDetailPageStyle}>
       <InvitationSelect
-        invitationId={id}
+        invitationId={invitationId}
         invitationItemDetail={invitationItemDetail}
       />
       <div className={styles.noteWrapper}>

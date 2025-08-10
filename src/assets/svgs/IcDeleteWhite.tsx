@@ -4,7 +4,7 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-const SvgIcStrokeRight = ({
+const SvgIcDeleteWhite = ({
   title,
   titleId,
   ...props
@@ -17,11 +17,18 @@ const SvgIcStrokeRight = ({
   >
     {title ? <title id={titleId}>{title}</title> : null}
     <path
-      d="M0.876953 48.75H316.877L269.377 1.25"
+      d="M2.80127 2.79883L25.3013 25.2988"
       stroke="white"
-      strokeWidth={2}
+      strokeWidth={2.8}
+      strokeLinecap="round"
+    />
+    <path
+      d="M26.2014 2.79883L3.70142 25.2988"
+      stroke="white"
+      strokeWidth={2.8}
+      strokeLinecap="round"
     />
   </svg>
 );
-const Memo = memo(SvgIcStrokeRight);
+const Memo = memo(SvgIcDeleteWhite);
 export default Memo;
