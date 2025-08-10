@@ -286,6 +286,15 @@ export type OrderFormType = {
   hasRsvp: boolean;
   hasAdditionalRequest: boolean;
 };
+
+export type VideoCommonInfoType = {
+  groomName: string;
+  brideName: string;
+  // weddingDateTime: string;
+  weddingDate: string;
+  weddingHour: string;
+  weddingMinute: string;
+};
 // orderPage Type 여기까지
 
 // types.ts
@@ -348,17 +357,17 @@ export interface PostOrderInfoRequest {
     address: string;
     dateTime: string;
   };
-  hasMobileInvitation: boolean;
+  hasMobileInvitation?: boolean;
   mobileInvitationInfo?: {
     urlSlug: string;
     mainImage: string;
     message: string;
   };
-  hasGallery: boolean;
+  hasGallery?: boolean;
   gallery?: {
     imageList: string[];
   };
-  hasContactOption: boolean;
+  hasContactOption?: boolean;
   contactOption?: {
     groomFatherPhoneNumber: string;
     groomMotherPhoneNumber: string;
@@ -367,18 +376,18 @@ export interface PostOrderInfoRequest {
     brideMotherPhoneNumber: string;
     bridePhoneNumber: string;
   };
-  hasGiftAccount: boolean;
+  hasGiftAccount?: boolean;
   giftAccount?: {
     groomGiftAccountList: { bank: string; holder: string; number: string }[];
     brideGiftAccountList: { bank: string; holder: string; number: string }[];
   };
-  hasCalendar: boolean;
-  hasMapNavigation: boolean;
-  hasGuestbook: boolean;
+  hasCalendar?: boolean;
+  hasMapNavigation?: boolean;
+  hasGuestbook?: boolean;
   guestbook?: {
     adminPassword: string;
   };
-  hasRsvp: boolean;
+  hasRsvp?: boolean;
   rsvp?: {
     hasPrimaryContactField: boolean;
     hasCompanionField: boolean;
@@ -393,4 +402,36 @@ export interface PostOrderInfoRequest {
 
 export interface PostOrderInfoResponse {
   orderCode: string;
+}
+
+export interface PostVideoOrderInfoRequest {
+  /* ---------- 기본 주문 정보 ---------- */
+  preVideoId: number;
+
+  /* ---------- 주문자 정보 ---------- */
+  customerInfo: {
+    name: string;
+    zoneCode: string;
+    address: string;
+    detailAddress: string;
+    phoneNumber: string;
+    email: string;
+  };
+
+  /* ---------- 식전영상 기본 정보 ---------- */
+  preVideoCommonInfo: {
+    groomName: string;
+    brideName: string;
+    weddingDateTime: string;
+  };
+
+  /* ---------- 사진/영상 업로드 ---------- */
+  mediaList: string[];
+
+  /* ---------- 기타 요청사항 ---------- */
+  hasAdditionalRequest: boolean;
+  additionalRequest?: {
+    requestText: string;
+    attachmentList: string[];
+  };
 }

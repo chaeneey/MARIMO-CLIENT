@@ -2,6 +2,7 @@
 // import Link from "next/link";
 // import { useForm, FormProvider } from "react-hook-form";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { usePostOrderInfo } from "@/apis/domains/order/usePostOrderInfo";
@@ -85,18 +86,6 @@ const Page = () => {
     rsvp: false,
     additionalRequest: false,
   });
-
-  useEffect(() => {
-    console.log("customerInfo", formValidity.customerInfo);
-    console.log("invitationCommonInfo", formValidity.invitationCommonInfo);
-    console.log("paperInfo", formValidity.paperInfo);
-    console.log("charterBus", formValidity.charterBus);
-  }, [
-    formValidity.customerInfo,
-    formValidity.invitationCommonInfo,
-    formValidity.paperInfo,
-    formValidity.charterBus,
-  ]);
 
   const isFormValid = () => {
     // 필수 섹션: customerInfo, invitationCommonInfo, paperInfo
@@ -556,7 +545,8 @@ const Page = () => {
 
     postOrderInfo(payload, {
       onSuccess: (response) => {
-        alert(`주문이 완료되었습니다! 주문코드: ${response.orderCode}`);
+        // alert(`주문이 완료되었습니다! 주문코드: ${response.orderCode}`);
+        localStorage.setItem("orderCode", response.orderCode);
       },
       onError: (error) => {
         alert("주문 중 오류가 발생했습니다. 다시 시도해주세요.");
@@ -570,31 +560,17 @@ const Page = () => {
       <div className={styles.titleContainer}>
         <div className={styles.titleWrapper}>
           <h1 className={styles.titleTextStyle}>청첩장 주문하기</h1>
-          <Button
-            size="50"
-            color="lime01"
-            onClick={() => {
-              console.log(
-                productOrderData,
-                customerInfoData,
-                invitationCommonInfoData,
-                charterBusData,
-                receptionData,
-                contactOptionData,
-                guestbookData,
-                rsvpData,
-                charterBusData,
-                orderFormData,
-                paperInfoData,
-                mobileInfoData
-              );
-              handleSubmit();
-            }}
-            type="button"
-            disabled={submitButtonDisabled}
-          >
-            주문하기
-          </Button>
+          <Link href={"/video/order/complete"}>
+            <Button
+              size="50"
+              color="lime01"
+              onClick={handleSubmit}
+              type="button"
+              disabled={submitButtonDisabled}
+            >
+              주문하기
+            </Button>
+          </Link>
         </div>
         <div className={styles.orderBarStyle} />
       </div>

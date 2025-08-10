@@ -144,6 +144,31 @@ const useOrderFormData = () => {
     hasAdditionalRequest: false,
   });
 
+  // video 정보
+  // const [videoProductData, setVideoProductData] = useState({
+  //   preVideoId: "",
+  // });
+
+  const [videoCommonInfoData, setVideoCommonInfoData] = useState({
+    groomName: "",
+    brideName: "",
+    weddingDate: "",
+    weddingHour: "",
+    weddingMinute: "",
+  });
+
+  const [mediaListData, setMediaListData] = useState({
+    mediaList: ["https://s3.amazonaws.com/your-bucket/photo1.jpg"],
+  });
+
+  // const [videoOrderData, setVideoOrderData] = useState({
+  //   hasAdditionalRequest: false,
+  // });
+
+  const handleVideoCommonInfoChange = createChangeHandler(setVideoCommonInfoData);
+  const handleMediaListChange = createChangeHandler(setMediaListData)
+  // const handleVideoOrderChange = createBooleanChangeHandler(setVideoOrderData);
+
   // handle 함수
   // const handleProductOrderChange = createChangeHandler(setProductOrderData);
   const handleCustomerInfoChange = createChangeHandler(setCustomerInfoData);
@@ -192,6 +217,8 @@ const useOrderFormData = () => {
     rsvpData,
     additionalRequestData,
     orderFormData,
+    videoCommonInfoData,
+    mediaListData,
 
     // handleProductOrderChange,
     setProductOrderData,
@@ -212,6 +239,8 @@ const useOrderFormData = () => {
     handleRsvpChange,
     handleAdditionalRequestChange,
     handleOrderFormChange,
+    handleVideoCommonInfoChange,
+    handleMediaListChange
   };
 };
 

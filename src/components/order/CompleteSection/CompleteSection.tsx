@@ -11,7 +11,11 @@ import {
   completeTextWrapper,
 } from "./CompleteSection.css";
 
-const CompleteSection = () => {
+interface CompleteSectionProps {
+  orderCode: string | null;
+}
+
+const CompleteSection = ({ orderCode }: CompleteSectionProps) => {
   return (
     <div className={completeLayout}>
       <div className={completeIconWrapper}>
@@ -21,7 +25,7 @@ const CompleteSection = () => {
         <h1 className={completeMainTextStyle}>주문이 완료되었습니다!</h1>
         <div className={completeSubTextWrapper}>
           <h2 className={completeSubTextStyle}>주문번호</h2>
-          <span className={completeOrderNumberTextStyle}>MRM202503212964</span>
+          <span className={completeOrderNumberTextStyle}>{orderCode}</span>
         </div>
       </div>
 
